@@ -304,6 +304,14 @@ export default function Game() {
           }))
           .filter((cloud) => cloud.opacity > 0);
 
+        // Update explosions
+        const newExplosions = prev.explosions
+          .map((explosion) => ({
+            ...explosion,
+            opacity: explosion.opacity - 0.03,
+          }))
+          .filter((explosion) => explosion.opacity > 0);
+
         // Increase score over time
         if (!newGameOver) {
           newScore += 1;
@@ -315,8 +323,10 @@ export default function Game() {
           obstacles: newObstacles,
           score: newScore,
           gameOver: newGameOver,
+          crashed: newGameOver,
           gameRunning: !newGameOver,
           fartClouds: newFartClouds,
+          explosions: newExplosions,
         };
       });
 
