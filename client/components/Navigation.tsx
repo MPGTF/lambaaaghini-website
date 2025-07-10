@@ -158,6 +158,21 @@ export default function Navigation() {
                       Follow us on X
                     </a>
                   </Button>
+                  <Button
+                    asChild
+                    variant="outline"
+                    className="border-purple-500/50 text-purple-400 hover:bg-purple-500/10 justify-start"
+                  >
+                    <a
+                      href="https://www.fartbook.us/profile/2jvWaa0H0UYVzJfEBqHcKiHEbFr2"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <FartbookIcon className="w-4 h-4 mr-2" />
+                      Follow us on Fartbook
+                    </a>
+                  </Button>
                   <WalletConnection
                     variant="outline"
                     className="justify-start"
