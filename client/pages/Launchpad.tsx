@@ -63,18 +63,24 @@ export default function Launchpad() {
   };
 
   const generateTokenWithAI = async () => {
-    if (!aiPrompt.trim()) {
-      toast.error("Please provide a description for your token");
+    const validation = validatePrompt(aiPrompt);
+    if (!validation.isValid) {
+      toast.error(validation.errors[0]);
       return;
     }
 
     setIsGenerating(true);
     try {
-      // Simulate AI generation - in a real app, you'd call an AI API
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      // Use real AI generator
+      await new Promise((resolve) => setTimeout(resolve, 1500)); // Simulate processing time
 
-      // Generate token metadata based on prompt
-      const generatedData = generateTokenMetadata(aiPrompt);
+      const suggestion = aiGenerator.generateTokenSuggestions(aiPrompt, 1)[0];
+      const generatedData: TokenMetadata = {
+        name: suggestion.name,
+        symbol: suggestion.symbol,
+        description: suggestion.description,
+      };
+
       setTokenData(generatedData);
       toast.success("AI-generated token metadata ready!");
     } catch (error) {
