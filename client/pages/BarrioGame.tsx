@@ -437,7 +437,7 @@ export default function BarrioGame() {
                           enemy.direction === 1 ? "scaleX(1)" : "scaleX(-1)",
                       }}
                     >
-                      ��
+                      🌵
                     </div>
                   ))}
                 </div>
@@ -555,7 +555,7 @@ export default function BarrioGame() {
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         @keyframes float {
           0%,
           100% {
