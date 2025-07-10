@@ -1,4 +1,4 @@
-/* Simple CSS without any dependencies */
+/* Force all text to be visible */
 
 * {
   box-sizing: border-box;
@@ -21,13 +21,48 @@ body,
   background-color: #000 !important;
 }
 
-/* Force all text to be visible */
+/* FORCE ALL TEXT TO BE WHITE */
 * {
-  color: inherit !important;
+  color: #ffffff !important;
 }
 
-/* Ensure all backgrounds work */
-div[style*="backgroundColor"] {
+/* Override specific text colors */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #ffffff !important;
+}
+
+p {
+  color: #ffffff !important;
+}
+
+a {
+  color: #ffffff !important;
+}
+
+div {
+  color: #ffffff !important;
+}
+
+/* Force specific colored text */
+[style*="color: #facc14"] {
+  color: #facc14 !important;
+}
+
+[style*="color: #000000"] {
+  color: #000000 !important;
+}
+
+[style*="color: #a855f7"] {
+  color: #a855f7 !important;
+}
+
+/* Ensure backgrounds show */
+[style*="backgroundColor"] {
   display: block !important;
   min-height: 20px !important;
 }
