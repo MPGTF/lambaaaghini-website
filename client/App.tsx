@@ -16,7 +16,7 @@ import Team from "./pages/Team";
 import IndexUltraMinimal from "./pages/Index-ultra-minimal";
 import GameSimple from "./pages/GameSimple";
 import Launchpad from "./pages/Launchpad";
-import TestHome from "./pages/TestHome";
+import SuperSimple from "./pages/SuperSimple";
 
 const queryClient = new QueryClient();
 
@@ -29,9 +29,16 @@ const App = () => (
           style={{ backgroundColor: "#000", color: "#fff" }}
         >
           <Navigation />
-          <main style={{ paddingTop: "64px" }}>
+          <main
+            style={{
+              paddingTop: "64px",
+              backgroundColor: "blue",
+              minHeight: "200px",
+              padding: "20px",
+            }}
+          >
             <Routes>
-              <Route path="/" element={<TestHome />} />
+              <Route path="/" element={<SuperSimple />} />
               <Route path="/roadmap" element={<Roadmap />} />
               <Route path="/whitepaper" element={<Whitepaper />} />
               <Route path="/team" element={<Team />} />
