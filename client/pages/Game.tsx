@@ -931,6 +931,9 @@ export default function Game() {
                       projectiles
                     </p>
                     <p>
+                      💥 FART BOMB button for massive area damage (45s cooldown)
+                    </p>
+                    <p>
                       🧟 Normal Zombies | 🧟‍♀️ Fast Zombies | 🧟‍♂️ Tank Zombies (3
                       hits)
                     </p>
