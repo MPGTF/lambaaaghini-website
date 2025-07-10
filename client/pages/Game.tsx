@@ -1361,6 +1361,106 @@ export default function Game() {
             )}
           </div>
         </div>
+
+        {/* Status Upgrade Modal */}
+        {showUpgradeModal && connected && playerProfile && (
+          <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+            <Card className="glass-card border-gold-500/20 max-w-2xl w-full max-h-[80vh] overflow-y-auto">
+              <CardHeader>
+                <CardTitle className="text-gold-400 text-center">
+                  💨 Gas Station - Status Upgrades 💨
+                </CardTitle>
+                <div className="text-center text-sm text-muted-foreground">
+                  Current Balance: {playerProfile.gasBalance} Gas Tokens
+                </div>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  {STATUS_TITLES.map((title, index) => {
+                    const isOwned = index <= playerProfile.titleLevel;
+                    const canAfford = playerProfile.gasBalance >= title.cost;
+                    const isNext = index === playerProfile.titleLevel + 1;
+
+                    return (
+                      <div
+                        key={index}
+                        className={`p-4 border rounded-lg ${
+                          isOwned
+                            ? "border-green-500/50 bg-green-500/10"
+                            : canAfford && isNext
+                              ? "border-gold-500/50 bg-gold-500/10"
+                              : "border-gray-500/50 bg-gray-500/10"
+                        }`}
+                      >
+                        <div className="flex justify-between items-start mb-2">
+                          <div>
+                            <h3
+                              className={`font-bold ${
+                                isOwned
+                                  ? "text-green-400"
+                                  : canAfford && isNext
+                                    ? "text-gold-400"
+                                    : "text-gray-400"
+                              }`}
+                            >
+                              {title.title}
+                            </h3>
+                            <p className="text-sm text-muted-foreground">
+                              {title.description}
+                            </p>
+                          </div>
+                          <div className="text-right">
+                            <div
+                              className={`font-semibold ${
+                                isOwned
+                                  ? "text-green-400"
+                                  : canAfford
+                                    ? "text-gold-400"
+                                    : "text-gray-400"
+                              }`}
+                            >
+                              {title.cost === 0 ? "FREE" : `💨 ${title.cost}`}
+                            </div>
+                          </div>
+                        </div>
+                        {isOwned && index === playerProfile.titleLevel && (
+                          <div className="text-xs text-green-400 font-semibold">
+                            ✓ CURRENT STATUS
+                          </div>
+                        )}
+                        {!isOwned && canAfford && isNext && (
+                          <Button
+                            onClick={() => upgradeTitle(index)}
+                            size="sm"
+                            className="bg-gradient-to-r from-gold-500 to-gold-700 hover:from-gold-600 hover:to-gold-800 text-black font-semibold"
+                          >
+                            Upgrade Now
+                          </Button>
+                        )}
+                        {!isOwned && (!canAfford || !isNext) && (
+                          <div className="text-xs text-gray-400">
+                            {!isNext
+                              ? "Unlock previous titles first"
+                              : "Not enough gas tokens"}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+                <div className="mt-6 text-center">
+                  <Button
+                    onClick={() => setShowUpgradeModal(false)}
+                    variant="outline"
+                    className="border-purple-500/50 text-purple-400 hover:bg-purple-500/10"
+                  >
+                    Close Gas Station
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        )}
       </div>
     </div>
   );
