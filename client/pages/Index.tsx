@@ -18,8 +18,9 @@ export default function Index() {
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="relative overflow-hidden px-6 py-20 md:py-32">
-        {/* Simplified background for better text readability */}
-        <div className="absolute inset-0 bg-background" />
+        {/* Meme-serious gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-950/40 via-background to-amber-950/30" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(250,204,20,0.15),transparent_50%),radial-gradient(circle_at_70%_80%,rgba(168,85,247,0.15),transparent_50%)]" />
 
         {/* Floating Lamborghini aesthetic elements - positioned to avoid text overlap */}
         <div className="absolute top-10 right-10 text-4xl opacity-5 animate-pulse pointer-events-none">
