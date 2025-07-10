@@ -18,8 +18,8 @@ export default function Index() {
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="relative overflow-hidden px-6 py-20 md:py-32">
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-background to-gold-900/20" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(120,119,198,0.3),rgba(255,255,255,0))]" />
+        {/* Simplified background for better text readability */}
+        <div className="absolute inset-0 bg-background" />
 
         {/* Floating Lamborghini aesthetic elements - positioned to avoid text overlap */}
         <div className="absolute top-10 right-10 text-4xl opacity-5 animate-pulse pointer-events-none">
