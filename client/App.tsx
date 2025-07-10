@@ -26,7 +26,7 @@ import Whitepaper from "./pages/Whitepaper";
 import Team from "./pages/Team";
 
 // Import potentially problematic pages
-// import Index from "./pages/Index";  // ← Start with this disabled
+import Index from "./pages/Index"; // ← Testing homepage first
 // import Launchpad from "./pages/Launchpad";  // ← Complex AI/wallet stuff
 // import Game from "./pages/Game";  // ← Complex game logic
 // import BarrioGame from "./pages/BarrioGame";  // ← Complex game logic
