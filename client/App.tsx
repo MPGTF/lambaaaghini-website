@@ -25,21 +25,12 @@ const App = () => (
       <WalletProvider>
         <Toaster />
         <Sonner />
-        <BrowserRouter>
+        <div>
+          <Navigation />
           <div>
-            <Navigation />
-            <div>
-              <Routes>
-                <Route path="/" element={<TestHome />} />
-                <Route path="/launchpad" element={<TestHome />} />
-                <Route path="/roadmap" element={<TestHome />} />
-                <Route path="/whitepaper" element={<TestHome />} />
-                <Route path="/team" element={<TestHome />} />
-                <Route path="*" element={<TestHome />} />
-              </Routes>
-            </div>
+            <TestHome />
           </div>
-        </BrowserRouter>
+        </div>
       </WalletProvider>
     </TooltipProvider>
   </QueryClientProvider>
