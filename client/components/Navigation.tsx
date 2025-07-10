@@ -100,6 +100,21 @@ export default function Navigation() {
                 ))}
 
                 <div className="flex flex-col space-y-4 pt-8">
+                  <Button
+                    asChild
+                    variant="outline"
+                    className="border-gold-500/50 text-gold-400 hover:bg-gold-500/10 justify-start"
+                  >
+                    <a
+                      href="https://x.com/lambaaaghini?s=21"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <Twitter className="w-4 h-4 mr-2" />
+                      Follow us on Twitter
+                    </a>
+                  </Button>
                   <WalletConnection
                     variant="outline"
                     className="justify-start"
