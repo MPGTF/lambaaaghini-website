@@ -45,7 +45,7 @@ const App = () => (
                 style={{
                   fontSize: "24px",
                   fontWeight: "bold",
-                  color: "#facc14", // FORCE YELLOW COLOR
+                  color: "#facc14",
                 }}
               >
                 LAMBAAAGHINI
@@ -60,16 +60,16 @@ const App = () => (
                   Home
                 </a>
                 <a
-                  href="#game"
-                  style={{ color: "#a1a1aa", textDecoration: "none" }}
-                >
-                  Lamb Defense
-                </a>
-                <a
                   href="#about"
                   style={{ color: "#a1a1aa", textDecoration: "none" }}
                 >
                   About
+                </a>
+                <a
+                  href="#roadmap"
+                  style={{ color: "#a1a1aa", textDecoration: "none" }}
+                >
+                  Roadmap
                 </a>
               </div>
             </div>
@@ -93,8 +93,8 @@ const App = () => (
           >
             <div
               style={{
-                backgroundColor: "#ff0000", // BRIGHT RED
-                color: "#ffffff", // FORCE WHITE TEXT
+                backgroundColor: "#ff0000",
+                color: "#ffffff",
                 padding: "20px",
                 margin: "20px auto",
                 borderRadius: "8px",
@@ -111,8 +111,8 @@ const App = () => (
 
             <div
               style={{
-                backgroundColor: "#facc14", // BRIGHT YELLOW
-                color: "#000000", // FORCE BLACK TEXT
+                backgroundColor: "#facc14",
+                color: "#000000",
                 padding: "8px 16px",
                 borderRadius: "4px",
                 display: "inline-block",
@@ -127,7 +127,7 @@ const App = () => (
                 fontSize: "4rem",
                 fontWeight: "bold",
                 marginBottom: "32px",
-                color: "#facc14 !important", // FORCE YELLOW WITH !IMPORTANT
+                color: "#facc14",
               }}
             >
               LAMBAAAGHINI
@@ -139,8 +139,7 @@ const App = () => (
                 marginBottom: "48px",
                 maxWidth: "600px",
                 margin: "0 auto 48px auto",
-                color: "#ffffff", // FORCE WHITE TEXT
-                opacity: 1, // REMOVE OPACITY
+                color: "#ffffff",
               }}
             >
               Experience the pinnacle of luxury in the Solana ecosystem.
@@ -159,7 +158,7 @@ const App = () => (
               <button
                 style={{
                   backgroundColor: "#facc14",
-                  color: "#000000", // FORCE BLACK TEXT
+                  color: "#000000",
                   padding: "12px 24px",
                   borderRadius: "8px",
                   border: "none",
@@ -173,8 +172,8 @@ const App = () => (
               <button
                 style={{
                   border: "2px solid #a855f7",
-                  backgroundColor: "#a855f7", // SOLID PURPLE BACKGROUND
-                  color: "#ffffff", // FORCE WHITE TEXT
+                  backgroundColor: "#a855f7",
+                  color: "#ffffff",
                   padding: "12px 24px",
                   borderRadius: "8px",
                   fontWeight: "600",
@@ -187,61 +186,129 @@ const App = () => (
             </div>
           </section>
 
-          {/* Game Section */}
+          {/* Features Section */}
           <section
-            id="game"
             style={{
               padding: "80px 20px",
-              textAlign: "center",
               backgroundColor: "#111111",
             }}
           >
             <div
               style={{
-                backgroundColor: "#facc14", // BRIGHT YELLOW
-                color: "#000000", // FORCE BLACK TEXT
-                padding: "40px",
-                borderRadius: "8px",
-                marginBottom: "20px",
-                maxWidth: "800px",
-                margin: "0 auto 20px auto",
+                textAlign: "center",
+                marginBottom: "48px",
               }}
             >
               <h2
                 style={{
-                  fontSize: "2rem",
+                  fontSize: "2.5rem",
+                  fontWeight: "bold",
                   marginBottom: "16px",
-                  color: "#000000",
+                  color: "#ffffff",
                 }}
               >
-                🐑💨 LAMB DEFENSE FORCE
+                <span style={{ color: "#facc14" }}>Professional</span>{" "}
+                <span style={{ color: "#a855f7" }}>Features</span>
               </h2>
-              <p style={{ fontSize: "18px", color: "#000000" }}>
-                Professional Galactic Defense Simulator
+              <p
+                style={{
+                  fontSize: "1.125rem",
+                  maxWidth: "600px",
+                  margin: "0 auto",
+                  color: "#ffffff",
+                }}
+              >
+                Industry-leading DeFi technology with enterprise-grade
+                capabilities.
               </p>
             </div>
-            <p
-              style={{
-                fontSize: "18px",
-                marginBottom: "20px",
-                color: "#ffffff", // FORCE WHITE
-              }}
-            >
-              Defend the Solana ecosystem against incoming zombie threats!
-            </p>
+
             <div
               style={{
-                backgroundColor: "#a855f7", // SOLID PURPLE
-                border: "2px solid #ffffff",
-                borderRadius: "8px",
-                padding: "40px",
-                fontSize: "16px",
-                maxWidth: "600px",
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+                gap: "24px",
+                maxWidth: "1200px",
                 margin: "0 auto",
-                color: "#ffffff", // FORCE WHITE TEXT
               }}
             >
-              Game coming soon... Loading fart-powered defense systems 💨
+              <div
+                style={{
+                  backgroundColor: "rgba(250, 204, 20, 0.1)",
+                  border: "1px solid rgba(250, 204, 20, 0.2)",
+                  borderRadius: "12px",
+                  padding: "24px",
+                  textAlign: "center",
+                }}
+              >
+                <div style={{ fontSize: "3rem", marginBottom: "16px" }}>🏎️</div>
+                <h3
+                  style={{
+                    fontSize: "1.25rem",
+                    fontWeight: "600",
+                    color: "#facc14",
+                    marginBottom: "12px",
+                  }}
+                >
+                  Lambo-Speed Transactions
+                </h3>
+                <p style={{ color: "#ffffff" }}>
+                  Execute trades faster than your cousin's Honda Civic with our
+                  revolutionary Solana integration.
+                </p>
+              </div>
+
+              <div
+                style={{
+                  backgroundColor: "rgba(168, 85, 247, 0.1)",
+                  border: "1px solid rgba(168, 85, 247, 0.2)",
+                  borderRadius: "12px",
+                  padding: "24px",
+                  textAlign: "center",
+                }}
+              >
+                <div style={{ fontSize: "3rem", marginBottom: "16px" }}>🛡️</div>
+                <h3
+                  style={{
+                    fontSize: "1.25rem",
+                    fontWeight: "600",
+                    color: "#a855f7",
+                    marginBottom: "12px",
+                  }}
+                >
+                  Fort Knox Security
+                </h3>
+                <p style={{ color: "#ffffff" }}>
+                  Military-grade security protocols that are tighter than your
+                  pants after Thanksgiving dinner.
+                </p>
+              </div>
+
+              <div
+                style={{
+                  backgroundColor: "rgba(250, 204, 20, 0.1)",
+                  border: "1px solid rgba(250, 204, 20, 0.2)",
+                  borderRadius: "12px",
+                  padding: "24px",
+                  textAlign: "center",
+                }}
+              >
+                <div style={{ fontSize: "3rem", marginBottom: "16px" }}>💰</div>
+                <h3
+                  style={{
+                    fontSize: "1.25rem",
+                    fontWeight: "600",
+                    color: "#facc14",
+                    marginBottom: "12px",
+                  }}
+                >
+                  Money Printer Go Brrr
+                </h3>
+                <p style={{ color: "#ffffff" }}>
+                  Generate yields so high they might be illegal in several
+                  countries.
+                </p>
+              </div>
             </div>
           </section>
 
