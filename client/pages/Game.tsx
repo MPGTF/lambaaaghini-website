@@ -72,6 +72,7 @@ export default function Game() {
   const powerUpIdRef = useRef(0);
   const explosionIdRef = useRef(0);
   const audioContextRef = useRef<AudioContext | null>(null);
+  const [isFiring, setIsFiring] = useState(false);
 
   // Game constants
   const GAME_WIDTH = 800;
