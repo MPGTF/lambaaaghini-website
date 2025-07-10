@@ -320,7 +320,7 @@ export default function Game() {
         }
 
         // Auto-shoot when fire button is pressed
-        if (isFiring) {
+        if (isFiringRef.current) {
           shootFart();
         }
 
