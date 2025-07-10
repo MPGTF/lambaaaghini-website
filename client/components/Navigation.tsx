@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import WalletConnection from "./WalletConnection";
-import { Menu, X, ExternalLink } from "lucide-react";
+import { Menu, X, ExternalLink, Twitter } from "lucide-react";
 
 const navItems = [
   { name: "Home", path: "/" },
