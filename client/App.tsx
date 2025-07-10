@@ -40,14 +40,49 @@ const App = () => (
       <Navigation />
       <main style={{ paddingTop: "64px" }}>
         <Routes>
-          <Route path="/" element={<TestHome />} />
-          <Route path="/game" element={<TestGame />} />
+          {/* Use test component for home page temporarily */}
+          <Route
+            path="/"
+            element={
+              <div
+                style={{
+                  backgroundColor: "green",
+                  color: "white",
+                  padding: "20px",
+                  margin: "20px",
+                }}
+              >
+                <h1>🐑 HOME PAGE TEST</h1>
+                <p>Index component disabled for testing</p>
+              </div>
+            }
+          />
+
+          {/* Test simple pages that should work */}
+          <Route path="/roadmap" element={<Roadmap />} />
+          <Route path="/whitepaper" element={<Whitepaper />} />
+          <Route path="/team" element={<Team />} />
+
+          {/* Complex pages disabled for now */}
           <Route path="/launchpad" element={<TestGame />} />
+          <Route path="/game" element={<TestGame />} />
           <Route path="/barrio" element={<TestGame />} />
-          <Route path="/roadmap" element={<TestGame />} />
-          <Route path="/whitepaper" element={<TestGame />} />
-          <Route path="/team" element={<TestGame />} />
-          <Route path="*" element={<TestHome />} />
+
+          <Route
+            path="*"
+            element={
+              <div
+                style={{
+                  backgroundColor: "orange",
+                  color: "white",
+                  padding: "20px",
+                  margin: "20px",
+                }}
+              >
+                <h1>🐑 404 - Page Not Found</h1>
+              </div>
+            }
+          />
         </Routes>
       </main>
     </div>
