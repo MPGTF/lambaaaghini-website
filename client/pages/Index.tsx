@@ -172,10 +172,13 @@ export default function Index() {
                 <div className="w-12 h-12 bg-gold-500/10 rounded-lg flex items-center justify-center mb-6">
                   <Zap className="h-6 w-6 text-gold-400" />
                 </div>
-                <h3 className="text-xl font-bold mb-4">🏎️ Lightning Fast</h3>
+                <h3 className="text-xl font-bold mb-4">
+                  🏎️ Lambo-Speed Transactions
+                </h3>
                 <p className="text-muted-foreground">
-                  Execute trades in milliseconds with Solana's 65,000 TPS
-                  capability. Faster than a Huracán on the Autobahn.
+                  Our transactions are so fast, they make your cousin's Honda
+                  Civic look like it's standing still. We're talking microsecond
+                  execution because time is money and money is lambos.
                 </p>
               </CardContent>
             </Card>
