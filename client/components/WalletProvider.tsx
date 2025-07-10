@@ -29,15 +29,25 @@ export default function WalletProvider({ children }: WalletProviderProps) {
   const wallets = useMemo(
     () => [
       new PhantomWalletAdapter(),
-      new SolflareWalletAdapter(),
+      new SolflareWalletAdapter({ network }),
       new LedgerWalletAdapter(),
     ],
-    [],
+    [network],
   );
+
+  // Error handling function
+  const onError = (error: any) => {
+    console.warn("Wallet error:", error);
+    // Don't throw the error, just log it
+  };
 
   return (
     <ConnectionProvider endpoint={endpoint}>
-      <SolanaWalletProvider wallets={wallets} autoConnect>
+      <SolanaWalletProvider
+        wallets={wallets}
+        onError={onError}
+        autoConnect={false}
+      >
         <WalletModalProvider>{children}</WalletModalProvider>
       </SolanaWalletProvider>
     </ConnectionProvider>
