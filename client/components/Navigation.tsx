@@ -45,6 +45,21 @@ export default function Navigation() {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center space-x-4">
+            <Button
+              asChild
+              variant="ghost"
+              size="icon"
+              className="text-muted-foreground hover:text-gold-400 transition-colors"
+            >
+              <a
+                href="https://x.com/lambaaaghini?s=21"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow us on Twitter"
+              >
+                <Twitter className="w-5 h-5" />
+              </a>
+            </Button>
             <WalletConnection variant="outline" />
             <Button
               asChild
