@@ -211,12 +211,12 @@ export default function Game() {
       const charges = prev.jumpCharges + 1;
       let jumpPower = 0;
 
-      // Different jump heights based on charges
+      // Different jump heights based on charges with smoother values
       if (charges === 1)
-        jumpPower = -12; // Small jump
+        jumpPower = -10; // Small jump
       else if (charges === 2)
-        jumpPower = -16; // Medium jump
-      else if (charges >= 3) jumpPower = -20; // High jump
+        jumpPower = -14; // Medium jump
+      else if (charges >= 3) jumpPower = -18; // High jump
 
       return {
         ...prev,
@@ -480,7 +480,7 @@ export default function Game() {
       <div className="mx-auto max-w-6xl">
         <div className="text-center mb-12">
           <Badge className="mb-8 bg-gold-500/10 text-gold-400 border-gold-500/20">
-            🏎️💨 Professional 2D Racing Simulator
+            ����️💨 Professional 2D Racing Simulator
           </Badge>
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
             <span className="text-gold-400 font-bold">LAMBAAAGHINI</span>{" "}
