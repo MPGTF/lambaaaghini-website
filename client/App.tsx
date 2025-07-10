@@ -48,8 +48,8 @@ const App = () => (
             <Navigation />
             <main style={{ paddingTop: "64px" }}>
               <Routes>
-                {/* Test minimal homepage */}
-                <Route path="/" element={<MinimalIndex />} />
+                {/* Test fixed homepage */}
+                <Route path="/" element={<IndexFixed />} />
 
                 {/* Test simple pages that should work */}
                 <Route path="/roadmap" element={<Roadmap />} />
