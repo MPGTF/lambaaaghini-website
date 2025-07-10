@@ -213,7 +213,9 @@ export default function Game() {
       score: 0,
       gameRunning: true,
       gameOver: false,
+      crashed: false,
       fartClouds: [],
+      explosions: [],
     });
   };
 
@@ -225,7 +227,9 @@ export default function Game() {
       score: 0,
       gameRunning: false,
       gameOver: false,
+      crashed: false,
       fartClouds: [],
+      explosions: [],
     });
   };
 
