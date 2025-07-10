@@ -22,14 +22,14 @@ export default function Index() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(120,119,198,0.3),rgba(255,255,255,0))]" />
 
         <div className="relative mx-auto max-w-7xl">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             {/* Left Column - Text Content */}
-            <div className="text-center lg:text-left">
+            <div className="text-center lg:text-left lg:col-span-7 lg:pr-8">
               <Badge className="mb-8 bg-gold-500/10 text-gold-400 border-gold-500/20 hover:bg-gold-500/20">
                 🏎️ The Future of Luxury DeFi
               </Badge>
 
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 tracking-tight">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-8 tracking-tight relative z-10">
                 <span className="gradient-text">LAMBAAAGHINI</span>
               </h1>
 
