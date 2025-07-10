@@ -884,11 +884,28 @@ export default function Game() {
                           setIsFiring(false);
                           isFiringRef.current = false;
                         }}
-                        className={`bg-gradient-to-r from-purple-500 to-purple-700 hover:from-purple-600 hover:to-purple-800 text-white font-semibold px-12 py-6 text-xl crypto-glow select-none ${
+                        className={`bg-gradient-to-r from-purple-500 to-purple-700 hover:from-purple-600 hover:to-purple-800 text-white font-semibold px-8 py-4 text-lg crypto-glow select-none ${
                           isFiring ? "scale-95 brightness-125" : ""
                         }`}
                       >
                         💨 FIRE FARTS 💨
+                      </Button>
+
+                      <Button
+                        onClick={launchFartBomb}
+                        disabled={gameState.fartBombCooldown > 0}
+                        className={`bg-gradient-to-r from-red-500 to-red-700 hover:from-red-600 hover:to-red-800 text-white font-semibold px-8 py-4 text-lg crypto-glow select-none ${
+                          gameState.fartBombCooldown > 0
+                            ? "opacity-50 cursor-not-allowed"
+                            : ""
+                        }`}
+                      >
+                        💥 FART BOMB 💥
+                        {gameState.fartBombCooldown > 0 && (
+                          <div className="text-xs block">
+                            {Math.ceil(gameState.fartBombCooldown / 1000)}s
+                          </div>
+                        )}
                       </Button>
                     </div>
                   )}
