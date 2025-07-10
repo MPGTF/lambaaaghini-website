@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import WalletConnection from "@/components/WalletConnection";
 import {
   ArrowRight,
   Zap,
@@ -75,7 +76,7 @@ export default function Index() {
 
               <div className="absolute -bottom-4 -left-4 bg-purple-500/20 backdrop-blur-sm border border-purple-500/30 rounded-lg px-4 py-2">
                 <div className="text-purple-400 font-semibold text-sm">
-                  ⚡ Solana Speed
+                  ��� Solana Speed
                 </div>
               </div>
             </div>
