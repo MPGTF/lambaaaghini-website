@@ -402,11 +402,11 @@ export default function Game() {
         const leftBoundary = PLAYER_SIZE / 2 + 5;
         const rightBoundary = GAME_WIDTH - PLAYER_SIZE / 2 - 5;
 
-        // Apply movement with clamping to boundaries
-        if (keysPressed.current.has("ArrowLeft")) {
+        // Apply movement with clamping to boundaries (keyboard or mobile buttons)
+        if (keysPressed.current.has("ArrowLeft") || isMovingLeftRef.current) {
           newPlayerX = Math.max(leftBoundary, newPlayerX - speed);
         }
-        if (keysPressed.current.has("ArrowRight")) {
+        if (keysPressed.current.has("ArrowRight") || isMovingRightRef.current) {
           newPlayerX = Math.min(rightBoundary, newPlayerX + speed);
         }
 
