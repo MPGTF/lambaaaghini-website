@@ -9,6 +9,12 @@ import { Textarea } from "@/components/ui/textarea";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import WalletConnection from "@/components/WalletConnection";
+import { aiGenerator, validatePrompt } from "@/lib/ai-generator";
+import {
+  createPumpFunAPI,
+  validateTokenData,
+  type PumpFunTokenData,
+} from "@/lib/pumpfun";
 import {
   Rocket,
   Zap,
