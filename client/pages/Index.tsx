@@ -220,10 +220,13 @@ export default function Index() {
                 <div className="w-12 h-12 bg-purple-500/10 rounded-lg flex items-center justify-center mb-6">
                   <TrendingUp className="h-6 w-6 text-purple-400" />
                 </div>
-                <h3 className="text-xl font-bold mb-4">Advanced Analytics</h3>
+                <h3 className="text-xl font-bold mb-4">
+                  📊 PhD-Level Number Magic
+                </h3>
                 <p className="text-muted-foreground">
-                  Professional-grade trading tools and real-time analytics give
-                  you the edge in volatile markets.
+                  Our analytics are so advanced, they predicted you'd read this
+                  sentence. Charts with more lines than a Taylor Swift song and
+                  twice as emotional.
                 </p>
               </CardContent>
             </Card>
