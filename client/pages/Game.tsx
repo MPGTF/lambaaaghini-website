@@ -387,20 +387,21 @@ export default function Game() {
         let newFartBombCooldown = Math.max(0, prev.fartBombCooldown - 16);
         let newFartBombs = [...prev.fartBombs];
 
-        // Player movement
+        // Player movement with smoother controls
+        const baseSpeed = PLAYER_SPEED;
         const speed =
-          prev.playerPowerUp === "speed" ? PLAYER_SPEED * 1.5 : PLAYER_SPEED;
-        if (
-          keysPressed.current.has("ArrowLeft") &&
-          newPlayerX > PLAYER_SIZE / 2
-        ) {
-          newPlayerX -= speed;
+          prev.playerPowerUp === "speed" ? baseSpeed * 1.5 : baseSpeed;
+
+        // Smooth boundary checking with padding
+        const leftBoundary = PLAYER_SIZE / 2 + 5;
+        const rightBoundary = GAME_WIDTH - PLAYER_SIZE / 2 - 5;
+
+        // Apply movement with clamping to boundaries
+        if (keysPressed.current.has("ArrowLeft")) {
+          newPlayerX = Math.max(leftBoundary, newPlayerX - speed);
         }
-        if (
-          keysPressed.current.has("ArrowRight") &&
-          newPlayerX < GAME_WIDTH - PLAYER_SIZE / 2
-        ) {
-          newPlayerX += speed;
+        if (keysPressed.current.has("ArrowRight")) {
+          newPlayerX = Math.min(rightBoundary, newPlayerX + speed);
         }
 
         // Auto-shoot when fire button is pressed
