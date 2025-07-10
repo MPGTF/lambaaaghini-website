@@ -10,7 +10,7 @@ import WalletProvider from "./components/WalletProvider";
 import Navigation from "./components/Navigation";
 import TestHome from "./pages/TestHome";
 import Index from "./pages/Index";
-// import Launchpad from "./pages/Launchpad";
+import Launchpad from "./pages/Launchpad";
 // import Game from "./pages/Game"; // Temporarily disabled
 // import Roadmap from "./pages/Roadmap";
 // import Whitepaper from "./pages/Whitepaper";
