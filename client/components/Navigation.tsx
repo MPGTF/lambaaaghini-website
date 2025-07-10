@@ -67,9 +67,9 @@ export default function Navigation() {
                 href="https://x.com/lambaaaghini?s=21"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Follow us on Twitter"
+                aria-label="Follow us on X"
               >
-                <Twitter className="w-5 h-5" />
+                <XIcon className="w-5 h-5" />
               </a>
             </Button>
             <WalletConnection variant="outline" />
