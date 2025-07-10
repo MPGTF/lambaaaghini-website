@@ -65,8 +65,8 @@ export default function Launchpad() {
     setIsGenerating(true);
     try {
       // Simulate AI generation - in a real app, you'd call an AI API
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+
       // Generate token metadata based on prompt
       const generatedData = generateTokenMetadata(aiPrompt);
       setTokenData(generatedData);
@@ -81,7 +81,7 @@ export default function Launchpad() {
   const generateTokenMetadata = (prompt: string): TokenMetadata => {
     // Simple AI simulation - replace with actual AI API
     const keywords = prompt.toLowerCase();
-    
+
     let name = "";
     let symbol = "";
     let description = "";
@@ -89,19 +89,23 @@ export default function Launchpad() {
     if (keywords.includes("dog") || keywords.includes("puppy")) {
       name = "DogeCoin Supreme";
       symbol = "DOGES";
-      description = "The ultimate dog-themed meme coin that brings joy and lambos to the Solana ecosystem.";
+      description =
+        "The ultimate dog-themed meme coin that brings joy and lambos to the Solana ecosystem.";
     } else if (keywords.includes("cat") || keywords.includes("kitty")) {
       name = "Solana Cat";
       symbol = "SCAT";
-      description = "Purr-fectly designed cat coin for the sophisticated crypto investor.";
+      description =
+        "Purr-fectly designed cat coin for the sophisticated crypto investor.";
     } else if (keywords.includes("moon") || keywords.includes("rocket")) {
       name = "Moon Rocket";
       symbol = "MOON";
-      description = "Blast off to the moon with this high-performance rocket fuel token.";
+      description =
+        "Blast off to the moon with this high-performance rocket fuel token.";
     } else if (keywords.includes("ai") || keywords.includes("robot")) {
       name = "AI Revolution";
       symbol = "AIREV";
-      description = "The future of artificial intelligence meets decentralized finance.";
+      description =
+        "The future of artificial intelligence meets decentralized finance.";
     } else {
       name = "Lambaaaghini Token";
       symbol = "LAMB";
@@ -125,8 +129,8 @@ export default function Launchpad() {
     setIsCreating(true);
     try {
       // Simulate token creation - integrate with pump.fun API
-      await new Promise(resolve => setTimeout(resolve, 3000));
-      
+      await new Promise((resolve) => setTimeout(resolve, 3000));
+
       toast.success(`Token ${tokenData.name} created successfully!`);
       // Reset form
       setTokenData({ name: "", symbol: "", description: "" });
@@ -152,18 +156,21 @@ export default function Launchpad() {
               Connect Your <span className="gradient-text">Wallet</span>
             </h1>
             <p className="text-xl text-muted-foreground mb-12">
-              Connect your Solana wallet to start creating tokens with AI assistance
+              Connect your Solana wallet to start creating tokens with AI
+              assistance
             </p>
           </div>
-          
+
           <Card className="glass-card border-purple-500/20 max-w-md mx-auto">
             <CardContent className="p-8 text-center">
               <Shield className="h-16 w-16 text-purple-400 mx-auto mb-6" />
-              <h3 className="text-xl font-bold mb-4">Secure Connection Required</h3>
+              <h3 className="text-xl font-bold mb-4">
+                Secure Connection Required
+              </h3>
               <p className="text-muted-foreground mb-6">
                 Your wallet is needed to create and deploy tokens on Solana
               </p>
-              <WalletConnection 
+              <WalletConnection
                 variant="default"
                 className="bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-black font-semibold w-full"
               />
@@ -186,7 +193,8 @@ export default function Launchpad() {
             Launch Your <span className="gradient-text">Dream Token</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Create professional tokens in minutes using AI assistance. Powered by pump.fun and deployed instantly to Solana.
+            Create professional tokens in minutes using AI assistance. Powered
+            by pump.fun and deployed instantly to Solana.
           </p>
         </div>
 
@@ -195,7 +203,9 @@ export default function Launchpad() {
           <Card className="glass-card border-gold-500/20 text-center">
             <CardContent className="p-6">
               <div className="text-2xl font-bold gradient-text">1,247</div>
-              <div className="text-sm text-muted-foreground">Tokens Created</div>
+              <div className="text-sm text-muted-foreground">
+                Tokens Created
+              </div>
             </CardContent>
           </Card>
           <Card className="glass-card border-purple-500/20 text-center">
@@ -212,7 +222,7 @@ export default function Launchpad() {
           </Card>
           <Card className="glass-card border-purple-500/20 text-center">
             <CardContent className="p-6">
-              <div className="text-2xl font-bold gradient-text">< 30s</div>
+              <div className="text-2xl font-bold gradient-text">&lt; 30s</div>
               <div className="text-sm text-muted-foreground">Deploy Time</div>
             </CardContent>
           </Card>
@@ -252,7 +262,7 @@ export default function Launchpad() {
                       className="mt-2 min-h-[120px]"
                     />
                   </div>
-                  
+
                   <Button
                     onClick={generateTokenWithAI}
                     disabled={isGenerating || !aiPrompt.trim()}
@@ -274,7 +284,8 @@ export default function Launchpad() {
                   <Alert>
                     <AlertCircle className="h-4 w-4" />
                     <AlertDescription>
-                      Our AI will generate professional token metadata including name, symbol, and description based on your input.
+                      Our AI will generate professional token metadata including
+                      name, symbol, and description based on your input.
                     </AlertDescription>
                   </Alert>
                 </CardContent>
@@ -295,7 +306,9 @@ export default function Launchpad() {
                       <Input
                         id="token-name"
                         value={tokenData.name}
-                        onChange={(e) => setTokenData({...tokenData, name: e.target.value})}
+                        onChange={(e) =>
+                          setTokenData({ ...tokenData, name: e.target.value })
+                        }
                         placeholder="My Awesome Token"
                         className="mt-2"
                       />
@@ -305,7 +318,12 @@ export default function Launchpad() {
                       <Input
                         id="token-symbol"
                         value={tokenData.symbol}
-                        onChange={(e) => setTokenData({...tokenData, symbol: e.target.value.toUpperCase()})}
+                        onChange={(e) =>
+                          setTokenData({
+                            ...tokenData,
+                            symbol: e.target.value.toUpperCase(),
+                          })
+                        }
                         placeholder="AWESOME"
                         className="mt-2"
                         maxLength={10}
@@ -318,7 +336,12 @@ export default function Launchpad() {
                     <Textarea
                       id="token-description"
                       value={tokenData.description}
-                      onChange={(e) => setTokenData({...tokenData, description: e.target.value})}
+                      onChange={(e) =>
+                        setTokenData({
+                          ...tokenData,
+                          description: e.target.value,
+                        })
+                      }
                       placeholder="Describe your token..."
                       className="mt-2"
                     />
@@ -360,7 +383,9 @@ export default function Launchpad() {
 
                   <Button
                     onClick={createToken}
-                    disabled={isCreating || !tokenData.name || !tokenData.symbol}
+                    disabled={
+                      isCreating || !tokenData.name || !tokenData.symbol
+                    }
                     className="w-full bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-black font-semibold crypto-glow"
                   >
                     {isCreating ? (
@@ -389,7 +414,8 @@ export default function Launchpad() {
                 <Alert className="mb-6">
                   <AlertCircle className="h-4 w-4" />
                   <AlertDescription>
-                    Manual token creation gives you full control over all token parameters. Use the AI Creator tab for assisted generation.
+                    Manual token creation gives you full control over all token
+                    parameters. Use the AI Creator tab for assisted generation.
                   </AlertDescription>
                 </Alert>
                 <p className="text-muted-foreground text-center py-8">
@@ -403,7 +429,8 @@ export default function Launchpad() {
         {/* Features */}
         <div className="mt-20">
           <h2 className="text-3xl font-bold text-center mb-12">
-            Why Choose <span className="gradient-text">Lambaaaghini</span> Launchpad?
+            Why Choose <span className="gradient-text">Lambaaaghini</span>{" "}
+            Launchpad?
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <Card className="glass-card border-purple-500/20 hover:border-purple-500/40 transition-all duration-300">
@@ -411,7 +438,8 @@ export default function Launchpad() {
                 <Brain className="h-12 w-12 text-purple-400 mx-auto mb-4" />
                 <h3 className="text-xl font-bold mb-2">AI-Powered</h3>
                 <p className="text-muted-foreground">
-                  Advanced AI generates professional token metadata from simple descriptions
+                  Advanced AI generates professional token metadata from simple
+                  descriptions
                 </p>
               </CardContent>
             </Card>
@@ -420,7 +448,8 @@ export default function Launchpad() {
                 <Zap className="h-12 w-12 text-gold-400 mx-auto mb-4" />
                 <h3 className="text-xl font-bold mb-2">Lightning Fast</h3>
                 <p className="text-muted-foreground">
-                  Deploy tokens to Solana in under 30 seconds with pump.fun integration
+                  Deploy tokens to Solana in under 30 seconds with pump.fun
+                  integration
                 </p>
               </CardContent>
             </Card>
@@ -429,7 +458,8 @@ export default function Launchpad() {
                 <Shield className="h-12 w-12 text-purple-400 mx-auto mb-4" />
                 <h3 className="text-xl font-bold mb-2">Secure & Audited</h3>
                 <p className="text-muted-foreground">
-                  Battle-tested smart contracts with comprehensive security audits
+                  Battle-tested smart contracts with comprehensive security
+                  audits
                 </p>
               </CardContent>
             </Card>
