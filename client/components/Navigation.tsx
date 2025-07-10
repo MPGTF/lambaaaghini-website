@@ -89,9 +89,14 @@ export default function Navigation() {
                     variant="outline"
                     className="justify-start"
                   />
-                  <Button className="bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-black font-semibold justify-start">
-                    Launch App
-                    <ExternalLink className="w-4 h-4 ml-2" />
+                  <Button
+                    asChild
+                    className="bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-black font-semibold justify-start"
+                  >
+                    <Link to="/launchpad" onClick={() => setIsOpen(false)}>
+                      Launch App
+                      <ExternalLink className="w-4 h-4 ml-2" />
+                    </Link>
                   </Button>
                 </div>
               </div>
