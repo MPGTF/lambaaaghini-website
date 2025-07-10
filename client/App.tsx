@@ -29,10 +29,26 @@ import Whitepaper from "./pages/Whitepaper";
 import Team from "./pages/Team";
 
 // Import potentially problematic pages
-import Index from "./pages/Index"; // ← Testing homepage first
+// import Index from "./pages/Index"; // ← DISABLED - This component is crashing
 // import Launchpad from "./pages/Launchpad";  // ← Complex AI/wallet stuff
 // import Game from "./pages/Game";  // ← Complex game logic
 // import BarrioGame from "./pages/BarrioGame";  // ← Complex game logic
+
+// Create minimal test version of Index
+const MinimalIndex = () => (
+  <div
+    style={{
+      backgroundColor: "green",
+      color: "white",
+      padding: "20px",
+      margin: "20px",
+    }}
+  >
+    <h1>🐑 MINIMAL INDEX TEST</h1>
+    <p>Testing which part of Index.tsx is crashing...</p>
+    <p>If you see this, basic Index structure works</p>
+  </div>
+);
 
 const queryClient = new QueryClient();
 
