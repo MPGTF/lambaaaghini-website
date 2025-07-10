@@ -118,32 +118,105 @@ export default function Whitepaper() {
           </div>
         </div>
 
+        {/* Kanye-Style Lamb Poetry */}
+        <Card className="glass-card border-gold-500/20 mb-12">
+          <CardContent className="p-8">
+            <h2 className="text-3xl font-bold mb-6 text-center gradient-text">
+              The Lambs in the Meadow: A Vision
+            </h2>
+            <div className="text-lg leading-relaxed space-y-4 italic text-center max-w-4xl mx-auto">
+              <p>
+                "I had a vision... I seen lambs, beautiful lambs, racing through
+                emerald meadows in Lamborghinis made of pure golden wool..."
+              </p>
+              <p>
+                "These ain't regular lambs, these are VISIONARY lambs, these are
+                GENIUS lambs, these lambs got that ENERGY, that FREQUENCY, that
+                VIBRATION..."
+              </p>
+              <p>
+                "Picture this: A lamb behind the wheel of a Huracán, wool
+                flowing in the wind like silk scarves at Fashion Week, hooves on
+                the pedals, driving through meadows of infinite possibility..."
+              </p>
+              <p>
+                "The sound of V10 engines mixed with gentle bleating, creating
+                the most beautiful symphony ever created in the history of
+                MUSIC, in the history of AUTOMOBILES, in the history of
+                LAMBS..."
+              </p>
+              <p>
+                "This is what Lambaaaghini represents. This is the ENERGY. This
+                is why we exist. This is bigger than cryptocurrency. This is
+                ART. This is CULTURE. This is LAMBS IN LAMBORGHINIS."
+              </p>
+              <p className="text-gold-400 font-bold text-xl">
+                "WE ARE THE LAMBS. WE ARE THE MEADOW. WE ARE THE LAMBORGHINI."
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Disclaimer Section */}
+        <Card className="glass-card border-red-500/20 mb-12">
+          <CardContent className="p-8 text-center">
+            <h2 className="text-2xl font-bold mb-4 text-red-400">
+              🚨 IMPORTANT DISCLAIMER 🚨
+            </h2>
+            <div className="text-left space-y-4 max-w-4xl mx-auto">
+              <p className="text-muted-foreground">
+                <strong>NO TECHNICAL EXPERTISE:</strong> We have zero technical
+                skills. Everything was built using AI.
+              </p>
+              <p className="text-muted-foreground">
+                <strong>AI-GENERATED EVERYTHING:</strong> Our launchpad was
+                created using ChatGPT, Claude, and pump.fun's API documentation.
+              </p>
+              <p className="text-muted-foreground">
+                <strong>NO PROMISES:</strong> We make no guarantees, assurances,
+                or promises about anything. Ever.
+              </p>
+              <p className="text-muted-foreground">
+                <strong>PROBABLY A BAD INVESTMENT:</strong> This is likely a
+                terrible financial decision.
+              </p>
+              <p className="text-muted-foreground">
+                <strong>WE DON'T UNDERSTAND:</strong> Smart contracts,
+                tokenomics, or how any of this actually works.
+              </p>
+              <p className="text-muted-foreground">
+                <strong>BUT:</strong> We do understand lambs, and we do
+                understand vibes.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+
         {/* Additional Resources */}
         <Card className="glass-card border-muted/20">
           <CardContent className="p-8 text-center">
-            <h2 className="text-2xl font-bold mb-4">Additional Resources</h2>
+            <h2 className="text-2xl font-bold mb-4">Additional "Resources"</h2>
             <p className="text-muted-foreground mb-6">
-              Explore our technical documentation, API references, and developer
-              guides.
+              Links to things we found on the internet and copy-pasted.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 variant="outline"
                 className="border-gold-500/50 text-gold-400 hover:bg-gold-500/10"
               >
-                Developer Docs
+                AI Prompts We Used
               </Button>
               <Button
                 variant="outline"
                 className="border-gold-500/50 text-gold-400 hover:bg-gold-500/10"
               >
-                API Reference
+                Pump.fun Documentation
               </Button>
               <Button
                 variant="outline"
                 className="border-gold-500/50 text-gold-400 hover:bg-gold-500/10"
               >
-                GitHub Repository
+                YouTube Tutorials
               </Button>
             </div>
           </CardContent>
