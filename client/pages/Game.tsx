@@ -85,6 +85,7 @@ export default function Game() {
   const audioContextRef = useRef<AudioContext | null>(null);
   const isFiringRef = useRef(false);
   const [isFiring, setIsFiring] = useState(false);
+  const fartBombIdRef = useRef(0);
 
   // Game constants
   const GAME_WIDTH = 800;
