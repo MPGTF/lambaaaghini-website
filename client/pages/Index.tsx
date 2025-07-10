@@ -198,10 +198,12 @@ export default function Index() {
                 <div className="w-12 h-12 bg-gold-500/10 rounded-lg flex items-center justify-center mb-6">
                   <Coins className="h-6 w-6 text-gold-400" />
                 </div>
-                <h3 className="text-xl font-bold mb-4">Premium Yields</h3>
+                <h3 className="text-xl font-bold mb-4">
+                  💰 Lambo-Level Yields
+                </h3>
                 <p className="text-muted-foreground">
-                  Access exclusive high-yield farming opportunities and
-                  liquidity pools reserved for Lambaaaghini token holders.
+                  Access exclusive high-yield farming opportunities that could
+                  fund your actual Lamborghini dreams.
                 </p>
               </CardContent>
             </Card>
