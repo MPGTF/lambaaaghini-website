@@ -1,61 +1,50 @@
 import "./global.css";
+
+import { Toaster } from "@/components/ui/toaster";
 import { createRoot } from "react-dom/client";
+import { Toaster as Sonner } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-// Simple test components
-const TestHome = () => (
-  <div
-    style={{
-      backgroundColor: "red",
-      color: "white",
-      padding: "20px",
-      margin: "20px",
-    }}
-  >
-    <h1>🐑 TEST HOME PAGE - WORKING!</h1>
-    <p>If you see this, React Router is working!</p>
-    <p>Navigation should be above this.</p>
-  </div>
-);
-
-const TestGame = () => (
-  <div
-    style={{
-      backgroundColor: "blue",
-      color: "white",
-      padding: "20px",
-      margin: "20px",
-    }}
-  >
-    <h1>🎮 TEST GAME PAGE - WORKING!</h1>
-    <p>React Router successfully navigated to /game</p>
-  </div>
-);
-
-// Import working navigation
+import WalletProvider from "./components/WalletProvider";
 import Navigation from "./components/Navigation";
+import Index from "./pages/Index";
+import Launchpad from "./pages/Launchpad";
+import Game from "./pages/Game";
+import BarrioGame from "./pages/BarrioGame";
+import Roadmap from "./pages/Roadmap";
+import Whitepaper from "./pages/Whitepaper";
+import Team from "./pages/Team";
+import NotFound from "./pages/NotFound";
+
+const queryClient = new QueryClient();
 
 const App = () => (
-  <BrowserRouter>
-    <div
-      className="min-h-screen"
-      style={{ backgroundColor: "#000", color: "#fff" }}
-    >
-      <Navigation />
-      <main style={{ paddingTop: "64px" }}>
-        <Routes>
-          <Route path="/" element={<TestHome />} />
-          <Route path="/game" element={<TestGame />} />
-          <Route path="/launchpad" element={<TestGame />} />
-          <Route path="/barrio" element={<TestGame />} />
-          <Route path="/roadmap" element={<TestGame />} />
-          <Route path="/whitepaper" element={<TestGame />} />
-          <Route path="/team" element={<TestGame />} />
-          <Route path="*" element={<TestHome />} />
-        </Routes>
-      </main>
-    </div>
-  </BrowserRouter>
+  <QueryClientProvider client={queryClient}>
+    <TooltipProvider>
+      <WalletProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <div className="min-h-screen bg-background">
+            <Navigation />
+            <main className="pt-16">
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="/launchpad" element={<Launchpad />} />
+                <Route path="/game" element={<Game />} />
+                <Route path="/barrio" element={<BarrioGame />} />
+                <Route path="/roadmap" element={<Roadmap />} />
+                <Route path="/whitepaper" element={<Whitepaper />} />
+                <Route path="/team" element={<Team />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </main>
+          </div>
+        </BrowserRouter>
+      </WalletProvider>
+    </TooltipProvider>
+  </QueryClientProvider>
 );
 
 createRoot(document.getElementById("root")!).render(<App />);
