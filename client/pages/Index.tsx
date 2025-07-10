@@ -15,23 +15,7 @@ import {
 
 export default function Index() {
   return (
-    <div
-      className="min-h-screen bg-background text-foreground"
-      style={{ backgroundColor: "#0a0a0b", color: "#fafafa" }}
-    >
-      {/* DEBUG: Test if content shows */}
-      <div
-        style={{
-          backgroundColor: "red",
-          color: "white",
-          padding: "20px",
-          margin: "20px",
-        }}
-      >
-        🐑 DEBUG: If you see this red box, React is working! Lambaaaghini is
-        loading...
-      </div>
-
+    <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="relative overflow-hidden px-6 py-20 md:py-32">
         {/* Meme-serious gradient background */}
