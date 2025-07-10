@@ -71,6 +71,8 @@ export default function Game() {
     playerPowerUp: null,
     powerUpTime: 0,
     explosions: [],
+    fartBombCooldown: 0,
+    fartBombs: [],
   });
 
   const gameLoopRef = useRef<number>();
