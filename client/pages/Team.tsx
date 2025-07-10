@@ -153,7 +153,9 @@ export default function Team() {
                   <p className="text-purple-400 font-medium mb-3">
                     {advisor.role}
                   </p>
-                  <p className="text-sm text-muted-foreground">{advisor.bio}</p>
+                  <p className="text-sm text-muted-foreground">
+                    {advisor.bio || ""}
+                  </p>
                 </CardContent>
               </Card>
             ))}
