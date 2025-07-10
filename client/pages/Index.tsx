@@ -20,38 +20,69 @@ export default function Index() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(120,119,198,0.3),rgba(255,255,255,0))]" />
 
         <div className="relative mx-auto max-w-7xl">
-          <div className="text-center">
-            <Badge className="mb-8 bg-gold-500/10 text-gold-400 border-gold-500/20 hover:bg-gold-500/20">
-              🏎️ The Future of Luxury DeFi
-            </Badge>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left Column - Text Content */}
+            <div className="text-center lg:text-left">
+              <Badge className="mb-8 bg-gold-500/10 text-gold-400 border-gold-500/20 hover:bg-gold-500/20">
+                🏎️ The Future of Luxury DeFi
+              </Badge>
 
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 tracking-tight">
-              <span className="gradient-text">LAMBAAAGHINI</span>
-            </h1>
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 tracking-tight">
+                <span className="gradient-text">LAMBAAAGHINI</span>
+              </h1>
 
-            <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed">
-              Experience the pinnacle of luxury in the Solana ecosystem.
-              High-performance DeFi protocols engineered for speed, style, and
-              unprecedented returns.
-            </p>
+              <p className="text-xl md:text-2xl text-muted-foreground mb-12 leading-relaxed">
+                Experience the pinnacle of luxury in the Solana ecosystem.
+                High-performance DeFi protocols engineered for speed, style, and
+                unprecedented returns.
+              </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
-              <Button
-                size="lg"
-                className="bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-black font-semibold px-8 py-6 text-lg crypto-glow"
-              >
-                Launch App
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-purple-500/50 text-purple-400 hover:bg-purple-500/10 px-8 py-6 text-lg"
-              >
-                Read Whitepaper
-              </Button>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center mb-16">
+                <Button
+                  size="lg"
+                  className="bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-black font-semibold px-8 py-6 text-lg crypto-glow"
+                >
+                  Launch App
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-purple-500/50 text-purple-400 hover:bg-purple-500/10 px-8 py-6 text-lg"
+                >
+                  Read Whitepaper
+                </Button>
+              </div>
             </div>
 
+            {/* Right Column - Hero Image */}
+            <div className="relative">
+              <div className="relative crypto-glow rounded-2xl overflow-hidden">
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets%2F253ce014bfed48a3b74611f6cf44c794%2F3e5641ce2ffe4d8a9ddd24c343aa4978?format=webp&width=800"
+                  alt="Lambaaaghini - Luxury meets DeFi"
+                  className="w-full h-auto object-cover rounded-2xl"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/30 to-transparent rounded-2xl" />
+              </div>
+
+              {/* Floating elements around the image */}
+              <div className="absolute -top-4 -right-4 bg-gold-500/20 backdrop-blur-sm border border-gold-500/30 rounded-lg px-4 py-2">
+                <div className="text-gold-400 font-semibold text-sm">
+                  🚀 1000x Potential
+                </div>
+              </div>
+
+              <div className="absolute -bottom-4 -left-4 bg-purple-500/20 backdrop-blur-sm border border-purple-500/30 rounded-lg px-4 py-2">
+                <div className="text-purple-400 font-semibold text-sm">
+                  ⚡ Solana Speed
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Centered Stats Section */}
+          <div className="mt-20">
             {/* Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
               <div className="text-center">
