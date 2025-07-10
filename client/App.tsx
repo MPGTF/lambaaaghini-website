@@ -20,20 +20,12 @@ import TestHome from "./pages/TestHome";
 const queryClient = new QueryClient();
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <WalletProvider>
-        <Toaster />
-        <Sonner />
-        <div>
-          <Navigation />
-          <div>
-            <TestHome />
-          </div>
-        </div>
-      </WalletProvider>
-    </TooltipProvider>
-  </QueryClientProvider>
+  <div>
+    <Navigation />
+    <div>
+      <TestHome />
+    </div>
+  </div>
 );
 
 createRoot(document.getElementById("root")!).render(<App />);
