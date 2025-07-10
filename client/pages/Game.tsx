@@ -6,30 +6,41 @@ import { Badge } from "@/components/ui/badge";
 import WalletConnection from "@/components/WalletConnection";
 
 interface GameState {
-  playerY: number;
-  playerVelocityY: number;
-  isJumping: boolean;
-  jumpCharges: number;
-  obstacles: Array<{
+  playerX: number;
+  farts: Array<{
     x: number;
-    height: number;
-    width: number;
+    y: number;
     id: number;
-    justSpawned: boolean;
-    type: "low" | "medium" | "high" | "floating";
+    velocity: number;
+  }>;
+  zombies: Array<{
+    x: number;
+    y: number;
+    id: number;
+    velocity: number;
+    health: number;
+    type: "normal" | "fast" | "tank";
+  }>;
+  powerUps: Array<{
+    x: number;
+    y: number;
+    id: number;
+    type: "speed" | "multishot" | "bigfart";
   }>;
   score: number;
   gameRunning: boolean;
   gameOver: boolean;
-  crashed: boolean;
-  fartClouds: Array<{ x: number; y: number; id: number; opacity: number }>;
+  lives: number;
+  wave: number;
+  playerPowerUp: string | null;
+  powerUpTime: number;
   explosions: Array<{ x: number; y: number; id: number; opacity: number }>;
-  backgroundOffset: number;
 }
 
 interface HighScore {
   walletAddress: string;
   score: number;
+  wave: number;
   timestamp: number;
 }
 
@@ -39,39 +50,41 @@ export default function Game() {
   const [personalBest, setPersonalBest] = useState<number>(0);
 
   const [gameState, setGameState] = useState<GameState>({
-    playerY: 200, // Middle of the screen
-    playerVelocityY: 0,
-    isJumping: false,
-    jumpCharges: 0,
-    obstacles: [],
+    playerX: 400,
+    farts: [],
+    zombies: [],
+    powerUps: [],
     score: 0,
     gameRunning: false,
     gameOver: false,
-    crashed: false,
-    fartClouds: [],
+    lives: 3,
+    wave: 1,
+    playerPowerUp: null,
+    powerUpTime: 0,
     explosions: [],
-    backgroundOffset: 0,
   });
 
   const gameLoopRef = useRef<number>();
-  const obstacleIdRef = useRef(0);
+  const keysPressed = useRef<Set<string>>(new Set());
+  const lastShotTime = useRef<number>(0);
   const fartIdRef = useRef(0);
+  const zombieIdRef = useRef(0);
+  const powerUpIdRef = useRef(0);
   const explosionIdRef = useRef(0);
   const audioContextRef = useRef<AudioContext | null>(null);
-  const keysPressed = useRef<Set<string>>(new Set());
 
   // Game constants
   const GAME_WIDTH = 800;
-  const GAME_HEIGHT = 400;
-  const GROUND_Y = 300;
-  const GRAVITY = 0.6;
+  const GAME_HEIGHT = 600;
+  const PLAYER_Y = 550;
   const PLAYER_SIZE = 40;
-  const PLAYER_X = 100; // Fixed player position
-  const SCROLL_SPEED = 3;
+  const PLAYER_SPEED = 5;
+  const FART_SPEED = 8;
+  const ZOMBIE_SIZE = 30;
 
   // Load high scores from localStorage
   useEffect(() => {
-    const savedScores = localStorage.getItem("lambaaaghini-high-scores");
+    const savedScores = localStorage.getItem("lambaaaghini-galaga-scores");
     if (savedScores) {
       const scores: HighScore[] = JSON.parse(savedScores);
       setHighScores(scores.sort((a, b) => b.score - a.score).slice(0, 10));
@@ -87,22 +100,23 @@ export default function Game() {
 
   // Save high score
   const saveHighScore = useCallback(
-    (score: number) => {
+    (score: number, wave: number) => {
       if (!connected || !publicKey) return;
 
       const newScore: HighScore = {
         walletAddress: publicKey.toBase58(),
         score,
+        wave,
         timestamp: Date.now(),
       };
 
-      const savedScores = localStorage.getItem("lambaaaghini-high-scores");
+      const savedScores = localStorage.getItem("lambaaaghini-galaga-scores");
       const scores: HighScore[] = savedScores ? JSON.parse(savedScores) : [];
       scores.push(newScore);
 
       const topScores = scores.sort((a, b) => b.score - a.score).slice(0, 50);
       localStorage.setItem(
-        "lambaaaghini-high-scores",
+        "lambaaaghini-galaga-scores",
         JSON.stringify(topScores),
       );
 
@@ -131,18 +145,44 @@ export default function Game() {
       oscillator.connect(gainNode);
       gainNode.connect(audioContext.destination);
 
-      // Create fart-like sound
-      oscillator.frequency.setValueAtTime(100, audioContext.currentTime);
-      oscillator.frequency.exponentialRampToValueAtTime(
-        50,
-        audioContext.currentTime + 0.1,
-      );
+      oscillator.frequency.setValueAtTime(150, audioContext.currentTime);
       oscillator.frequency.exponentialRampToValueAtTime(
         80,
-        audioContext.currentTime + 0.15,
+        audioContext.currentTime + 0.1,
       );
+
+      gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
+      gainNode.gain.exponentialRampToValueAtTime(
+        0.01,
+        audioContext.currentTime + 0.1,
+      );
+
+      oscillator.type = "sawtooth";
+      oscillator.start();
+      oscillator.stop(audioContext.currentTime + 0.1);
+    } catch (error) {
+      console.log("Audio not supported, but the game continues!");
+    }
+  }, []);
+
+  // Create explosion sound effect
+  const playExplosionSound = useCallback(() => {
+    try {
+      if (!audioContextRef.current) {
+        audioContextRef.current = new (window.AudioContext ||
+          (window as any).webkitAudioContext)();
+      }
+
+      const audioContext = audioContextRef.current;
+      const oscillator = audioContext.createOscillator();
+      const gainNode = audioContext.createGain();
+
+      oscillator.connect(gainNode);
+      gainNode.connect(audioContext.destination);
+
+      oscillator.frequency.setValueAtTime(200, audioContext.currentTime);
       oscillator.frequency.exponentialRampToValueAtTime(
-        30,
+        50,
         audioContext.currentTime + 0.3,
       );
 
@@ -152,7 +192,7 @@ export default function Game() {
         audioContext.currentTime + 0.3,
       );
 
-      oscillator.type = "sawtooth";
+      oscillator.type = "square";
       oscillator.start();
       oscillator.stop(audioContext.currentTime + 0.3);
     } catch (error) {
@@ -160,113 +200,84 @@ export default function Game() {
     }
   }, []);
 
-  // Create crash sound effect
-  const playCrashSound = useCallback(() => {
-    try {
-      if (!audioContextRef.current) {
-        audioContextRef.current = new (window.AudioContext ||
-          (window as any).webkitAudioContext)();
-      }
+  const shootFart = useCallback(() => {
+    const now = Date.now();
+    const shotDelay = gameState.playerPowerUp === "multishot" ? 100 : 200;
 
-      const audioContext = audioContextRef.current;
+    if (now - lastShotTime.current < shotDelay) return;
 
-      // Create explosion sound with multiple oscillators
-      for (let i = 0; i < 3; i++) {
-        const oscillator = audioContext.createOscillator();
-        const gainNode = audioContext.createGain();
-
-        oscillator.connect(gainNode);
-        gainNode.connect(audioContext.destination);
-
-        oscillator.frequency.setValueAtTime(
-          200 + i * 100,
-          audioContext.currentTime,
-        );
-        oscillator.frequency.exponentialRampToValueAtTime(
-          50,
-          audioContext.currentTime + 0.5,
-        );
-
-        gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
-        gainNode.gain.exponentialRampToValueAtTime(
-          0.01,
-          audioContext.currentTime + 0.5,
-        );
-
-        oscillator.type = "square";
-        oscillator.start(audioContext.currentTime + i * 0.1);
-        oscillator.stop(audioContext.currentTime + 0.5 + i * 0.1);
-      }
-    } catch (error) {
-      console.log("Audio not supported, but the game continues!");
-    }
-  }, []);
-
-  const jump = useCallback(() => {
-    if (!gameState.gameRunning || gameState.gameOver) return;
-
+    lastShotTime.current = now;
     playFartSound();
 
     setGameState((prev) => {
-      const charges = prev.jumpCharges + 1;
-      let jumpPower = 0;
+      const newFarts = [...prev.farts];
 
-      // Different jump heights based on charges with smoother values
-      if (charges === 1)
-        jumpPower = -10; // Small jump
-      else if (charges === 2)
-        jumpPower = -14; // Medium jump
-      else if (charges >= 3) jumpPower = -18; // High jump
-
-      return {
-        ...prev,
-        playerVelocityY: jumpPower,
-        isJumping: true,
-        jumpCharges: charges,
-        fartClouds: [
-          ...prev.fartClouds,
+      if (prev.playerPowerUp === "multishot") {
+        // Triple shot
+        newFarts.push(
           {
-            x: PLAYER_X - 20,
-            y: prev.playerY + 20,
+            x: prev.playerX - 10,
+            y: PLAYER_Y,
             id: fartIdRef.current++,
-            opacity: 1,
+            velocity: FART_SPEED,
           },
-        ],
-      };
+          {
+            x: prev.playerX,
+            y: PLAYER_Y,
+            id: fartIdRef.current++,
+            velocity: FART_SPEED,
+          },
+          {
+            x: prev.playerX + 10,
+            y: PLAYER_Y,
+            id: fartIdRef.current++,
+            velocity: FART_SPEED,
+          },
+        );
+      } else {
+        newFarts.push({
+          x: prev.playerX,
+          y: PLAYER_Y,
+          id: fartIdRef.current++,
+          velocity: FART_SPEED,
+        });
+      }
+
+      return { ...prev, farts: newFarts };
     });
-  }, [gameState.gameRunning, gameState.gameOver, playFartSound]);
+  }, [playFartSound, gameState.playerPowerUp]);
 
   const startGame = () => {
     setGameState({
-      playerY: GROUND_Y - PLAYER_SIZE,
-      playerVelocityY: 0,
-      isJumping: false,
-      jumpCharges: 0,
-      obstacles: [],
+      playerX: GAME_WIDTH / 2,
+      farts: [],
+      zombies: [],
+      powerUps: [],
       score: 0,
       gameRunning: true,
       gameOver: false,
-      crashed: false,
-      fartClouds: [],
+      lives: 3,
+      wave: 1,
+      playerPowerUp: null,
+      powerUpTime: 0,
       explosions: [],
-      backgroundOffset: 0,
     });
   };
 
   const resetGame = () => {
     setGameState({
-      playerY: GROUND_Y - PLAYER_SIZE,
-      playerVelocityY: 0,
-      isJumping: false,
-      jumpCharges: 0,
-      obstacles: [],
+      playerX: GAME_WIDTH / 2,
+      farts: [],
+      zombies: [],
+      powerUps: [],
       score: 0,
       gameRunning: false,
       gameOver: false,
-      crashed: false,
-      fartClouds: [],
+      lives: 3,
+      wave: 1,
+      playerPowerUp: null,
+      powerUpTime: 0,
       explosions: [],
-      backgroundOffset: 0,
     });
   };
 
@@ -278,167 +289,209 @@ export default function Game() {
       setGameState((prev) => {
         if (prev.gameOver) return prev;
 
-        let newPlayerY = prev.playerY;
-        let newPlayerVelocityY = prev.playerVelocityY;
-        let newIsJumping = prev.isJumping;
-        let newJumpCharges = prev.jumpCharges;
-        let newObstacles = [...prev.obstacles];
+        let newPlayerX = prev.playerX;
+        let newFarts = [...prev.farts];
+        let newZombies = [...prev.zombies];
+        let newPowerUps = [...prev.powerUps];
         let newScore = prev.score;
+        let newLives = prev.lives;
+        let newWave = prev.wave;
         let newGameOver = false;
-        let newCrashed = false;
+        let newPowerUpTime = Math.max(0, prev.powerUpTime - 16);
+        let newPlayerPowerUp = newPowerUpTime > 0 ? prev.playerPowerUp : null;
+        let newExplosions = [...prev.explosions];
 
-        // Apply gravity with smoother acceleration
-        if (newPlayerVelocityY < 0) {
-          // Ascending - lighter gravity for smoother jump arc
-          newPlayerVelocityY += GRAVITY * 0.8;
-        } else {
-          // Descending - normal gravity
-          newPlayerVelocityY += GRAVITY;
+        // Player movement
+        const speed =
+          prev.playerPowerUp === "speed" ? PLAYER_SPEED * 1.5 : PLAYER_SPEED;
+        if (
+          keysPressed.current.has("ArrowLeft") &&
+          newPlayerX > PLAYER_SIZE / 2
+        ) {
+          newPlayerX -= speed;
         }
-        newPlayerY += newPlayerVelocityY;
-
-        // Ground collision
-        if (newPlayerY >= GROUND_Y - PLAYER_SIZE) {
-          newPlayerY = GROUND_Y - PLAYER_SIZE;
-          newPlayerVelocityY = 0;
-          newIsJumping = false;
-          newJumpCharges = 0; // Reset jump charges when landing
+        if (
+          keysPressed.current.has("ArrowRight") &&
+          newPlayerX < GAME_WIDTH - PLAYER_SIZE / 2
+        ) {
+          newPlayerX += speed;
         }
 
-        // Move obstacles and handle spawning animation
-        newObstacles = newObstacles.map((obstacle) => ({
-          ...obstacle,
-          x: obstacle.x - SCROLL_SPEED,
-          justSpawned: false,
+        // Auto-shoot when space is held
+        if (keysPressed.current.has("Space")) {
+          shootFart();
+        }
+
+        // Move farts up
+        newFarts = newFarts
+          .map((fart) => ({ ...fart, y: fart.y - fart.velocity }))
+          .filter((fart) => fart.y > -10);
+
+        // Move zombies down
+        newZombies = newZombies.map((zombie) => ({
+          ...zombie,
+          y: zombie.y + zombie.velocity,
         }));
 
-        // Remove obstacles that are off-screen
-        newObstacles = newObstacles.filter(
-          (obstacle) => obstacle.x > -obstacle.width,
-        );
+        // Move power-ups down
+        newPowerUps = newPowerUps
+          .map((powerUp) => ({ ...powerUp, y: powerUp.y + 2 }))
+          .filter((powerUp) => powerUp.y < GAME_HEIGHT + 20);
 
-        // Check for collisions
-        const playerRect = {
-          x: PLAYER_X,
-          y: newPlayerY,
-          width: PLAYER_SIZE,
-          height: PLAYER_SIZE,
-        };
+        // Check fart-zombie collisions
+        newFarts = newFarts.filter((fart) => {
+          let hit = false;
+          newZombies = newZombies.filter((zombie) => {
+            const distance = Math.sqrt(
+              Math.pow(fart.x - zombie.x, 2) + Math.pow(fart.y - zombie.y, 2),
+            );
+            if (distance < 25 && !hit) {
+              hit = true;
+              zombie.health--;
 
-        for (const obstacle of newObstacles) {
-          const obstacleRect = {
-            x: obstacle.x,
-            y:
-              obstacle.type === "floating"
-                ? obstacle.height
-                : GROUND_Y - obstacle.height,
-            width: obstacle.width,
-            height: obstacle.type === "floating" ? 40 : obstacle.height,
-          };
+              if (zombie.health <= 0) {
+                // Zombie destroyed
+                newScore +=
+                  zombie.type === "tank"
+                    ? 50
+                    : zombie.type === "fast"
+                      ? 30
+                      : 20;
+                playExplosionSound();
 
-          // Simple rectangle collision detection
-          if (
-            playerRect.x < obstacleRect.x + obstacleRect.width &&
-            playerRect.x + playerRect.width > obstacleRect.x &&
-            playerRect.y < obstacleRect.y + obstacleRect.height &&
-            playerRect.y + playerRect.height > obstacleRect.y
-          ) {
-            // CRASH!
-            newGameOver = true;
-            newCrashed = true;
-            playCrashSound();
+                // Add explosion effect
+                newExplosions.push({
+                  x: zombie.x,
+                  y: zombie.y,
+                  id: explosionIdRef.current++,
+                  opacity: 1,
+                });
 
-            // Create explosion effect
-            const newExplosions = prev.explosions.concat([
-              {
-                x: PLAYER_X,
-                y: newPlayerY,
-                id: explosionIdRef.current++,
-                opacity: 1,
-              },
-            ]);
+                // Random power-up drop
+                if (Math.random() < 0.1) {
+                  const powerUpTypes = ["speed", "multishot", "bigfart"];
+                  newPowerUps.push({
+                    x: zombie.x,
+                    y: zombie.y,
+                    id: powerUpIdRef.current++,
+                    type: powerUpTypes[
+                      Math.floor(Math.random() * powerUpTypes.length)
+                    ] as "speed" | "multishot" | "bigfart",
+                  });
+                }
 
-            // Save high score if connected
-            if (connected && newScore > 0) {
-              saveHighScore(newScore);
+                return false;
+              }
+              return true;
             }
+            return true;
+          });
+          return !hit;
+        });
 
-            return {
-              ...prev,
-              playerY: newPlayerY,
-              playerVelocityY: newPlayerVelocityY,
-              gameOver: newGameOver,
-              crashed: newCrashed,
-              gameRunning: false,
-              explosions: newExplosions,
-            };
+        // Check zombie-player collision or zombies reaching bottom
+        newZombies = newZombies.filter((zombie) => {
+          // Check if zombie reached player
+          const playerDistance = Math.sqrt(
+            Math.pow(zombie.x - newPlayerX, 2) +
+              Math.pow(zombie.y - PLAYER_Y, 2),
+          );
+
+          if (playerDistance < 30 || zombie.y > GAME_HEIGHT) {
+            newLives--;
+            playExplosionSound();
+
+            // Add explosion at player position
+            newExplosions.push({
+              x: newPlayerX,
+              y: PLAYER_Y,
+              id: explosionIdRef.current++,
+              opacity: 1,
+            });
+
+            return false;
+          }
+          return true;
+        });
+
+        // Check power-up collection
+        newPowerUps = newPowerUps.filter((powerUp) => {
+          const distance = Math.sqrt(
+            Math.pow(powerUp.x - newPlayerX, 2) +
+              Math.pow(powerUp.y - PLAYER_Y, 2),
+          );
+          if (distance < 30) {
+            newPlayerPowerUp = powerUp.type;
+            newPowerUpTime = 5000; // 5 seconds
+            return false;
+          }
+          return true;
+        });
+
+        // Game over check
+        if (newLives <= 0) {
+          newGameOver = true;
+          if (connected && newScore > 0) {
+            saveHighScore(newScore, newWave);
           }
         }
 
-        // Spawn new obstacles
-        const lastObstacle = newObstacles[newObstacles.length - 1];
-        const minDistance = 200 + Math.random() * 150;
-
-        if (!lastObstacle || GAME_WIDTH - lastObstacle.x > minDistance) {
-          const obstacleTypes = ["low", "medium", "high", "floating"] as const;
+        // Spawn new zombies
+        if (
+          newZombies.length < 3 + newWave &&
+          Math.random() < 0.02 + newWave * 0.005
+        ) {
+          const zombieTypes = ["normal", "fast", "tank"] as const;
           const type =
-            obstacleTypes[Math.floor(Math.random() * obstacleTypes.length)];
+            zombieTypes[Math.floor(Math.random() * zombieTypes.length)];
 
-          let height = 60;
-          let width = 40;
+          let health = 1;
+          let velocity = 1;
 
-          if (type === "low") {
-            height = 60;
-          } else if (type === "medium") {
-            height = 120;
-          } else if (type === "high") {
-            height = 180;
-          } else if (type === "floating") {
-            height = 100 + Math.random() * 100; // Y position for floating obstacles
-            width = 60;
+          if (type === "fast") {
+            velocity = 2;
+          } else if (type === "tank") {
+            health = 3;
+            velocity = 0.5;
           }
 
-          newObstacles.push({
-            x: GAME_WIDTH,
-            height,
-            width,
-            id: obstacleIdRef.current++,
-            justSpawned: true,
+          newZombies.push({
+            x: Math.random() * (GAME_WIDTH - ZOMBIE_SIZE) + ZOMBIE_SIZE / 2,
+            y: -ZOMBIE_SIZE,
+            id: zombieIdRef.current++,
+            velocity,
+            health,
             type,
           });
         }
 
-        // Update fart clouds
-        const newFartClouds = prev.fartClouds
-          .map((cloud) => ({
-            ...cloud,
-            x: cloud.x - SCROLL_SPEED / 2,
-            opacity: cloud.opacity - 0.02,
-          }))
-          .filter((cloud) => cloud.opacity > 0 && cloud.x > -50);
+        // Wave progression
+        if (newZombies.length === 0 && newScore > newWave * 500) {
+          newWave++;
+        }
 
         // Update explosions
-        const newExplosions = prev.explosions
+        newExplosions = newExplosions
           .map((explosion) => ({
             ...explosion,
-            opacity: explosion.opacity - 0.03,
+            opacity: explosion.opacity - 0.05,
           }))
           .filter((explosion) => explosion.opacity > 0);
 
-        // Increase score over time
-        newScore += 1;
-
         return {
           ...prev,
-          playerY: newPlayerY,
-          playerVelocityY: newPlayerVelocityY,
-          isJumping: newIsJumping,
-          jumpCharges: newJumpCharges,
-          obstacles: newObstacles,
+          playerX: newPlayerX,
+          farts: newFarts,
+          zombies: newZombies,
+          powerUps: newPowerUps,
           score: newScore,
-          fartClouds: newFartClouds,
+          lives: newLives,
+          wave: newWave,
+          gameOver: newGameOver,
+          gameRunning: !newGameOver,
+          playerPowerUp: newPlayerPowerUp,
+          powerUpTime: newPowerUpTime,
           explosions: newExplosions,
-          backgroundOffset: (prev.backgroundOffset + SCROLL_SPEED) % 100,
         };
       });
 
@@ -452,24 +505,22 @@ export default function Game() {
         cancelAnimationFrame(gameLoopRef.current);
       }
     };
-  }, [gameState.gameRunning, playCrashSound, connected, saveHighScore]);
+  }, [
+    gameState.gameRunning,
+    saveHighScore,
+    connected,
+    playExplosionSound,
+    shootFart,
+  ]);
 
   // Handle keyboard input
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.code === "Space") {
-        event.preventDefault();
-        if (!keysPressed.current.has("Space")) {
-          keysPressed.current.add("Space");
-          jump();
-        }
-      }
+      keysPressed.current.add(event.code);
     };
 
     const handleKeyUp = (event: KeyboardEvent) => {
-      if (event.code === "Space") {
-        keysPressed.current.delete("Space");
-      }
+      keysPressed.current.delete(event.code);
     };
 
     window.addEventListener("keydown", handleKeyDown);
@@ -479,23 +530,23 @@ export default function Game() {
       window.removeEventListener("keydown", handleKeyDown);
       window.removeEventListener("keyup", handleKeyUp);
     };
-  }, [jump]);
+  }, []);
 
   return (
     <div className="min-h-screen px-6 py-20">
       <div className="mx-auto max-w-6xl">
         <div className="text-center mb-12">
           <Badge className="mb-8 bg-gold-500/10 text-gold-400 border-gold-500/20">
-            🏎️💨 Professional 2D Racing Simulator
+            🐑💨 Professional Galactic Defense Simulator
           </Badge>
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
             <span className="text-gold-400 font-bold">LAMBAAAGHINI</span>{" "}
-            <span className="text-purple-400 font-bold">PLATFORMER</span>
+            <span className="text-purple-400 font-bold">DEFENSE FORCE</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Experience our cutting-edge 2D automotive simulation featuring
-            advanced multi-height fart-propulsion jump technology and precision
-            obstacle avoidance mechanics.
+            Defend the Solana ecosystem against the incoming zombie apocalypse
+            using our cutting-edge fart-propulsion weapon systems and advanced
+            tactical positioning.
           </p>
         </div>
 
@@ -505,129 +556,123 @@ export default function Game() {
             <Card className="glass-card border-gold-500/20">
               <CardHeader>
                 <CardTitle className="text-center text-gold-400">
-                  Professional 2D Racing Circuit
+                  Professional Defense Perimeter
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <div
-                  className="relative mx-auto bg-gradient-to-b from-sky-400/20 via-sky-300/10 to-green-600/20 border-4 border-gold-500/30 overflow-hidden"
+                  className="relative mx-auto bg-gradient-to-b from-purple-900/20 via-blue-900/10 to-green-900/20 border-4 border-gold-500/30 overflow-hidden"
                   style={{
                     width: GAME_WIDTH,
                     height: GAME_HEIGHT,
                     imageRendering: "pixelated",
                   }}
                 >
-                  {/* Moving background pattern */}
-                  <div
-                    className="absolute inset-0 opacity-20"
-                    style={{
-                      backgroundImage: `
-                        repeating-linear-gradient(
-                          0deg,
-                          transparent,
-                          transparent 20px,
-                          rgba(255,255,255,0.1) 20px,
-                          rgba(255,255,255,0.1) 22px
-                        )
-                      `,
-                      transform: `translateX(-${gameState.backgroundOffset}px)`,
-                    }}
-                  />
+                  {/* Stars background */}
+                  <div className="absolute inset-0">
+                    {Array.from({ length: 50 }).map((_, i) => (
+                      <div
+                        key={i}
+                        className="absolute w-1 h-1 bg-white rounded-full animate-pulse"
+                        style={{
+                          left: `${Math.random() * 100}%`,
+                          top: `${Math.random() * 100}%`,
+                          animationDelay: `${Math.random() * 2}s`,
+                        }}
+                      />
+                    ))}
+                  </div>
 
-                  {/* Ground */}
+                  {/* Player (Lamb) */}
                   <div
-                    className="absolute bottom-0 w-full bg-gradient-to-t from-green-700/40 to-green-600/20 border-t-2 border-green-500/50"
-                    style={{ height: GAME_HEIGHT - GROUND_Y }}
-                  />
-
-                  {/* Player (Pixelated Lamb-Car) */}
-                  <div
-                    className="absolute transition-all duration-150 ease-out flex items-center justify-center text-2xl"
+                    className="absolute transition-all duration-100 flex items-center justify-center text-3xl"
                     style={{
-                      left: PLAYER_X,
-                      top: gameState.playerY,
+                      left: gameState.playerX - PLAYER_SIZE / 2,
+                      top: PLAYER_Y - PLAYER_SIZE / 2,
                       width: PLAYER_SIZE,
                       height: PLAYER_SIZE,
                       imageRendering: "pixelated",
-                      filter: gameState.crashed
-                        ? "hue-rotate(0deg) saturate(200%)"
+                      filter: gameState.playerPowerUp
+                        ? "drop-shadow(0 0 10px gold)"
                         : "none",
-                      transform: gameState.isJumping
-                        ? "scale(1.1)"
-                        : "scale(1)",
                     }}
                   >
-                    <div
-                      className={`transition-all duration-300 ease-out ${
-                        gameState.crashed ? "animate-ping" : ""
-                      }`}
-                      style={{
-                        imageRendering: "pixelated",
-                        fontSize: "24px",
-                        textShadow: "2px 2px 0px rgba(0,0,0,0.5)",
-                        transform: "scaleX(-1)", // Flip horizontally to face right
-                      }}
-                    >
-                      {gameState.crashed ? "💥🐑💥" : "🐑🏎️"}
-                    </div>
+                    🐑
                   </div>
 
-                  {/* Jump charge indicator */}
-                  {gameState.jumpCharges > 0 && !gameState.gameOver && (
+                  {/* Power-up indicator */}
+                  {gameState.playerPowerUp && (
                     <div
-                      className="absolute text-sm font-bold text-gold-400 animate-bounce"
+                      className="absolute text-xs font-bold text-gold-400 animate-bounce"
                       style={{
-                        left: PLAYER_X + PLAYER_SIZE + 10,
-                        top: gameState.playerY - 20,
+                        left: gameState.playerX + 20,
+                        top: PLAYER_Y - 30,
                       }}
                     >
-                      {"⚡".repeat(Math.min(gameState.jumpCharges, 3))}
+                      {gameState.playerPowerUp === "speed" && "⚡SPEED"}
+                      {gameState.playerPowerUp === "multishot" && "🔫MULTI"}
+                      {gameState.playerPowerUp === "bigfart" && "💨BIG"}
                     </div>
                   )}
 
-                  {/* Obstacles */}
-                  {gameState.obstacles.map((obstacle) => (
+                  {/* Farts */}
+                  {gameState.farts.map((fart) => (
                     <div
-                      key={obstacle.id}
-                      className={`absolute ${
-                        obstacle.justSpawned ? "animate-ping" : ""
-                      }`}
-                      style={{
-                        left: obstacle.x,
-                        top:
-                          obstacle.type === "floating"
-                            ? obstacle.height
-                            : GROUND_Y - obstacle.height,
-                        width: obstacle.width,
-                        height:
-                          obstacle.type === "floating" ? 40 : obstacle.height,
-                        backgroundColor:
-                          obstacle.type === "floating"
-                            ? "rgba(147, 51, 234, 0.7)"
-                            : "rgba(239, 68, 68, 0.7)",
-                        border: "2px solid rgba(255,255,255,0.3)",
-                        imageRendering: "pixelated",
-                      }}
-                    >
-                      <div className="w-full h-full flex items-center justify-center text-lg">
-                        {obstacle.type === "floating" ? "☁️" : "🚧"}
-                      </div>
-                    </div>
-                  ))}
-
-                  {/* Fart Clouds */}
-                  {gameState.fartClouds.map((cloud) => (
-                    <div
-                      key={cloud.id}
+                      key={fart.id}
                       className="absolute text-xl animate-pulse pointer-events-none"
                       style={{
-                        left: cloud.x,
-                        top: cloud.y,
-                        opacity: cloud.opacity,
+                        left: fart.x - 10,
+                        top: fart.y - 10,
                         imageRendering: "pixelated",
                       }}
                     >
                       💨
+                    </div>
+                  ))}
+
+                  {/* Zombies */}
+                  {gameState.zombies.map((zombie) => (
+                    <div
+                      key={zombie.id}
+                      className="absolute flex items-center justify-center animate-pulse"
+                      style={{
+                        left: zombie.x - ZOMBIE_SIZE / 2,
+                        top: zombie.y - ZOMBIE_SIZE / 2,
+                        width: ZOMBIE_SIZE,
+                        height: ZOMBIE_SIZE,
+                        imageRendering: "pixelated",
+                        filter:
+                          zombie.type === "tank"
+                            ? "drop-shadow(0 0 5px red)"
+                            : zombie.type === "fast"
+                              ? "drop-shadow(0 0 5px yellow)"
+                              : "none",
+                      }}
+                    >
+                      <div className="text-2xl">
+                        {zombie.type === "tank"
+                          ? "🧟‍♂️"
+                          : zombie.type === "fast"
+                            ? "🧟‍♀️"
+                            : "🧟"}
+                      </div>
+                    </div>
+                  ))}
+
+                  {/* Power-ups */}
+                  {gameState.powerUps.map((powerUp) => (
+                    <div
+                      key={powerUp.id}
+                      className="absolute text-xl animate-bounce pointer-events-none"
+                      style={{
+                        left: powerUp.x - 15,
+                        top: powerUp.y - 15,
+                        imageRendering: "pixelated",
+                      }}
+                    >
+                      {powerUp.type === "speed" && "⚡"}
+                      {powerUp.type === "multishot" && "🔫"}
+                      {powerUp.type === "bigfart" && "💥"}
                     </div>
                   ))}
 
@@ -637,8 +682,8 @@ export default function Game() {
                       key={explosion.id}
                       className="absolute text-3xl animate-ping pointer-events-none"
                       style={{
-                        left: explosion.x,
-                        top: explosion.y,
+                        left: explosion.x - 15,
+                        top: explosion.y - 15,
                         opacity: explosion.opacity,
                         imageRendering: "pixelated",
                       }}
@@ -655,41 +700,36 @@ export default function Game() {
                       onClick={startGame}
                       className="bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-black font-semibold px-8 py-4 text-lg"
                     >
-                      Start Professional 2D Racing
-                    </Button>
-                  )}
-
-                  {gameState.gameRunning && (
-                    <Button
-                      onClick={jump}
-                      onTouchStart={jump}
-                      className="bg-gradient-to-r from-purple-500 to-purple-700 hover:from-purple-600 hover:to-purple-800 text-white font-semibold px-12 py-6 text-xl crypto-glow"
-                    >
-                      💨 FART JUMP 💨
+                      Begin Defense Protocol
                     </Button>
                   )}
 
                   {gameState.gameOver && (
                     <div className="space-y-4">
                       <div className="text-2xl font-bold text-red-400">
-                        CRASH! Your lamb got totally rekt! 🐑💥
+                        Defense Perimeter Breached! Wave {gameState.wave}{" "}
+                        reached! 🐑💥
                       </div>
                       <Button
                         onClick={resetGame}
                         className="bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-black font-semibold px-8 py-4"
                       >
-                        Try Again (You Got This)
+                        Rebuild Defense Force
                       </Button>
                     </div>
                   )}
 
                   <div className="text-sm text-muted-foreground space-y-2">
                     <p>
-                      Press SPACEBAR multiple times for different jump heights
+                      Use ARROW KEYS to move, hold SPACEBAR to auto-fire fart
+                      projectiles
                     </p>
                     <p>
-                      🐑 Small tap = Low jump | 🐑🐑 Double tap = Medium jump |
-                      🐑🐑🐑 Triple+ tap = High jump
+                      🧟 Normal Zombies | 🧟‍♀️ Fast Zombies | 🧟‍♂️ Tank Zombies (3
+                      hits)
+                    </p>
+                    <p>
+                      ⚡ Speed Boost | 🔫 Triple Shot | 💥 Big Fart Power-ups
                     </p>
                   </div>
                 </div>
@@ -702,7 +742,7 @@ export default function Game() {
             <Card className="glass-card border-purple-500/20">
               <CardHeader>
                 <CardTitle className="text-purple-400">
-                  Performance Metrics
+                  Combat Metrics
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -712,23 +752,31 @@ export default function Game() {
                       {gameState.score}
                     </div>
                     <div className="text-sm text-muted-foreground">
-                      Professional Distance
+                      Eliminations
                     </div>
                   </div>
                   <div className="text-center">
-                    <div className="text-xl font-bold text-purple-400">
-                      {gameState.jumpCharges}
+                    <div className="text-xl font-bold text-green-400">
+                      {gameState.lives}
                     </div>
                     <div className="text-sm text-muted-foreground">
-                      Jump Charges
+                      Lives Remaining
                     </div>
                   </div>
                   <div className="text-center">
-                    <div className="text-lg font-bold text-green-400">
-                      {gameState.obstacles.length}
+                    <div className="text-lg font-bold text-purple-400">
+                      {gameState.wave}
                     </div>
                     <div className="text-sm text-muted-foreground">
-                      Active Obstacles
+                      Current Wave
+                    </div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-lg font-bold text-red-400">
+                      {gameState.zombies.length}
+                    </div>
+                    <div className="text-sm text-muted-foreground">
+                      Active Hostiles
                     </div>
                   </div>
                 </div>
@@ -738,19 +786,19 @@ export default function Game() {
             <Card className="glass-card border-gold-500/20">
               <CardHeader>
                 <CardTitle className="text-gold-400">
-                  Game Instructions
+                  Mission Briefing
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-3 text-sm">
-                <p>🏎️ Your lamb-car moves automatically forward</p>
-                <p>🚧 Avoid ground obstacles of different heights</p>
-                <p>☁️ Duck under floating cloud obstacles</p>
-                <p>💨 Multiple spacebar taps = higher jumps</p>
-                <p>⚡ Landing resets your jump charges</p>
-                <p>🔊 Advanced retro sound effects included</p>
+                <p>🐑 Professional lamb defense operative</p>
+                <p>💨 Advanced fart-propulsion weapons</p>
+                <p>🧟 Eliminate all zombie threats</p>
+                <p>⚡ Collect power-ups for tactical advantage</p>
+                <p>🏆 Survive increasingly difficult waves</p>
+                <p>🔊 Immersive audio combat feedback</p>
                 <p className="text-gold-400 font-semibold">
-                  This is definitely a serious 2D racing simulator and not a
-                  joke.
+                  This is definitely a serious military defense simulation and
+                  not a joke.
                 </p>
               </CardContent>
             </Card>
@@ -758,18 +806,18 @@ export default function Game() {
             <Card className="glass-card border-purple-500/20">
               <CardHeader>
                 <CardTitle className="text-purple-400">
-                  Technical Specs
+                  Weapon Specifications
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-2 text-xs">
-                <p>🔧 Engine: Multi-Stage Fart Propulsion</p>
-                <p>⚡ Jump Heights: 3 Professional Levels</p>
-                <p>🏁 Max Speed: Steady 3 pixels/frame</p>
-                <p>💨 Emission Stages: Low, Med, High</p>
-                <p>🛡️ Collision Detection: Pixel Perfect*</p>
-                <p>🎮 Physics: Mario-Inspired Underwater</p>
+                <p>🔧 Primary: Fart-Propulsion Cannon</p>
+                <p>⚡ Rate of Fire: 5 rounds/second</p>
+                <p>🎯 Effective Range: Full battlefield</p>
+                <p>💨 Ammunition: Unlimited methane</p>
+                <p>🛡️ Armor: Fluffy wool protection</p>
+                <p>🎮 Control: Precision arrow key targeting</p>
                 <p className="text-xs text-muted-foreground">
-                  *Actually rectangle-based collision
+                  *Weapon effects may cause uncontrollable laughter
                 </p>
               </CardContent>
             </Card>
@@ -778,7 +826,7 @@ export default function Game() {
               <Card className="glass-card border-green-500/20">
                 <CardHeader>
                   <CardTitle className="text-green-400">
-                    Wallet Leaderboard
+                    Defense Force Leaderboard
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -788,7 +836,7 @@ export default function Game() {
                         {personalBest}
                       </div>
                       <div className="text-xs text-muted-foreground">
-                        Your Best Score
+                        Your Best Defense Score
                       </div>
                     </div>
                     <div className="space-y-1">
@@ -802,7 +850,7 @@ export default function Game() {
                             {score.walletAddress.slice(-4)}
                           </span>
                           <span className="text-gold-400 font-semibold">
-                            {score.score}
+                            {score.score} (W{score.wave})
                           </span>
                         </div>
                       ))}
