@@ -41,18 +41,22 @@ export default function Index() {
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center mb-16">
                 <Button
+                  asChild
                   size="lg"
                   className="bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-black font-semibold px-8 py-6 text-lg crypto-glow"
                 >
-                  Launch App
-                  <ArrowRight className="ml-2 h-5 w-5" />
+                  <Link to="/launchpad">
+                    Launch App
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Link>
                 </Button>
                 <Button
+                  asChild
                   size="lg"
                   variant="outline"
                   className="border-purple-500/50 text-purple-400 hover:bg-purple-500/10 px-8 py-6 text-lg"
                 >
-                  Read Whitepaper
+                  <Link to="/whitepaper">Read Whitepaper</Link>
                 </Button>
               </div>
             </div>
