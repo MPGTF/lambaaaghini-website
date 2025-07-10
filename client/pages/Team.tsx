@@ -107,7 +107,7 @@ export default function Team() {
                     {member.role}
                   </p>
                   <p className="text-sm text-muted-foreground mb-6">
-                    {member.bio}
+                    {member.bio || ""}
                   </p>
                   <div className="flex justify-center space-x-3">
                     {member.links?.linkedin && (
