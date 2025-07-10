@@ -123,8 +123,8 @@ export default function Navigation() {
                       rel="noopener noreferrer"
                       onClick={() => setIsOpen(false)}
                     >
-                      <Twitter className="w-4 h-4 mr-2" />
-                      Follow us on Twitter
+                      <XIcon className="w-4 h-4 mr-2" />
+                      Follow us on X
                     </a>
                   </Button>
                   <WalletConnection
