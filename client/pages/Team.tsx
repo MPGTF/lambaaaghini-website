@@ -6,9 +6,9 @@ import { Linkedin, Twitter, Github } from "lucide-react";
 
 const teamMembers = [
   {
-    name: "Alex Rodriguez",
+    name: "Why",
     role: "Co-Founder & CEO",
-    bio: "Former Goldman Sachs VP with 15+ years in traditional finance. Led blockchain initiatives at major investment banks.",
+    bio: "",
     initials: "AR",
     links: {
       linkedin: "#",
@@ -16,9 +16,9 @@ const teamMembers = [
     },
   },
   {
-    name: "Sarah Chen",
+    name: "You",
     role: "Co-Founder & CTO",
-    bio: "Ex-Google Senior Engineer and Solana Labs core contributor. PhD in Computer Science from Stanford.",
+    bio: "",
     initials: "SC",
     links: {
       linkedin: "#",
@@ -27,9 +27,9 @@ const teamMembers = [
     },
   },
   {
-    name: "Marcus Thompson",
+    name: "Wanna",
     role: "Head of Security",
-    bio: "Former cybersecurity lead at Pentagon with expertise in blockchain security and smart contract auditing.",
+    bio: "",
     initials: "MT",
     links: {
       linkedin: "#",
@@ -37,9 +37,9 @@ const teamMembers = [
     },
   },
   {
-    name: "Elena Vasquez",
+    name: "Know",
     role: "Head of Product",
-    bio: "Product leader from Coinbase with deep expertise in DeFi UX and institutional trading platforms.",
+    bio: "",
     initials: "EV",
     links: {
       linkedin: "#",
