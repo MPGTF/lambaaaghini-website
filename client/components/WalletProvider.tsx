@@ -30,7 +30,6 @@ export default function WalletProvider({ children }: WalletProviderProps) {
     () => [
       new PhantomWalletAdapter(),
       new SolflareWalletAdapter(),
-      new BackpackWalletAdapter(),
       new LedgerWalletAdapter(),
     ],
     [],
