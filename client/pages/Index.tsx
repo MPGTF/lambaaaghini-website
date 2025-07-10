@@ -1,62 +1,220 @@
-import { DemoResponse } from "@shared/api";
-import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import {
+  ArrowRight,
+  Zap,
+  Shield,
+  Coins,
+  TrendingUp,
+  Users,
+  Rocket,
+} from "lucide-react";
 
 export default function Index() {
-  const [exampleFromServer, setExampleFromServer] = useState("");
-  // Fetch users on component mount
-  useEffect(() => {
-    fetchDemo();
-  }, []);
-
-  // Example of how to fetch data from the server (if needed)
-  const fetchDemo = async () => {
-    try {
-      const response = await fetch("/api/demo");
-      const data = (await response.json()) as DemoResponse;
-      setExampleFromServer(data.message);
-    } catch (error) {
-      console.error("Error fetching hello:", error);
-    }
-  };
-
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200">
-      <div className="text-center">
-        {/* TODO: FUSION_GENERATION_APP_PLACEHOLDER replace everything here with the actual app! */}
-        <h1 className="text-2xl font-semibold text-slate-800 flex items-center justify-center gap-3">
-          <svg
-            className="animate-spin h-8 w-8 text-slate-400"
-            viewBox="0 0 50 50"
-          >
-            <circle
-              className="opacity-30"
-              cx="25"
-              cy="25"
-              r="20"
-              stroke="currentColor"
-              strokeWidth="5"
-              fill="none"
-            />
-            <circle
-              className="text-slate-600"
-              cx="25"
-              cy="25"
-              r="20"
-              stroke="currentColor"
-              strokeWidth="5"
-              fill="none"
-              strokeDasharray="100"
-              strokeDashoffset="75"
-            />
-          </svg>
-          Generating your app...
-        </h1>
-        <p className="mt-4 text-slate-600 max-w-md">
-          Watch the chat on the left for updates that might need your attention
-          to finish generating
-        </p>
-        <p className="mt-4 hidden max-w-md">{exampleFromServer}</p>
-      </div>
+    <div className="min-h-screen bg-background">
+      {/* Hero Section */}
+      <section className="relative overflow-hidden px-6 py-20 md:py-32">
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-background to-gold-900/20" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(120,119,198,0.3),rgba(255,255,255,0))]" />
+
+        <div className="relative mx-auto max-w-7xl">
+          <div className="text-center">
+            <Badge className="mb-8 bg-gold-500/10 text-gold-400 border-gold-500/20 hover:bg-gold-500/20">
+              🏎️ The Future of Luxury DeFi
+            </Badge>
+
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 tracking-tight">
+              <span className="gradient-text">LAMBAAAGHINI</span>
+            </h1>
+
+            <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed">
+              Experience the pinnacle of luxury in the Solana ecosystem.
+              High-performance DeFi protocols engineered for speed, style, and
+              unprecedented returns.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-black font-semibold px-8 py-6 text-lg crypto-glow"
+              >
+                Launch App
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-purple-500/50 text-purple-400 hover:bg-purple-500/10 px-8 py-6 text-lg"
+              >
+                Read Whitepaper
+              </Button>
+            </div>
+
+            {/* Stats */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+              <div className="text-center">
+                <div className="text-3xl md:text-4xl font-bold gradient-text">
+                  $50M+
+                </div>
+                <div className="text-sm text-muted-foreground">
+                  Total Value Locked
+                </div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl md:text-4xl font-bold gradient-text">
+                  25K+
+                </div>
+                <div className="text-sm text-muted-foreground">
+                  Active Users
+                </div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl md:text-4xl font-bold gradient-text">
+                  99.9%
+                </div>
+                <div className="text-sm text-muted-foreground">Uptime</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl md:text-4xl font-bold gradient-text">
+                  0.001s
+                </div>
+                <div className="text-sm text-muted-foreground">
+                  Avg. Transaction
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="px-6 py-20 bg-gradient-to-b from-background to-muted/20">
+        <div className="mx-auto max-w-7xl">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              Engineered for <span className="gradient-text">Excellence</span>
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Built on Solana's high-performance blockchain, Lambaaaghini
+              delivers institutional-grade DeFi protocols with luxury-class user
+              experience.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <Card className="glass-card border-gold-500/20 hover:border-gold-500/40 transition-all duration-300 hover:crypto-glow">
+              <CardContent className="p-8">
+                <div className="w-12 h-12 bg-gold-500/10 rounded-lg flex items-center justify-center mb-6">
+                  <Zap className="h-6 w-6 text-gold-400" />
+                </div>
+                <h3 className="text-xl font-bold mb-4">Lightning Fast</h3>
+                <p className="text-muted-foreground">
+                  Execute trades in milliseconds with Solana's 65,000 TPS
+                  capability. No more waiting, just pure speed.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="glass-card border-purple-500/20 hover:border-purple-500/40 transition-all duration-300 hover:crypto-glow">
+              <CardContent className="p-8">
+                <div className="w-12 h-12 bg-purple-500/10 rounded-lg flex items-center justify-center mb-6">
+                  <Shield className="h-6 w-6 text-purple-400" />
+                </div>
+                <h3 className="text-xl font-bold mb-4">Bank-Grade Security</h3>
+                <p className="text-muted-foreground">
+                  Multi-signature wallets, audited smart contracts, and
+                  insurance coverage protect your assets with institutional
+                  security.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="glass-card border-gold-500/20 hover:border-gold-500/40 transition-all duration-300 hover:crypto-glow">
+              <CardContent className="p-8">
+                <div className="w-12 h-12 bg-gold-500/10 rounded-lg flex items-center justify-center mb-6">
+                  <Coins className="h-6 w-6 text-gold-400" />
+                </div>
+                <h3 className="text-xl font-bold mb-4">Premium Yields</h3>
+                <p className="text-muted-foreground">
+                  Access exclusive high-yield farming opportunities and
+                  liquidity pools reserved for Lambaaaghini token holders.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="glass-card border-purple-500/20 hover:border-purple-500/40 transition-all duration-300 hover:crypto-glow">
+              <CardContent className="p-8">
+                <div className="w-12 h-12 bg-purple-500/10 rounded-lg flex items-center justify-center mb-6">
+                  <TrendingUp className="h-6 w-6 text-purple-400" />
+                </div>
+                <h3 className="text-xl font-bold mb-4">Advanced Analytics</h3>
+                <p className="text-muted-foreground">
+                  Professional-grade trading tools and real-time analytics give
+                  you the edge in volatile markets.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="glass-card border-gold-500/20 hover:border-gold-500/40 transition-all duration-300 hover:crypto-glow">
+              <CardContent className="p-8">
+                <div className="w-12 h-12 bg-gold-500/10 rounded-lg flex items-center justify-center mb-6">
+                  <Users className="h-6 w-6 text-gold-400" />
+                </div>
+                <h3 className="text-xl font-bold mb-4">Exclusive Community</h3>
+                <p className="text-muted-foreground">
+                  Join an elite community of DeFi investors with exclusive
+                  access to alpha, airdrops, and premium features.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="glass-card border-purple-500/20 hover:border-purple-500/40 transition-all duration-300 hover:crypto-glow">
+              <CardContent className="p-8">
+                <div className="w-12 h-12 bg-purple-500/10 rounded-lg flex items-center justify-center mb-6">
+                  <Rocket className="h-6 w-6 text-purple-400" />
+                </div>
+                <h3 className="text-xl font-bold mb-4">Cross-Chain Future</h3>
+                <p className="text-muted-foreground">
+                  Built for interoperability with planned expansion to Ethereum,
+                  Polygon, and other major chains.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="px-6 py-20 bg-gradient-to-br from-purple-900/10 via-background to-gold-900/10">
+        <div className="mx-auto max-w-4xl text-center">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            Ready to Drive the Future?
+          </h2>
+          <p className="text-xl text-muted-foreground mb-12">
+            Join thousands of investors already earning premium yields in the
+            Solana DeFi ecosystem.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <Button
+              size="lg"
+              className="bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-black font-semibold px-8 py-6 text-lg crypto-glow"
+            >
+              Get Started Now
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-purple-500/50 text-purple-400 hover:bg-purple-500/10 px-8 py-6 text-lg"
+            >
+              View Documentation
+            </Button>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
