@@ -543,7 +543,7 @@ export default function Game() {
       <div className="mx-auto max-w-6xl">
         <div className="text-center mb-12">
           <Badge className="mb-8 bg-gold-500/10 text-gold-400 border-gold-500/20">
-            🐑💨 Professional Galactic Defense Simulator
+            ���💨 Professional Galactic Defense Simulator
           </Badge>
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
             <span className="text-gold-400 font-bold">LAMBAAAGHINI</span>{" "}
@@ -713,11 +713,26 @@ export default function Game() {
                   {gameState.gameRunning && (
                     <div className="flex justify-center gap-4 mb-4">
                       <Button
-                        onMouseDown={() => setIsFiring(true)}
-                        onMouseUp={() => setIsFiring(false)}
-                        onMouseLeave={() => setIsFiring(false)}
-                        onTouchStart={() => setIsFiring(true)}
-                        onTouchEnd={() => setIsFiring(false)}
+                        onMouseDown={() => {
+                          setIsFiring(true);
+                          isFiringRef.current = true;
+                        }}
+                        onMouseUp={() => {
+                          setIsFiring(false);
+                          isFiringRef.current = false;
+                        }}
+                        onMouseLeave={() => {
+                          setIsFiring(false);
+                          isFiringRef.current = false;
+                        }}
+                        onTouchStart={() => {
+                          setIsFiring(true);
+                          isFiringRef.current = true;
+                        }}
+                        onTouchEnd={() => {
+                          setIsFiring(false);
+                          isFiringRef.current = false;
+                        }}
                         className={`bg-gradient-to-r from-purple-500 to-purple-700 hover:from-purple-600 hover:to-purple-800 text-white font-semibold px-12 py-6 text-xl crypto-glow select-none ${
                           isFiring ? "scale-95 brightness-125" : ""
                         }`}
