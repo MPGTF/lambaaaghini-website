@@ -709,6 +709,23 @@ export default function Game() {
                     </Button>
                   )}
 
+                  {gameState.gameRunning && (
+                    <div className="flex justify-center gap-4 mb-4">
+                      <Button
+                        onMouseDown={() => setIsFiring(true)}
+                        onMouseUp={() => setIsFiring(false)}
+                        onMouseLeave={() => setIsFiring(false)}
+                        onTouchStart={() => setIsFiring(true)}
+                        onTouchEnd={() => setIsFiring(false)}
+                        className={`bg-gradient-to-r from-purple-500 to-purple-700 hover:from-purple-600 hover:to-purple-800 text-white font-semibold px-12 py-6 text-xl crypto-glow select-none ${
+                          isFiring ? "scale-95 brightness-125" : ""
+                        }`}
+                      >
+                        💨 FIRE FARTS 💨
+                      </Button>
+                    </div>
+                  )}
+
                   {gameState.gameOver && (
                     <div className="space-y-4">
                       <div className="text-2xl font-bold text-red-400">
@@ -726,7 +743,7 @@ export default function Game() {
 
                   <div className="text-sm text-muted-foreground space-y-2">
                     <p>
-                      Use ARROW KEYS to move, hold SPACEBAR to auto-fire fart
+                      Use ARROW KEYS to move, hold FIRE BUTTON to auto-fire fart
                       projectiles
                     </p>
                     <p>
