@@ -514,14 +514,18 @@ export default function Game() {
     shootFart,
   ]);
 
-  // Handle keyboard input
+  // Handle keyboard input (arrow keys only)
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      keysPressed.current.add(event.code);
+      if (event.code === "ArrowLeft" || event.code === "ArrowRight") {
+        keysPressed.current.add(event.code);
+      }
     };
 
     const handleKeyUp = (event: KeyboardEvent) => {
-      keysPressed.current.delete(event.code);
+      if (event.code === "ArrowLeft" || event.code === "ArrowRight") {
+        keysPressed.current.delete(event.code);
+      }
     };
 
     window.addEventListener("keydown", handleKeyDown);
