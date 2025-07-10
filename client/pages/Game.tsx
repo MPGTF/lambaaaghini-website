@@ -512,6 +512,7 @@ export default function Game() {
     connected,
     playExplosionSound,
     shootFart,
+    isFiring,
   ]);
 
   // Handle keyboard input (arrow keys only)
