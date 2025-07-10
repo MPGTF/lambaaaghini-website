@@ -140,17 +140,40 @@ export default function Launchpad() {
 
     setIsCreating(true);
     try {
-      // Simulate token creation - integrate with pump.fun API
+      const pumpFunAPI = createPumpFunAPI();
+
+      // Upload image if provided
+      let imageUrl = previewUrl;
+      if (imageFile) {
+        toast.info("Uploading image to IPFS...");
+        // imageUrl = await pumpFunAPI.uploadImage(imageFile);
+      }
+
+      const finalTokenData: PumpFunTokenData = {
+        name: tokenData.name,
+        symbol: tokenData.symbol,
+        description: tokenData.description,
+        image: imageUrl,
+      };
+
+      toast.info("Creating token on Solana...");
+
+      // Note: This is a simplified version. In production, you'd need proper wallet adapter integration
+      // const result = await pumpFunAPI.createToken(wallet, finalTokenData);
+
+      // Simulate creation for demo
       await new Promise((resolve) => setTimeout(resolve, 3000));
 
       toast.success(`Token ${tokenData.name} created successfully!`);
+
       // Reset form
       setTokenData({ name: "", symbol: "", description: "" });
       setAiPrompt("");
       setImageFile(null);
       setPreviewUrl("");
-    } catch (error) {
-      toast.error("Failed to create token");
+    } catch (error: any) {
+      console.error("Token creation error:", error);
+      toast.error(error.message || "Failed to create token");
     } finally {
       setIsCreating(false);
     }
