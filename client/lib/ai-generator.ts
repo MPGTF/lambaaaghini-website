@@ -409,7 +409,10 @@ export class AITokenGenerator {
   private assessRiskLevel(
     analysis: AIPromptAnalysis,
   ): "low" | "medium" | "high" {
-    if (analysis.themes.includes("meme") || analysis.viralPotential > 7) {
+    if (
+      analysis.themes.includes("meme") ||
+      this.calculateViralPotential(analysis) > 7
+    ) {
       return "high"; // High viral potential often means high volatility
     }
     if (
