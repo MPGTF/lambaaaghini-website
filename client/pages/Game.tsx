@@ -384,6 +384,8 @@ export default function Game() {
         let newPowerUpTime = Math.max(0, prev.powerUpTime - 16);
         let newPlayerPowerUp = newPowerUpTime > 0 ? prev.playerPowerUp : null;
         let newExplosions = [...prev.explosions];
+        let newFartBombCooldown = Math.max(0, prev.fartBombCooldown - 16);
+        let newFartBombs = [...prev.fartBombs];
 
         // Player movement
         const speed =
