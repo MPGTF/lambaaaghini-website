@@ -8,11 +8,19 @@ import WalletConnection from "@/components/WalletConnection";
 interface GameState {
   carAngle: number;
   carJumping: boolean;
-  obstacles: Array<{ angle: number; id: number }>;
+  obstacles: Array<{ angle: number; id: number; justSpawned: boolean }>;
   score: number;
   gameRunning: boolean;
   gameOver: boolean;
+  crashed: boolean;
   fartClouds: Array<{ angle: number; id: number; opacity: number }>;
+  explosions: Array<{ angle: number; id: number; opacity: number }>;
+}
+
+interface HighScore {
+  walletAddress: string;
+  score: number;
+  timestamp: number;
 }
 
 export default function Game() {
