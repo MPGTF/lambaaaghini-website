@@ -8,7 +8,6 @@ import { Menu, X, ExternalLink } from "lucide-react";
 const navItems = [
   { name: "Home", path: "/" },
   { name: "Launchpad", path: "/launchpad" },
-  { name: "Game", path: "/game" },
   { name: "Roadmap", path: "/roadmap" },
   { name: "Whitepaper", path: "/whitepaper" },
   { name: "Team", path: "/team" },
