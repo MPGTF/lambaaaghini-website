@@ -87,6 +87,12 @@ export default function Game() {
   const [isFiring, setIsFiring] = useState(false);
   const fartBombIdRef = useRef(0);
 
+  // Mobile movement states
+  const [isMovingLeft, setIsMovingLeft] = useState(false);
+  const [isMovingRight, setIsMovingRight] = useState(false);
+  const isMovingLeftRef = useRef(false);
+  const isMovingRightRef = useRef(false);
+
   // Game constants
   const GAME_WIDTH = 800;
   const GAME_HEIGHT = 600;
