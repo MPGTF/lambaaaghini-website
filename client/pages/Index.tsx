@@ -188,10 +188,13 @@ export default function Index() {
                 <div className="w-12 h-12 bg-purple-500/10 rounded-lg flex items-center justify-center mb-6">
                   <Shield className="h-6 w-6 text-purple-400" />
                 </div>
-                <h3 className="text-xl font-bold mb-4">🛡️ Fortress Security</h3>
+                <h3 className="text-xl font-bold mb-4">
+                  🛡️ Fort Knox for Sheep
+                </h3>
                 <p className="text-muted-foreground">
-                  Multi-signature wallets and audited smart contracts protect
-                  your lambs like a luxury garage protects supercars.
+                  Our security is tighter than your pants after Thanksgiving
+                  dinner. We protect your precious lamb tokens with
+                  military-grade encryption and the power of friendship.
                 </p>
               </CardContent>
             </Card>
