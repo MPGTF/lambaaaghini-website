@@ -81,9 +81,9 @@ export default function Team() {
             World-Class <span className="gradient-text">Talent</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Our team combines decades of experience from traditional finance,
-            Big Tech, and blockchain to deliver institutional-grade DeFi
-            solutions.
+            Our team combines decades of meme experience and several months of
+            solana memecoin trading insites along with the best ai to bridge our
+            tremendous gaps in skils
           </p>
         </div>
 
