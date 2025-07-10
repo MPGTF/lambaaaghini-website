@@ -132,6 +132,26 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
     animation: gradient-shift 3s ease-in-out infinite alternate;
+    text-shadow: 0 0 30px rgba(250, 204, 20, 0.3);
+    position: relative;
+  }
+
+  .gradient-text::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background: linear-gradient(
+      135deg,
+      hsl(48 96% 53%) 0%,
+      hsl(271 91% 65%) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: blur(10px);
+    opacity: 0.5;
   }
 
   .crypto-glow {
