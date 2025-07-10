@@ -1,0 +1,33 @@
+/* Simple CSS without any dependencies */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif;
+  background-color: #000 !important;
+  color: #fff !important;
+  line-height: 1.6;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  background-color: #000 !important;
+}
+
+/* Force all text to be visible */
+* {
+  color: inherit !important;
+}
+
+/* Ensure all backgrounds work */
+div[style*="backgroundColor"] {
+  display: block !important;
+  min-height: 20px !important;
+}
