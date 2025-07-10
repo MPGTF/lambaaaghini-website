@@ -160,6 +160,28 @@ export default function Game() {
     "galaga",
   );
 
+  // Barrio Mario-style game state
+  const [barrioGameState, setBarrioGameState] = useState<BarrioGameState>({
+    playerX: 100,
+    playerY: 400,
+    velocityX: 0,
+    velocityY: 0,
+    isGrounded: false,
+    coins: [],
+    enemies: [],
+    score: 0,
+    lives: 3,
+    gameRunning: false,
+    gameOver: false,
+    level: 1,
+    platforms: [
+      { x: 0, y: 500, width: 800, height: 100 }, // Ground
+      { x: 200, y: 400, width: 150, height: 20 },
+      { x: 450, y: 300, width: 150, height: 20 },
+      { x: 650, y: 200, width: 150, height: 20 },
+    ],
+  });
+
   const [gameState, setGameState] = useState<GameState>({
     playerX: 400,
     farts: [],
