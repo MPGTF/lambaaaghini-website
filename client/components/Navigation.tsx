@@ -2,7 +2,8 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, X, Wallet, ExternalLink } from "lucide-react";
+import WalletConnection from "./WalletConnection";
+import { Menu, X, ExternalLink } from "lucide-react";
 
 const navItems = [
   { name: "Home", path: "/" },
