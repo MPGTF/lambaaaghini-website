@@ -303,6 +303,30 @@ export default function Game() {
     });
   }, [playFartSound, gameState.playerPowerUp]);
 
+  const launchFartBomb = useCallback(() => {
+    setGameState((prev) => {
+      if (prev.fartBombCooldown > 0) return prev;
+
+      playFartBombSound();
+
+      return {
+        ...prev,
+        fartBombCooldown: 45000, // 45 seconds
+        fartBombs: [
+          ...prev.fartBombs,
+          {
+            x: prev.playerX,
+            y: PLAYER_Y - 50,
+            id: fartBombIdRef.current++,
+            radius: 0,
+            maxRadius: 150,
+            expanding: true,
+          },
+        ],
+      };
+    });
+  }, [playFartBombSound]);
+
   const startGame = () => {
     setGameState({
       playerX: GAME_WIDTH / 2,
