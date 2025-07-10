@@ -287,8 +287,14 @@ export default function Game() {
         let newGameOver = false;
         let newCrashed = false;
 
-        // Apply gravity and update player position
-        newPlayerVelocityY += GRAVITY;
+        // Apply gravity with smoother acceleration
+        if (newPlayerVelocityY < 0) {
+          // Ascending - lighter gravity for smoother jump arc
+          newPlayerVelocityY += GRAVITY * 0.8;
+        } else {
+          // Descending - normal gravity
+          newPlayerVelocityY += GRAVITY;
+        }
         newPlayerY += newPlayerVelocityY;
 
         // Ground collision
