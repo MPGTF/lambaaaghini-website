@@ -21,8 +21,7 @@ const App = () => (
             position: "fixed",
             top: "0",
             width: "100%",
-            backgroundColor: "rgba(9, 9, 11, 0.8)",
-            backdropFilter: "blur(12px)",
+            backgroundColor: "rgba(9, 9, 11, 0.9)",
             borderBottom: "1px solid rgba(39, 39, 42, 0.5)",
             zIndex: 50,
           }}
@@ -46,11 +45,7 @@ const App = () => (
                 style={{
                   fontSize: "24px",
                   fontWeight: "bold",
-                  background:
-                    "linear-gradient(135deg, #facc14 0%, #a855f7 100%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
+                  color: "#facc14", // FORCE YELLOW COLOR
                 }}
               >
                 LAMBAAAGHINI
@@ -98,22 +93,26 @@ const App = () => (
           >
             <div
               style={{
-                backgroundColor: "red",
-                color: "white",
+                backgroundColor: "#ff0000", // BRIGHT RED
+                color: "#ffffff", // FORCE WHITE TEXT
                 padding: "20px",
                 margin: "20px auto",
                 borderRadius: "8px",
                 maxWidth: "600px",
               }}
             >
-              <h1>🚀 LAMBAAAGHINI IS LIVE!</h1>
-              <p>Welcome to the luxury DeFi ecosystem</p>
+              <h1 style={{ color: "#ffffff", margin: "0 0 10px 0" }}>
+                🚀 LAMBAAAGHINI IS LIVE!
+              </h1>
+              <p style={{ color: "#ffffff", margin: "0" }}>
+                Welcome to the luxury DeFi ecosystem
+              </p>
             </div>
 
             <div
               style={{
-                backgroundColor: "#facc14",
-                color: "#0a0a0b",
+                backgroundColor: "#facc14", // BRIGHT YELLOW
+                color: "#000000", // FORCE BLACK TEXT
                 padding: "8px 16px",
                 borderRadius: "4px",
                 display: "inline-block",
@@ -128,10 +127,7 @@ const App = () => (
                 fontSize: "4rem",
                 fontWeight: "bold",
                 marginBottom: "32px",
-                background: "linear-gradient(135deg, #facc14 0%, #a855f7 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
+                color: "#facc14", // FORCE YELLOW - NO GRADIENT
               }}
             >
               LAMBAAAGHINI
@@ -143,7 +139,8 @@ const App = () => (
                 marginBottom: "48px",
                 maxWidth: "600px",
                 margin: "0 auto 48px auto",
-                opacity: 0.8,
+                color: "#ffffff", // FORCE WHITE TEXT
+                opacity: 1, // REMOVE OPACITY
               }}
             >
               Experience the pinnacle of luxury in the Solana ecosystem.
@@ -162,25 +159,27 @@ const App = () => (
               <button
                 style={{
                   backgroundColor: "#facc14",
-                  color: "#0a0a0b",
+                  color: "#000000", // FORCE BLACK TEXT
                   padding: "12px 24px",
                   borderRadius: "8px",
                   border: "none",
                   fontWeight: "600",
                   cursor: "pointer",
+                  fontSize: "16px",
                 }}
               >
                 Launch App →
               </button>
               <button
                 style={{
-                  border: "1px solid #a855f7",
-                  backgroundColor: "transparent",
-                  color: "#a855f7",
+                  border: "2px solid #a855f7",
+                  backgroundColor: "#a855f7", // SOLID PURPLE BACKGROUND
+                  color: "#ffffff", // FORCE WHITE TEXT
                   padding: "12px 24px",
                   borderRadius: "8px",
                   fontWeight: "600",
                   cursor: "pointer",
+                  fontSize: "16px",
                 }}
               >
                 Read Whitepaper
@@ -194,13 +193,13 @@ const App = () => (
             style={{
               padding: "80px 20px",
               textAlign: "center",
-              backgroundColor: "#111",
+              backgroundColor: "#111111",
             }}
           >
             <div
               style={{
-                backgroundColor: "#facc14",
-                color: "#0a0a0b",
+                backgroundColor: "#facc14", // BRIGHT YELLOW
+                color: "#000000", // FORCE BLACK TEXT
                 padding: "40px",
                 borderRadius: "8px",
                 marginBottom: "20px",
@@ -208,25 +207,38 @@ const App = () => (
                 margin: "0 auto 20px auto",
               }}
             >
-              <h2 style={{ fontSize: "2rem", marginBottom: "16px" }}>
+              <h2
+                style={{
+                  fontSize: "2rem",
+                  marginBottom: "16px",
+                  color: "#000000",
+                }}
+              >
                 🐑💨 LAMB DEFENSE FORCE
               </h2>
-              <p style={{ fontSize: "18px" }}>
+              <p style={{ fontSize: "18px", color: "#000000" }}>
                 Professional Galactic Defense Simulator
               </p>
             </div>
-            <p style={{ fontSize: "18px", marginBottom: "20px", opacity: 0.8 }}>
+            <p
+              style={{
+                fontSize: "18px",
+                marginBottom: "20px",
+                color: "#ffffff", // FORCE WHITE
+              }}
+            >
               Defend the Solana ecosystem against incoming zombie threats!
             </p>
             <div
               style={{
-                backgroundColor: "rgba(168, 85, 247, 0.2)",
-                border: "2px solid #a855f7",
+                backgroundColor: "#a855f7", // SOLID PURPLE
+                border: "2px solid #ffffff",
                 borderRadius: "8px",
                 padding: "40px",
                 fontSize: "16px",
                 maxWidth: "600px",
                 margin: "0 auto",
+                color: "#ffffff", // FORCE WHITE TEXT
               }}
             >
               Game coming soon... Loading fart-powered defense systems 💨
@@ -250,7 +262,13 @@ const App = () => (
                 textAlign: "center",
               }}
             >
-              <div>
+              <div
+                style={{
+                  backgroundColor: "#333",
+                  padding: "20px",
+                  borderRadius: "8px",
+                }}
+              >
                 <div
                   style={{
                     fontSize: "2rem",
@@ -261,11 +279,17 @@ const App = () => (
                 >
                   🚀 Moon
                 </div>
-                <div style={{ fontSize: "0.875rem", opacity: 0.8 }}>
+                <div style={{ fontSize: "14px", color: "#ffffff" }}>
                   Trajectory Status
                 </div>
               </div>
-              <div>
+              <div
+                style={{
+                  backgroundColor: "#333",
+                  padding: "20px",
+                  borderRadius: "8px",
+                }}
+              >
                 <div
                   style={{
                     fontSize: "2rem",
@@ -276,11 +300,17 @@ const App = () => (
                 >
                   🐑 25K+
                 </div>
-                <div style={{ fontSize: "0.875rem", opacity: 0.8 }}>
+                <div style={{ fontSize: "14px", color: "#ffffff" }}>
                   Lambs in the Herd
                 </div>
               </div>
-              <div>
+              <div
+                style={{
+                  backgroundColor: "#333",
+                  padding: "20px",
+                  borderRadius: "8px",
+                }}
+              >
                 <div
                   style={{
                     fontSize: "2rem",
@@ -291,11 +321,17 @@ const App = () => (
                 >
                   🏎️ Fast
                 </div>
-                <div style={{ fontSize: "0.875rem", opacity: 0.8 }}>
+                <div style={{ fontSize: "14px", color: "#ffffff" }}>
                   Lambo Speed
                 </div>
               </div>
-              <div>
+              <div
+                style={{
+                  backgroundColor: "#333",
+                  padding: "20px",
+                  borderRadius: "8px",
+                }}
+              >
                 <div
                   style={{
                     fontSize: "2rem",
@@ -306,7 +342,7 @@ const App = () => (
                 >
                   💎 Hodl
                 </div>
-                <div style={{ fontSize: "0.875rem", opacity: 0.8 }}>
+                <div style={{ fontSize: "14px", color: "#ffffff" }}>
                   Diamond Hands
                 </div>
               </div>
@@ -318,11 +354,11 @@ const App = () => (
             style={{
               padding: "40px 20px",
               textAlign: "center",
-              backgroundColor: "#111",
+              backgroundColor: "#111111",
               borderTop: "1px solid rgba(39, 39, 42, 0.5)",
             }}
           >
-            <p style={{ opacity: 0.7 }}>
+            <p style={{ color: "#ffffff" }}>
               © 2024 Lambaaaghini. Built on Solana. 🐑💨
             </p>
           </footer>
