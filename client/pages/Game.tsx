@@ -70,66 +70,16 @@ interface StatusTitle {
 
 // Status titles with increasingly silly names
 const STATUS_TITLES: StatusTitle[] = [
-  {
-    level: 0,
-    title: "Sheep Newbie",
-    cost: 0,
-    description: "Fresh lamb on the field",
-  },
-  {
-    level: 1,
-    title: "Fart Apprentice",
-    cost: 100,
-    description: "Learning the ways of the wind",
-  },
-  {
-    level: 2,
-    title: "Methane Warrior",
-    cost: 300,
-    description: "Battle-tested in gas warfare",
-  },
-  {
-    level: 3,
-    title: "Toxic Cloud Commander",
-    cost: 600,
-    description: "Leading armies of airborne assault",
-  },
-  {
-    level: 4,
-    title: "Supreme Stink Lord",
-    cost: 1200,
-    description: "Master of olfactory destruction",
-  },
-  {
-    level: 5,
-    title: "Legendary Butt Blaster",
-    cost: 2500,
-    description: "Your name is whispered in fear",
-  },
-  {
-    level: 6,
-    title: "Mythical Wind Wizard",
-    cost: 5000,
-    description: "Controls the very essence of flatulence",
-  },
-  {
-    level: 7,
-    title: "Cosmic Gas Giant",
-    cost: 10000,
-    description: "A planetary force of nature",
-  },
-  {
-    level: 8,
-    title: "Interdimensional Fart Emperor",
-    cost: 20000,
-    description: "Rules over multiple gaseous universes",
-  },
-  {
-    level: 9,
-    title: "Ultimate Sheep Deity of Eternal Stench",
-    cost: 50000,
-    description: "The final form of lamb evolution",
-  },
+  { level: 0, title: "Sheep Newbie", cost: 0, description: "Fresh lamb on the field" },
+  { level: 1, title: "Fart Apprentice", cost: 100, description: "Learning the ways of the wind" },
+  { level: 2, title: "Methane Warrior", cost: 300, description: "Battle-tested in gas warfare" },
+  { level: 3, title: "Toxic Cloud Commander", cost: 600, description: "Leading armies of airborne assault" },
+  { level: 4, title: "Supreme Stink Lord", cost: 1200, description: "Master of olfactory destruction" },
+  { level: 5, title: "Legendary Butt Blaster", cost: 2500, description: "Your name is whispered in fear" },
+  { level: 6, title: "Mythical Wind Wizard", cost: 5000, description: "Controls the very essence of flatulence" },
+  { level: 7, title: "Cosmic Gas Giant", cost: 10000, description: "A planetary force of nature" },
+  { level: 8, title: "Interdimensional Fart Emperor", cost: 20000, description: "Rules over multiple gaseous universes" },
+  { level: 9, title: "Ultimate Sheep Deity of Eternal Stench", cost: 50000, description: "The final form of lamb evolution" },
 ];
 
 interface BarrioGameState {
@@ -152,13 +102,9 @@ export default function Game() {
   const { connected, publicKey } = useWallet();
   const [highScores, setHighScores] = useState<HighScore[]>([]);
   const [personalBest, setPersonalBest] = useState<number>(0);
-  const [playerProfile, setPlayerProfile] = useState<PlayerProfile | null>(
-    null,
-  );
+  const [playerProfile, setPlayerProfile] = useState<PlayerProfile | null>(null);
   const [showUpgradeModal, setShowUpgradeModal] = useState(false);
-  const [selectedGame, setSelectedGame] = useState<"galaga" | "barrio">(
-    "galaga",
-  );
+    const [selectedGame, setSelectedGame] = useState<"galaga" | "barrio">("galaga");
 
   // Barrio Mario-style game state
   const [barrioGameState, setBarrioGameState] = useState<BarrioGameState>({
@@ -226,7 +172,7 @@ export default function Game() {
   const FART_SPEED = 8;
   const ZOMBIE_SIZE = 30;
 
-  // Load high scores and player profile from localStorage
+    // Load high scores and player profile from localStorage
   useEffect(() => {
     const savedScores = localStorage.getItem("lambaaaghini-galaga-scores");
     if (savedScores) {
@@ -250,11 +196,9 @@ export default function Game() {
   // Load player profile from localStorage
   const loadPlayerProfile = (walletAddress: string) => {
     const savedProfiles = localStorage.getItem("lambaaaghini-player-profiles");
-    const profiles: PlayerProfile[] = savedProfiles
-      ? JSON.parse(savedProfiles)
-      : [];
+    const profiles: PlayerProfile[] = savedProfiles ? JSON.parse(savedProfiles) : [];
 
-    let profile = profiles.find((p) => p.walletAddress === walletAddress);
+    let profile = profiles.find(p => p.walletAddress === walletAddress);
 
     if (!profile) {
       // Create new profile
@@ -266,10 +210,7 @@ export default function Game() {
         totalGasEarned: 0,
       };
       profiles.push(profile);
-      localStorage.setItem(
-        "lambaaaghini-player-profiles",
-        JSON.stringify(profiles),
-      );
+      localStorage.setItem("lambaaaghini-player-profiles", JSON.stringify(profiles));
     }
 
     setPlayerProfile(profile);
@@ -278,27 +219,20 @@ export default function Game() {
   // Save player profile to localStorage
   const savePlayerProfile = (profile: PlayerProfile) => {
     const savedProfiles = localStorage.getItem("lambaaaghini-player-profiles");
-    const profiles: PlayerProfile[] = savedProfiles
-      ? JSON.parse(savedProfiles)
-      : [];
+    const profiles: PlayerProfile[] = savedProfiles ? JSON.parse(savedProfiles) : [];
 
-    const index = profiles.findIndex(
-      (p) => p.walletAddress === profile.walletAddress,
-    );
+    const index = profiles.findIndex(p => p.walletAddress === profile.walletAddress);
     if (index >= 0) {
       profiles[index] = profile;
     } else {
       profiles.push(profile);
     }
 
-    localStorage.setItem(
-      "lambaaaghini-player-profiles",
-      JSON.stringify(profiles),
-    );
+    localStorage.setItem("lambaaaghini-player-profiles", JSON.stringify(profiles));
     setPlayerProfile(profile);
   };
 
-  // Save high score and award gas tokens
+    // Save high score and award gas tokens
   const saveHighScore = useCallback(
     (score: number, wave: number) => {
       if (!connected || !publicKey || !playerProfile) return;
@@ -499,7 +433,7 @@ export default function Game() {
     });
   }, [playFartSound, gameState.playerPowerUp]);
 
-  const launchFartBomb = useCallback(() => {
+    const launchFartBomb = useCallback(() => {
     setGameState((prev) => {
       if (prev.fartBombCooldown > 0) return prev;
 
@@ -528,12 +462,7 @@ export default function Game() {
     if (!playerProfile || !connected) return;
 
     const newTitle = STATUS_TITLES[newLevel];
-    if (
-      !newTitle ||
-      playerProfile.gasBalance < newTitle.cost ||
-      newLevel <= playerProfile.titleLevel
-    )
-      return;
+    if (!newTitle || playerProfile.gasBalance < newTitle.cost || newLevel <= playerProfile.titleLevel) return;
 
     const updatedProfile: PlayerProfile = {
       ...playerProfile,
@@ -898,7 +827,7 @@ export default function Game() {
   return (
     <div className="min-h-screen px-6 py-20">
       <div className="mx-auto max-w-6xl">
-        <div className="text-center mb-12">
+                <div className="text-center mb-12">
           <Badge className="mb-8 bg-gold-500/10 text-gold-400 border-gold-500/20">
             🎮 Professional Gaming Arcade
           </Badge>
@@ -912,7 +841,7 @@ export default function Game() {
           </p>
         </div>
 
-        {/* Game Selection */}
+                {/* Game Selection */}
         <div className="flex justify-center gap-4 mb-8">
           <Button
             onClick={() => setSelectedGame("galaga")}
@@ -936,9 +865,10 @@ export default function Game() {
           </Button>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+                <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* Game Area */}
           <div className="lg:col-span-3">
+            {selectedGame === "galaga" && (
             <Card className="glass-card border-gold-500/20">
               <CardHeader>
                 <CardTitle className="text-center text-gold-400">
@@ -1117,7 +1047,7 @@ export default function Game() {
                     </Button>
                   )}
 
-                  {gameState.gameRunning && (
+                                    {gameState.gameRunning && (
                     <div className="space-y-4">
                       {/* Movement Controls */}
                       <div className="flex justify-center gap-4 mb-4">
@@ -1243,17 +1173,22 @@ export default function Game() {
                     </div>
                   )}
 
-                  <div className="text-sm text-muted-foreground space-y-2">
-                    <p>Use ARROW KEYS or tap ← → buttons to move</p>
-                    <p>Hold FIRE BUTTON to auto-fire fart projectiles</p>
+                                                      <div className="text-sm text-muted-foreground space-y-2">
+                    <p>
+                      Use ARROW KEYS or tap ← → buttons to move
+                    </p>
+                    <p>
+                      Hold FIRE BUTTON to auto-fire fart projectiles
+                    </p>
                     <p>
                       💥 FART BOMB button for massive area damage (45s cooldown)
                     </p>
                     <p>
-                      💨 Earn GAS TOKENS: 1 per 100 points + 10 per wave
-                      completed
+                      💨 Earn GAS TOKENS: 1 per 100 points + 10 per wave completed
                     </p>
-                    <p>🏆 Spend gas to upgrade your status to silly titles!</p>
+                    <p>
+                      🏆 Spend gas to upgrade your status to silly titles!
+                    </p>
                     <p>
                       🧟 Normal Zombies | 🧟‍♀️ Fast Zombies | 🧟‍♂️ Tank Zombies (3
                       hits)
@@ -1269,7 +1204,7 @@ export default function Game() {
 
           {/* Stats & Info */}
           <div className="space-y-6">
-            <Card className="glass-card border-purple-500/20">
+                        <Card className="glass-card border-purple-500/20">
               <CardHeader>
                 <CardTitle className="text-purple-400">
                   Combat Metrics
@@ -1428,7 +1363,7 @@ export default function Game() {
                 </CardContent>
               </Card>
             )}
-          </div>
+                    </div>
         </div>
 
         {/* Status Upgrade Modal */}
@@ -1463,15 +1398,9 @@ export default function Game() {
                       >
                         <div className="flex justify-between items-start mb-2">
                           <div>
-                            <h3
-                              className={`font-bold ${
-                                isOwned
-                                  ? "text-green-400"
-                                  : canAfford && isNext
-                                    ? "text-gold-400"
-                                    : "text-gray-400"
-                              }`}
-                            >
+                            <h3 className={`font-bold ${
+                              isOwned ? "text-green-400" : canAfford && isNext ? "text-gold-400" : "text-gray-400"
+                            }`}>
                               {title.title}
                             </h3>
                             <p className="text-sm text-muted-foreground">
@@ -1479,15 +1408,9 @@ export default function Game() {
                             </p>
                           </div>
                           <div className="text-right">
-                            <div
-                              className={`font-semibold ${
-                                isOwned
-                                  ? "text-green-400"
-                                  : canAfford
-                                    ? "text-gold-400"
-                                    : "text-gray-400"
-                              }`}
-                            >
+                            <div className={`font-semibold ${
+                              isOwned ? "text-green-400" : canAfford ? "text-gold-400" : "text-gray-400"
+                            }`}>
                               {title.cost === 0 ? "FREE" : `💨 ${title.cost}`}
                             </div>
                           </div>
@@ -1508,9 +1431,7 @@ export default function Game() {
                         )}
                         {!isOwned && (!canAfford || !isNext) && (
                           <div className="text-xs text-gray-400">
-                            {!isNext
-                              ? "Unlock previous titles first"
-                              : "Not enough gas tokens"}
+                            {!isNext ? "Unlock previous titles first" : "Not enough gas tokens"}
                           </div>
                         )}
                       </div>
