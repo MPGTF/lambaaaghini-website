@@ -24,6 +24,10 @@ interface HighScore {
 }
 
 export default function Game() {
+  const { connected, publicKey } = useWallet();
+  const [highScores, setHighScores] = useState<HighScore[]>([]);
+  const [personalBest, setPersonalBest] = useState<number>(0);
+
   const [gameState, setGameState] = useState<GameState>({
     carAngle: 0,
     carJumping: false,
@@ -31,7 +35,9 @@ export default function Game() {
     score: 0,
     gameRunning: false,
     gameOver: false,
+    crashed: false,
     fartClouds: [],
+    explosions: [],
   });
 
   const gameLoopRef = useRef<number>();
