@@ -165,6 +165,18 @@
     border: 1px solid rgba(255, 255, 255, 0.1);
   }
 
+  /* Text readability improvements */
+  .text-readable {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .hero-text-backdrop {
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px);
+    border-radius: 1rem;
+    padding: 2rem;
+  }
+
   /* Lamborghini-themed animations and effects */
   .lambo-shine {
     position: relative;
