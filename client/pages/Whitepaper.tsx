@@ -5,34 +5,34 @@ import { Download, FileText, Eye, Share2 } from "lucide-react";
 
 const sections = [
   {
-    title: "Executive Summary",
+    title: "Full Disclosure",
     description:
-      "An overview of Lambaaaghini's mission to revolutionize luxury DeFi on Solana.",
+      "We have absolutely no technical skills and used generative AI to build everything including this launchpad using pump.fun's API.",
   },
   {
-    title: "Technology Architecture",
+    title: "Zero Promises",
     description:
-      "Deep dive into our high-performance protocols and smart contract design.",
+      "This document makes no assurances, guarantees, or promises of any kind. We literally don't know what we're doing.",
   },
   {
-    title: "Tokenomics",
+    title: "Lambs in the Meadow",
     description:
-      "Comprehensive breakdown of token distribution, utility, and governance model.",
+      "A poetic meditation on lambs racing luxury cars through endless meadows - the true inspiration behind Lambaaaghini.",
   },
   {
-    title: "Security Framework",
+    title: "AI Generated Everything",
     description:
-      "Our multi-layered security approach and audit results from leading firms.",
+      "Every line of code, every design decision, and most of this whitepaper was created by artificial intelligence.",
   },
   {
-    title: "Roadmap & Vision",
+    title: "No Roadmap Just Vibes",
     description:
-      "Long-term strategic goals and development milestones through 2025.",
+      "We have no technical roadmap because we don't understand technology. Just good vibes and meme energy.",
   },
   {
-    title: "Team & Advisors",
+    title: "Why You Should Not Invest",
     description:
-      "Meet the industry veterans and blockchain experts behind Lambaaaghini.",
+      "Comprehensive reasons why investing in this project is probably a terrible idea.",
   },
 ];
 
