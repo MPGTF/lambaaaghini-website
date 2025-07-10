@@ -76,7 +76,7 @@ export default function Index() {
 
               <div className="absolute -bottom-4 -left-4 bg-purple-500/20 backdrop-blur-sm border border-purple-500/30 rounded-lg px-4 py-2">
                 <div className="text-purple-400 font-semibold text-sm">
-                  ��� Solana Speed
+                  ⚡ Solana Speed
                 </div>
               </div>
             </div>
@@ -225,18 +225,15 @@ export default function Index() {
             Ready to Drive the Future?
           </h2>
           <p className="text-xl text-muted-foreground mb-12">
-            Join thousands of investors already earning premium yields in the
-            Solana DeFi ecosystem.
+            Connect your Solana wallet and join thousands of investors already
+            earning premium yields.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button
-              size="lg"
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+            <WalletConnection
+              variant="default"
               className="bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-black font-semibold px-8 py-6 text-lg crypto-glow"
-            >
-              Get Started Now
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
+            />
             <Button
               size="lg"
               variant="outline"
@@ -244,6 +241,10 @@ export default function Index() {
             >
               View Documentation
             </Button>
+          </div>
+
+          <div className="text-sm text-muted-foreground">
+            Supports Phantom, Solflare, Backpack, and Ledger wallets
           </div>
         </div>
       </section>
