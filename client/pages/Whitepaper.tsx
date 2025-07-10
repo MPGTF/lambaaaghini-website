@@ -48,8 +48,9 @@ export default function Whitepaper() {
             <span className="gradient-text">Whitepaper</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Comprehensive technical documentation covering our vision,
-            technology, and strategy for revolutionizing luxury DeFi.
+            A completely honest document about how we used AI to build a meme
+            coin launchpad without any technical knowledge whatsoever. No
+            promises, just transparency.
           </p>
         </div>
 
