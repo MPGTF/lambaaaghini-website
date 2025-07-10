@@ -15,7 +15,10 @@ import {
 
 export default function Index() {
   return (
-    <div className="min-h-screen bg-background">
+    <div
+      className="min-h-screen bg-background text-foreground"
+      style={{ backgroundColor: "#0a0a0b", color: "#fafafa" }}
+    >
       {/* Hero Section */}
       <section className="relative overflow-hidden px-6 py-20 md:py-32">
         {/* Meme-serious gradient background */}
