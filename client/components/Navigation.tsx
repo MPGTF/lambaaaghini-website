@@ -79,13 +79,10 @@ export default function Navigation() {
                 ))}
 
                 <div className="flex flex-col space-y-4 pt-8">
-                  <Button
+                  <WalletConnection
                     variant="outline"
-                    className="border-purple-500/50 text-purple-400 hover:bg-purple-500/10 justify-start"
-                  >
-                    <Wallet className="w-4 h-4 mr-2" />
-                    Connect Wallet
-                  </Button>
+                    className="justify-start"
+                  />
                   <Button className="bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-black font-semibold justify-start">
                     Launch App
                     <ExternalLink className="w-4 h-4 ml-2" />
