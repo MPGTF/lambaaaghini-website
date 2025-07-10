@@ -88,6 +88,21 @@ export default function Navigation() {
                 <XIcon className="w-5 h-5" />
               </a>
             </Button>
+            <Button
+              asChild
+              variant="ghost"
+              size="icon"
+              className="text-muted-foreground hover:text-purple-400 transition-colors"
+            >
+              <a
+                href="https://www.fartbook.us/profile/2jvWaa0H0UYVzJfEBqHcKiHEbFr2"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow us on Fartbook"
+              >
+                <FartbookIcon className="w-5 h-5" />
+              </a>
+            </Button>
             <WalletConnection variant="outline" />
             <Button
               asChild
