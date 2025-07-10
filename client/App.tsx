@@ -127,7 +127,7 @@ const App = () => (
                 fontSize: "4rem",
                 fontWeight: "bold",
                 marginBottom: "32px",
-                color: "#facc14", // FORCE YELLOW - NO GRADIENT
+                color: "#facc14 !important", // FORCE YELLOW WITH !IMPORTANT
               }}
             >
               LAMBAAAGHINI
