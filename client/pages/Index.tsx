@@ -44,7 +44,7 @@ export default function Index() {
               </Badge>
 
               <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-8 tracking-tight relative z-10">
-                <span className="gradient-text drop-shadow-lg">
+                <span className="text-gold-400 drop-shadow-lg font-bold">
                   LAMBAAAGHINI
                 </span>
               </h1>
