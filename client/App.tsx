@@ -26,9 +26,9 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <div className="min-h-screen bg-background">
+          <div>
             <Navigation />
-            <main className="pt-16">
+            <div>
               <Routes>
                 <Route path="/" element={<TestHome />} />
                 <Route path="/launchpad" element={<TestHome />} />
@@ -37,7 +37,7 @@ const App = () => (
                 <Route path="/team" element={<TestHome />} />
                 <Route path="*" element={<TestHome />} />
               </Routes>
-            </main>
+            </div>
           </div>
         </BrowserRouter>
       </WalletProvider>
