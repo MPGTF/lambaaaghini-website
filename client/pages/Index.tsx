@@ -35,13 +35,18 @@ export default function Index() {
         <div className="relative mx-auto max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             {/* Left Column - Text Content */}
-            <div className="text-center lg:text-left lg:col-span-7 lg:pr-8">
-              <Badge className="mb-8 bg-gold-500/10 text-gold-400 border-gold-500/20 hover:bg-gold-500/20">
+            <div className="text-center lg:text-left lg:col-span-7 lg:pr-8 relative">
+              {/* Text backdrop for better readability */}
+              <div className="absolute inset-0 bg-background/30 backdrop-blur-sm rounded-2xl -z-10 lg:block hidden"></div>
+
+              <Badge className="mb-8 bg-gold-500/10 text-gold-400 border-gold-500/20 hover:bg-gold-500/20 relative z-10">
                 🏎️ The Future of Luxury DeFi
               </Badge>
 
               <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-8 tracking-tight relative z-10">
-                <span className="gradient-text">LAMBAAAGHINI</span>
+                <span className="gradient-text drop-shadow-lg">
+                  LAMBAAAGHINI
+                </span>
               </h1>
 
               <p className="text-xl md:text-2xl text-muted-foreground mb-12 leading-relaxed">
