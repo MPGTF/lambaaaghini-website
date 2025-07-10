@@ -64,7 +64,7 @@ export default function Game() {
   const GAME_WIDTH = 800;
   const GAME_HEIGHT = 400;
   const GROUND_Y = 300;
-  const GRAVITY = 0.8;
+  const GRAVITY = 0.6;
   const PLAYER_SIZE = 40;
   const PLAYER_X = 100; // Fixed player position
   const SCROLL_SPEED = 3;
