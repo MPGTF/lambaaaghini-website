@@ -92,7 +92,7 @@ export default function Game() {
   const GAME_HEIGHT = 600;
   const PLAYER_Y = 550;
   const PLAYER_SIZE = 40;
-  const PLAYER_SPEED = 5;
+  const PLAYER_SPEED = 7; // Increased for smoother movement
   const FART_SPEED = 8;
   const ZOMBIE_SIZE = 30;
 
