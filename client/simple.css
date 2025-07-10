@@ -1,0 +1,68 @@
+/* Force all text to be visible */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif;
+  background-color: #000 !important;
+  color: #fff !important;
+  line-height: 1.6;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  background-color: #000 !important;
+}
+
+/* FORCE ALL TEXT TO BE WHITE */
+* {
+  color: #ffffff !important;
+}
+
+/* Override specific text colors */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #ffffff !important;
+}
+
+p {
+  color: #ffffff !important;
+}
+
+a {
+  color: #ffffff !important;
+}
+
+div {
+  color: #ffffff !important;
+}
+
+/* Force specific colored text */
+[style*="color: #facc14"] {
+  color: #facc14 !important;
+}
+
+[style*="color: #000000"] {
+  color: #000000 !important;
+}
+
+[style*="color: #a855f7"] {
+  color: #a855f7 !important;
+}
+
+/* Ensure backgrounds show */
+[style*="backgroundColor"] {
+  display: block !important;
+  min-height: 20px !important;
+}
