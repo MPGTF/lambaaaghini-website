@@ -4,15 +4,20 @@ export default function TestHome() {
       style={{
         backgroundColor: "red",
         color: "white",
-        padding: "20px",
+        padding: "40px",
         margin: "20px",
-        minHeight: "400px",
+        minHeight: "500px",
       }}
     >
-      <h1>🔴 TESTING - IF YOU SEE THIS, ROUTES ARE WORKING!</h1>
-      <p>This is a super basic test component</p>
-      <p>Background: red, text: white</p>
-      <p>If this shows up, the problem is with other components</p>
+      <h1 style={{ color: "white", fontSize: "48px" }}>
+        🐑 TEST HOME - WORKING!
+      </h1>
+      <p style={{ color: "white", fontSize: "24px" }}>
+        If you see this red box, React Router is working!
+      </p>
+      <p style={{ color: "white", fontSize: "18px" }}>
+        Navigation is above, main content is here.
+      </p>
     </div>
   );
 }
