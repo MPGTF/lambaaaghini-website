@@ -28,8 +28,8 @@ import Roadmap from "./pages/Roadmap";
 import Whitepaper from "./pages/Whitepaper";
 import Team from "./pages/Team";
 
-// Import fixed pages
-import IndexFixed from "./pages/Index-fixed"; // ← Testing fixed version without problematic imports
+// Import ultra-minimal pages
+import IndexUltraMinimal from "./pages/Index-ultra-minimal"; // ← Testing with ZERO UI components
 // import Launchpad from "./pages/Launchpad";  // ← Complex AI/wallet stuff
 // import Game from "./pages/Game";  // ← Complex game logic
 // import BarrioGame from "./pages/BarrioGame";  // ← Complex game logic
