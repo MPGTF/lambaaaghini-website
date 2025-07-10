@@ -859,16 +859,15 @@ export default function Game() {
       <div className="mx-auto max-w-6xl">
         <div className="text-center mb-12">
           <Badge className="mb-8 bg-gold-500/10 text-gold-400 border-gold-500/20">
-            🐑💨 Professional Galactic Defense Simulator
+            🎮 Professional Gaming Arcade
           </Badge>
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
             <span className="text-gold-400 font-bold">LAMBAAAGHINI</span>{" "}
-            <span className="text-purple-400 font-bold">DEFENSE FORCE</span>
+            <span className="text-purple-400 font-bold">GAMES</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Defend the Solana ecosystem against the incoming zombie apocalypse
-            using our cutting-edge fart-propulsion weapon systems and advanced
-            tactical positioning.
+            Experience our premium collection of professional gaming experiences
+            featuring advanced mechanics and seriously silly gameplay.
           </p>
         </div>
 
@@ -1191,8 +1190,8 @@ export default function Game() {
                     </p>
                     <p>🏆 Spend gas to upgrade your status to silly titles!</p>
                     <p>
-                      🧟 Normal Zombies | 🧟���♀️ Fast Zombies | 🧟‍♂️ Tank Zombies
-                      (3 hits)
+                      🧟 Normal Zombies | 🧟‍♀️ Fast Zombies | 🧟‍♂️ Tank Zombies (3
+                      hits)
                     </p>
                     <p>
                       ⚡ Speed Boost | 🔫 Triple Shot | 💥 Big Fart Power-ups
