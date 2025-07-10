@@ -717,7 +717,7 @@ export default function Game() {
 
                   {/* Player (Lamb) */}
                   <div
-                    className="absolute transition-all duration-100 flex items-center justify-center text-3xl"
+                    className="absolute transition-all duration-75 ease-out flex items-center justify-center text-3xl"
                     style={{
                       left: gameState.playerX - PLAYER_SIZE / 2,
                       top: PLAYER_Y - PLAYER_SIZE / 2,
@@ -728,6 +728,7 @@ export default function Game() {
                         ? "drop-shadow(0 0 10px gold)"
                         : "none",
                       transform: "rotate(270deg)", // Rotate lamb clockwise 90 degrees
+                      willChange: "transform", // Optimize for animations
                     }}
                   >
                     🐑
