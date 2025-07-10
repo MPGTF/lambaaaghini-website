@@ -482,6 +482,29 @@ export default function Game() {
     });
   }, [playFartBombSound]);
 
+  // Upgrade player title
+  const upgradeTitle = (newLevel: number) => {
+    if (!playerProfile || !connected) return;
+
+    const newTitle = STATUS_TITLES[newLevel];
+    if (
+      !newTitle ||
+      playerProfile.gasBalance < newTitle.cost ||
+      newLevel <= playerProfile.titleLevel
+    )
+      return;
+
+    const updatedProfile: PlayerProfile = {
+      ...playerProfile,
+      gasBalance: playerProfile.gasBalance - newTitle.cost,
+      currentTitle: newTitle.title,
+      titleLevel: newLevel,
+    };
+
+    savePlayerProfile(updatedProfile);
+    setShowUpgradeModal(false);
+  };
+
   const startGame = () => {
     setGameState({
       playerX: GAME_WIDTH / 2,
