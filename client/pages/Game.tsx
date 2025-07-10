@@ -617,6 +617,8 @@ export default function Game() {
           playerPowerUp: newPlayerPowerUp,
           powerUpTime: newPowerUpTime,
           explosions: newExplosions,
+          fartBombCooldown: newFartBombCooldown,
+          fartBombs: newFartBombs,
         };
       });
 
