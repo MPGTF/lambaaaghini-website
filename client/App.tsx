@@ -1,6 +1,9 @@
 import "./global.css";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import WalletProvider from "./components/WalletProvider";
 
 // Import working navigation
 import Navigation from "./components/Navigation";
