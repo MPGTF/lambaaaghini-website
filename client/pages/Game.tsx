@@ -912,6 +912,30 @@ export default function Game() {
           </p>
         </div>
 
+        {/* Game Selection */}
+        <div className="flex justify-center gap-4 mb-8">
+          <Button
+            onClick={() => setSelectedGame("galaga")}
+            className={`px-8 py-4 text-lg font-semibold transition-all ${
+              selectedGame === "galaga"
+                ? "bg-gradient-to-r from-purple-500 to-purple-700 text-white"
+                : "bg-gray-600 hover:bg-gray-500 text-gray-200"
+            }`}
+          >
+            🐑 Lamb Defense Force
+          </Button>
+          <Button
+            onClick={() => setSelectedGame("barrio")}
+            className={`px-8 py-4 text-lg font-semibold transition-all ${
+              selectedGame === "barrio"
+                ? "bg-gradient-to-r from-green-500 to-green-700 text-white"
+                : "bg-gray-600 hover:bg-gray-500 text-gray-200"
+            }`}
+          >
+            🌿 Barrio's Garden Adventure
+          </Button>
+        </div>
+
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* Game Area */}
           <div className="lg:col-span-3">
