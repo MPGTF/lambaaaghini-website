@@ -16,6 +16,7 @@ import Team from "./pages/Team";
 import IndexUltraMinimal from "./pages/Index-ultra-minimal";
 import GameSimple from "./pages/GameSimple";
 import Launchpad from "./pages/Launchpad";
+import TestHome from "./pages/TestHome";
 
 const queryClient = new QueryClient();
 
