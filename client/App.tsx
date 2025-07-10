@@ -24,7 +24,14 @@ const App = () => (
     <div>
       <Navigation />
       <div>
-        <TestHome />
+        <Routes>
+          <Route path="/" element={<TestHome />} />
+          <Route path="/launchpad" element={<TestHome />} />
+          <Route path="/roadmap" element={<TestHome />} />
+          <Route path="/whitepaper" element={<TestHome />} />
+          <Route path="/team" element={<TestHome />} />
+          <Route path="*" element={<TestHome />} />
+        </Routes>
       </div>
     </div>
   </BrowserRouter>
