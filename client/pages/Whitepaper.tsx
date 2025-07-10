@@ -59,10 +59,10 @@ export default function Whitepaper() {
           <CardContent className="p-8 text-center">
             <FileText className="h-16 w-16 text-gold-400 mx-auto mb-6" />
             <h2 className="text-2xl font-bold mb-4">
-              Lambaaaghini Whitepaper v2.0
+              Lambaaaghini "Whitepaper" v2.0
             </h2>
             <p className="text-muted-foreground mb-8">
-              Released January 2024 • 48 pages • Technical & Business Overview
+              Released Yesterday • 3 pages • AI-Generated Honesty & Lamb Poetry
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button className="bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-black font-semibold">
