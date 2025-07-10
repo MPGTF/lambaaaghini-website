@@ -21,6 +21,23 @@ export default function Index() {
         <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-background to-gold-900/20" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(120,119,198,0.3),rgba(255,255,255,0))]" />
 
+        {/* Floating Lamborghini aesthetic elements */}
+        <div className="absolute top-20 left-10 text-6xl opacity-10 animate-pulse">
+          🏎️
+        </div>
+        <div className="absolute top-40 right-20 text-4xl opacity-20 animate-bounce">
+          💎
+        </div>
+        <div className="absolute bottom-32 left-20 text-5xl opacity-15 animate-pulse">
+          🐑
+        </div>
+        <div className="absolute top-60 left-1/4 text-3xl opacity-10 animate-bounce">
+          ⚡
+        </div>
+        <div className="absolute bottom-20 right-1/3 text-4xl opacity-15 animate-pulse">
+          🚀
+        </div>
+
         <div className="relative mx-auto max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             {/* Left Column - Text Content */}
