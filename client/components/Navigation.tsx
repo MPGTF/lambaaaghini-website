@@ -44,13 +44,7 @@ export default function Navigation() {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center space-x-4">
-            <Button
-              variant="outline"
-              className="border-purple-500/50 text-purple-400 hover:bg-purple-500/10"
-            >
-              <Wallet className="w-4 h-4 mr-2" />
-              Connect Wallet
-            </Button>
+            <WalletConnection variant="outline" />
             <Button className="bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-black font-semibold">
               Launch App
               <ExternalLink className="w-4 h-4 ml-2" />
