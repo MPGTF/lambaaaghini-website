@@ -167,8 +167,11 @@ export default function Team() {
           <CardContent className="p-12 text-center">
             <h2 className="text-3xl font-bold mb-4">Join Our Team</h2>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              We're always looking for exceptional talent to join our mission of
-              revolutionizing luxury DeFi. Check out our open positions.
+              We are almost never looking for talent but you are more than
+              welcome to donate sol to this address and I promise you aren't
+              going to get a job or benefit in any way from it and we aren't
+              using it towards the project:
+              F52riGC1evYR12ZqQy9umRo7S3hDAZhFbXGEnuX8p966
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button className="bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-black font-semibold">
