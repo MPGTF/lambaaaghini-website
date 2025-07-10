@@ -6,15 +6,25 @@ import { Badge } from "@/components/ui/badge";
 import WalletConnection from "@/components/WalletConnection";
 
 interface GameState {
-  carAngle: number;
-  carJumping: boolean;
-  obstacles: Array<{ angle: number; id: number; justSpawned: boolean }>;
+  playerY: number;
+  playerVelocityY: number;
+  isJumping: boolean;
+  jumpCharges: number;
+  obstacles: Array<{
+    x: number;
+    height: number;
+    width: number;
+    id: number;
+    justSpawned: boolean;
+    type: "low" | "medium" | "high" | "floating";
+  }>;
   score: number;
   gameRunning: boolean;
   gameOver: boolean;
   crashed: boolean;
-  fartClouds: Array<{ angle: number; id: number; opacity: number }>;
-  explosions: Array<{ angle: number; id: number; opacity: number }>;
+  fartClouds: Array<{ x: number; y: number; id: number; opacity: number }>;
+  explosions: Array<{ x: number; y: number; id: number; opacity: number }>;
+  backgroundOffset: number;
 }
 
 interface HighScore {
@@ -29,8 +39,10 @@ export default function Game() {
   const [personalBest, setPersonalBest] = useState<number>(0);
 
   const [gameState, setGameState] = useState<GameState>({
-    carAngle: 0,
-    carJumping: false,
+    playerY: 200, // Middle of the screen
+    playerVelocityY: 0,
+    isJumping: false,
+    jumpCharges: 0,
     obstacles: [],
     score: 0,
     gameRunning: false,
@@ -38,6 +50,7 @@ export default function Game() {
     crashed: false,
     fartClouds: [],
     explosions: [],
+    backgroundOffset: 0,
   });
 
   const gameLoopRef = useRef<number>();
@@ -45,6 +58,16 @@ export default function Game() {
   const fartIdRef = useRef(0);
   const explosionIdRef = useRef(0);
   const audioContextRef = useRef<AudioContext | null>(null);
+  const keysPressed = useRef<Set<string>>(new Set());
+
+  // Game constants
+  const GAME_WIDTH = 800;
+  const GAME_HEIGHT = 400;
+  const GROUND_Y = 300;
+  const GRAVITY = 0.8;
+  const PLAYER_SIZE = 40;
+  const PLAYER_X = 100; // Fixed player position
+  const SCROLL_SPEED = 3;
 
   // Load high scores from localStorage
   useEffect(() => {
@@ -180,35 +203,45 @@ export default function Game() {
   }, []);
 
   const jump = useCallback(() => {
-    if (!gameState.gameRunning || gameState.carJumping || gameState.gameOver)
-      return;
+    if (!gameState.gameRunning || gameState.gameOver) return;
 
     playFartSound();
 
-    setGameState((prev) => ({
-      ...prev,
-      carJumping: true,
-      fartClouds: [
-        ...prev.fartClouds,
-        { angle: prev.carAngle - 10, id: fartIdRef.current++, opacity: 1 },
-      ],
-    }));
+    setGameState((prev) => {
+      const charges = prev.jumpCharges + 1;
+      let jumpPower = 0;
 
-    // End jump after 500ms
-    setTimeout(() => {
-      setGameState((prev) => ({ ...prev, carJumping: false }));
-    }, 500);
-  }, [
-    gameState.gameRunning,
-    gameState.carJumping,
-    gameState.gameOver,
-    playFartSound,
-  ]);
+      // Different jump heights based on charges
+      if (charges === 1)
+        jumpPower = -12; // Small jump
+      else if (charges === 2)
+        jumpPower = -16; // Medium jump
+      else if (charges >= 3) jumpPower = -20; // High jump
+
+      return {
+        ...prev,
+        playerVelocityY: jumpPower,
+        isJumping: true,
+        jumpCharges: charges,
+        fartClouds: [
+          ...prev.fartClouds,
+          {
+            x: PLAYER_X - 20,
+            y: prev.playerY + 20,
+            id: fartIdRef.current++,
+            opacity: 1,
+          },
+        ],
+      };
+    });
+  }, [gameState.gameRunning, gameState.gameOver, playFartSound]);
 
   const startGame = () => {
     setGameState({
-      carAngle: 0,
-      carJumping: false,
+      playerY: GROUND_Y - PLAYER_SIZE,
+      playerVelocityY: 0,
+      isJumping: false,
+      jumpCharges: 0,
       obstacles: [],
       score: 0,
       gameRunning: true,
@@ -216,13 +249,16 @@ export default function Game() {
       crashed: false,
       fartClouds: [],
       explosions: [],
+      backgroundOffset: 0,
     });
   };
 
   const resetGame = () => {
     setGameState({
-      carAngle: 0,
-      carJumping: false,
+      playerY: GROUND_Y - PLAYER_SIZE,
+      playerVelocityY: 0,
+      isJumping: false,
+      jumpCharges: 0,
       obstacles: [],
       score: 0,
       gameRunning: false,
@@ -230,6 +266,7 @@ export default function Game() {
       crashed: false,
       fartClouds: [],
       explosions: [],
+      backgroundOffset: 0,
     });
   };
 
@@ -241,58 +278,127 @@ export default function Game() {
       setGameState((prev) => {
         if (prev.gameOver) return prev;
 
-        const newCarAngle = (prev.carAngle + 2) % 360;
+        let newPlayerY = prev.playerY;
+        let newPlayerVelocityY = prev.playerVelocityY;
+        let newIsJumping = prev.isJumping;
+        let newJumpCharges = prev.jumpCharges;
         let newObstacles = [...prev.obstacles];
         let newScore = prev.score;
         let newGameOver = false;
+        let newCrashed = false;
+
+        // Apply gravity and update player position
+        newPlayerVelocityY += GRAVITY;
+        newPlayerY += newPlayerVelocityY;
+
+        // Ground collision
+        if (newPlayerY >= GROUND_Y - PLAYER_SIZE) {
+          newPlayerY = GROUND_Y - PLAYER_SIZE;
+          newPlayerVelocityY = 0;
+          newIsJumping = false;
+          newJumpCharges = 0; // Reset jump charges when landing
+        }
 
         // Move obstacles and handle spawning animation
         newObstacles = newObstacles.map((obstacle) => ({
           ...obstacle,
-          angle: (obstacle.angle + 2) % 360,
-          justSpawned: false, // Reset spawn animation after first frame
+          x: obstacle.x - SCROLL_SPEED,
+          justSpawned: false,
         }));
 
-        // Check for collisions and remove obstacles
-        newObstacles = newObstacles.filter((obstacle) => {
-          const angleDiff = Math.abs(obstacle.angle - newCarAngle);
-          if (angleDiff < 15 || angleDiff > 345) {
-            if (!prev.carJumping) {
-              // CRASH!
-              newGameOver = true;
-              prev.crashed = true;
-              playCrashSound();
+        // Remove obstacles that are off-screen
+        newObstacles = newObstacles.filter(
+          (obstacle) => obstacle.x > -obstacle.width,
+        );
 
-              // Create explosion effect
-              const newExplosions = prev.explosions.concat([
-                {
-                  angle: newCarAngle,
-                  id: explosionIdRef.current++,
-                  opacity: 1,
-                },
-              ]);
+        // Check for collisions
+        const playerRect = {
+          x: PLAYER_X,
+          y: newPlayerY,
+          width: PLAYER_SIZE,
+          height: PLAYER_SIZE,
+        };
 
-              // Save high score if connected
-              if (connected && newScore > 0) {
-                saveHighScore(newScore);
-              }
+        for (const obstacle of newObstacles) {
+          const obstacleRect = {
+            x: obstacle.x,
+            y:
+              obstacle.type === "floating"
+                ? obstacle.height
+                : GROUND_Y - obstacle.height,
+            width: obstacle.width,
+            height: obstacle.type === "floating" ? 40 : obstacle.height,
+          };
 
-              return false;
-            } else {
-              newScore += 10;
+          // Simple rectangle collision detection
+          if (
+            playerRect.x < obstacleRect.x + obstacleRect.width &&
+            playerRect.x + playerRect.width > obstacleRect.x &&
+            playerRect.y < obstacleRect.y + obstacleRect.height &&
+            playerRect.y + playerRect.height > obstacleRect.y
+          ) {
+            // CRASH!
+            newGameOver = true;
+            newCrashed = true;
+            playCrashSound();
+
+            // Create explosion effect
+            const newExplosions = prev.explosions.concat([
+              {
+                x: PLAYER_X,
+                y: newPlayerY,
+                id: explosionIdRef.current++,
+                opacity: 1,
+              },
+            ]);
+
+            // Save high score if connected
+            if (connected && newScore > 0) {
+              saveHighScore(newScore);
             }
-            return false;
-          }
-          return true;
-        });
 
-        // Add new obstacles randomly with pop-up animation
-        if (Math.random() < 0.015 + newScore / 10000) {
-          // Difficulty increases with score
+            return {
+              ...prev,
+              playerY: newPlayerY,
+              playerVelocityY: newPlayerVelocityY,
+              gameOver: newGameOver,
+              crashed: newCrashed,
+              gameRunning: false,
+              explosions: newExplosions,
+            };
+          }
+        }
+
+        // Spawn new obstacles
+        const lastObstacle = newObstacles[newObstacles.length - 1];
+        const minDistance = 200 + Math.random() * 150;
+
+        if (!lastObstacle || GAME_WIDTH - lastObstacle.x > minDistance) {
+          const obstacleTypes = ["low", "medium", "high", "floating"] as const;
+          const type =
+            obstacleTypes[Math.floor(Math.random() * obstacleTypes.length)];
+
+          let height = 60;
+          let width = 40;
+
+          if (type === "low") {
+            height = 60;
+          } else if (type === "medium") {
+            height = 120;
+          } else if (type === "high") {
+            height = 180;
+          } else if (type === "floating") {
+            height = 100 + Math.random() * 100; // Y position for floating obstacles
+            width = 60;
+          }
+
           newObstacles.push({
-            angle: (newCarAngle + 180) % 360,
+            x: GAME_WIDTH,
+            height,
+            width,
             id: obstacleIdRef.current++,
             justSpawned: true,
+            type,
           });
         }
 
@@ -300,9 +406,10 @@ export default function Game() {
         const newFartClouds = prev.fartClouds
           .map((cloud) => ({
             ...cloud,
+            x: cloud.x - SCROLL_SPEED / 2,
             opacity: cloud.opacity - 0.02,
           }))
-          .filter((cloud) => cloud.opacity > 0);
+          .filter((cloud) => cloud.opacity > 0 && cloud.x > -50);
 
         // Update explosions
         const newExplosions = prev.explosions
@@ -313,20 +420,19 @@ export default function Game() {
           .filter((explosion) => explosion.opacity > 0);
 
         // Increase score over time
-        if (!newGameOver) {
-          newScore += 1;
-        }
+        newScore += 1;
 
         return {
           ...prev,
-          carAngle: newCarAngle,
+          playerY: newPlayerY,
+          playerVelocityY: newPlayerVelocityY,
+          isJumping: newIsJumping,
+          jumpCharges: newJumpCharges,
           obstacles: newObstacles,
           score: newScore,
-          gameOver: newGameOver,
-          crashed: newGameOver,
-          gameRunning: !newGameOver,
           fartClouds: newFartClouds,
           explosions: newExplosions,
+          backgroundOffset: (prev.backgroundOffset + SCROLL_SPEED) % 100,
         };
       });
 
@@ -344,88 +450,158 @@ export default function Game() {
 
   // Handle keyboard input
   useEffect(() => {
-    const handleKeyPress = (event: KeyboardEvent) => {
+    const handleKeyDown = (event: KeyboardEvent) => {
       if (event.code === "Space") {
         event.preventDefault();
-        jump();
+        if (!keysPressed.current.has("Space")) {
+          keysPressed.current.add("Space");
+          jump();
+        }
       }
     };
 
-    window.addEventListener("keydown", handleKeyPress);
-    return () => window.removeEventListener("keydown", handleKeyPress);
+    const handleKeyUp = (event: KeyboardEvent) => {
+      if (event.code === "Space") {
+        keysPressed.current.delete("Space");
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("keyup", handleKeyUp);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("keyup", handleKeyUp);
+    };
   }, [jump]);
 
   return (
     <div className="min-h-screen px-6 py-20">
-      <div className="mx-auto max-w-4xl">
+      <div className="mx-auto max-w-6xl">
         <div className="text-center mb-12">
           <Badge className="mb-8 bg-gold-500/10 text-gold-400 border-gold-500/20">
-            🏎️💨 Professional Racing Simulator
+            🏎️💨 Professional 2D Racing Simulator
           </Badge>
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
             <span className="text-gold-400 font-bold">LAMBAAAGHINI</span>{" "}
-            <span className="text-purple-400 font-bold">RACER</span>
+            <span className="text-purple-400 font-bold">PLATFORMER</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Experience the pinnacle of automotive excellence with our
-            scientifically-engineered racing simulation featuring advanced
-            fart-propulsion technology.
+            Experience our cutting-edge 2D automotive simulation featuring
+            advanced multi-height fart-propulsion jump technology and precision
+            obstacle avoidance mechanics.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* Game Area */}
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-3">
             <Card className="glass-card border-gold-500/20">
               <CardHeader>
                 <CardTitle className="text-center text-gold-400">
-                  Professional Racing Circuit
+                  Professional 2D Racing Circuit
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="relative w-full aspect-square max-w-md mx-auto bg-gradient-to-br from-green-900/20 to-green-700/20 rounded-full border-4 border-gold-500/30">
-                  {/* Track */}
-                  <div className="absolute inset-4 border-4 border-dashed border-muted/50 rounded-full"></div>
-
-                  {/* Car */}
+                <div
+                  className="relative mx-auto bg-gradient-to-b from-sky-400/20 via-sky-300/10 to-green-600/20 border-4 border-gold-500/30 overflow-hidden"
+                  style={{
+                    width: GAME_WIDTH,
+                    height: GAME_HEIGHT,
+                    imageRendering: "pixelated",
+                  }}
+                >
+                  {/* Moving background pattern */}
                   <div
-                    className="absolute w-12 h-12 transition-all duration-100"
+                    className="absolute inset-0 opacity-20"
                     style={{
-                      left: "50%",
-                      top: "50%",
-                      transform: `
-                        translate(-50%, -50%) 
-                        rotate(${gameState.carAngle}deg) 
-                        translateY(-120px) 
-                        ${gameState.carJumping ? "translateZ(10px) scale(1.2)" : ""}
+                      backgroundImage: `
+                        repeating-linear-gradient(
+                          0deg,
+                          transparent,
+                          transparent 20px,
+                          rgba(255,255,255,0.1) 20px,
+                          rgba(255,255,255,0.1) 22px
+                        )
                       `,
+                      transform: `translateX(-${gameState.backgroundOffset}px)`,
+                    }}
+                  />
+
+                  {/* Ground */}
+                  <div
+                    className="absolute bottom-0 w-full bg-gradient-to-t from-green-700/40 to-green-600/20 border-t-2 border-green-500/50"
+                    style={{ height: GAME_HEIGHT - GROUND_Y }}
+                  />
+
+                  {/* Player (Pixelated Lamb-Car) */}
+                  <div
+                    className="absolute transition-all duration-100 flex items-center justify-center text-2xl"
+                    style={{
+                      left: PLAYER_X,
+                      top: gameState.playerY,
+                      width: PLAYER_SIZE,
+                      height: PLAYER_SIZE,
+                      imageRendering: "pixelated",
+                      filter: gameState.crashed
+                        ? "hue-rotate(0deg) saturate(200%)"
+                        : "none",
                     }}
                   >
                     <div
-                      className={`text-4xl transition-all duration-300 ${
-                        gameState.carJumping ? "animate-bounce" : ""
+                      className={`transition-all duration-200 ${
+                        gameState.isJumping ? "animate-pulse" : ""
                       } ${gameState.crashed ? "animate-ping" : ""}`}
+                      style={{
+                        imageRendering: "pixelated",
+                        fontSize: "24px",
+                        textShadow: "2px 2px 0px rgba(0,0,0,0.5)",
+                      }}
                     >
                       {gameState.crashed ? "💥🐑💥" : "🐑🏎️"}
                     </div>
                   </div>
 
+                  {/* Jump charge indicator */}
+                  {gameState.jumpCharges > 0 && !gameState.gameOver && (
+                    <div
+                      className="absolute text-sm font-bold text-gold-400 animate-bounce"
+                      style={{
+                        left: PLAYER_X + PLAYER_SIZE + 10,
+                        top: gameState.playerY - 20,
+                      }}
+                    >
+                      {"⚡".repeat(Math.min(gameState.jumpCharges, 3))}
+                    </div>
+                  )}
+
                   {/* Obstacles */}
                   {gameState.obstacles.map((obstacle) => (
                     <div
                       key={obstacle.id}
-                      className="absolute w-8 h-8 text-2xl"
+                      className={`absolute ${
+                        obstacle.justSpawned ? "animate-ping" : ""
+                      }`}
                       style={{
-                        left: "50%",
-                        top: "50%",
-                        transform: `
-                          translate(-50%, -50%) 
-                          rotate(${obstacle.angle}deg) 
-                          translateY(-120px)
-                        `,
+                        left: obstacle.x,
+                        top:
+                          obstacle.type === "floating"
+                            ? obstacle.height
+                            : GROUND_Y - obstacle.height,
+                        width: obstacle.width,
+                        height:
+                          obstacle.type === "floating" ? 40 : obstacle.height,
+                        backgroundColor:
+                          obstacle.type === "floating"
+                            ? "rgba(147, 51, 234, 0.7)"
+                            : "rgba(239, 68, 68, 0.7)",
+                        border: "2px solid rgba(255,255,255,0.3)",
+                        imageRendering: "pixelated",
                       }}
                     >
-                      🚧
+                      <div className="w-full h-full flex items-center justify-center text-lg">
+                        {obstacle.type === "floating" ? "☁️" : "🚧"}
+                      </div>
                     </div>
                   ))}
 
@@ -433,26 +609,33 @@ export default function Game() {
                   {gameState.fartClouds.map((cloud) => (
                     <div
                       key={cloud.id}
-                      className="absolute w-6 h-6 text-xl animate-pulse"
+                      className="absolute text-xl animate-pulse pointer-events-none"
                       style={{
-                        left: "50%",
-                        top: "50%",
-                        transform: `
-                          translate(-50%, -50%) 
-                          rotate(${cloud.angle}deg) 
-                          translateY(-110px)
-                        `,
+                        left: cloud.x,
+                        top: cloud.y,
                         opacity: cloud.opacity,
+                        imageRendering: "pixelated",
                       }}
                     >
                       💨
                     </div>
                   ))}
 
-                  {/* Center Logo */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-6xl opacity-20">🐑</div>
-                  </div>
+                  {/* Explosions */}
+                  {gameState.explosions.map((explosion) => (
+                    <div
+                      key={explosion.id}
+                      className="absolute text-3xl animate-ping pointer-events-none"
+                      style={{
+                        left: explosion.x,
+                        top: explosion.y,
+                        opacity: explosion.opacity,
+                        imageRendering: "pixelated",
+                      }}
+                    >
+                      💥
+                    </div>
+                  ))}
                 </div>
 
                 {/* Controls */}
@@ -462,7 +645,7 @@ export default function Game() {
                       onClick={startGame}
                       className="bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-black font-semibold px-8 py-4 text-lg"
                     >
-                      Start Professional Racing
+                      Start Professional 2D Racing
                     </Button>
                   )}
 
@@ -479,20 +662,25 @@ export default function Game() {
                   {gameState.gameOver && (
                     <div className="space-y-4">
                       <div className="text-2xl font-bold text-red-400">
-                        CRASH! Your lamb got rekt! 🐑💥
+                        CRASH! Your lamb got totally rekt! 🐑💥
                       </div>
                       <Button
                         onClick={resetGame}
                         className="bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-black font-semibold px-8 py-4"
                       >
-                        Try Again (Maybe Don't)
+                        Try Again (You Got This)
                       </Button>
                     </div>
                   )}
 
-                  <div className="text-sm text-muted-foreground">
-                    Press SPACEBAR or tap the button to activate fart-propulsion
-                    jump technology
+                  <div className="text-sm text-muted-foreground space-y-2">
+                    <p>
+                      Press SPACEBAR multiple times for different jump heights
+                    </p>
+                    <p>
+                      🐑 Small tap = Low jump | 🐑🐑 Double tap = Medium jump |
+                      🐑🐑🐑 Triple+ tap = High jump
+                    </p>
                   </div>
                 </div>
               </CardContent>
@@ -514,11 +702,19 @@ export default function Game() {
                       {gameState.score}
                     </div>
                     <div className="text-sm text-muted-foreground">
-                      Professional Points
+                      Professional Distance
                     </div>
                   </div>
                   <div className="text-center">
                     <div className="text-xl font-bold text-purple-400">
+                      {gameState.jumpCharges}
+                    </div>
+                    <div className="text-sm text-muted-foreground">
+                      Jump Charges
+                    </div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-lg font-bold text-green-400">
                       {gameState.obstacles.length}
                     </div>
                     <div className="text-sm text-muted-foreground">
@@ -536,13 +732,15 @@ export default function Game() {
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-3 text-sm">
-                <p>🏎️ Your lamb-car drives automatically in a circle</p>
-                <p>🚧 Avoid obstacles by jumping over them</p>
-                <p>💨 Jumping produces fart-powered propulsion</p>
-                <p>🔊 Advanced sound effects included</p>
-                <p>📱 Works on mobile and desktop</p>
+                <p>🏎️ Your lamb-car moves automatically forward</p>
+                <p>🚧 Avoid ground obstacles of different heights</p>
+                <p>☁️ Duck under floating cloud obstacles</p>
+                <p>💨 Multiple spacebar taps = higher jumps</p>
+                <p>⚡ Landing resets your jump charges</p>
+                <p>🔊 Advanced retro sound effects included</p>
                 <p className="text-gold-400 font-semibold">
-                  This is definitely a serious racing simulator and not a joke.
+                  This is definitely a serious 2D racing simulator and not a
+                  joke.
                 </p>
               </CardContent>
             </Card>
@@ -554,17 +752,55 @@ export default function Game() {
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-2 text-xs">
-                <p>🔧 Engine: Fart-Powered V8</p>
-                <p>⚡ Acceleration: 0-60 in 3.2 bleats</p>
-                <p>🏁 Top Speed: Mach 0.0001</p>
-                <p>💨 Emission Type: 100% Organic</p>
-                <p>🛡️ Safety Rating: Questionable</p>
-                <p>🎮 Physics: Scientifically Accurate*</p>
+                <p>🔧 Engine: Multi-Stage Fart Propulsion</p>
+                <p>⚡ Jump Heights: 3 Professional Levels</p>
+                <p>🏁 Max Speed: Steady 3 pixels/frame</p>
+                <p>💨 Emission Stages: Low, Med, High</p>
+                <p>🛡️ Collision Detection: Pixel Perfect*</p>
+                <p>🎮 Physics: Mario-Inspired Underwater</p>
                 <p className="text-xs text-muted-foreground">
-                  *Not actually scientifically accurate
+                  *Actually rectangle-based collision
                 </p>
               </CardContent>
             </Card>
+
+            {connected && (
+              <Card className="glass-card border-green-500/20">
+                <CardHeader>
+                  <CardTitle className="text-green-400">
+                    Wallet Leaderboard
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-2">
+                    <div className="text-center">
+                      <div className="text-lg font-bold text-gold-400">
+                        {personalBest}
+                      </div>
+                      <div className="text-xs text-muted-foreground">
+                        Your Best Score
+                      </div>
+                    </div>
+                    <div className="space-y-1">
+                      {highScores.slice(0, 5).map((score, index) => (
+                        <div
+                          key={index}
+                          className="flex justify-between text-xs"
+                        >
+                          <span className="text-muted-foreground">
+                            {score.walletAddress.slice(0, 4)}...
+                            {score.walletAddress.slice(-4)}
+                          </span>
+                          <span className="text-gold-400 font-semibold">
+                            {score.score}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            )}
           </div>
         </div>
       </div>
