@@ -424,6 +424,45 @@ export default function Game() {
           .map((powerUp) => ({ ...powerUp, y: powerUp.y + 2 }))
           .filter((powerUp) => powerUp.y < GAME_HEIGHT + 20);
 
+        // Update fart bombs
+        newFartBombs = newFartBombs
+          .map((bomb) => {
+            if (bomb.expanding && bomb.radius < bomb.maxRadius) {
+              return { ...bomb, radius: bomb.radius + 8 };
+            } else if (bomb.expanding) {
+              return { ...bomb, expanding: false };
+            } else {
+              return { ...bomb, radius: Math.max(0, bomb.radius - 5) };
+            }
+          })
+          .filter((bomb) => bomb.radius > 0);
+
+        // Check fart bomb collisions with zombies
+        newFartBombs.forEach((bomb) => {
+          newZombies = newZombies.filter((zombie) => {
+            const distance = Math.sqrt(
+              Math.pow(bomb.x - zombie.x, 2) + Math.pow(bomb.y - zombie.y, 2),
+            );
+            if (distance < bomb.radius) {
+              // Zombie hit by fart bomb
+              newScore +=
+                zombie.type === "tank" ? 50 : zombie.type === "fast" ? 30 : 20;
+              playExplosionSound();
+
+              // Add explosion effect
+              newExplosions.push({
+                x: zombie.x,
+                y: zombie.y,
+                id: explosionIdRef.current++,
+                opacity: 1,
+              });
+
+              return false;
+            }
+            return true;
+          });
+        });
+
         // Check fart-zombie collisions
         newFarts = newFarts.filter((fart) => {
           let hit = false;
