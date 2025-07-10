@@ -49,7 +49,7 @@ export default function Index() {
                 </span>
               </h1>
 
-              <p className="text-xl md:text-2xl text-muted-foreground mb-12 leading-relaxed">
+              <p className="text-xl md:text-2xl text-muted-foreground mb-12 leading-relaxed relative z-10 drop-shadow-md">
                 Experience the pinnacle of luxury in the Solana ecosystem.
                 High-performance DeFi protocols engineered for speed, style, and
                 unprecedented returns.
