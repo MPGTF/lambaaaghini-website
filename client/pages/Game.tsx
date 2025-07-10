@@ -53,6 +53,21 @@ interface HighScore {
   timestamp: number;
 }
 
+interface PlayerProfile {
+  walletAddress: string;
+  gasBalance: number;
+  currentTitle: string;
+  titleLevel: number;
+  totalGasEarned: number;
+}
+
+interface StatusTitle {
+  level: number;
+  title: string;
+  cost: number;
+  description: string;
+}
+
 export default function Game() {
   const { connected, publicKey } = useWallet();
   const [highScores, setHighScores] = useState<HighScore[]>([]);
