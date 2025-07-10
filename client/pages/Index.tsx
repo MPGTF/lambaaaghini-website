@@ -205,11 +205,12 @@ export default function Index() {
                   <Coins className="h-6 w-6 text-gold-400" />
                 </div>
                 <h3 className="text-xl font-bold mb-4">
-                  💰 Lambo-Level Yields
+                  💰 Money Printer Go Brrr
                 </h3>
                 <p className="text-muted-foreground">
-                  Access exclusive high-yield farming opportunities that could
-                  fund your actual Lamborghini dreams.
+                  We've scientifically engineered yields so high, they might
+                  actually be illegal in several countries. APY so big it needs
+                  its own ZIP code.
                 </p>
               </CardContent>
             </Card>
