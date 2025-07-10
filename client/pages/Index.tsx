@@ -152,7 +152,7 @@ export default function Index() {
       </section>
 
       {/* Features Section */}
-      <section className="px-6 py-20 bg-gradient-to-b from-background to-muted/20">
+      <section className="px-6 py-20 bg-gradient-to-b from-purple-950/20 via-background to-amber-950/20">
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
