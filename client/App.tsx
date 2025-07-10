@@ -20,21 +20,29 @@ import NotFound from "./pages/NotFound";
 const queryClient = new QueryClient();
 
 const App = () => (
-  <BrowserRouter>
-    <div>
-      <Navigation />
-      <div>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/launchpad" element={<Launchpad />} />
-          <Route path="/roadmap" element={<Roadmap />} />
-          <Route path="/whitepaper" element={<Whitepaper />} />
-          <Route path="/team" element={<Team />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </div>
-    </div>
-  </BrowserRouter>
+  <QueryClientProvider client={queryClient}>
+    <TooltipProvider>
+      <WalletProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <div className="min-h-screen bg-background">
+            <Navigation />
+            <main className="pt-16">
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="/launchpad" element={<Launchpad />} />
+                <Route path="/roadmap" element={<Roadmap />} />
+                <Route path="/whitepaper" element={<Whitepaper />} />
+                <Route path="/team" element={<Team />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </main>
+          </div>
+        </BrowserRouter>
+      </WalletProvider>
+    </TooltipProvider>
+  </QueryClientProvider>
 );
 
 createRoot(document.getElementById("root")!).render(<App />);
