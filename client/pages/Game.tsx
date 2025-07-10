@@ -68,10 +68,78 @@ interface StatusTitle {
   description: string;
 }
 
+// Status titles with increasingly silly names
+const STATUS_TITLES: StatusTitle[] = [
+  {
+    level: 0,
+    title: "Sheep Newbie",
+    cost: 0,
+    description: "Fresh lamb on the field",
+  },
+  {
+    level: 1,
+    title: "Fart Apprentice",
+    cost: 100,
+    description: "Learning the ways of the wind",
+  },
+  {
+    level: 2,
+    title: "Methane Warrior",
+    cost: 300,
+    description: "Battle-tested in gas warfare",
+  },
+  {
+    level: 3,
+    title: "Toxic Cloud Commander",
+    cost: 600,
+    description: "Leading armies of airborne assault",
+  },
+  {
+    level: 4,
+    title: "Supreme Stink Lord",
+    cost: 1200,
+    description: "Master of olfactory destruction",
+  },
+  {
+    level: 5,
+    title: "Legendary Butt Blaster",
+    cost: 2500,
+    description: "Your name is whispered in fear",
+  },
+  {
+    level: 6,
+    title: "Mythical Wind Wizard",
+    cost: 5000,
+    description: "Controls the very essence of flatulence",
+  },
+  {
+    level: 7,
+    title: "Cosmic Gas Giant",
+    cost: 10000,
+    description: "A planetary force of nature",
+  },
+  {
+    level: 8,
+    title: "Interdimensional Fart Emperor",
+    cost: 20000,
+    description: "Rules over multiple gaseous universes",
+  },
+  {
+    level: 9,
+    title: "Ultimate Sheep Deity of Eternal Stench",
+    cost: 50000,
+    description: "The final form of lamb evolution",
+  },
+];
+
 export default function Game() {
   const { connected, publicKey } = useWallet();
   const [highScores, setHighScores] = useState<HighScore[]>([]);
   const [personalBest, setPersonalBest] = useState<number>(0);
+  const [playerProfile, setPlayerProfile] = useState<PlayerProfile | null>(
+    null,
+  );
+  const [showUpgradeModal, setShowUpgradeModal] = useState(false);
 
   const [gameState, setGameState] = useState<GameState>({
     playerX: 400,
@@ -1098,7 +1166,7 @@ export default function Game() {
                 <p>💨 Advanced fart-propulsion weapons</p>
                 <p>🧟 Eliminate all zombie threats</p>
                 <p>⚡ Collect power-ups for tactical advantage</p>
-                <p>🏆 Survive increasingly difficult waves</p>
+                <p>�� Survive increasingly difficult waves</p>
                 <p>🔊 Immersive audio combat feedback</p>
                 <p className="text-gold-400 font-semibold">
                   This is definitely a serious military defense simulation and
