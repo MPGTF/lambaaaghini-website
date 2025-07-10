@@ -246,18 +246,38 @@ export default function Game() {
         let newScore = prev.score;
         let newGameOver = false;
 
-        // Move obstacles
+        // Move obstacles and handle spawning animation
         newObstacles = newObstacles.map((obstacle) => ({
           ...obstacle,
           angle: (obstacle.angle + 2) % 360,
+          justSpawned: false, // Reset spawn animation after first frame
         }));
 
-        // Remove obstacles that have passed
+        // Check for collisions and remove obstacles
         newObstacles = newObstacles.filter((obstacle) => {
           const angleDiff = Math.abs(obstacle.angle - newCarAngle);
-          if (angleDiff < 10 || angleDiff > 350) {
+          if (angleDiff < 15 || angleDiff > 345) {
             if (!prev.carJumping) {
+              // CRASH!
               newGameOver = true;
+              prev.crashed = true;
+              playCrashSound();
+
+              // Create explosion effect
+              const newExplosions = prev.explosions.concat([
+                {
+                  angle: newCarAngle,
+                  id: explosionIdRef.current++,
+                  opacity: 1,
+                },
+              ]);
+
+              // Save high score if connected
+              if (connected && newScore > 0) {
+                saveHighScore(newScore);
+              }
+
+              return false;
             } else {
               newScore += 10;
             }
@@ -266,11 +286,13 @@ export default function Game() {
           return true;
         });
 
-        // Add new obstacles randomly
-        if (Math.random() < 0.02) {
+        // Add new obstacles randomly with pop-up animation
+        if (Math.random() < 0.015 + newScore / 10000) {
+          // Difficulty increases with score
           newObstacles.push({
             angle: (newCarAngle + 180) % 360,
             id: obstacleIdRef.current++,
+            justSpawned: true,
           });
         }
 
