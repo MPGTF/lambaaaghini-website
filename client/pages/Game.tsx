@@ -882,51 +882,113 @@ export default function Game() {
                   )}
 
                   {gameState.gameRunning && (
-                    <div className="flex justify-center gap-4 mb-4">
-                      <Button
-                        onMouseDown={() => {
-                          setIsFiring(true);
-                          isFiringRef.current = true;
-                        }}
-                        onMouseUp={() => {
-                          setIsFiring(false);
-                          isFiringRef.current = false;
-                        }}
-                        onMouseLeave={() => {
-                          setIsFiring(false);
-                          isFiringRef.current = false;
-                        }}
-                        onTouchStart={() => {
-                          setIsFiring(true);
-                          isFiringRef.current = true;
-                        }}
-                        onTouchEnd={() => {
-                          setIsFiring(false);
-                          isFiringRef.current = false;
-                        }}
-                        className={`bg-gradient-to-r from-purple-500 to-purple-700 hover:from-purple-600 hover:to-purple-800 text-white font-semibold px-8 py-4 text-lg crypto-glow select-none ${
-                          isFiring ? "scale-95 brightness-125" : ""
-                        }`}
-                      >
-                        💨 FIRE FARTS 💨
-                      </Button>
+                    <div className="space-y-4">
+                      {/* Movement Controls */}
+                      <div className="flex justify-center gap-4 mb-4">
+                        <Button
+                          onMouseDown={() => {
+                            setIsMovingLeft(true);
+                            isMovingLeftRef.current = true;
+                          }}
+                          onMouseUp={() => {
+                            setIsMovingLeft(false);
+                            isMovingLeftRef.current = false;
+                          }}
+                          onMouseLeave={() => {
+                            setIsMovingLeft(false);
+                            isMovingLeftRef.current = false;
+                          }}
+                          onTouchStart={() => {
+                            setIsMovingLeft(true);
+                            isMovingLeftRef.current = true;
+                          }}
+                          onTouchEnd={() => {
+                            setIsMovingLeft(false);
+                            isMovingLeftRef.current = false;
+                          }}
+                          className={`bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white font-semibold px-6 py-4 text-2xl crypto-glow select-none ${
+                            isMovingLeft ? "scale-95 brightness-125" : ""
+                          }`}
+                        >
+                          ←
+                        </Button>
 
-                      <Button
-                        onClick={launchFartBomb}
-                        disabled={gameState.fartBombCooldown > 0}
-                        className={`bg-gradient-to-r from-red-500 to-red-700 hover:from-red-600 hover:to-red-800 text-white font-semibold px-8 py-4 text-lg crypto-glow select-none ${
-                          gameState.fartBombCooldown > 0
-                            ? "opacity-50 cursor-not-allowed"
-                            : ""
-                        }`}
-                      >
-                        💥 FART BOMB 💥
-                        {gameState.fartBombCooldown > 0 && (
-                          <div className="text-xs block">
-                            {Math.ceil(gameState.fartBombCooldown / 1000)}s
-                          </div>
-                        )}
-                      </Button>
+                        <Button
+                          onMouseDown={() => {
+                            setIsMovingRight(true);
+                            isMovingRightRef.current = true;
+                          }}
+                          onMouseUp={() => {
+                            setIsMovingRight(false);
+                            isMovingRightRef.current = false;
+                          }}
+                          onMouseLeave={() => {
+                            setIsMovingRight(false);
+                            isMovingRightRef.current = false;
+                          }}
+                          onTouchStart={() => {
+                            setIsMovingRight(true);
+                            isMovingRightRef.current = true;
+                          }}
+                          onTouchEnd={() => {
+                            setIsMovingRight(false);
+                            isMovingRightRef.current = false;
+                          }}
+                          className={`bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white font-semibold px-6 py-4 text-2xl crypto-glow select-none ${
+                            isMovingRight ? "scale-95 brightness-125" : ""
+                          }`}
+                        >
+                          →
+                        </Button>
+                      </div>
+
+                      {/* Action Controls */}
+                      <div className="flex justify-center gap-4 mb-4">
+                        <Button
+                          onMouseDown={() => {
+                            setIsFiring(true);
+                            isFiringRef.current = true;
+                          }}
+                          onMouseUp={() => {
+                            setIsFiring(false);
+                            isFiringRef.current = false;
+                          }}
+                          onMouseLeave={() => {
+                            setIsFiring(false);
+                            isFiringRef.current = false;
+                          }}
+                          onTouchStart={() => {
+                            setIsFiring(true);
+                            isFiringRef.current = true;
+                          }}
+                          onTouchEnd={() => {
+                            setIsFiring(false);
+                            isFiringRef.current = false;
+                          }}
+                          className={`bg-gradient-to-r from-purple-500 to-purple-700 hover:from-purple-600 hover:to-purple-800 text-white font-semibold px-8 py-4 text-lg crypto-glow select-none ${
+                            isFiring ? "scale-95 brightness-125" : ""
+                          }`}
+                        >
+                          💨 FIRE FARTS 💨
+                        </Button>
+
+                        <Button
+                          onClick={launchFartBomb}
+                          disabled={gameState.fartBombCooldown > 0}
+                          className={`bg-gradient-to-r from-red-500 to-red-700 hover:from-red-600 hover:to-red-800 text-white font-semibold px-8 py-4 text-lg crypto-glow select-none ${
+                            gameState.fartBombCooldown > 0
+                              ? "opacity-50 cursor-not-allowed"
+                              : ""
+                          }`}
+                        >
+                          💥 FART BOMB 💥
+                          {gameState.fartBombCooldown > 0 && (
+                            <div className="text-xs block">
+                              {Math.ceil(gameState.fartBombCooldown / 1000)}s
+                            </div>
+                          )}
+                        </Button>
+                      </div>
                     </div>
                   )}
 
