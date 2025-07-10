@@ -82,27 +82,8 @@ export default function Roadmap() {
                     <Circle className="h-6 w-6 text-muted-foreground" />
                   )}
                 </div>
-                <Badge
-                  variant={
-                    item.status === "completed"
-                      ? "default"
-                      : item.status === "in-progress"
-                        ? "secondary"
-                        : "outline"
-                  }
-                  className={
-                    item.status === "completed"
-                      ? "bg-gold-500/20 text-gold-400 border-gold-500/20"
-                      : item.status === "in-progress"
-                        ? "bg-purple-500/20 text-purple-400 border-purple-500/20"
-                        : ""
-                  }
-                >
-                  {item.status === "completed"
-                    ? "Completed"
-                    : item.status === "in-progress"
-                      ? "In Progress"
-                      : "Upcoming"}
+                <Badge className="bg-gold-500/20 text-gold-400 border-gold-500/20">
+                  we doing it
                 </Badge>
               </CardHeader>
               <CardContent>
