@@ -267,7 +267,7 @@ export default function Index() {
       </section>
 
       {/* CTA Section */}
-      <section className="px-6 py-20 bg-gradient-to-br from-purple-900/10 via-background to-gold-900/10">
+      <section className="px-6 py-20 bg-gradient-to-br from-purple-900/30 via-amber-950/20 to-purple-950/30">
         <div className="mx-auto max-w-4xl text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             Ready to Drive the Future?
