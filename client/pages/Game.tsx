@@ -137,6 +137,48 @@ export default function Game() {
     }
   }, []);
 
+  // Create crash sound effect
+  const playCrashSound = useCallback(() => {
+    try {
+      if (!audioContextRef.current) {
+        audioContextRef.current = new (window.AudioContext ||
+          (window as any).webkitAudioContext)();
+      }
+
+      const audioContext = audioContextRef.current;
+
+      // Create explosion sound with multiple oscillators
+      for (let i = 0; i < 3; i++) {
+        const oscillator = audioContext.createOscillator();
+        const gainNode = audioContext.createGain();
+
+        oscillator.connect(gainNode);
+        gainNode.connect(audioContext.destination);
+
+        oscillator.frequency.setValueAtTime(
+          200 + i * 100,
+          audioContext.currentTime,
+        );
+        oscillator.frequency.exponentialRampToValueAtTime(
+          50,
+          audioContext.currentTime + 0.5,
+        );
+
+        gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(
+          0.01,
+          audioContext.currentTime + 0.5,
+        );
+
+        oscillator.type = "square";
+        oscillator.start(audioContext.currentTime + i * 0.1);
+        oscillator.stop(audioContext.currentTime + 0.5 + i * 0.1);
+      }
+    } catch (error) {
+      console.log("Audio not supported, but the game continues!");
+    }
+  }, []);
+
   const jump = useCallback(() => {
     if (!gameState.gameRunning || gameState.carJumping || gameState.gameOver)
       return;
