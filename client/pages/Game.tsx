@@ -1244,6 +1244,45 @@ export default function Game() {
               </CardContent>
             </Card>
 
+            {connected && playerProfile && (
+              <Card className="glass-card border-orange-500/20">
+                <CardHeader>
+                  <CardTitle className="text-orange-400">
+                    Player Status
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-4">
+                    <div className="text-center">
+                      <div className="text-sm font-bold text-gold-400 mb-1">
+                        {playerProfile.currentTitle}
+                      </div>
+                      <div className="text-xs text-muted-foreground">
+                        Current Status
+                      </div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-xl font-bold text-orange-400">
+                        💨 {playerProfile.gasBalance}
+                      </div>
+                      <div className="text-xs text-muted-foreground">
+                        Gas Tokens
+                      </div>
+                    </div>
+                    <div className="text-center">
+                      <Button
+                        onClick={() => setShowUpgradeModal(true)}
+                        size="sm"
+                        className="bg-gradient-to-r from-orange-500 to-orange-700 hover:from-orange-600 hover:to-orange-800 text-white text-xs"
+                      >
+                        Upgrade Status
+                      </Button>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            )}
+
             <Card className="glass-card border-gold-500/20">
               <CardHeader>
                 <CardTitle className="text-gold-400">
