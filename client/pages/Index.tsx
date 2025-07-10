@@ -117,32 +117,34 @@ export default function Index() {
             {/* Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
               <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold gradient-text">
+                <div className="text-3xl md:text-4xl font-bold text-gold-400">
                   🚀 Moon
                 </div>
-                <div className="text-sm text-muted-foreground">
+                <div className="text-sm text-foreground font-medium">
                   Trajectory Status
                 </div>
               </div>
               <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold gradient-text">
+                <div className="text-3xl md:text-4xl font-bold text-purple-400">
                   🐑 25K+
                 </div>
-                <div className="text-sm text-muted-foreground">
+                <div className="text-sm text-foreground font-medium">
                   Lambs in the Herd
                 </div>
               </div>
               <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold gradient-text">
+                <div className="text-3xl md:text-4xl font-bold text-gold-400">
                   🏎️ Fast
                 </div>
-                <div className="text-sm text-muted-foreground">Lambo Speed</div>
+                <div className="text-sm text-foreground font-medium">
+                  Lambo Speed
+                </div>
               </div>
               <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold gradient-text">
+                <div className="text-3xl md:text-4xl font-bold text-purple-400">
                   💎 Hodl
                 </div>
-                <div className="text-sm text-muted-foreground">
+                <div className="text-sm text-foreground font-medium">
                   Diamond Hands
                 </div>
               </div>
