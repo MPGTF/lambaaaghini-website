@@ -43,7 +43,55 @@ export default function Game() {
   const gameLoopRef = useRef<number>();
   const obstacleIdRef = useRef(0);
   const fartIdRef = useRef(0);
+  const explosionIdRef = useRef(0);
   const audioContextRef = useRef<AudioContext | null>(null);
+
+  // Load high scores from localStorage
+  useEffect(() => {
+    const savedScores = localStorage.getItem("lambaaaghini-high-scores");
+    if (savedScores) {
+      const scores: HighScore[] = JSON.parse(savedScores);
+      setHighScores(scores.sort((a, b) => b.score - a.score).slice(0, 10));
+
+      if (connected && publicKey) {
+        const userBest = scores
+          .filter((score) => score.walletAddress === publicKey.toBase58())
+          .sort((a, b) => b.score - a.score)[0];
+        setPersonalBest(userBest?.score || 0);
+      }
+    }
+  }, [connected, publicKey]);
+
+  // Save high score
+  const saveHighScore = useCallback(
+    (score: number) => {
+      if (!connected || !publicKey) return;
+
+      const newScore: HighScore = {
+        walletAddress: publicKey.toBase58(),
+        score,
+        timestamp: Date.now(),
+      };
+
+      const savedScores = localStorage.getItem("lambaaaghini-high-scores");
+      const scores: HighScore[] = savedScores ? JSON.parse(savedScores) : [];
+      scores.push(newScore);
+
+      const topScores = scores.sort((a, b) => b.score - a.score).slice(0, 50);
+      localStorage.setItem(
+        "lambaaaghini-high-scores",
+        JSON.stringify(topScores),
+      );
+
+      setHighScores(topScores.slice(0, 10));
+
+      const userBest = topScores
+        .filter((s) => s.walletAddress === publicKey.toBase58())
+        .sort((a, b) => b.score - a.score)[0];
+      setPersonalBest(userBest?.score || 0);
+    },
+    [connected, publicKey],
+  );
 
   // Create fart sound effect
   const playFartSound = useCallback(() => {
