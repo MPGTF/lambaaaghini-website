@@ -214,6 +214,48 @@ export default function Game() {
     }
   }, []);
 
+  // Create fart bomb sound effect
+  const playFartBombSound = useCallback(() => {
+    try {
+      if (!audioContextRef.current) {
+        audioContextRef.current = new (window.AudioContext ||
+          (window as any).webkitAudioContext)();
+      }
+
+      const audioContext = audioContextRef.current;
+
+      // Create deep bass fart bomb sound
+      for (let i = 0; i < 5; i++) {
+        const oscillator = audioContext.createOscillator();
+        const gainNode = audioContext.createGain();
+
+        oscillator.connect(gainNode);
+        gainNode.connect(audioContext.destination);
+
+        oscillator.frequency.setValueAtTime(
+          80 - i * 10,
+          audioContext.currentTime,
+        );
+        oscillator.frequency.exponentialRampToValueAtTime(
+          20,
+          audioContext.currentTime + 1,
+        );
+
+        gainNode.gain.setValueAtTime(0.4, audioContext.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(
+          0.01,
+          audioContext.currentTime + 1,
+        );
+
+        oscillator.type = "sawtooth";
+        oscillator.start(audioContext.currentTime + i * 0.1);
+        oscillator.stop(audioContext.currentTime + 1 + i * 0.1);
+      }
+    } catch (error) {
+      console.log("Audio not supported, but the game continues!");
+    }
+  }, []);
+
   const shootFart = useCallback(() => {
     const now = Date.now();
     const shotDelay = gameState.playerPowerUp === "multishot" ? 100 : 200;
