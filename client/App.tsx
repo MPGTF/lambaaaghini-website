@@ -31,7 +31,7 @@ const App = () => (
           <Navigation />
           <main style={{ paddingTop: "64px" }}>
             <Routes>
-              <Route path="/" element={<IndexUltraMinimal />} />
+              <Route path="/" element={<TestHome />} />
               <Route path="/roadmap" element={<Roadmap />} />
               <Route path="/whitepaper" element={<Whitepaper />} />
               <Route path="/team" element={<Team />} />
