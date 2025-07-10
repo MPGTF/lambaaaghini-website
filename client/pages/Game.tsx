@@ -318,7 +318,10 @@ export default function Game() {
           newPlayerX += speed;
         }
 
-        // Auto-shoot is now handled by the fire button
+        // Auto-shoot when fire button is pressed
+        if (isFiring) {
+          shootFart();
+        }
 
         // Move farts up
         newFarts = newFarts
