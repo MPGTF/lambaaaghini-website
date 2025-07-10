@@ -257,10 +257,10 @@ export default function Game() {
     setPlayerProfile(profile);
   };
 
-  // Save high score
+  // Save high score and award gas tokens
   const saveHighScore = useCallback(
     (score: number, wave: number) => {
-      if (!connected || !publicKey) return;
+      if (!connected || !publicKey || !playerProfile) return;
 
       const newScore: HighScore = {
         walletAddress: publicKey.toBase58(),
@@ -285,8 +285,18 @@ export default function Game() {
         .filter((s) => s.walletAddress === publicKey.toBase58())
         .sort((a, b) => b.score - a.score)[0];
       setPersonalBest(userBest?.score || 0);
+
+      // Award gas tokens based on performance
+      const gasEarned = Math.floor(score / 100) + wave * 10; // 1 gas per 100 points + 10 gas per wave
+      const updatedProfile: PlayerProfile = {
+        ...playerProfile,
+        gasBalance: playerProfile.gasBalance + gasEarned,
+        totalGasEarned: playerProfile.totalGasEarned + gasEarned,
+      };
+
+      savePlayerProfile(updatedProfile);
     },
-    [connected, publicKey],
+    [connected, publicKey, playerProfile],
   );
 
   // Create fart sound effect
