@@ -50,21 +50,21 @@ const teamMembers = [
 
 const advisors = [
   {
-    name: "Dr. James Wright",
+    name: "Dr. Ain't",
     role: "Strategic Advisor",
-    bio: "Former Federal Reserve economist and current DeFi research lead at MIT.",
+    bio: ".",
     initials: "JW",
   },
   {
-    name: "Rachel Kim",
+    name: "Tellin you",
     role: "Technical Advisor",
-    bio: "Solana Foundation council member and early Ethereum core developer.",
+    bio: "",
     initials: "RK",
   },
   {
-    name: "David Park",
+    name: "Shit",
     role: "Business Advisor",
-    bio: "Serial entrepreneur with 3 successful exits in fintech and blockchain.",
+    bio: "",
     initials: "DP",
   },
 ];
