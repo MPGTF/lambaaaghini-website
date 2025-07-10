@@ -641,26 +641,38 @@ export default function Game() {
     shootFart,
   ]);
 
-  // Handle keyboard input (arrow keys only)
+  // Handle keyboard input (arrow keys only) with improved responsiveness
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.code === "ArrowLeft" || event.code === "ArrowRight") {
+        event.preventDefault(); // Prevent page scrolling
         keysPressed.current.add(event.code);
       }
     };
 
     const handleKeyUp = (event: KeyboardEvent) => {
       if (event.code === "ArrowLeft" || event.code === "ArrowRight") {
+        event.preventDefault();
         keysPressed.current.delete(event.code);
       }
     };
 
+    // Add focus to ensure keyboard events are captured
+    const handleFocus = () => {
+      // Clear all keys when window loses/gains focus to prevent stuck keys
+      keysPressed.current.clear();
+    };
+
     window.addEventListener("keydown", handleKeyDown);
     window.addEventListener("keyup", handleKeyUp);
+    window.addEventListener("blur", handleFocus);
+    window.addEventListener("focus", handleFocus);
 
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
       window.removeEventListener("keyup", handleKeyUp);
+      window.removeEventListener("blur", handleFocus);
+      window.removeEventListener("focus", handleFocus);
     };
   }, []);
 
