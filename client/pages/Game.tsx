@@ -1186,8 +1186,13 @@ export default function Game() {
                       💥 FART BOMB button for massive area damage (45s cooldown)
                     </p>
                     <p>
-                      🧟 Normal Zombies | 🧟‍♀️ Fast Zombies | 🧟‍♂️ Tank Zombies (3
-                      hits)
+                      💨 Earn GAS TOKENS: 1 per 100 points + 10 per wave
+                      completed
+                    </p>
+                    <p>🏆 Spend gas to upgrade your status to silly titles!</p>
+                    <p>
+                      🧟 Normal Zombies | 🧟���♀️ Fast Zombies | 🧟‍♂️ Tank Zombies
+                      (3 hits)
                     </p>
                     <p>
                       ⚡ Speed Boost | 🔫 Triple Shot | 💥 Big Fart Power-ups
