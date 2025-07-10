@@ -34,47 +34,55 @@ import Index from "./pages/Index"; // ← Testing homepage first
 // import Game from "./pages/Game";  // ← Complex game logic
 // import BarrioGame from "./pages/BarrioGame";  // ← Complex game logic
 
+const queryClient = new QueryClient();
+
 const App = () => (
-  <BrowserRouter>
-    <div
-      className="min-h-screen"
-      style={{ backgroundColor: "#000", color: "#fff" }}
-    >
-      <Navigation />
-      <main style={{ paddingTop: "64px" }}>
-        <Routes>
-          {/* Test the actual homepage */}
-          <Route path="/" element={<Index />} />
+  <QueryClientProvider client={queryClient}>
+    <TooltipProvider>
+      <WalletProvider>
+        <BrowserRouter>
+          <div
+            className="min-h-screen"
+            style={{ backgroundColor: "#000", color: "#fff" }}
+          >
+            <Navigation />
+            <main style={{ paddingTop: "64px" }}>
+              <Routes>
+                {/* Test the actual homepage */}
+                <Route path="/" element={<Index />} />
 
-          {/* Test simple pages that should work */}
-          <Route path="/roadmap" element={<Roadmap />} />
-          <Route path="/whitepaper" element={<Whitepaper />} />
-          <Route path="/team" element={<Team />} />
+                {/* Test simple pages that should work */}
+                <Route path="/roadmap" element={<Roadmap />} />
+                <Route path="/whitepaper" element={<Whitepaper />} />
+                <Route path="/team" element={<Team />} />
 
-          {/* Complex pages disabled for now */}
-          <Route path="/launchpad" element={<TestGame />} />
-          <Route path="/game" element={<TestGame />} />
-          <Route path="/barrio" element={<TestGame />} />
+                {/* Complex pages disabled for now */}
+                <Route path="/launchpad" element={<TestGame />} />
+                <Route path="/game" element={<TestGame />} />
+                <Route path="/barrio" element={<TestGame />} />
 
-          <Route
-            path="*"
-            element={
-              <div
-                style={{
-                  backgroundColor: "orange",
-                  color: "white",
-                  padding: "20px",
-                  margin: "20px",
-                }}
-              >
-                <h1>🐑 404 - Page Not Found</h1>
-              </div>
-            }
-          />
-        </Routes>
-      </main>
-    </div>
-  </BrowserRouter>
+                <Route
+                  path="*"
+                  element={
+                    <div
+                      style={{
+                        backgroundColor: "orange",
+                        color: "white",
+                        padding: "20px",
+                        margin: "20px",
+                      }}
+                    >
+                      <h1>🐑 404 - Page Not Found</h1>
+                    </div>
+                  }
+                />
+              </Routes>
+            </main>
+          </div>
+        </BrowserRouter>
+      </WalletProvider>
+    </TooltipProvider>
+  </QueryClientProvider>
 );
 
 createRoot(document.getElementById("root")!).render(<App />);
