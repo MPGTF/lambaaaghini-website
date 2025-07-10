@@ -4,44 +4,39 @@ import { CheckCircle, Circle, Clock } from "lucide-react";
 
 const roadmapItems = [
   {
-    quarter: "Q1 2024",
+    quarter: "Q3 2025",
     status: "completed",
     items: [
-      "Core protocol development",
-      "Security audits completed",
-      "Testnet launch",
-      "Community building",
+      "Making a funny meme",
+      "Building something cool around it",
+      "Test that out",
+      "Fuck shit up",
     ],
   },
   {
-    quarter: "Q2 2024",
+    quarter: "Q4 2025",
     status: "in-progress",
     items: [
-      "Mainnet launch",
-      "Liquidity farming pools",
-      "Mobile app development",
-      "Partnership announcements",
+      "be rich ballers",
+      "keep doing stuff",
+      "buy actual lambos",
+      "making it out trenches",
     ],
   },
   {
-    quarter: "Q3 2024",
+    quarter: "Q1 2026",
     status: "upcoming",
     items: [
-      "Cross-chain bridge",
-      "Advanced trading features",
-      "Governance token launch",
+      "billion dollar market cap",
+      "retire",
+      "keep doing what we doin",
       "Institutional partnerships",
     ],
   },
   {
-    quarter: "Q4 2024",
+    quarter: "Q2 2026",
     status: "upcoming",
-    items: [
-      "Layer 2 integration",
-      "NFT marketplace",
-      "Metaverse integration",
-      "Global expansion",
-    ],
+    items: ["We ", "All", "Gon be", "Rich"],
   },
 ];
 
