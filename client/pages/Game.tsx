@@ -317,10 +317,7 @@ export default function Game() {
           newPlayerX += speed;
         }
 
-        // Auto-shoot when space is held
-        if (keysPressed.current.has("Space")) {
-          shootFart();
-        }
+        // Auto-shoot is now handled by the fire button
 
         // Move farts up
         newFarts = newFarts
