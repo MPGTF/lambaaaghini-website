@@ -808,6 +808,31 @@ export default function Game() {
                     </div>
                   ))}
 
+                  {/* Fart Bombs */}
+                  {gameState.fartBombs.map((bomb) => (
+                    <div
+                      key={bomb.id}
+                      className="absolute pointer-events-none"
+                      style={{
+                        left: bomb.x - bomb.radius,
+                        top: bomb.y - bomb.radius,
+                        width: bomb.radius * 2,
+                        height: bomb.radius * 2,
+                        borderRadius: "50%",
+                        backgroundColor: "rgba(139, 69, 19, 0.6)",
+                        border: "3px solid rgba(255, 165, 0, 0.8)",
+                        opacity: bomb.expanding
+                          ? 0.8
+                          : bomb.radius / bomb.maxRadius,
+                        imageRendering: "pixelated",
+                      }}
+                    >
+                      <div className="w-full h-full flex items-center justify-center text-2xl">
+                        💨
+                      </div>
+                    </div>
+                  ))}
+
                   {/* Explosions */}
                   {gameState.explosions.map((explosion) => (
                     <div
