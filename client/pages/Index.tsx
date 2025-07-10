@@ -236,10 +236,13 @@ export default function Index() {
                 <div className="w-12 h-12 bg-gold-500/10 rounded-lg flex items-center justify-center mb-6">
                   <Users className="h-6 w-6 text-gold-400" />
                 </div>
-                <h3 className="text-xl font-bold mb-4">🏁 Elite Car Club</h3>
+                <h3 className="text-xl font-bold mb-4">
+                  🐑 Sheep Driving Supercars
+                </h3>
                 <p className="text-muted-foreground">
-                  Join an exclusive community of lamb-loving, luxury car
-                  enthusiasts racing toward financial freedom together.
+                  Join our exclusive club where fluffy farm animals discuss
+                  horsepower and torque curves. Warning: May contain excessive
+                  bleating about lambos.
                 </p>
               </CardContent>
             </Card>
