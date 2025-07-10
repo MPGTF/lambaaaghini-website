@@ -11,6 +11,7 @@ import Navigation from "./components/Navigation";
 import Index from "./pages/Index";
 import Launchpad from "./pages/Launchpad";
 import Game from "./pages/Game";
+import BarrioGame from "./pages/BarrioGame";
 import Roadmap from "./pages/Roadmap";
 import Whitepaper from "./pages/Whitepaper";
 import Team from "./pages/Team";
