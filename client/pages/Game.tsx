@@ -726,6 +726,7 @@ export default function Game() {
                       filter: gameState.playerPowerUp
                         ? "drop-shadow(0 0 10px gold)"
                         : "none",
+                      transform: "rotate(180deg)", // Rotate lamb so butt faces up toward zombies
                     }}
                   >
                     🐑
