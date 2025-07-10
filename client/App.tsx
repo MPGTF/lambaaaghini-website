@@ -25,7 +25,7 @@ const App = () => (
       <Navigation />
       <div>
         <Routes>
-          <Route path="/" element={<TestHome />} />
+          <Route path="/" element={<Index />} />
           <Route path="/launchpad" element={<TestHome />} />
           <Route path="/roadmap" element={<TestHome />} />
           <Route path="/whitepaper" element={<TestHome />} />
