@@ -119,32 +119,32 @@ export default function Index() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
               <div className="text-center">
                 <div className="text-3xl md:text-4xl font-bold gradient-text">
-                  $50M+
+                  🚀 Moon
                 </div>
                 <div className="text-sm text-muted-foreground">
-                  Total Value Locked
+                  Trajectory Status
                 </div>
               </div>
               <div className="text-center">
                 <div className="text-3xl md:text-4xl font-bold gradient-text">
-                  25K+
+                  🐑 25K+
                 </div>
                 <div className="text-sm text-muted-foreground">
-                  Active Users
+                  Lambs in the Herd
                 </div>
               </div>
               <div className="text-center">
                 <div className="text-3xl md:text-4xl font-bold gradient-text">
-                  99.9%
+                  🏎️ Fast
                 </div>
-                <div className="text-sm text-muted-foreground">Uptime</div>
+                <div className="text-sm text-muted-foreground">Lambo Speed</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl md:text-4xl font-bold gradient-text">
-                  0.001s
+                  💎 Hodl
                 </div>
                 <div className="text-sm text-muted-foreground">
-                  Avg. Transaction
+                  Diamond Hands
                 </div>
               </div>
             </div>
