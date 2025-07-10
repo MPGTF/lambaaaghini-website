@@ -480,7 +480,7 @@ export default function Game() {
       <div className="mx-auto max-w-6xl">
         <div className="text-center mb-12">
           <Badge className="mb-8 bg-gold-500/10 text-gold-400 border-gold-500/20">
-            ����️💨 Professional 2D Racing Simulator
+            🏎️💨 Professional 2D Racing Simulator
           </Badge>
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
             <span className="text-gold-400 font-bold">LAMBAAAGHINI</span>{" "}
@@ -536,7 +536,7 @@ export default function Game() {
 
                   {/* Player (Pixelated Lamb-Car) */}
                   <div
-                    className="absolute transition-all duration-100 flex items-center justify-center text-2xl"
+                    className="absolute transition-all duration-150 ease-out flex items-center justify-center text-2xl"
                     style={{
                       left: PLAYER_X,
                       top: gameState.playerY,
@@ -546,16 +546,20 @@ export default function Game() {
                       filter: gameState.crashed
                         ? "hue-rotate(0deg) saturate(200%)"
                         : "none",
+                      transform: gameState.isJumping
+                        ? "scale(1.1)"
+                        : "scale(1)",
                     }}
                   >
                     <div
-                      className={`transition-all duration-200 ${
-                        gameState.isJumping ? "animate-pulse" : ""
-                      } ${gameState.crashed ? "animate-ping" : ""}`}
+                      className={`transition-all duration-300 ease-out ${
+                        gameState.crashed ? "animate-ping" : ""
+                      }`}
                       style={{
                         imageRendering: "pixelated",
                         fontSize: "24px",
                         textShadow: "2px 2px 0px rgba(0,0,0,0.5)",
+                        transform: "scaleX(-1)", // Flip horizontally to face right
                       }}
                     >
                       {gameState.crashed ? "💥🐑💥" : "🐑🏎️"}
