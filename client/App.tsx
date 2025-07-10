@@ -12,10 +12,10 @@ import TestHome from "./pages/TestHome";
 import Index from "./pages/Index";
 import Launchpad from "./pages/Launchpad";
 // import Game from "./pages/Game"; // Temporarily disabled
-// import Roadmap from "./pages/Roadmap";
-// import Whitepaper from "./pages/Whitepaper";
-// import Team from "./pages/Team";
-// import NotFound from "./pages/NotFound";
+import Roadmap from "./pages/Roadmap";
+import Whitepaper from "./pages/Whitepaper";
+import Team from "./pages/Team";
+import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
@@ -27,10 +27,10 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/launchpad" element={<Launchpad />} />
-          <Route path="/roadmap" element={<TestHome />} />
-          <Route path="/whitepaper" element={<TestHome />} />
-          <Route path="/team" element={<TestHome />} />
-          <Route path="*" element={<TestHome />} />
+          <Route path="/roadmap" element={<Roadmap />} />
+          <Route path="/whitepaper" element={<Whitepaper />} />
+          <Route path="/team" element={<Team />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
     </div>
