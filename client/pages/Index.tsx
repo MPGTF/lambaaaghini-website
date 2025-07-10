@@ -244,7 +244,7 @@ export default function Index() {
           </div>
 
           <div className="text-sm text-muted-foreground">
-            Supports Phantom, Solflare, Backpack, and Ledger wallets
+            Supports Phantom, Solflare, and Ledger wallets
           </div>
         </div>
       </section>
