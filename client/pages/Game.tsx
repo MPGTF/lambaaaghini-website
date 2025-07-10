@@ -132,6 +132,22 @@ const STATUS_TITLES: StatusTitle[] = [
   },
 ];
 
+interface BarrioGameState {
+  playerX: number;
+  playerY: number;
+  velocityX: number;
+  velocityY: number;
+  isGrounded: boolean;
+  coins: Array<{ x: number; y: number; id: number }>;
+  enemies: Array<{ x: number; y: number; id: number; direction: number }>;
+  score: number;
+  lives: number;
+  gameRunning: boolean;
+  gameOver: boolean;
+  level: number;
+  platforms: Array<{ x: number; y: number; width: number; height: number }>;
+}
+
 export default function Game() {
   const { connected, publicKey } = useWallet();
   const [highScores, setHighScores] = useState<HighScore[]>([]);
@@ -140,6 +156,9 @@ export default function Game() {
     null,
   );
   const [showUpgradeModal, setShowUpgradeModal] = useState(false);
+  const [selectedGame, setSelectedGame] = useState<"galaga" | "barrio">(
+    "galaga",
+  );
 
   const [gameState, setGameState] = useState<GameState>({
     playerX: 400,
