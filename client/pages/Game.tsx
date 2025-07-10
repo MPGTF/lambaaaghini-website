@@ -35,6 +35,15 @@ interface GameState {
   playerPowerUp: string | null;
   powerUpTime: number;
   explosions: Array<{ x: number; y: number; id: number; opacity: number }>;
+  fartBombCooldown: number;
+  fartBombs: Array<{
+    x: number;
+    y: number;
+    id: number;
+    radius: number;
+    maxRadius: number;
+    expanding: boolean;
+  }>;
 }
 
 interface HighScore {
@@ -543,7 +552,7 @@ export default function Game() {
       <div className="mx-auto max-w-6xl">
         <div className="text-center mb-12">
           <Badge className="mb-8 bg-gold-500/10 text-gold-400 border-gold-500/20">
-            ���💨 Professional Galactic Defense Simulator
+            🐑💨 Professional Galactic Defense Simulator
           </Badge>
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
             <span className="text-gold-400 font-bold">LAMBAAAGHINI</span>{" "}
