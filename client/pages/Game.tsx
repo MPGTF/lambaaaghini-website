@@ -340,7 +340,7 @@ export default function Game() {
         cancelAnimationFrame(gameLoopRef.current);
       }
     };
-  }, [gameState.gameRunning]);
+  }, [gameState.gameRunning, playCrashSound, connected, saveHighScore]);
 
   // Handle keyboard input
   useEffect(() => {
