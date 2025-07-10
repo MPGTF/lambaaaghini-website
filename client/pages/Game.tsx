@@ -402,9 +402,11 @@ export default function Game() {
                     }}
                   >
                     <div
-                      className={`text-4xl transition-all duration-300 ${gameState.carJumping ? "animate-bounce" : ""}`}
+                      className={`text-4xl transition-all duration-300 ${
+                        gameState.carJumping ? "animate-bounce" : ""
+                      } ${gameState.crashed ? "animate-ping" : ""}`}
                     >
-                      🐑🏎️
+                      {gameState.crashed ? "💥🐑💥" : "🐑🏎️"}
                     </div>
                   </div>
 
