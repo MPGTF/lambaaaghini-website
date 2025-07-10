@@ -20,12 +20,14 @@ import TestHome from "./pages/TestHome";
 const queryClient = new QueryClient();
 
 const App = () => (
-  <div>
-    <Navigation />
+  <BrowserRouter>
     <div>
-      <TestHome />
+      <Navigation />
+      <div>
+        <TestHome />
+      </div>
     </div>
-  </div>
+  </BrowserRouter>
 );
 
 createRoot(document.getElementById("root")!).render(<App />);
