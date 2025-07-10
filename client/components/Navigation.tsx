@@ -25,6 +25,22 @@ const XIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
+// Custom Fartbook Icon Component
+const FartbookIcon = ({ className }: { className?: string }) => (
+  <svg
+    viewBox="0 0 24 24"
+    className={className}
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c5.51 0 10-4.48 10-10S17.51 2 12 2zm3.5 6L12 10.5 8.5 8 12 5.5 15.5 8zM8 10.5l2.5 2.5L8 15.5V10.5zm8 5L13.5 13 16 10.5V15.5zm-4 2.5L9.5 16 12 13.5 14.5 16 12 18z" />
+    <circle cx="12" cy="9" r="1.5" fill="currentColor" opacity="0.7" />
+    <circle cx="9" cy="12" r="1" fill="currentColor" opacity="0.5" />
+    <circle cx="15" cy="12" r="1" fill="currentColor" opacity="0.5" />
+    <circle cx="12" cy="15" r="1.2" fill="currentColor" opacity="0.6" />
+  </svg>
+);
+
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
