@@ -252,10 +252,13 @@ export default function Index() {
                 <div className="w-12 h-12 bg-purple-500/10 rounded-lg flex items-center justify-center mb-6">
                   <Rocket className="h-6 w-6 text-purple-400" />
                 </div>
-                <h3 className="text-xl font-bold mb-4">Cross-Chain Future</h3>
+                <h3 className="text-xl font-bold mb-4">
+                  🌉 Bridge to Everywhere
+                </h3>
                 <p className="text-muted-foreground">
-                  Built for interoperability with planned expansion to Ethereum,
-                  Polygon, and other major chains.
+                  We're building bridges faster than SimCity on speed mode. Soon
+                  your lambs will hop between blockchains like they're playing
+                  interdimensional hopscotch.
                 </p>
               </CardContent>
             </Card>
