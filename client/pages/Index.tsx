@@ -62,7 +62,7 @@ export default function Index() {
             </div>
 
             {/* Right Column - Hero Image */}
-            <div className="relative">
+            <div className="relative lg:col-span-5">
               <div className="relative crypto-glow rounded-2xl overflow-hidden">
                 <img
                   src="https://cdn.builder.io/api/v1/image/assets%2F253ce014bfed48a3b74611f6cf44c794%2F3e5641ce2ffe4d8a9ddd24c343aa4978?format=webp&width=800"
@@ -72,17 +72,26 @@ export default function Index() {
                 <div className="absolute inset-0 bg-gradient-to-t from-background/30 to-transparent rounded-2xl" />
               </div>
 
-              {/* Floating elements around the image */}
-              <div className="absolute -top-4 -right-4 bg-gold-500/20 backdrop-blur-sm border border-gold-500/30 rounded-lg px-4 py-2">
+              {/* Enhanced floating elements with Lamborghini theme */}
+              <div className="absolute -top-4 -right-4 bg-gold-500/20 backdrop-blur-sm border border-gold-500/30 rounded-lg px-4 py-2 animate-pulse">
                 <div className="text-gold-400 font-semibold text-sm">
                   🚀 1000x Potential
                 </div>
               </div>
 
-              <div className="absolute -bottom-4 -left-4 bg-purple-500/20 backdrop-blur-sm border border-purple-500/30 rounded-lg px-4 py-2">
+              <div className="absolute -bottom-4 -left-4 bg-purple-500/20 backdrop-blur-sm border border-purple-500/30 rounded-lg px-4 py-2 animate-pulse">
                 <div className="text-purple-400 font-semibold text-sm">
                   ⚡ Solana Speed
                 </div>
+              </div>
+
+              {/* Additional Lamborghini-themed floating elements */}
+              <div className="absolute top-1/2 -right-6 bg-gold-500/10 backdrop-blur-sm border border-gold-500/20 rounded-full p-3 animate-bounce">
+                <div className="text-gold-400 text-xl">🏎️</div>
+              </div>
+
+              <div className="absolute top-1/4 -left-6 bg-purple-500/10 backdrop-blur-sm border border-purple-500/20 rounded-full p-2 animate-pulse">
+                <div className="text-purple-400 text-lg">🐑</div>
               </div>
             </div>
           </div>
