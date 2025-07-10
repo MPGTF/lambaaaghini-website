@@ -185,7 +185,7 @@ export default function Game() {
   const FART_SPEED = 8;
   const ZOMBIE_SIZE = 30;
 
-  // Load high scores from localStorage
+  // Load high scores and player profile from localStorage
   useEffect(() => {
     const savedScores = localStorage.getItem("lambaaaghini-galaga-scores");
     if (savedScores) {
@@ -199,7 +199,63 @@ export default function Game() {
         setPersonalBest(userBest?.score || 0);
       }
     }
+
+    // Load player profile
+    if (connected && publicKey) {
+      loadPlayerProfile(publicKey.toBase58());
+    }
   }, [connected, publicKey]);
+
+  // Load player profile from localStorage
+  const loadPlayerProfile = (walletAddress: string) => {
+    const savedProfiles = localStorage.getItem("lambaaaghini-player-profiles");
+    const profiles: PlayerProfile[] = savedProfiles
+      ? JSON.parse(savedProfiles)
+      : [];
+
+    let profile = profiles.find((p) => p.walletAddress === walletAddress);
+
+    if (!profile) {
+      // Create new profile
+      profile = {
+        walletAddress,
+        gasBalance: 0,
+        currentTitle: STATUS_TITLES[0].title,
+        titleLevel: 0,
+        totalGasEarned: 0,
+      };
+      profiles.push(profile);
+      localStorage.setItem(
+        "lambaaaghini-player-profiles",
+        JSON.stringify(profiles),
+      );
+    }
+
+    setPlayerProfile(profile);
+  };
+
+  // Save player profile to localStorage
+  const savePlayerProfile = (profile: PlayerProfile) => {
+    const savedProfiles = localStorage.getItem("lambaaaghini-player-profiles");
+    const profiles: PlayerProfile[] = savedProfiles
+      ? JSON.parse(savedProfiles)
+      : [];
+
+    const index = profiles.findIndex(
+      (p) => p.walletAddress === profile.walletAddress,
+    );
+    if (index >= 0) {
+      profiles[index] = profile;
+    } else {
+      profiles.push(profile);
+    }
+
+    localStorage.setItem(
+      "lambaaaghini-player-profiles",
+      JSON.stringify(profiles),
+    );
+    setPlayerProfile(profile);
+  };
 
   // Save high score
   const saveHighScore = useCallback(
@@ -1166,7 +1222,7 @@ export default function Game() {
                 <p>💨 Advanced fart-propulsion weapons</p>
                 <p>🧟 Eliminate all zombie threats</p>
                 <p>⚡ Collect power-ups for tactical advantage</p>
-                <p>�� Survive increasingly difficult waves</p>
+                <p>🏆 Survive increasingly difficult waves</p>
                 <p>🔊 Immersive audio combat feedback</p>
                 <p className="text-gold-400 font-semibold">
                   This is definitely a serious military defense simulation and
