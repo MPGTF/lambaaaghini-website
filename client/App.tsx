@@ -2,86 +2,60 @@ import "./global.css";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { TooltipProvider } from "@/components/ui/tooltip";
 import WalletProvider from "./components/WalletProvider";
 
 // Import working navigation
 import Navigation from "./components/Navigation";
 
-// Test components for problematic pages
-const TestGame = () => (
-  <div
-    style={{
-      backgroundColor: "blue",
-      color: "white",
-      padding: "20px",
-      margin: "20px",
-    }}
-  >
-    <h1>🎮 TEST GAME PAGE - WORKING!</h1>
-    <p>Game component temporarily disabled for testing</p>
-  </div>
-);
-
-// Import simple pages first (these are less likely to crash)
+// Import simple pages
 import Roadmap from "./pages/Roadmap";
 import Whitepaper from "./pages/Whitepaper";
 import Team from "./pages/Team";
 
-// Import ultra-minimal pages
-import IndexUltraMinimal from "./pages/Index-ultra-minimal"; // ← Testing with ZERO UI components
-// import Launchpad from "./pages/Launchpad";  // ← Complex AI/wallet stuff
-// import Game from "./pages/Game";  // ← Complex game logic
-// import BarrioGame from "./pages/BarrioGame";  // ← Complex game logic
+// Import working components
+import IndexUltraMinimal from "./pages/Index-ultra-minimal";
+import GameSimple from "./pages/GameSimple";
+import Launchpad from "./pages/Launchpad";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <WalletProvider>
-        <BrowserRouter>
-          <div
-            className="min-h-screen"
-            style={{ backgroundColor: "#000", color: "#fff" }}
-          >
-            <Navigation />
-            <main style={{ paddingTop: "64px" }}>
-              <Routes>
-                {/* Test ultra-minimal homepage */}
-                <Route path="/" element={<IndexUltraMinimal />} />
-
-                {/* Test simple pages that should work */}
-                <Route path="/roadmap" element={<Roadmap />} />
-                <Route path="/whitepaper" element={<Whitepaper />} />
-                <Route path="/team" element={<Team />} />
-
-                {/* Complex pages disabled for now */}
-                <Route path="/launchpad" element={<TestGame />} />
-                <Route path="/game" element={<TestGame />} />
-                <Route path="/barrio" element={<TestGame />} />
-
-                <Route
-                  path="*"
-                  element={
-                    <div
-                      style={{
-                        backgroundColor: "orange",
-                        color: "white",
-                        padding: "20px",
-                        margin: "20px",
-                      }}
-                    >
-                      <h1>🐑 404 - Page Not Found</h1>
-                    </div>
-                  }
-                />
-              </Routes>
-            </main>
-          </div>
-        </BrowserRouter>
-      </WalletProvider>
-    </TooltipProvider>
+    <WalletProvider>
+      <BrowserRouter>
+        <div
+          className="min-h-screen"
+          style={{ backgroundColor: "#000", color: "#fff" }}
+        >
+          <Navigation />
+          <main style={{ paddingTop: "64px" }}>
+            <Routes>
+              <Route path="/" element={<IndexUltraMinimal />} />
+              <Route path="/roadmap" element={<Roadmap />} />
+              <Route path="/whitepaper" element={<Whitepaper />} />
+              <Route path="/team" element={<Team />} />
+              <Route path="/launchpad" element={<Launchpad />} />
+              <Route path="/game" element={<GameSimple />} />
+              <Route
+                path="*"
+                element={
+                  <div
+                    style={{
+                      backgroundColor: "orange",
+                      color: "white",
+                      padding: "20px",
+                      margin: "20px",
+                    }}
+                  >
+                    <h1>🐑 404 - Page Not Found</h1>
+                  </div>
+                }
+              />
+            </Routes>
+          </main>
+        </div>
+      </BrowserRouter>
+    </WalletProvider>
   </QueryClientProvider>
 );
 
