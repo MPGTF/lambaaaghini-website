@@ -41,7 +41,8 @@ interface TokenMetadata {
 }
 
 export default function Launchpad() {
-  const { connected, publicKey } = useWallet();
+  const { connected, publicKey, sendTransaction } = useWallet();
+  const { connection } = useConnection();
   const [isGenerating, setIsGenerating] = useState(false);
   const [isCreating, setIsCreating] = useState(false);
   const [aiPrompt, setAiPrompt] = useState("");
