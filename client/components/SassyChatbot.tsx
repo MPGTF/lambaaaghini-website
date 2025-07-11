@@ -268,18 +268,18 @@ export default function SassyChatbot() {
 
               {isTyping && (
                 <div className="flex gap-2 justify-start">
-                  <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                  <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                     <Bot className="h-3 w-3 text-white" />
                   </div>
-                  <div className="bg-red-500/10 border border-red-500/20 p-2 rounded-lg text-xs text-red-400">
+                  <div className="bg-blue-500/10 border border-blue-500/20 p-2 rounded-lg text-xs text-blue-400">
                     <div className="flex gap-1">
-                      <div className="w-1 h-1 bg-red-400 rounded-full animate-bounce"></div>
+                      <div className="w-1 h-1 bg-blue-400 rounded-full animate-bounce"></div>
                       <div
-                        className="w-1 h-1 bg-red-400 rounded-full animate-bounce"
+                        className="w-1 h-1 bg-blue-400 rounded-full animate-bounce"
                         style={{ animationDelay: "0.1s" }}
                       ></div>
                       <div
-                        className="w-1 h-1 bg-red-400 rounded-full animate-bounce"
+                        className="w-1 h-1 bg-blue-400 rounded-full animate-bounce"
                         style={{ animationDelay: "0.2s" }}
                       ></div>
                     </div>
