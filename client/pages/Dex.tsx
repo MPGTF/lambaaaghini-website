@@ -77,7 +77,7 @@ const POPULAR_TOKENS: TokenInfo[] = [
 ];
 
 export default function Dex() {
-  const { publicKey, signTransaction } = useWallet();
+  const { publicKey, signTransaction, connected } = useWallet();
   const [fromToken, setFromToken] = useState<TokenInfo>(POPULAR_TOKENS[0]);
   const [toToken, setToToken] = useState<TokenInfo>(POPULAR_TOKENS[1]);
   const [fromAmount, setFromAmount] = useState("");
