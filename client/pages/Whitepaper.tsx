@@ -127,7 +127,7 @@ export default function Whitepaper() {
             <div className="text-lg leading-relaxed space-y-4 italic text-center max-w-4xl mx-auto">
               <p>
                 "I had a vision... I seen lambs, beautiful lambs, racing through
-                emerald meadows in Lamborghinis made of pure golden wool..."
+                emerald meadows in Lambaaaghinis made of pure golden wool..."
               </p>
               <p>
                 "These ain't regular lambs, these are VISIONARY lambs, these are
@@ -148,10 +148,10 @@ export default function Whitepaper() {
               <p>
                 "This is what Lambaaaghini represents. This is the ENERGY. This
                 is why we exist. This is bigger than cryptocurrency. This is
-                ART. This is CULTURE. This is LAMBS IN LAMBORGHINIS."
+                ART. This is CULTURE. This is LAMBS IN LAMBAAAGHINIS."
               </p>
               <p className="text-gold-400 font-bold text-xl">
-                "WE ARE THE LAMBS. WE ARE THE MEADOW. WE ARE THE LAMBORGHINI."
+                "WE ARE THE LAMBS. WE ARE THE MEADOW. WE ARE THE LAMBAAAGHINI."
               </p>
             </div>
           </CardContent>
