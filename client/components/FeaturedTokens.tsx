@@ -75,7 +75,24 @@ export default function FeaturedTokens({
 
     // Update every minute
     const interval = setInterval(loadFeaturedTokens, 60000);
-    return () => clearInterval(interval);
+
+    // Listen for custom event to refresh featured tokens
+    const handleFeaturedTokensUpdate = () => {
+      loadFeaturedTokens();
+    };
+
+    window.addEventListener(
+      "featuredTokensUpdated",
+      handleFeaturedTokensUpdate,
+    );
+
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener(
+        "featuredTokensUpdated",
+        handleFeaturedTokensUpdate,
+      );
+    };
   }, []);
 
   const getTimeRemaining = (featuredUntil: number): string => {
