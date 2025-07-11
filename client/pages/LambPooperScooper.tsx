@@ -296,11 +296,19 @@ export default function LambPooperScooper() {
             <span className="text-gold-400">Lamb</span>{" "}
             <span className="text-purple-400">Pooper Scooper</span>
           </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-6">
             Clean up after your crypto sheep! Scoop up SOL droppings from
             abandoned token pastures. Your shepherd takes a small 5% treat fee
             for the cleanup service. 🐑💩➡️💰
           </p>
+          {/* Medium lamb car image representing the goal of cleaning */}
+          <div className="flex justify-center">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets%2F253ce014bfed48a3b74611f6cf44c794%2F3e5641ce2ffe4d8a9ddd24c343aa4978?format=webp&width=170"
+              alt="Clean for the Lambaaaghini"
+              className="w-26 h-16 object-cover rounded-lg opacity-75 hover:opacity-95 transition-opacity"
+            />
+          </div>
         </div>
 
         {/* Wallet Connection */}
