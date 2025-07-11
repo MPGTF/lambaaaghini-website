@@ -309,6 +309,11 @@ export default function Dex() {
       token.name.toLowerCase().includes(searchQuery.toLowerCase()),
   );
 
+  // Check Axiom signup on mount
+  useEffect(() => {
+    checkAxiomSignup();
+  }, []);
+
   // Load DexScreener chart
   useEffect(() => {
     if (chartRef.current && toToken?.address) {
