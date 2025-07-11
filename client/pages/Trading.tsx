@@ -232,11 +232,19 @@ export default function Trading() {
               TOOLS
             </span>
           </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-6">
             Professional-grade trading tools for serious sheep! Set price
             alerts, deploy trading bots, analyze your performance, and trade
             like the alpha sheep you are! 🐑📈
           </p>
+          {/* Medium lamb car image for trading inspiration */}
+          <div className="flex justify-center">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets%2F253ce014bfed48a3b74611f6cf44c794%2F3e5641ce2ffe4d8a9ddd24c343aa4978?format=webp&width=160"
+              alt="Trading Goals - Lambaaaghini"
+              className="w-24 h-15 object-cover rounded-lg opacity-70 hover:opacity-90 transition-opacity"
+            />
+          </div>
         </div>
 
         {!connected ? (
