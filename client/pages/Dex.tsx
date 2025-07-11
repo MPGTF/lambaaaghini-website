@@ -442,6 +442,14 @@ export default function Dex() {
               trade supports the sheep! 🐑💰
             </p>
           </div>
+          {/* Medium lamb car image for DEX branding */}
+          <div className="flex justify-center mt-8 mb-4">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets%2F253ce014bfed48a3b74611f6cf44c794%2F3e5641ce2ffe4d8a9ddd24c343aa4978?format=webp&width=180"
+              alt="Lambaaaghini DEX"
+              className="w-28 h-18 object-cover rounded-lg opacity-80 hover:opacity-100 transition-opacity crypto-glow"
+            />
+          </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
