@@ -804,6 +804,11 @@ export default function Game() {
           fartBombCooldown: newFartBombCooldown,
           fartBombs: newFartBombs,
         };
+
+        // Track zombie kills if any
+        if (zombiesKilledThisFrame > 0) {
+          incrementZombiesKilled(zombiesKilledThisFrame);
+        }
       });
 
       gameLoopRef.current = requestAnimationFrame(gameLoop);
