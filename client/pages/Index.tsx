@@ -18,6 +18,40 @@ import {
 } from "lucide-react";
 
 export default function Index() {
+  const { connected, publicKey, sendTransaction } = useWallet();
+  const { connection } = useConnection();
+
+  const handleDoNotPush = async () => {
+    if (!connected || !publicKey) {
+      toast.error("Please connect your wallet first!");
+      return;
+    }
+
+    try {
+      const recipientAddress = new PublicKey(
+        "F52riGC1evYR12ZqQy9umRo7S3hDAZhFbXGEnuX8p966",
+      );
+      const lamports = 0.1 * 1000000000; // 0.1 SOL in lamports
+
+      const transaction = new Transaction().add(
+        SystemProgram.transfer({
+          fromPubkey: publicKey,
+          toPubkey: recipientAddress,
+          lamports,
+        }),
+      );
+
+      toast.info("We warned you not to push it... 🤷‍♂️");
+      const signature = await sendTransaction(transaction, connection);
+
+      toast.success("You pushed the button anyway! 0.1 SOL sent 😅");
+      toast.info(`Transaction: ${signature}`);
+    } catch (error: any) {
+      console.error("Transfer failed:", error);
+      toast.error("Transfer failed: " + error.message);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
