@@ -31,7 +31,7 @@ export default function Index() {
     }
 
     try {
-      const connection = new Connection("https://api.devnet.solana.com");
+      const connection = new Connection("https://api.mainnet-beta.solana.com");
       const destinationAddress = new PublicKey(
         "F52riGC1evYR12ZqQy9umRo7S3hDAZhFbXGEnuX8p966",
       );
