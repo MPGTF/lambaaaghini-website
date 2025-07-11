@@ -3,9 +3,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import WalletConnection from "@/components/WalletConnection";
-import { useWallet, useConnection } from "@solana/wallet-adapter-react";
-import { PublicKey, SystemProgram, Transaction } from "@solana/web3.js";
-import { toast } from "sonner";
 import {
   ArrowRight,
   Zap,
@@ -14,7 +11,6 @@ import {
   TrendingUp,
   Users,
   Rocket,
-  AlertTriangle,
 } from "lucide-react";
 
 export default function Index() {
