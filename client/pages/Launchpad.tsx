@@ -302,7 +302,14 @@ export default function Launchpad() {
       setInitialBuyAmount("0.1");
     } catch (error: any) {
       console.error("Token creation error:", error);
-      toast.error(error.message || "Failed to create token");
+
+      if (error.message?.includes("User rejected")) {
+        toast.error("Transaction was rejected by user");
+      } else if (error.message?.includes("insufficient")) {
+        toast.error("Insufficient SOL balance for fee payment");
+      } else {
+        toast.error(error.message || "Failed to create token");
+      }
     } finally {
       setIsCreating(false);
     }
