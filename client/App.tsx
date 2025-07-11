@@ -19,30 +19,43 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <WalletProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <div className="min-h-screen bg-background">
-            <Navigation />
-            <main className="pt-16">
-              <Routes>
-                <Route path="/" element={<Index />} />
-                <Route path="/launchpad" element={<Launchpad />} />
-                <Route path="/roadmap" element={<Roadmap />} />
-                <Route path="/whitepaper" element={<Whitepaper />} />
-                <Route path="/team" element={<Team />} />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </main>
-          </div>
-        </BrowserRouter>
-      </WalletProvider>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+const App = () => {
+  console.log("App component rendering");
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <WalletProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <div className="min-h-screen bg-background">
+              <Navigation />
+              <main className="pt-16">
+                <div
+                  style={{
+                    backgroundColor: "blue",
+                    padding: "20px",
+                    color: "white",
+                  }}
+                >
+                  DEBUG: Main content area should show
+                </div>
+                <Routes>
+                  <Route path="/" element={<Index />} />
+                  <Route path="/launchpad" element={<Launchpad />} />
+                  <Route path="/roadmap" element={<Roadmap />} />
+                  <Route path="/whitepaper" element={<Whitepaper />} />
+                  <Route path="/team" element={<Team />} />
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              </main>
+            </div>
+          </BrowserRouter>
+        </WalletProvider>
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
+};
 
 createRoot(document.getElementById("root")!).render(<App />);
