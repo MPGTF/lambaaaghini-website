@@ -1207,7 +1207,13 @@ export default function Game() {
                 </div>
 
                 {/* Controls */}
-                <div className="mt-8 text-center space-y-6 game-control-area">
+                <div
+                  className={`mt-8 text-center space-y-6 game-control-area ${
+                    isLandscape && window.innerWidth < 1024
+                      ? "mobile-landscape-controls"
+                      : ""
+                  }`}
+                >
                   {!gameState.gameRunning && !gameState.gameOver && (
                     <Button
                       onClick={startGame}
