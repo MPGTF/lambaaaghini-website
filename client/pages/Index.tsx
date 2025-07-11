@@ -237,6 +237,14 @@ export default function Index() {
                   asChild
                   size="lg"
                   variant="outline"
+                  className="border-orange-500/50 text-orange-400 hover:bg-orange-500/10 px-8 py-6 text-lg"
+                >
+                  <Link to="/lamb-sauce">Join Lamb Sauce Chat</Link>
+                </Button>
+                <Button
+                  asChild
+                  size="lg"
+                  variant="outline"
                   className="border-purple-500/50 text-purple-400 hover:bg-purple-500/10 px-8 py-6 text-lg"
                 >
                   <Link to="/whitepaper">Read Whitepaper</Link>
