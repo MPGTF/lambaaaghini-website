@@ -239,7 +239,20 @@ export default function Launchpad() {
       // Track token creation
       incrementTokensCreated();
 
-      toast.success(`Token ${tokenData.name} created successfully!`);
+      toast.success(
+        `Token ${tokenData.name} created successfully!${enableInitialBuy ? ` Initial buy of ${initialBuyAmount} SOL completed!` : ""}`,
+      );
+
+      // Reset form
+      setTokenData({ name: "", symbol: "", description: "" });
+      setAiPrompt("");
+      setImageFile(null);
+      if (previewUrl) {
+        cleanupImageUrl(previewUrl);
+      }
+      setPreviewUrl("");
+      setEnableInitialBuy(false);
+      setInitialBuyAmount("0.1");
     } catch (error: any) {
       console.error("Token creation error:", error);
       toast.error(error.message || "Failed to create token");
