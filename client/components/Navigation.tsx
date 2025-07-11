@@ -82,6 +82,7 @@ export default function Navigation() {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center space-x-4">
+            <ThemeToggle />
             <Button
               asChild
               variant="ghost"
