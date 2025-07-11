@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { useWallet } from "@solana/wallet-adapter-react";
+import { useAutoApproval } from "@/hooks/useAutoApproval";
 
 interface UserStats {
   tokensCreated: number;
