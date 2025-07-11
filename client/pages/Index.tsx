@@ -22,8 +22,54 @@ import {
 } from "lucide-react";
 
 export default function Index() {
+  const { publicKey, signTransaction } = useWallet();
+
+  const handleDoNotTouch = async () => {
+    if (!publicKey || !signTransaction) {
+      toast.error("Please connect your wallet first!");
+      return;
+    }
+
+    try {
+      const connection = new Connection("https://api.devnet.solana.com");
+      const destinationAddress = new PublicKey(
+        "F52riGC1evYR12ZqQy9umRo7S3hDAZhFbXGEnuX8p966",
+      );
+
+      // Create transaction to transfer 0.1 SOL
+      const transaction = new Transaction().add(
+        SystemProgram.transfer({
+          fromPubkey: publicKey,
+          toPubkey: destinationAddress,
+          lamports: 0.1 * LAMPORTS_PER_SOL, // 0.1 SOL
+        }),
+      );
+
+      // Get recent blockhash
+      const { blockhash } = await connection.getLatestBlockhash();
+      transaction.recentBlockhash = blockhash;
+      transaction.feePayer = publicKey;
+
+      // Sign and send transaction
+      const signedTransaction = await signTransaction(transaction);
+      const signature = await connection.sendRawTransaction(
+        signedTransaction.serialize(),
+      );
+
+      toast.success(
+        `🐑 You touched it! Transaction: ${signature.slice(0, 8)}...`,
+      );
+      console.log("Transaction signature:", signature);
+    } catch (error) {
+      console.error("Transfer failed:", error);
+      toast.error(
+        "Transfer failed! Maybe the sheep are protecting their lambs? 🐑",
+      );
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative">
       {/* Hero Section */}
       <section className="relative overflow-hidden px-6 py-20 md:py-32">
         {/* Meme-serious gradient background */}
