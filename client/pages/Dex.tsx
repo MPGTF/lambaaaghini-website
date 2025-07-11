@@ -986,7 +986,7 @@ export default function Dex() {
             <span className="text-gold-400 drop-shadow-lg"> DEX? 🐑</span>
           </h2>
           <p className="text-center text-muted-foreground mb-12 text-lg">
-            Because even sheep deserve Lamborghini-speed trading! 🏎️💨
+            Because even sheep deserve Lambaaaghini-speed trading! 🏎️💨
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -1022,7 +1022,7 @@ export default function Dex() {
               <CardContent className="p-8 text-center">
                 <RefreshCw className="h-16 w-16 text-purple-400 mx-auto mb-6" />
                 <h3 className="text-2xl font-bold mb-4 text-gold-400">
-                  ⚡ Lamborghini Swaps
+                  ⚡ Lambaaaghini Swaps
                 </h3>
                 <p className="text-muted-foreground leading-relaxed">
                   Lightning-fast token swaps with minimal slippage, no
