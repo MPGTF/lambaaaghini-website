@@ -12,6 +12,19 @@ import { Badge } from "@/components/ui/badge";
 import { Wallet, Copy, ExternalLink, LogOut, ChevronDown } from "lucide-react";
 import { toast } from "sonner";
 
+// Add type declaration for Phantom wallet
+declare global {
+  interface Window {
+    solana?: {
+      isPhantom?: boolean;
+      connect: () => Promise<{ publicKey: any }>;
+      disconnect: () => Promise<void>;
+      on: (event: string, callback: Function) => void;
+      removeListener: (event: string, callback: Function) => void;
+    };
+  }
+}
+
 interface WalletConnectionProps {
   variant?: "default" | "outline" | "ghost";
   className?: string;
