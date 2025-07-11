@@ -23,7 +23,7 @@ export default function Index() {
 
         {/* Floating Lamborghini aesthetic elements - positioned to avoid text overlap */}
         <div className="absolute top-10 right-10 text-4xl opacity-5 animate-pulse pointer-events-none">
-          ��️
+          🏎️
         </div>
         <div className="absolute bottom-10 left-10 text-3xl opacity-5 animate-bounce pointer-events-none">
           💎
@@ -155,13 +155,13 @@ export default function Index() {
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              <span className="text-gold-400 font-bold">Engineered for </span>
-              <span className="text-gold-400 font-bold">Excellence</span>
+              <span className="text-gold-400 font-bold">Memetically </span>
+              <span className="text-gold-400 font-bold">Engineered</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Built on Solana's high-performance blockchain, Lambaaaghini
-              delivers institutional-grade DeFi protocols with luxury-class user
-              experience.
+              Built by sheep who somehow learned to code while dreaming of
+              Lamborghinis. Features may include excessive bleating and
+              questionable financial decisions.
             </p>
           </div>
 
