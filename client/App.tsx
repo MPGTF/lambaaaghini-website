@@ -53,8 +53,8 @@ const App = () => (
                   <Route path="/pay-the-lamb" element={<PayTheLamb />} />
                   <Route path="/lamb-sauce" element={<LambSauce />} />
                   <Route
-                    path="/sol-dust-cleaner"
-                    element={<SolDustCleaner />}
+                    path="/lamb-pooper-scooper"
+                    element={<LambPooperScooper />}
                   />
                   <Route path="/game" element={<Game />} />
                   <Route path="/roadmap" element={<Roadmap />} />
