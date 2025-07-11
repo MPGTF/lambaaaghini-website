@@ -25,6 +25,7 @@ import {
   TrendingUp,
   Users,
   Rocket,
+  Wallet,
 } from "lucide-react";
 
 export default function Index() {
@@ -232,7 +233,7 @@ export default function Index() {
 
               {/* Additional Lamborghini-themed floating elements */}
               <div className="absolute top-1/2 -right-6 bg-gold-500/10 backdrop-blur-sm border border-gold-500/20 rounded-full p-3 animate-bounce">
-                <div className="text-gold-400 text-xl">🏎️</div>
+                <div className="text-gold-400 text-xl">🏎���</div>
               </div>
 
               <div className="absolute top-1/4 -left-6 bg-purple-500/10 backdrop-blur-sm border border-purple-500/20 rounded-full p-2 animate-pulse">
