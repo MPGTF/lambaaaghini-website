@@ -617,6 +617,88 @@ export default function Launchpad() {
                       </div>
                     </div>
 
+                    {/* Initial Buy Section */}
+                    <div className="space-y-4 border-t border-muted-foreground/20 pt-6">
+                      <div className="flex items-center space-x-2">
+                        <input
+                          type="checkbox"
+                          id="enable-initial-buy"
+                          checked={enableInitialBuy}
+                          onChange={(e) =>
+                            setEnableInitialBuy(e.target.checked)
+                          }
+                          className="w-4 h-4 text-gold-400 bg-background border-muted-foreground rounded focus:ring-gold-400"
+                        />
+                        <Label
+                          htmlFor="enable-initial-buy"
+                          className="font-medium"
+                        >
+                          🚀 Make Initial Buy on Pump.Fun
+                        </Label>
+                      </div>
+
+                      {enableInitialBuy && (
+                        <div className="bg-muted/20 rounded-lg p-4 space-y-3">
+                          <Label htmlFor="initial-buy-amount">
+                            Initial Buy Amount (SOL)
+                          </Label>
+                          <Input
+                            id="initial-buy-amount"
+                            type="number"
+                            step="0.01"
+                            min="0.01"
+                            max="10"
+                            value={initialBuyAmount}
+                            onChange={(e) =>
+                              setInitialBuyAmount(e.target.value)
+                            }
+                            placeholder="0.1"
+                            className="mt-2"
+                          />
+                          <p className="text-xs text-muted-foreground">
+                            💡 Recommended: 0.1-1 SOL for initial liquidity and
+                            price stability
+                          </p>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Fee Information */}
+                    <div className="bg-gradient-to-r from-purple-500/10 to-gold-500/10 rounded-lg p-4 border border-purple-500/20">
+                      <h4 className="font-semibold mb-3 text-gold-400">
+                        💰 Cost Breakdown
+                      </h4>
+                      <div className="space-y-2 text-sm">
+                        <div className="flex justify-between">
+                          <span>Creation Fee:</span>
+                          <span className="font-mono">{creationFee} SOL</span>
+                        </div>
+                        {enableInitialBuy && (
+                          <div className="flex justify-between">
+                            <span>Initial Buy:</span>
+                            <span className="font-mono">
+                              {initialBuyAmount} SOL
+                            </span>
+                          </div>
+                        )}
+                        <div className="border-t border-muted-foreground/20 pt-2 flex justify-between font-semibold">
+                          <span>Total:</span>
+                          <span className="font-mono text-gold-400">
+                            {(
+                              creationFee +
+                              (enableInitialBuy
+                                ? parseFloat(initialBuyAmount) || 0
+                                : 0)
+                            ).toFixed(3)}{" "}
+                            SOL
+                          </span>
+                        </div>
+                      </div>
+                      <p className="text-xs text-muted-foreground mt-3">
+                        🐑 Creation fee helps maintain the sheep's lambo fund
+                      </p>
+                    </div>
+
                     <Button
                       onClick={createToken}
                       disabled={
