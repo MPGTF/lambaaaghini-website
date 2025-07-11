@@ -341,64 +341,16 @@ export default function Navigation() {
                     <WalletMultiButton className="!bg-gradient-to-r !from-purple-500 !to-purple-700 hover:!from-purple-600 hover:!to-purple-800 !text-white !font-semibold !border-0 !rounded-md !px-4 !py-2 !justify-start !w-full !min-h-[50px]" />
                   </div>
 
-                  <div className="mb-6">
-                    <p className="text-sm text-muted-foreground mb-4">
-                      Launch Apps
-                    </p>
-                    <div className="space-y-3">
-                      <Button
-                        asChild
-                        className="bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-black font-semibold justify-start min-h-[50px] w-full"
-                      >
-                        <Link to="/dex" onClick={() => setIsOpen(false)}>
-                          <span className="text-lg mr-2">⚡</span>
-                          DEX Trading
-                        </Link>
-                      </Button>
-                      <Button
-                        asChild
-                        variant="outline"
-                        className="border-blue-500/50 text-blue-400 hover:bg-blue-500/10 justify-start min-h-[50px] w-full"
-                      >
-                        <Link to="/trading" onClick={() => setIsOpen(false)}>
-                          <span className="text-lg mr-2">📊</span>
-                          Advanced Trading
-                        </Link>
-                      </Button>
-                      <Button
-                        asChild
-                        variant="outline"
-                        className="border-purple-500/50 text-purple-400 hover:bg-purple-500/10 justify-start min-h-[50px] w-full"
-                      >
-                        <Link to="/portfolio" onClick={() => setIsOpen(false)}>
-                          <span className="text-lg mr-2">💼</span>
-                          Portfolio
-                        </Link>
-                      </Button>
-                      <Button
-                        asChild
-                        variant="outline"
-                        className="border-red-500/50 text-red-400 hover:bg-red-500/10 justify-start min-h-[50px] w-full"
-                      >
-                        <Link to="/launchpad" onClick={() => setIsOpen(false)}>
-                          <span className="text-lg mr-2">🚀</span>
-                          Token Launchpad
-                        </Link>
-                      </Button>
-                      <Button
-                        asChild
-                        variant="outline"
-                        className="border-green-500/50 text-green-400 hover:bg-green-500/10 justify-start min-h-[50px] w-full"
-                      >
-                        <Link
-                          to="/lamb-pooper-scooper"
-                          onClick={() => setIsOpen(false)}
-                        >
-                          <span className="text-lg mr-2">🐑</span>
-                          Lamb Pooper Scooper
-                        </Link>
-                      </Button>
-                    </div>
+                  <div className="flex flex-col space-y-4 mb-6">
+                    <Button
+                      asChild
+                      className="bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-black font-semibold justify-start min-h-[50px]"
+                    >
+                      <Link to="/launchpad" onClick={() => setIsOpen(false)}>
+                        Launch App
+                        <ExternalLink className="w-4 h-4 ml-2" />
+                      </Link>
+                    </Button>
                   </div>
 
                   <div className="pt-4 border-t border-border/30">
