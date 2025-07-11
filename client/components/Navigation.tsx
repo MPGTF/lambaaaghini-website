@@ -198,6 +198,26 @@ export default function Navigation() {
                         </span>
                       </div>
                     </div>
+                    {isLoggedIn && (
+                      <div className="mt-3 pt-3 border-t border-gold-500/30">
+                        <button
+                          onClick={autoApproval.toggleAutoApproval}
+                          className={`flex items-center justify-between w-full px-3 py-2 rounded transition-colors ${
+                            autoApproval.isEnabled
+                              ? "bg-green-500/20 text-green-400 border border-green-500/30"
+                              : "bg-gray-500/20 text-gray-400 border border-gray-500/30"
+                          }`}
+                        >
+                          <div className="flex items-center space-x-2">
+                            <Settings className="h-4 w-4" />
+                            <span className="text-sm">Auto-Approval</span>
+                          </div>
+                          <span className="text-xs font-semibold">
+                            {autoApproval.isEnabled ? "ON" : "OFF"}
+                          </span>
+                        </button>
+                      </div>
+                    )}
                   </div>
                 )}
 
