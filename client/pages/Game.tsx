@@ -665,6 +665,7 @@ export default function Game() {
                     : zombie.type === "fast"
                       ? 30
                       : 20;
+                zombiesKilledThisFrame++;
                 playExplosionSound();
 
                 // Add explosion effect
@@ -981,7 +982,7 @@ export default function Game() {
                         {zombie.type === "tank"
                           ? "🧟‍♂️"
                           : zombie.type === "fast"
-                            ? "🧟‍♀️"
+                            ? "���‍♀️"
                             : "🧟"}
                       </div>
                     </div>
