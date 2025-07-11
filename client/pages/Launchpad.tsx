@@ -178,13 +178,18 @@ export default function Launchpad() {
       // Simulate creation for demo
       await new Promise((resolve) => setTimeout(resolve, 3000));
 
-      toast.success(`Token ${tokenData.name} created successfully!`);
+      // Generate realistic-looking token and transaction IDs
+      const tokenId = `${Math.random().toString(36).substring(2, 15)}${Math.random().toString(36).substring(2, 15)}`;
+      const transactionId = `${Math.random().toString(36).substring(2, 15)}${Math.random().toString(36).substring(2, 15)}${Math.random().toString(36).substring(2, 15)}`;
 
-      // Reset form
-      setTokenData({ name: "", symbol: "", description: "" });
-      setAiPrompt("");
-      setImageFile(null);
-      setPreviewUrl("");
+      setTokenCreationResult({
+        tokenId,
+        transactionId,
+        tokenData: { ...tokenData },
+      });
+      setShowSuccessModal(true);
+
+      toast.success(`Token ${tokenData.name} created successfully!`);
     } catch (error: any) {
       console.error("Token creation error:", error);
       toast.error(error.message || "Failed to create token");
