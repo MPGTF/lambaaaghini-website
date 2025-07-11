@@ -1000,9 +1000,7 @@ export default function Game() {
         {/* Header - Hidden in fullscreen landscape mode on mobile */}
         <div
           className={`text-center mb-12 ${
-            isFullscreen && isLandscape && window.innerWidth < 768
-              ? "hidden"
-              : ""
+            isFullscreen && isLandscape && isMobile ? "hidden" : ""
           }`}
         >
           <Badge className="mb-8 bg-gold-500/10 text-gold-400 border-gold-500/20">
@@ -1365,7 +1363,7 @@ export default function Game() {
                             touchAction: "manipulation",
                           }}
                         >
-                          →
+                          ���
                         </button>
                       </div>
 
