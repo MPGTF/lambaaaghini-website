@@ -358,7 +358,7 @@ function addPixelatedElements(
   // Silly animal elements
   if (combinedText.includes("sheep") || combinedText.includes("lamb")) {
     elements.push(() =>
-      drawFunnySheep(ctx, 140, 140, blockSize, colors.tertiary),
+      drawSillySheep(ctx, 140, 140, blockSize, colors.tertiary),
     );
     elements.push(() => drawSheepFace(ctx, 40, 140, blockSize, colors.primary));
   }
@@ -546,6 +546,368 @@ function generateColorsFromText(text: string): {
     secondary: `hsl(${hue2}, 85%, 55%)`,
     tertiary: `hsl(${hue3}, 80%, 65%)`,
   };
+}
+
+function drawSillyRocket(
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  size: number,
+  color: string,
+) {
+  ctx.fillStyle = color;
+  const pattern = [
+    [0, 1, 0],
+    [1, 1, 1],
+    [1, 1, 1],
+    [0, 1, 0],
+    [1, 0, 1],
+  ];
+  for (let row = 0; row < pattern.length; row++) {
+    for (let col = 0; col < pattern[row].length; col++) {
+      if (pattern[row][col]) {
+        ctx.fillRect(x + col * size, y + row * size, size, size);
+      }
+    }
+  }
+}
+
+function drawPixelatedMoon(
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  size: number,
+  color: string,
+) {
+  ctx.fillStyle = color;
+  const pattern = [
+    [0, 1, 1, 0],
+    [1, 0, 1, 1],
+    [1, 1, 0, 1],
+    [0, 1, 1, 0],
+  ];
+  for (let row = 0; row < pattern.length; row++) {
+    for (let col = 0; col < pattern[row].length; col++) {
+      if (pattern[row][col]) {
+        ctx.fillRect(x + col * size, y + row * size, size, size);
+      }
+    }
+  }
+}
+
+function drawAstronaut(
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  size: number,
+  color: string,
+) {
+  ctx.fillStyle = color;
+  const pattern = [
+    [0, 1, 1, 0],
+    [1, 0, 0, 1],
+    [1, 1, 1, 1],
+    [0, 1, 1, 0],
+    [1, 0, 0, 1],
+  ];
+  for (let row = 0; row < pattern.length; row++) {
+    for (let col = 0; col < pattern[row].length; col++) {
+      if (pattern[row][col]) {
+        ctx.fillRect(x + col * size, y + row * size, size, size);
+      }
+    }
+  }
+}
+
+function drawSillySheep(
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  size: number,
+  color: string,
+) {
+  ctx.fillStyle = color;
+  const pattern = [
+    [1, 1, 1, 1],
+    [1, 0, 0, 1],
+    [1, 1, 1, 1],
+    [0, 1, 1, 0],
+  ];
+  for (let row = 0; row < pattern.length; row++) {
+    for (let col = 0; col < pattern[row].length; col++) {
+      if (pattern[row][col]) {
+        ctx.fillRect(x + col * size, y + row * size, size, size);
+      }
+    }
+  }
+}
+
+function drawSheepFace(
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  size: number,
+  color: string,
+) {
+  ctx.fillStyle = color;
+  const pattern = [
+    [1, 1, 1],
+    [1, 0, 1],
+    [0, 1, 0],
+  ];
+  for (let row = 0; row < pattern.length; row++) {
+    for (let col = 0; col < pattern[row].length; col++) {
+      if (pattern[row][col]) {
+        ctx.fillRect(x + col * size, y + row * size, size, size);
+      }
+    }
+  }
+}
+
+function drawSillyDog(
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  size: number,
+  color: string,
+) {
+  ctx.fillStyle = color;
+  const pattern = [
+    [1, 0, 1],
+    [1, 1, 1],
+    [1, 0, 1],
+    [0, 1, 0],
+  ];
+  for (let row = 0; row < pattern.length; row++) {
+    for (let col = 0; col < pattern[row].length; col++) {
+      if (pattern[row][col]) {
+        ctx.fillRect(x + col * size, y + row * size, size, size);
+      }
+    }
+  }
+}
+
+function drawDogeFace(
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  size: number,
+  color: string,
+) {
+  ctx.fillStyle = color;
+  const pattern = [
+    [1, 0, 1],
+    [0, 1, 0],
+    [1, 1, 1],
+  ];
+  for (let row = 0; row < pattern.length; row++) {
+    for (let col = 0; col < pattern[row].length; col++) {
+      if (pattern[row][col]) {
+        ctx.fillRect(x + col * size, y + row * size, size, size);
+      }
+    }
+  }
+}
+
+function drawSillyCat(
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  size: number,
+  color: string,
+) {
+  ctx.fillStyle = color;
+  const pattern = [
+    [1, 0, 1],
+    [1, 1, 1],
+    [1, 0, 1],
+    [0, 1, 0],
+  ];
+  for (let row = 0; row < pattern.length; row++) {
+    for (let col = 0; col < pattern[row].length; col++) {
+      if (pattern[row][col]) {
+        ctx.fillRect(x + col * size, y + row * size, size, size);
+      }
+    }
+  }
+}
+
+function drawCatFace(
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  size: number,
+  color: string,
+) {
+  ctx.fillStyle = color;
+  const pattern = [
+    [1, 0, 1],
+    [0, 1, 0],
+    [1, 0, 1],
+  ];
+  for (let row = 0; row < pattern.length; row++) {
+    for (let col = 0; col < pattern[row].length; col++) {
+      if (pattern[row][col]) {
+        ctx.fillRect(x + col * size, y + row * size, size, size);
+      }
+    }
+  }
+}
+
+function drawToyCar(
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  size: number,
+  color: string,
+) {
+  ctx.fillStyle = color;
+  const pattern = [
+    [0, 1, 1, 0],
+    [1, 1, 1, 1],
+    [0, 1, 1, 0],
+  ];
+  for (let row = 0; row < pattern.length; row++) {
+    for (let col = 0; col < pattern[row].length; col++) {
+      if (pattern[row][col]) {
+        ctx.fillRect(x + col * size, y + row * size, size, size);
+      }
+    }
+  }
+}
+
+function drawCarEmoji(
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  size: number,
+  color: string,
+) {
+  ctx.fillStyle = color;
+  const pattern = [
+    [1, 1, 1, 1],
+    [1, 0, 0, 1],
+    [1, 1, 1, 1],
+  ];
+  for (let row = 0; row < pattern.length; row++) {
+    for (let col = 0; col < pattern[row].length; col++) {
+      if (pattern[row][col]) {
+        ctx.fillRect(x + col * size, y + row * size, size, size);
+      }
+    }
+  }
+}
+
+function drawPixelPizza(
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  size: number,
+  color: string,
+) {
+  ctx.fillStyle = color;
+  const pattern = [
+    [1, 1, 1],
+    [1, 0, 1],
+    [1, 1, 0],
+  ];
+  for (let row = 0; row < pattern.length; row++) {
+    for (let col = 0; col < pattern[row].length; col++) {
+      if (pattern[row][col]) {
+        ctx.fillRect(x + col * size, y + row * size, size, size);
+      }
+    }
+  }
+}
+
+function drawPixelBanana(
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  size: number,
+  color: string,
+) {
+  ctx.fillStyle = color;
+  const pattern = [
+    [0, 1],
+    [1, 1],
+    [1, 1],
+    [1, 0],
+  ];
+  for (let row = 0; row < pattern.length; row++) {
+    for (let col = 0; col < pattern[row].length; col++) {
+      if (pattern[row][col]) {
+        ctx.fillRect(x + col * size, y + row * size, size, size);
+      }
+    }
+  }
+}
+
+function drawSmileyFace(
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  size: number,
+  color: string,
+) {
+  ctx.fillStyle = color;
+  const pattern = [
+    [0, 1, 1, 0],
+    [1, 0, 0, 1],
+    [1, 0, 0, 1],
+    [0, 1, 1, 0],
+  ];
+  for (let row = 0; row < pattern.length; row++) {
+    for (let col = 0; col < pattern[row].length; col++) {
+      if (pattern[row][col]) {
+        ctx.fillRect(x + col * size, y + row * size, size, size);
+      }
+    }
+  }
+}
+
+function drawHeart(
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  size: number,
+  color: string,
+) {
+  ctx.fillStyle = color;
+  const pattern = [
+    [1, 0, 1],
+    [1, 1, 1],
+    [0, 1, 0],
+  ];
+  for (let row = 0; row < pattern.length; row++) {
+    for (let col = 0; col < pattern[row].length; col++) {
+      if (pattern[row][col]) {
+        ctx.fillRect(x + col * size, y + row * size, size, size);
+      }
+    }
+  }
+}
+
+function drawStar(
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  size: number,
+  color: string,
+) {
+  ctx.fillStyle = color;
+  const pattern = [
+    [0, 1, 0],
+    [1, 1, 1],
+    [0, 1, 0],
+  ];
+  for (let row = 0; row < pattern.length; row++) {
+    for (let col = 0; col < pattern[row].length; col++) {
+      if (pattern[row][col]) {
+        ctx.fillRect(x + col * size, y + row * size, size, size);
+      }
+    }
+  }
 }
 
 export function cleanupImageUrl(url: string) {
