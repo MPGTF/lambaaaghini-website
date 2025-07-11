@@ -1029,10 +1029,18 @@ export default function Game() {
               </CardHeader>
               <CardContent>
                 <div
-                  className="relative mx-auto bg-gradient-to-b from-purple-900/20 via-blue-900/10 to-green-900/20 border-4 border-gold-500/30 overflow-hidden"
+                  className={`relative mx-auto bg-gradient-to-b from-purple-900/20 via-blue-900/10 to-green-900/20 border-4 border-gold-500/30 overflow-hidden ${
+                    isFullscreen && isLandscape ? "max-w-full max-h-[70vh]" : ""
+                  }`}
                   style={{
-                    width: GAME_WIDTH,
-                    height: GAME_HEIGHT,
+                    width:
+                      isFullscreen && isLandscape
+                        ? Math.min(GAME_WIDTH, window.innerWidth - 100)
+                        : GAME_WIDTH,
+                    height:
+                      isFullscreen && isLandscape
+                        ? Math.min(GAME_HEIGHT, window.innerHeight * 0.7)
+                        : GAME_HEIGHT,
                     imageRendering: "pixelated",
                   }}
                 >
