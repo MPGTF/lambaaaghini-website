@@ -1126,7 +1126,7 @@ export default function Game() {
                       </div>
 
                       {/* Action Controls */}
-                      <div className="flex justify-center gap-4 mb-4">
+                      <div className="flex justify-center gap-8 mb-4">
                         <Button
                           onMouseDown={() => {
                             setIsFiring(true);
