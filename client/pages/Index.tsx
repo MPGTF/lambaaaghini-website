@@ -281,40 +281,52 @@ export default function Index() {
             </div>
           </div>
 
-          {/* Stats */}
+          {/* Quick Utilities */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto mt-16">
-            <div className="text-center bg-black/20 backdrop-blur-sm rounded-lg p-4 border border-white/10">
-              <div className="text-2xl md:text-3xl font-bold text-gold-400">
-                🚀 Moon
+            <Link
+              to="/lamb-pooper-scooper"
+              className="text-center bg-black/20 backdrop-blur-sm rounded-lg p-4 border border-white/10 hover:border-green-500/50 transition-all hover:bg-green-500/10 group"
+            >
+              <div className="text-2xl md:text-3xl font-bold text-green-400 group-hover:scale-110 transition-transform">
+                🐑💩
               </div>
               <div className="text-sm text-white/80 font-medium">
-                Trajectory
+                Pooper Scooper
               </div>
-            </div>
-            <div className="text-center bg-black/20 backdrop-blur-sm rounded-lg p-4 border border-white/10">
-              <div className="text-2xl md:text-3xl font-bold text-purple-400">
-                🐑 Fluffy
-              </div>
-              <div className="text-sm text-white/80 font-medium">
-                Sheep Vibes
-              </div>
-            </div>
-            <div className="text-center bg-black/20 backdrop-blur-sm rounded-lg p-4 border border-white/10">
-              <div className="text-2xl md:text-3xl font-bold text-gold-400">
-                🏎️ Fast
+            </Link>
+            <Link
+              to="/pay-the-lamb"
+              className="text-center bg-black/20 backdrop-blur-sm rounded-lg p-4 border border-white/10 hover:border-orange-500/50 transition-all hover:bg-orange-500/10 group"
+            >
+              <div className="text-2xl md:text-3xl font-bold text-orange-400 group-hover:scale-110 transition-transform">
+                💰🐑
               </div>
               <div className="text-sm text-white/80 font-medium">
-                Lambo Speed
+                Pay the Lamb
               </div>
-            </div>
-            <div className="text-center bg-black/20 backdrop-blur-sm rounded-lg p-4 border border-white/10">
-              <div className="text-2xl md:text-3xl font-bold text-purple-400">
-                💎 Hodl
+            </Link>
+            <Link
+              to="/lamb-sauce"
+              className="text-center bg-black/20 backdrop-blur-sm rounded-lg p-4 border border-white/10 hover:border-purple-500/50 transition-all hover:bg-purple-500/10 group"
+            >
+              <div className="text-2xl md:text-3xl font-bold text-purple-400 group-hover:scale-110 transition-transform">
+                💬🐑
               </div>
               <div className="text-sm text-white/80 font-medium">
-                Diamond Hands
+                Lamb Sauce Chat
               </div>
-            </div>
+            </Link>
+            <Link
+              to="/game"
+              className="text-center bg-black/20 backdrop-blur-sm rounded-lg p-4 border border-white/10 hover:border-blue-500/50 transition-all hover:bg-blue-500/10 group"
+            >
+              <div className="text-2xl md:text-3xl font-bold text-blue-400 group-hover:scale-110 transition-transform">
+                🎮🐑
+              </div>
+              <div className="text-sm text-white/80 font-medium">
+                Sheep vs Zombies
+              </div>
+            </Link>
           </div>
         </div>
 
