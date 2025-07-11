@@ -227,50 +227,6 @@ export default function Launchpad() {
           </Card>
         </div>
 
-        {/* Wallet Status & Game Section */}
-        <div className="text-center mb-12">
-          <Card className="glass-card border-purple-500/20 max-w-md mx-auto">
-            <CardContent className="p-6">
-              {connected ? (
-                <>
-                  <CheckCircle className="h-12 w-12 text-green-400 mx-auto mb-4" />
-                  <h3 className="text-xl font-bold mb-4">
-                    🎮 Wallet Connected!
-                  </h3>
-                  <p className="text-muted-foreground mb-6">
-                    Your wallet is connected. Play the game or create tokens
-                    below.
-                  </p>
-                  <Button
-                    asChild
-                    className="bg-gradient-to-r from-purple-500 to-purple-700 hover:from-purple-600 hover:to-purple-800 text-white font-semibold w-full crypto-glow"
-                  >
-                    <Link to="/game">
-                      🐑💨 Play Lamb Defense
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Link>
-                  </Button>
-                </>
-              ) : (
-                <>
-                  <Shield className="h-12 w-12 text-purple-400 mx-auto mb-4" />
-                  <h3 className="text-xl font-bold mb-4">
-                    Connect Your Wallet
-                  </h3>
-                  <p className="text-muted-foreground mb-6">
-                    Connect your Solana wallet to create tokens and play the
-                    game
-                  </p>
-                  <WalletConnection
-                    variant="default"
-                    className="bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-black font-semibold w-full"
-                  />
-                </>
-              )}
-            </CardContent>
-          </Card>
-        </div>
-
         {/* Main Interface */}
         <Tabs defaultValue="ai" className="space-y-8">
           <TabsList className="grid w-full grid-cols-2 bg-muted/20">
