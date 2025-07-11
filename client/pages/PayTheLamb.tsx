@@ -49,7 +49,6 @@ const LAMB_WALLET_ADDRESS = "F52riGC1evYR12ZqQy9umRo7S3hDAZhFbXGEnuX8p966";
 
 export default function PayTheLamb() {
   const { publicKey, signTransaction, connected } = useWallet();
-  const [featuredTokens, setFeaturedTokens] = useState<FeaturedToken[]>([]);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     contractAddress: "",
