@@ -562,6 +562,7 @@ export default function Game() {
         let newWave = prev.wave;
         let newGameOver = false;
         let newPowerUpTime = Math.max(0, prev.powerUpTime - 16);
+        let zombiesKilledThisFrame = 0;
         let newPlayerPowerUp = newPowerUpTime > 0 ? prev.playerPowerUp : null;
         let newExplosions = [...prev.explosions];
         let newFartBombCooldown = Math.max(0, prev.fartBombCooldown - 16);
