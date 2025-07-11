@@ -1086,11 +1086,11 @@ export default function Game() {
                   style={{
                     width:
                       isFullscreen && isLandscape
-                        ? Math.min(GAME_WIDTH, window.innerWidth - 100)
+                        ? "min(800px, calc(100vw - 100px))"
                         : GAME_WIDTH,
                     height:
                       isFullscreen && isLandscape
-                        ? Math.min(GAME_HEIGHT, window.innerHeight * 0.7)
+                        ? "min(600px, 70vh)"
                         : GAME_HEIGHT,
                     imageRendering: "pixelated",
                   }}
