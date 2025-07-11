@@ -308,9 +308,9 @@ export default function Dex() {
       token.name.toLowerCase().includes(searchQuery.toLowerCase()),
   );
 
-  // Check Axiom signup on mount
+  // Initialize referral tracking on mount
   useEffect(() => {
-    checkAxiomSignup();
+    trackReferralCredit();
   }, []);
 
   // Load DexScreener chart
