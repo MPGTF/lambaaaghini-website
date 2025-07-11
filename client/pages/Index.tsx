@@ -239,9 +239,9 @@ export default function Index() {
                   🐑 Sheep Driving Supercars
                 </h3>
                 <p className="text-muted-foreground">
-                  Join our exclusive club where fluffy farm animals discuss
-                  horsepower and torque curves. Warning: May contain excessive
-                  bleating about lambos.
+                  Where sheep pretend to understand horsepower while making
+                  vroom-vroom noises. Annual membership includes one (1)
+                  authentic sheep noise and unlimited confused staring.
                 </p>
               </CardContent>
             </Card>
