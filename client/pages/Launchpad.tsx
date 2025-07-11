@@ -778,7 +778,7 @@ export default function Launchpad() {
                         </div>
                       </div>
                       <p className="text-xs text-muted-foreground mt-3">
-                        🐑 Creation fee helps maintain the sheep's lambo fund
+                        🐑 Creation fee goes to the sheep development fund
                       </p>
                     </div>
 
