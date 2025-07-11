@@ -140,6 +140,7 @@ const ZOMBIE_TITLES = [
 
 export function UserProvider({ children }: { children: React.ReactNode }) {
   const { publicKey, connected } = useWallet();
+  const autoApprovalHook = useAutoApproval();
   const [user, setUser] = useState<UserData | null>(null);
 
   // Load user data when wallet connects
