@@ -1390,9 +1390,22 @@ export default function Game() {
 
         {/* Status Upgrade Modal */}
         {showUpgradeModal && connected && playerProfile && (
-          <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-            <Card className="glass-card border-gold-500/20 max-w-2xl w-full max-h-[80vh] overflow-y-auto">
-              <CardHeader>
+          <div
+            className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
+            onClick={() => setShowUpgradeModal(false)}
+          >
+            <Card
+              className="glass-card border-gold-500/20 max-w-2xl w-full max-h-[80vh] overflow-y-auto"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <CardHeader className="relative">
+                <button
+                  onClick={() => setShowUpgradeModal(false)}
+                  className="absolute top-4 right-4 text-muted-foreground hover:text-foreground transition-colors text-xl font-bold"
+                  aria-label="Close modal"
+                >
+                  ✕
+                </button>
                 <CardTitle className="text-gold-400 text-center">
                   💨 Gas Station - Status Upgrades 💨
                 </CardTitle>
