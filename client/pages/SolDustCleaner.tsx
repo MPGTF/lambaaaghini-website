@@ -28,7 +28,6 @@ import {
 } from "@solana/spl-token";
 import { toast } from "sonner";
 import {
-  Vacuum,
   Wallet,
   Coins,
   Zap,
