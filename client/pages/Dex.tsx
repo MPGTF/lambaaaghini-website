@@ -352,31 +352,15 @@ export default function Dex() {
             and DexScreener charts. Trade any Solana token with
             institutional-grade execution and sheep-level wisdom! 🏎️💨
           </p>
-          {!axiomSignedUp && (
-            <div className="mt-6 p-4 bg-gradient-to-r from-orange-500/10 to-red-500/10 border border-orange-500/30 rounded-lg max-w-2xl mx-auto">
-              <p className="text-orange-400 font-semibold mb-3">
-                🚨 Axiom Account Required for Trading
-              </p>
-              <p className="text-sm text-muted-foreground mb-4">
-                Sign up with mrpants referral code to unlock professional sheep
-                trading!
-              </p>
-              <Button
-                onClick={handleAxiomSignup}
-                className="bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white font-bold"
-              >
-                🐑 Sign Up for Axiom (@mrpants)
-              </Button>
-            </div>
-          )}
-          {axiomSignedUp && (
-            <div className="mt-6 p-4 bg-gradient-to-r from-green-500/10 to-blue-500/10 border border-green-500/30 rounded-lg max-w-2xl mx-auto">
-              <p className="text-green-400 font-semibold">
-                ✅ Axiom Account Connected! Ready for professional sheep
-                trading! 🐑🚀
-              </p>
-            </div>
-          )}
+          <div className="mt-6 p-4 bg-gradient-to-r from-green-500/10 to-blue-500/10 border border-green-500/30 rounded-lg max-w-2xl mx-auto">
+            <p className="text-green-400 font-semibold mb-2">
+              ✅ Powered by Axiom Professional Trading
+            </p>
+            <p className="text-sm text-muted-foreground">
+              Seamless trading with automatic @mrpants referral credit! Every
+              trade supports the sheep! 🐑💰
+            </p>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -745,7 +729,7 @@ export default function Dex() {
                     ) : !axiomSignedUp ? (
                       <>
                         <ExternalLink className="h-5 w-5 mr-2" />
-                        🚨 Axiom Signup Required
+                        �� Axiom Signup Required
                       </>
                     ) : (
                       <>
