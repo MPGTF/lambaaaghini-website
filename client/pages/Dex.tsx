@@ -245,12 +245,75 @@ export default function Dex() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Trading Interface */}
           <div className="lg:col-span-1 space-y-6">
-            <Card className="glass-card border-gold-500/20">
+            {/* Enhanced Token Search */}
+            <Card className="glass-card border-purple-500/20 hover:border-purple-500/40 transition-all">
+              <CardHeader>
+                <CardTitle className="text-purple-400 flex items-center gap-2">
+                  <Search className="h-5 w-5" />
+                  🐑 Sheep Token Finder
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-3">
+                  <Label htmlFor="token-search">Search Any Solana Token</Label>
+                  <div className="relative">
+                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                    <Input
+                      id="token-search"
+                      placeholder="Search by name, symbol, or paste contract address..."
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      className="pl-10 border-purple-500/50 focus:border-purple-500"
+                    />
+                  </div>
+                  {searchQuery && (
+                    <div className="max-h-40 overflow-y-auto bg-background border border-border rounded-lg">
+                      {filteredTokens.slice(0, 8).map((token) => (
+                        <button
+                          key={token.address}
+                          className="w-full text-left px-3 py-2 hover:bg-muted rounded flex items-center gap-2 transition-colors"
+                          onClick={() => {
+                            setToToken(token);
+                            setSearchQuery("");
+                          }}
+                        >
+                          <img
+                            src={token.logoURI}
+                            alt={token.symbol}
+                            className="w-6 h-6"
+                            onError={(e) => {
+                              (e.target as HTMLImageElement).style.display =
+                                "none";
+                            }}
+                          />
+                          <div className="flex-1">
+                            <div className="font-semibold text-gold-400">
+                              {token.symbol}
+                            </div>
+                            <div className="text-xs text-muted-foreground truncate">
+                              {token.name}
+                            </div>
+                          </div>
+                          <div className="text-xs text-purple-400">
+                            Select 🐑
+                          </div>
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="glass-card border-gold-500/20 hover:border-gold-500/40 transition-all crypto-glow">
               <CardHeader>
                 <CardTitle className="text-gold-400 flex items-center gap-2">
                   <Zap className="h-5 w-5" />
-                  Instant Swap
+                  🚀 Sheep-Speed Token Swap
                 </CardTitle>
+                <div className="text-sm text-muted-foreground">
+                  Faster than a sheep running to dinner!
+                </div>
               </CardHeader>
               <CardContent className="space-y-6">
                 {/* From Token */}
