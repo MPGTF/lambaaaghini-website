@@ -72,6 +72,9 @@ export default function Launchpad() {
     transactionId: string;
     tokenData: TokenMetadata;
   } | null>(null);
+  const [initialBuyAmount, setInitialBuyAmount] = useState<string>("0.1");
+  const [enableInitialBuy, setEnableInitialBuy] = useState<boolean>(false);
+  const [creationFee] = useState<number>(0.02); // 0.02 SOL creation fee
 
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
