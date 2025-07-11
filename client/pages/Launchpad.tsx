@@ -26,7 +26,6 @@ import {
   Shield,
   ArrowRight,
   AlertCircle,
-  CheckCircle,
 } from "lucide-react";
 import { toast } from "sonner";
 
