@@ -973,12 +973,58 @@ export default function Game() {
           }`}
         >
           {/* Game Area */}
-          <div className="lg:col-span-3">
+          <div
+            className={
+              isFullscreen && isLandscape ? "xl:col-span-2" : "lg:col-span-3"
+            }
+          >
             <Card className="glass-card border-gold-500/20">
-              <CardHeader>
-                <CardTitle className="text-center text-gold-400">
+              <CardHeader className="flex flex-row items-center justify-between">
+                <CardTitle className="text-center text-gold-400 flex-1">
                   Professional Defense Perimeter
                 </CardTitle>
+                <div className="flex gap-2">
+                  {/* Orientation hint for mobile */}
+                  <Button
+                    onClick={() => {
+                      if (
+                        "screen" in window &&
+                        "orientation" in window.screen
+                      ) {
+                        try {
+                          (window.screen.orientation as any).lock("landscape");
+                        } catch (e) {
+                          toast.error(
+                            "Please rotate your device to landscape mode manually",
+                          );
+                        }
+                      } else {
+                        toast.info(
+                          "💡 Tip: Rotate your device horizontally for better gameplay!",
+                        );
+                      }
+                    }}
+                    size="sm"
+                    variant="outline"
+                    className="md:hidden border-blue-500/50 text-blue-400 hover:bg-blue-500/10"
+                  >
+                    <RotateCcw className="h-4 w-4" />
+                  </Button>
+
+                  {/* Fullscreen button */}
+                  <Button
+                    onClick={toggleFullscreen}
+                    size="sm"
+                    variant="outline"
+                    className="border-purple-500/50 text-purple-400 hover:bg-purple-500/10"
+                  >
+                    {isFullscreen ? (
+                      <Minimize className="h-4 w-4" />
+                    ) : (
+                      <Maximize className="h-4 w-4" />
+                    )}
+                  </Button>
+                </div>
               </CardHeader>
               <CardContent>
                 <div
