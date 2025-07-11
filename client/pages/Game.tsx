@@ -1267,7 +1267,10 @@ export default function Game() {
                   )}
 
                   <div className="text-sm text-muted-foreground space-y-2">
-                    <p>Use ARROW KEYS or tap ← → buttons to move</p>
+                    <p className="text-gold-400 font-semibold">
+                      📱 Mobile: Tap and hold buttons | 💻 Desktop: Use ARROW
+                      KEYS
+                    </p>
                     <p>Hold FIRE BUTTON to auto-fire fart projectiles</p>
                     <p>
                       💥 FART BOMB button for massive area damage (45s cooldown)
