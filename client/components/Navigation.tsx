@@ -8,16 +8,25 @@ import { useUser } from "@/contexts/UserContext";
 import { Menu, X, ExternalLink, Trophy, Zap, Settings } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 
-const navItems = [
+// Primary navigation items
+const primaryNavItems = [
   { name: "Home", path: "/" },
-  { name: "Portfolio", path: "/portfolio" },
-  { name: "Trading", path: "/trading" },
   { name: "DEX", path: "/dex" },
-  { name: "Leaderboards", path: "/leaderboards" },
+  { name: "Trading", path: "/trading" },
+  { name: "Portfolio", path: "/portfolio" },
+];
+
+// Secondary navigation items
+const secondaryNavItems = [
   { name: "Academy", path: "/academy" },
+  { name: "Leaderboards", path: "/leaderboards" },
   { name: "News", path: "/news" },
-  { name: "Pay the Lamb", path: "/pay-the-lamb" },
+];
+
+// Community navigation items
+const communityNavItems = [
   { name: "Lamb Sauce", path: "/lamb-sauce" },
+  { name: "Pay the Lamb", path: "/pay-the-lamb" },
   { name: "Game", path: "/game" },
 ];
 
@@ -64,8 +73,8 @@ export default function Navigation() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
+          <div className="hidden lg:flex items-center space-x-6">
+            {primaryNavItems.map((item) => (
               <Link
                 key={item.path}
                 to={item.path}
@@ -78,10 +87,61 @@ export default function Navigation() {
                 {item.name}
               </Link>
             ))}
+
+            {/* Dropdown for secondary items */}
+            <div className="relative group">
+              <button className="text-sm font-medium text-muted-foreground hover:text-gold-400 transition-colors flex items-center">
+                More
+                <svg
+                  className="w-4 h-4 ml-1"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+              <div className="absolute top-full left-0 mt-1 w-48 bg-background/95 backdrop-blur-md border border-border/50 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div className="py-2">
+                  {secondaryNavItems.map((item) => (
+                    <Link
+                      key={item.path}
+                      to={item.path}
+                      className={`block px-4 py-2 text-sm font-medium transition-colors hover:text-gold-400 hover:bg-gold-500/10 ${
+                        location.pathname === item.path
+                          ? "text-gold-400 bg-gold-500/10"
+                          : "text-muted-foreground"
+                      }`}
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
+                  <div className="border-t border-border/30 my-2"></div>
+                  {communityNavItems.map((item) => (
+                    <Link
+                      key={item.path}
+                      to={item.path}
+                      className={`block px-4 py-2 text-sm font-medium transition-colors hover:text-purple-400 hover:bg-purple-500/10 ${
+                        location.pathname === item.path
+                          ? "text-purple-400 bg-purple-500/10"
+                          : "text-muted-foreground"
+                      }`}
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Desktop CTA */}
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden lg:flex items-center space-x-4">
             <ThemeToggle />
             <Button
               asChild
@@ -155,7 +215,7 @@ export default function Navigation() {
 
           {/* Mobile Menu */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
-            <SheetTrigger asChild className="md:hidden">
+            <SheetTrigger asChild className="lg:hidden">
               <Button variant="ghost" size="icon">
                 <Menu className="h-6 w-6" />
               </Button>
@@ -165,20 +225,65 @@ export default function Navigation() {
               className="w-[300px] bg-background/95 backdrop-blur-md"
             >
               <div className="flex flex-col space-y-6 mt-8">
-                {navItems.map((item) => (
-                  <Link
-                    key={item.path}
-                    to={item.path}
-                    onClick={() => setIsOpen(false)}
-                    className={`text-lg font-medium transition-colors hover:text-gold-400 ${
-                      location.pathname === item.path
-                        ? "text-gold-400"
-                        : "text-muted-foreground"
-                    }`}
-                  >
-                    {item.name}
-                  </Link>
-                ))}
+                <div className="space-y-4">
+                  <h3 className="text-sm font-semibold text-gold-400 uppercase tracking-wider">
+                    Main
+                  </h3>
+                  {primaryNavItems.map((item) => (
+                    <Link
+                      key={item.path}
+                      to={item.path}
+                      onClick={() => setIsOpen(false)}
+                      className={`block text-lg font-medium transition-colors hover:text-gold-400 ${
+                        location.pathname === item.path
+                          ? "text-gold-400"
+                          : "text-muted-foreground"
+                      }`}
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
+                </div>
+
+                <div className="space-y-4">
+                  <h3 className="text-sm font-semibold text-purple-400 uppercase tracking-wider">
+                    Learn & Compete
+                  </h3>
+                  {secondaryNavItems.map((item) => (
+                    <Link
+                      key={item.path}
+                      to={item.path}
+                      onClick={() => setIsOpen(false)}
+                      className={`block text-lg font-medium transition-colors hover:text-purple-400 ${
+                        location.pathname === item.path
+                          ? "text-purple-400"
+                          : "text-muted-foreground"
+                      }`}
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
+                </div>
+
+                <div className="space-y-4">
+                  <h3 className="text-sm font-semibold text-green-400 uppercase tracking-wider">
+                    Community
+                  </h3>
+                  {communityNavItems.map((item) => (
+                    <Link
+                      key={item.path}
+                      to={item.path}
+                      onClick={() => setIsOpen(false)}
+                      className={`block text-lg font-medium transition-colors hover:text-green-400 ${
+                        location.pathname === item.path
+                          ? "text-green-400"
+                          : "text-muted-foreground"
+                      }`}
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
+                </div>
 
                 {isLoggedIn && user && (
                   <div className="bg-gradient-to-r from-gold-500/20 to-purple-500/20 backdrop-blur-sm border border-gold-500/30 rounded-lg p-4 mt-4">
