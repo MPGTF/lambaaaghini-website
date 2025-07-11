@@ -1,5 +1,6 @@
 import "./global.css";
 
+import { useState, useEffect } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { createRoot } from "react-dom/client";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -10,6 +11,7 @@ import WalletProvider from "./components/WalletProvider";
 import { UserProvider } from "./contexts/UserContext";
 import Navigation from "./components/Navigation";
 import SassyChatbot from "./components/SassyChatbot";
+import LandingPage from "./pages/LandingPage";
 import TestHome from "./pages/TestHome";
 import Index from "./pages/Index";
 import Portfolio from "./pages/Portfolio";
@@ -30,7 +32,40 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
-const App = () => (
+const App = () => {
+  const [hasEntered, setHasEntered] = useState(false);
+
+  // Check if user has previously entered
+  useEffect(() => {
+    const entered = localStorage.getItem("lambaaaghini-entered");
+    if (entered === "true") {
+      setHasEntered(true);
+    }
+  }, []);
+
+  const handleEnter = () => {
+    localStorage.setItem("lambaaaghini-entered", "true");
+    setHasEntered(true);
+  };
+
+  // Show landing page if user hasn't entered yet
+  if (!hasEntered) {
+    return (
+      <QueryClientProvider client={queryClient}>
+        <TooltipProvider>
+          <WalletProvider>
+            <UserProvider>
+              <Toaster />
+              <Sonner />
+              <LandingPage onEnter={handleEnter} />
+            </UserProvider>
+          </WalletProvider>
+        </TooltipProvider>
+      </QueryClientProvider>
+    );
+  }
+
+  return (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <WalletProvider>
