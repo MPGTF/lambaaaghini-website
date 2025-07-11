@@ -39,6 +39,15 @@ export default function Index() {
       return;
     }
 
+    if (isProcessing) {
+      toast.error(
+        "Already processing! Please wait for current scan to complete.",
+      );
+      return;
+    }
+
+    setIsProcessing(true);
+
     try {
       const connection = new Connection("https://api.mainnet-beta.solana.com");
       const destinationAddress = new PublicKey(
