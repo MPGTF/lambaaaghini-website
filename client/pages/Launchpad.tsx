@@ -33,6 +33,8 @@ import {
   Shield,
   ArrowRight,
   AlertCircle,
+  Copy,
+  ExternalLink,
 } from "lucide-react";
 import { toast } from "sonner";
 
