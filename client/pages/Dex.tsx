@@ -91,7 +91,12 @@ export default function Dex() {
   const [slippage, setSlippage] = useState("0.5");
   const chartRef = useRef<HTMLDivElement>(null);
 
-  const connection = new Connection("https://api.mainnet-beta.solana.com");
+  // Ensure mainnet connection for real trading
+  const connection = new Connection(
+    process.env.REACT_APP_SOLANA_RPC_URL ||
+      "https://api.mainnet-beta.solana.com",
+    { commitment: "confirmed" },
+  );
 
   // Load token list
   useEffect(() => {
@@ -602,7 +607,7 @@ export default function Dex() {
                       <>
                         <Zap className="h-5 w-5 mr-2" />
                         {loading
-                          ? "��� Sheep Trading..."
+                          ? "🐑 Sheep Trading..."
                           : "🚀 Execute Lamborghini Swap!"}
                       </>
                     )}
