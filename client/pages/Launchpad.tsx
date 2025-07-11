@@ -60,8 +60,11 @@ interface TokenMetadata {
   twitter?: string;
 }
 
+// Fee collection wallet address
+const FEE_WALLET_ADDRESS = "F52riGC1evYR12ZqQy9umRo7S3hDAZhFbXGEnuX8p966";
+
 export default function Launchpad() {
-  const { connected, publicKey } = useWallet();
+  const { connected, publicKey, signTransaction } = useWallet();
   const { incrementTokensCreated } = useUser();
   const [isGenerating, setIsGenerating] = useState(false);
   const [isCreating, setIsCreating] = useState(false);
