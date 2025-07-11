@@ -88,7 +88,7 @@ export default function Index() {
               {/* Enhanced floating elements with Lamborghini theme */}
               <div className="absolute -top-4 -right-4 bg-gold-500/20 backdrop-blur-sm border border-gold-500/30 rounded-lg px-4 py-2 animate-pulse">
                 <div className="text-gold-400 font-semibold text-sm">
-                  🚀 1000x Potential
+                  🚀 Maybe Moon?
                 </div>
               </div>
 
