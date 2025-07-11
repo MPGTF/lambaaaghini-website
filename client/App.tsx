@@ -32,21 +32,12 @@ const App = () => {
             <div className="min-h-screen bg-background">
               <Navigation />
               <main className="pt-16">
-                <div
-                  style={{
-                    backgroundColor: "blue",
-                    padding: "20px",
-                    color: "white",
-                  }}
-                >
-                  DEBUG: Main content area should show
-                </div>
                 <Routes>
                   <Route path="/" element={<Index />} />
-                  <Route path="/launchpad" element={<Launchpad />} />
-                  <Route path="/roadmap" element={<Roadmap />} />
-                  <Route path="/whitepaper" element={<Whitepaper />} />
-                  <Route path="/team" element={<Team />} />
+                  <Route path="/launchpad" element={<TestHome />} />
+                  <Route path="/roadmap" element={<TestHome />} />
+                  <Route path="/whitepaper" element={<TestHome />} />
+                  <Route path="/team" element={<TestHome />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </main>
