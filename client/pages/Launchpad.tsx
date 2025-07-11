@@ -366,8 +366,9 @@ export default function Launchpad() {
               Launch Your <span className="gradient-text">Dream Token</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Create professional tokens in minutes using AI assistance. Powered
-              by pump.fun and deployed instantly to Solana.
+              Let our AI sheep help you create tokens while they daydream about
+              Lamborghinis. Warning: May include excessive bleating and
+              questionable token names.
             </p>
           </div>
 
