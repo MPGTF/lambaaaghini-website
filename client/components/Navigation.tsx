@@ -5,7 +5,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Badge } from "@/components/ui/badge";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import { useUser } from "@/contexts/UserContext";
-import { Menu, X, ExternalLink, Trophy, Zap } from "lucide-react";
+import { Menu, X, ExternalLink, Trophy, Zap, Settings } from "lucide-react";
 
 const navItems = [
   { name: "Home", path: "/" },
