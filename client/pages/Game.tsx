@@ -1224,7 +1224,13 @@ export default function Game() {
                   )}
 
                   {gameState.gameRunning && (
-                    <div className="space-y-6">
+                    <div
+                      className={`space-y-6 ${
+                        isLandscape && window.innerWidth < 1024
+                          ? "space-y-3"
+                          : "space-y-6"
+                      }`}
+                    >
                       {/* Mobile-Optimized Movement Controls */}
                       <div className="flex justify-center gap-8 mb-8">
                         <button
