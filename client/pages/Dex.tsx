@@ -403,21 +403,27 @@ export default function Dex() {
                   </div>
                 </div>
 
-                {/* Swap Button */}
+                {/* Sheep Swap Button */}
                 <div className="flex justify-center">
                   <Button
                     variant="outline"
                     size="icon"
                     onClick={swapTokens}
-                    className="border-gold-500/50 text-gold-400 hover:bg-gold-500/10"
+                    className="border-gold-500/50 text-gold-400 hover:bg-gold-500/20 transition-all hover:scale-110 crypto-glow"
+                    title="🐑 Flip the sheep!"
                   >
-                    <ArrowUpDown className="h-4 w-4" />
+                    <ArrowUpDown className="h-5 w-5" />
                   </Button>
                 </div>
 
                 {/* To Token */}
                 <div className="space-y-2">
-                  <Label htmlFor="to-amount">To</Label>
+                  <Label
+                    htmlFor="to-amount"
+                    className="text-purple-400 font-semibold"
+                  >
+                    🎯 To (What you're getting)
+                  </Label>
                   <div className="flex gap-2">
                     <Input
                       id="to-amount"
