@@ -421,6 +421,56 @@ export default function Launchpad() {
                     />
                   </div>
 
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div>
+                      <Label htmlFor="token-website">Website (Optional)</Label>
+                      <Input
+                        id="token-website"
+                        value={tokenData.website || ""}
+                        onChange={(e) =>
+                          setTokenData({
+                            ...tokenData,
+                            website: e.target.value,
+                          })
+                        }
+                        placeholder="https://yourtoken.com"
+                        className="mt-2"
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="token-twitter">Twitter (Optional)</Label>
+                      <Input
+                        id="token-twitter"
+                        value={tokenData.twitter || ""}
+                        onChange={(e) =>
+                          setTokenData({
+                            ...tokenData,
+                            twitter: e.target.value,
+                          })
+                        }
+                        placeholder="@yourtoken"
+                        className="mt-2"
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="token-telegram">
+                        Telegram (Optional)
+                      </Label>
+                      <Input
+                        id="token-telegram"
+                        value={tokenData.telegram || ""}
+                        onChange={(e) =>
+                          setTokenData({
+                            ...tokenData,
+                            telegram: e.target.value,
+                          })
+                        }
+                        placeholder="@yourtoken"
+                        className="mt-2"
+                      />
+                    </div>
+                  </div>
+
                   <div>
                     <Label htmlFor="token-image">Token Image</Label>
                     <div className="mt-2 space-y-4">
