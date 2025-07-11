@@ -243,7 +243,7 @@ export default function SassyChatbot() {
                   className={`flex gap-2 ${message.isBot ? "justify-start" : "justify-end"}`}
                 >
                   {message.isBot && (
-                    <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                       <Bot className="h-3 w-3 text-white" />
                     </div>
                   )}
@@ -251,8 +251,8 @@ export default function SassyChatbot() {
                   <div
                     className={`max-w-[70%] p-2 rounded-lg text-xs ${
                       message.isBot
-                        ? "bg-red-500/10 border border-red-500/20 text-red-400"
-                        : "bg-blue-500/10 border border-blue-500/20 text-blue-400"
+                        ? "bg-blue-500/10 border border-blue-500/20 text-blue-400"
+                        : "bg-green-500/10 border border-green-500/20 text-green-400"
                     }`}
                   >
                     {message.text}
