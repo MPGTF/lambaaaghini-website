@@ -135,6 +135,7 @@ const STATUS_TITLES: StatusTitle[] = [
 
 export default function Game() {
   const { connected, publicKey } = useWallet();
+  const { incrementZombiesKilled, updateGameStats, getUserTitle } = useUser();
   const [highScores, setHighScores] = useState<HighScore[]>([]);
   const [personalBest, setPersonalBest] = useState<number>(0);
   const [playerProfile, setPlayerProfile] = useState<PlayerProfile | null>(
