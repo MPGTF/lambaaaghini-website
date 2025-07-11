@@ -178,8 +178,8 @@ export default function Navigation() {
                     </a>
                   </Button>
                   <WalletConnection
-                    variant="outline"
-                    className="justify-start"
+                    variant="default"
+                    className="justify-start bg-gradient-to-r from-purple-500 to-purple-700 hover:from-purple-600 hover:to-purple-800 text-white font-semibold"
                   />
                   <Button
                     asChild
