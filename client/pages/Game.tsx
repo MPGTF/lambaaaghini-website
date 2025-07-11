@@ -985,7 +985,7 @@ export default function Game() {
       }`}
     >
       {/* Landscape mode hint for mobile - only show when not in landscape */}
-      {!isLandscape && !isFullscreen && window.innerWidth < 768 && (
+      {!isLandscape && !isFullscreen && isMobile && (
         <div className="fixed top-20 right-4 z-50 bg-blue-500/20 backdrop-blur-sm border border-blue-500/30 rounded-lg p-3 md:hidden">
           <div className="text-blue-400 text-sm font-semibold flex items-center gap-2">
             <RotateCcw className="h-4 w-4" />
