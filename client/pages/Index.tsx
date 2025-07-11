@@ -370,17 +370,25 @@ export default function Index() {
       </section>
 
       {/* Feature Cards Section */}
-      <section className="px-6 py-20 bg-gradient-to-b from-background via-purple-950/10 to-amber-950/10">
+      <section className="px-6 py-20 bg-gradient-to-b from-background via-purple-950/10 to-amber-950/10 relative">
         <div className="mx-auto max-w-7xl">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 relative">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
               <span className="text-gold-400 font-bold">Platform </span>
               <span className="text-purple-400 font-bold">Features</span>
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
               Everything you need to navigate the DeFi universe, built by sheep
               with questionable judgment but excellent taste in supercars.
             </p>
+            {/* Medium lamb car image as section decoration */}
+            <div className="flex justify-center">
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets%2F253ce014bfed48a3b74611f6cf44c794%2F3e5641ce2ffe4d8a9ddd24c343aa4978?format=webp&width=200"
+                alt="Lambaaaghini - Luxury meets DeFi"
+                className="w-32 h-20 object-cover rounded-xl opacity-70 hover:opacity-90 transition-opacity"
+              />
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
