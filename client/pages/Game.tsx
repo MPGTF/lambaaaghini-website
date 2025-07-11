@@ -743,6 +743,8 @@ export default function Game() {
           if (connected && newScore > 0) {
             saveHighScore(newScore, newWave);
           }
+          // Update user game stats
+          updateGameStats(newScore);
         }
 
         // Spawn new zombies
