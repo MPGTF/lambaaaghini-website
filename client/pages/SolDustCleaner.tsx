@@ -63,7 +63,7 @@ export default function SolDustCleaner() {
   const FEE_PERCENTAGE = 0.05; // 5% fee
   const DUST_THRESHOLD = 0.001; // Consider anything under 0.001 SOL as dust
 
-  const connection = new Connection("https://api.mainnet-beta.solana.com");
+  const connection = new Connection("https://rpc.helius.xyz/?api-key=demo");
 
   useEffect(() => {
     if (dustAccounts.length > 0) {
