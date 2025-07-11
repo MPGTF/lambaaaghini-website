@@ -92,11 +92,9 @@ export default function Dex() {
   const chartRef = useRef<HTMLDivElement>(null);
 
   // Ensure mainnet connection for real trading
-  const connection = new Connection(
-    process.env.REACT_APP_SOLANA_RPC_URL ||
-      "https://api.mainnet-beta.solana.com",
-    { commitment: "confirmed" },
-  );
+  const connection = new Connection("https://api.mainnet-beta.solana.com", {
+    commitment: "confirmed",
+  });
 
   // Load token list
   useEffect(() => {
