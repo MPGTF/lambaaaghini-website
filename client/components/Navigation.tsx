@@ -70,6 +70,11 @@ export default function Navigation() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets%2F253ce014bfed48a3b74611f6cf44c794%2F3e5641ce2ffe4d8a9ddd24c343aa4978?format=webp&width=60"
+              alt="Lambaaaghini"
+              className="w-8 h-5 object-cover rounded-md"
+            />
             <div className="text-2xl font-bold gradient-text">LAMBAAAGHINI</div>
           </Link>
 
