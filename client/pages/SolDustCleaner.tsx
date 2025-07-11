@@ -255,7 +255,7 @@ export default function SolDustCleaner() {
         <div className="text-center mb-12">
           <div className="flex justify-center mb-6">
             <div className="w-16 h-16 bg-gradient-to-r from-gold-500/20 to-purple-500/20 rounded-full flex items-center justify-center">
-              <Vacuum className="h-8 w-8 text-gold-400" />
+              <Sparkles className="h-8 w-8 text-gold-400" />
             </div>
           </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
