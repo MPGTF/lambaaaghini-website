@@ -21,7 +21,7 @@ import Academy from "./pages/Academy";
 import News from "./pages/News";
 import PayTheLamb from "./pages/PayTheLamb";
 import LambSauce from "./pages/LambSauce";
-import SolDustCleaner from "./pages/SolDustCleaner";
+import LambPooperScooper from "./pages/LambPooperScooper";
 import Game from "./pages/Game";
 import Roadmap from "./pages/Roadmap";
 import Whitepaper from "./pages/Whitepaper";
