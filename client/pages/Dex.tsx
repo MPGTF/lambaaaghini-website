@@ -137,7 +137,19 @@ export default function Dex() {
       try {
         const response = await fetch(
           "https://data.solanatracker.io/tokens/trending?timeframe=1h",
+          {
+            method: "GET",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+          },
         );
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
         const data = await response.json();
 
         console.log("Trending API response:", data); // Debug log
