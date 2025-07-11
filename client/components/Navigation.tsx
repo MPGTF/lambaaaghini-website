@@ -47,6 +47,7 @@ const FartbookIcon = ({ className }: { className?: string }) => (
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const { user, isLoggedIn, getUserTitle } = useUser();
 
   return (
     <nav className="fixed top-0 w-full bg-background/80 backdrop-blur-md border-b border-border/50 z-50">
