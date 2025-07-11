@@ -115,9 +115,23 @@ export default function Navigation() {
                   <Badge className="text-xs bg-gold-500/20 text-gold-400 border-gold-500/30 mb-1">
                     {getUserTitle()}
                   </Badge>
-                  <div className="flex items-center space-x-2 text-xs text-muted-foreground">
-                    <span>🐑 {user.stats.zombiesKilled}</span>
-                    <span>🚀 {user.stats.tokensCreated}</span>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-2 text-xs text-muted-foreground">
+                      <span>🐑 {user.stats.zombiesKilled}</span>
+                      <span>🚀 {user.stats.tokensCreated}</span>
+                    </div>
+                    <button
+                      onClick={autoApproval.toggleAutoApproval}
+                      className={`flex items-center space-x-1 text-xs px-2 py-1 rounded transition-colors ${
+                        autoApproval.isEnabled
+                          ? "bg-green-500/20 text-green-400 border border-green-500/30"
+                          : "bg-gray-500/20 text-gray-400 border border-gray-500/30"
+                      }`}
+                      title={`Auto-approval: ${autoApproval.isEnabled ? "ON" : "OFF"}`}
+                    >
+                      <Settings className="h-3 w-3" />
+                      <span>{autoApproval.isEnabled ? "Auto" : "Manual"}</span>
+                    </button>
                   </div>
                 </div>
               </div>
