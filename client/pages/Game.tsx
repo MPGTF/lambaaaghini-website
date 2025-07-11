@@ -885,28 +885,56 @@ export default function Game() {
     }
   };
 
-  // Detect orientation changes
+  // Detect screen size and orientation changes
   useEffect(() => {
-    const handleOrientationChange = () => {
-      const isCurrentlyLandscape = window.innerHeight < window.innerWidth;
-      setIsLandscape(isCurrentlyLandscape);
+    const updateScreenInfo = () => {
+      if (typeof window !== "undefined") {
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+
+        setIsMobile(width < 768);
+        setIsLandscape(width > height);
+      }
     };
 
     const handleFullscreenChange = () => {
-      setIsFullscreen(!!document.fullscreenElement);
+      const isCurrentlyFullscreen = !!(
+        document.fullscreenElement ||
+        (document as any).webkitFullscreenElement ||
+        (document as any).msFullscreenElement ||
+        (document as any).mozFullScreenElement
+      );
+      setIsFullscreen(isCurrentlyFullscreen);
     };
 
-    // Initial check
-    handleOrientationChange();
+    // Initial check after component mounts
+    updateScreenInfo();
 
-    window.addEventListener("resize", handleOrientationChange);
-    window.addEventListener("orientationchange", handleOrientationChange);
+    // Add event listeners
+    window.addEventListener("resize", updateScreenInfo);
+    window.addEventListener("orientationchange", updateScreenInfo);
     document.addEventListener("fullscreenchange", handleFullscreenChange);
+    document.addEventListener("webkitfullscreenchange", handleFullscreenChange);
+    document.addEventListener("msfullscreenchange", handleFullscreenChange);
+    document.addEventListener("mozfullscreenchange", handleFullscreenChange);
 
+    // Cleanup
     return () => {
-      window.removeEventListener("resize", handleOrientationChange);
-      window.removeEventListener("orientationchange", handleOrientationChange);
+      window.removeEventListener("resize", updateScreenInfo);
+      window.removeEventListener("orientationchange", updateScreenInfo);
       document.removeEventListener("fullscreenchange", handleFullscreenChange);
+      document.removeEventListener(
+        "webkitfullscreenchange",
+        handleFullscreenChange,
+      );
+      document.removeEventListener(
+        "msfullscreenchange",
+        handleFullscreenChange,
+      );
+      document.removeEventListener(
+        "mozfullscreenchange",
+        handleFullscreenChange,
+      );
     };
   }, []);
 
