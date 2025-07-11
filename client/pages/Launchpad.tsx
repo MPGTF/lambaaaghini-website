@@ -243,8 +243,21 @@ export default function Launchpad() {
     setTokenData({ name: "", symbol: "", description: "" });
     setAiPrompt("");
     setImageFile(null);
+    // Clean up generated image
+    if (previewUrl) {
+      cleanupImageUrl(previewUrl);
+    }
     setPreviewUrl("");
   };
+
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      if (previewUrl) {
+        cleanupImageUrl(previewUrl);
+      }
+    };
+  }, [previewUrl]);
 
   return (
     <>
