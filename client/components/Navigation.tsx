@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import WalletConnection from "./WalletConnection";
+import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import { Menu, X, ExternalLink } from "lucide-react";
 
 const navItems = [
