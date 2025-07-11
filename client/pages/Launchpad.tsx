@@ -615,10 +615,11 @@ export default function Launchpad() {
               <Card className="glass-card border-purple-500/20 hover:border-purple-500/40 transition-all duration-300">
                 <CardContent className="p-6 text-center">
                   <Brain className="h-12 w-12 text-purple-400 mx-auto mb-4" />
-                  <h3 className="text-xl font-bold mb-2">AI-Powered</h3>
+                  <h3 className="text-xl font-bold mb-2">Sheep-AI Powered</h3>
                   <p className="text-muted-foreground">
-                    Advanced AI generates professional token metadata from
-                    simple descriptions
+                    Our sheep taught ChatGPT how to bleat in binary. Results
+                    include token names like "MoonSheepLamboCoin" and other
+                    totally normal suggestions.
                   </p>
                 </CardContent>
               </Card>
