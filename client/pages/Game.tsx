@@ -1067,7 +1067,7 @@ export default function Game() {
                   {gameState.gameRunning && (
                     <div className="space-y-4">
                       {/* Movement Controls */}
-                      <div className="flex justify-center gap-4 mb-4">
+                      <div className="flex justify-center gap-6 mb-8">
                         <Button
                           onMouseDown={() => {
                             setIsMovingLeft(true);
