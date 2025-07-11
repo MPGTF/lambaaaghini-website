@@ -11,6 +11,7 @@ import Navigation from "./components/Navigation";
 import TestHome from "./pages/TestHome";
 import Index from "./pages/Index";
 import Launchpad from "./pages/Launchpad";
+import LaunchpadTest from "./pages/LaunchpadTest";
 // import Game from "./pages/Game"; // Temporarily disabled
 import Roadmap from "./pages/Roadmap";
 import Whitepaper from "./pages/Whitepaper";
