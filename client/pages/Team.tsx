@@ -8,7 +8,7 @@ const teamMembers = [
   {
     name: "Why",
     role: "Co-Founder & CEO",
-    bio: "",
+    bio: "Former llama whisperer turned crypto evangelist. Lost his house in LUNA but gained spiritual enlightenment. Can predict rugpulls by smelling the blockchain.",
     initials: "AR",
     links: {
       linkedin: "#",
@@ -18,7 +18,7 @@ const teamMembers = [
   {
     name: "You",
     role: "Co-Founder & CTO",
-    bio: "",
+    bio: "Coded this entire project while sleepwalking. Once accidentally created Bitcoin 2.0 but forgot to save the file. Communicates exclusively in memes and smart contract errors.",
     initials: "SC",
     links: {
       linkedin: "#",
@@ -29,7 +29,7 @@ const teamMembers = [
   {
     name: "Wanna",
     role: "Head of Security",
-    bio: "",
+    bio: "Protects our bags with the fury of a thousand suns. Former NASA janitor who learned cryptography from watching YouTube tutorials. Never been hacked because hackers are too confused by his code.",
     initials: "MT",
     links: {
       linkedin: "#",
@@ -39,7 +39,7 @@ const teamMembers = [
   {
     name: "Know",
     role: "Head of Product",
-    bio: "",
+    bio: "Designs products so beautiful they make angels weep. Once made a UI so intuitive that even his grandmother bought a Lamborghini with DeFi yields. Drinks only unicorn tears.",
     initials: "EV",
     links: {
       linkedin: "#",
