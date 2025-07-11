@@ -304,7 +304,7 @@ export default function SassyChatbot() {
                 onClick={handleSendMessage}
                 disabled={!input.trim() || isTyping}
                 size="sm"
-                className="h-8 w-8 p-0 bg-red-500 hover:bg-red-600"
+                className="h-8 w-8 p-0 bg-blue-500 hover:bg-blue-600"
               >
                 <Send className="h-3 w-3" />
               </Button>
