@@ -198,6 +198,21 @@ export default function Launchpad() {
     }
   };
 
+  const copyToClipboard = (text: string, type: string) => {
+    navigator.clipboard.writeText(text);
+    toast.success(`${type} copied to clipboard!`);
+  };
+
+  const handleModalClose = () => {
+    setShowSuccessModal(false);
+    setTokenCreationResult(null);
+    // Reset form
+    setTokenData({ name: "", symbol: "", description: "" });
+    setAiPrompt("");
+    setImageFile(null);
+    setPreviewUrl("");
+  };
+
   return (
     <div className="min-h-screen px-6 py-20">
       <div className="mx-auto max-w-6xl">
