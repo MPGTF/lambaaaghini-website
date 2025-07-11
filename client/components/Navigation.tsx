@@ -174,10 +174,7 @@ export default function Navigation() {
                       Follow us on Fartbook
                     </a>
                   </Button>
-                  <WalletConnection
-                    variant="default"
-                    className="justify-start bg-gradient-to-r from-purple-500 to-purple-700 hover:from-purple-600 hover:to-purple-800 text-white font-semibold"
-                  />
+                  <WalletMultiButton className="!bg-gradient-to-r !from-purple-500 !to-purple-700 hover:!from-purple-600 hover:!to-purple-800 !text-white !font-semibold !border-0 !rounded-md !px-4 !py-2 !justify-start !w-full" />
                   <Button
                     asChild
                     className="bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-black font-semibold justify-start"
