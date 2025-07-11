@@ -178,9 +178,19 @@ export default function Launchpad() {
       // Simulate creation for demo
       await new Promise((resolve) => setTimeout(resolve, 3000));
 
-      // Generate realistic-looking token and transaction IDs
-      const tokenId = `${Math.random().toString(36).substring(2, 15)}${Math.random().toString(36).substring(2, 15)}`;
-      const transactionId = `${Math.random().toString(36).substring(2, 15)}${Math.random().toString(36).substring(2, 15)}${Math.random().toString(36).substring(2, 15)}`;
+      // Generate realistic-looking Solana addresses (base58 format)
+      const generateSolanaAddress = () => {
+        const chars =
+          "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
+        let result = "";
+        for (let i = 0; i < 44; i++) {
+          result += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+        return result;
+      };
+
+      const tokenId = generateSolanaAddress();
+      const transactionId = generateSolanaAddress();
 
       setTokenCreationResult({
         tokenId,
