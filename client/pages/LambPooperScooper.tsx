@@ -249,7 +249,7 @@ export default function LambPooperScooper() {
       }, 2000);
     } catch (error) {
       console.error("Scooping failed:", error);
-      toast.error("🐑���� Failed to scoop droppings. The sheep scattered!");
+      toast.error("🐑💩 Failed to scoop droppings. The sheep scattered!");
     } finally {
       setIsScooping(false);
     }
@@ -264,7 +264,25 @@ export default function LambPooperScooper() {
   };
 
   return (
-    <div className="min-h-screen bg-background p-6">
+    <div className="min-h-screen bg-background p-6 relative">
+      {/* Floating mini lamb car logos */}
+      <div className="absolute top-24 right-16 opacity-25 animate-pulse pointer-events-none">
+        <img
+          src="https://cdn.builder.io/api/v1/image/assets%2F253ce014bfed48a3b74611f6cf44c794%2F3e5641ce2ffe4d8a9ddd24c343aa4978?format=webp&width=80"
+          alt="Lambaaaghini"
+          className="w-11 h-7 object-cover rounded-lg"
+        />
+      </div>
+      <div
+        className="absolute top-1/3 left-8 opacity-20 animate-bounce pointer-events-none"
+        style={{ animationDelay: "1.5s" }}
+      >
+        <img
+          src="https://cdn.builder.io/api/v1/image/assets%2F253ce014bfed48a3b74611f6cf44c794%2F3e5641ce2ffe4d8a9ddd24c343aa4978?format=webp&width=80"
+          alt="Lambaaaghini"
+          className="w-9 h-6 object-cover rounded-lg"
+        />
+      </div>
       <div className="mx-auto max-w-6xl">
         {/* Header */}
         <div className="text-center mb-12">
