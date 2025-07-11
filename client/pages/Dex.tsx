@@ -988,6 +988,45 @@ export default function Dex() {
             </Card>
           </div>
         </div>
+
+        {/* Axiom Signup Confirmation Modal */}
+        {showSignupModal && (
+          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+            <div className="bg-background border border-orange-500/30 rounded-lg p-6 max-w-md w-full">
+              <h3 className="text-xl font-bold text-orange-400 mb-4">
+                🐑 Complete Axiom Signup
+              </h3>
+              <p className="text-muted-foreground mb-6">
+                After signing up for Axiom with the mrpants referral code, click
+                the button below to confirm and start trading!
+              </p>
+              <div className="flex gap-3">
+                <Button
+                  onClick={confirmSignup}
+                  className="flex-1 bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 text-white font-bold"
+                >
+                  ✅ I've Signed Up!
+                </Button>
+                <Button
+                  onClick={() => setShowSignupModal(false)}
+                  variant="outline"
+                  className="flex-1 border-gray-500/50 text-gray-400 hover:bg-gray-500/20"
+                >
+                  Cancel
+                </Button>
+              </div>
+              <p className="text-xs text-muted-foreground mt-4 text-center">
+                Need to sign up?{" "}
+                <button
+                  onClick={handleAxiomSignup}
+                  className="text-orange-400 hover:text-orange-300 underline"
+                >
+                  Click here for Axiom
+                </button>
+              </p>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
