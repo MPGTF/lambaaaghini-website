@@ -296,3 +296,10 @@
   transform: translateY(-1px) !important;
   box-shadow: 0 0 20px hsl(48 96% 53% / 0.4) !important;
 }
+
+/* Ensure the WalletMultiButton appears correctly */
+.wallet-adapter-button-trigger {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
