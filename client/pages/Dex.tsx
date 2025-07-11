@@ -124,6 +124,55 @@ export default function Dex() {
     loadTokens();
   }, []);
 
+  // Load trending tokens from Solana Tracker API
+  useEffect(() => {
+    const loadTrendingTokens = async () => {
+      setLoadingTrending(true);
+      try {
+        const response = await fetch(
+          "https://data.solanatracker.io/tokens/trending?timeframe=1h",
+        );
+        const data = await response.json();
+
+        // Map the API response to our TrendingToken interface
+        const mappedTokens: TrendingToken[] = data
+          .slice(0, 20)
+          .map((token: any) => ({
+            address: token.address || token.mint,
+            symbol: token.symbol || token.name?.split(" ")[0] || "UNKNOWN",
+            name: token.name || token.symbol || "Unknown Token",
+            decimals: token.decimals || 9,
+            logoURI: token.image || token.logoURI,
+            priceUsd: token.price || token.priceUsd,
+            volume24h: token.volume24h || token.volumeUsd24h,
+            priceChange24h: token.priceChange24h || token.change24h,
+            marketCap: token.marketCap || token.mc,
+          }));
+
+        setTrendingTokens(mappedTokens);
+      } catch (error) {
+        console.error("Failed to load trending tokens:", error);
+        // Fallback to popular tokens if trending fails
+        setTrendingTokens(
+          POPULAR_TOKENS.map((token) => ({
+            ...token,
+            priceUsd: 0,
+            volume24h: 0,
+            priceChange24h: 0,
+            marketCap: 0,
+          })),
+        );
+      } finally {
+        setLoadingTrending(false);
+      }
+    };
+
+    loadTrendingTokens();
+    // Refresh trending tokens every 5 minutes
+    const interval = setInterval(loadTrendingTokens, 5 * 60 * 1000);
+    return () => clearInterval(interval);
+  }, []);
+
   // Get quote from Jupiter
   const getQuote = async () => {
     if (!fromAmount || !fromToken || !toToken) return;
