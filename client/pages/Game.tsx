@@ -934,13 +934,23 @@ export default function Game() {
     <div
       ref={gameContainerRef}
       className={`min-h-screen transition-all duration-300 ${
-        isFullscreen ? "bg-black p-2" : "px-6 py-20"
+        isFullscreen ? "bg-black p-2 fullscreen-mode" : "px-6 py-20"
       } ${
         isFullscreen && isLandscape
           ? "landscape:flex landscape:flex-col landscape:justify-center"
           : ""
       }`}
     >
+      {/* Landscape mode hint for mobile - only show when not in landscape */}
+      {!isLandscape && !isFullscreen && window.innerWidth < 768 && (
+        <div className="fixed top-20 right-4 z-50 bg-blue-500/20 backdrop-blur-sm border border-blue-500/30 rounded-lg p-3 md:hidden">
+          <div className="text-blue-400 text-sm font-semibold flex items-center gap-2">
+            <RotateCcw className="h-4 w-4" />
+            <span>Rotate for better gameplay!</span>
+          </div>
+        </div>
+      )}
+
       <div
         className={`mx-auto ${isFullscreen ? "max-w-none h-full" : "max-w-6xl"}`}
       >
@@ -1132,7 +1142,7 @@ export default function Game() {
                           ? "🧟‍��️"
                           : zombie.type === "fast"
                             ? "���‍♀️"
-                            : "🧟"}
+                            : "��"}
                       </div>
                     </div>
                   ))}
