@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import { useUser } from "@/contexts/UserContext";
 import { Menu, X, ExternalLink, Trophy, Zap, Settings } from "lucide-react";
+import ThemeToggle from "./ThemeToggle";
 
 const navItems = [
   { name: "Home", path: "/" },
