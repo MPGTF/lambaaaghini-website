@@ -637,10 +637,11 @@ export default function Launchpad() {
               <Card className="glass-card border-purple-500/20 hover:border-purple-500/40 transition-all duration-300">
                 <CardContent className="p-6 text-center">
                   <Shield className="h-12 w-12 text-purple-400 mx-auto mb-4" />
-                  <h3 className="text-xl font-bold mb-2">Secure & Audited</h3>
+                  <h3 className="text-xl font-bold mb-2">Sheep-Tested</h3>
                   <p className="text-muted-foreground">
-                    Battle-tested smart contracts with comprehensive security
-                    audits
+                    Our security is so tight, even the sheep can't figure out
+                    how to break it. Audited by a very serious sheep with
+                    glasses (they looked professional).
                   </p>
                 </CardContent>
               </Card>
