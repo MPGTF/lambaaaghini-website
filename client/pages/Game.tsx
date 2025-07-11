@@ -911,6 +911,16 @@ export default function Game() {
     // Initial check after component mounts
     updateScreenInfo();
 
+    // Check fullscreen support
+    const element = document.createElement("div");
+    const isFullscreenCapable = !!(
+      element.requestFullscreen ||
+      (element as any).webkitRequestFullscreen ||
+      (element as any).msRequestFullscreen ||
+      (element as any).mozRequestFullScreen
+    );
+    setFullscreenSupported(isFullscreenCapable);
+
     // Add event listeners
     window.addEventListener("resize", updateScreenInfo);
     window.addEventListener("orientationchange", updateScreenInfo);
