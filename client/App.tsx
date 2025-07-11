@@ -42,8 +42,13 @@ const App = () => (
               <main className="pt-16">
                 <Routes>
                   <Route path="/" element={<Index />} />
+                  <Route path="/portfolio" element={<Portfolio />} />
+                  <Route path="/trading" element={<Trading />} />
                   <Route path="/launchpad" element={<Launchpad />} />
                   <Route path="/dex" element={<Dex />} />
+                  <Route path="/leaderboards" element={<Leaderboards />} />
+                  <Route path="/academy" element={<Academy />} />
+                  <Route path="/news" element={<News />} />
                   <Route path="/pay-the-lamb" element={<PayTheLamb />} />
                   <Route path="/lamb-sauce" element={<LambSauce />} />
                   <Route path="/game" element={<Game />} />
