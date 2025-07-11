@@ -534,60 +534,76 @@ export default function Dex() {
                   </div>
                 </div>
 
-                {/* Quote Info */}
+                {/* Sheep Quote Intelligence */}
                 {quote && (
-                  <div className="bg-muted p-4 rounded-lg space-y-2">
+                  <div className="bg-gradient-to-r from-purple-500/10 to-gold-500/10 border border-purple-500/30 p-4 rounded-lg space-y-3">
+                    <div className="text-center text-sm font-semibold text-purple-400 mb-2">
+                      🐑 Sheep Analysis Complete!
+                    </div>
                     <div className="flex justify-between text-sm">
-                      <span>Price Impact:</span>
+                      <span className="text-muted-foreground">
+                        Price Impact:
+                      </span>
                       <span
-                        className={`font-semibold ${
+                        className={`font-bold ${
                           parseFloat(quote.priceImpactPct) > 5
                             ? "text-red-400"
-                            : "text-green-400"
+                            : parseFloat(quote.priceImpactPct) > 2
+                              ? "text-yellow-400"
+                              : "text-green-400"
                         }`}
                       >
                         {(parseFloat(quote.priceImpactPct) * 100).toFixed(2)}%
+                        {parseFloat(quote.priceImpactPct) > 5
+                          ? " 🚨"
+                          : parseFloat(quote.priceImpactPct) > 2
+                            ? " ⚠️"
+                            : " ✅"}
                       </span>
                     </div>
                     <div className="flex justify-between text-sm">
-                      <span>Route:</span>
-                      <span className="text-right text-xs">
+                      <span className="text-muted-foreground">
+                        Sheep Route:
+                      </span>
+                      <span className="text-right text-xs font-semibold text-gold-400">
                         {quote.routePlan?.length || 1} hop
-                        {quote.routePlan?.length > 1 ? "s" : ""}
+                        {quote.routePlan?.length > 1 ? "s" : ""} 🛣️
                       </span>
                     </div>
                   </div>
                 )}
 
-                {/* Action Buttons */}
-                <div className="space-y-2">
+                {/* Sheep Action Buttons */}
+                <div className="space-y-3">
                   <Button
                     onClick={getQuote}
                     disabled={!fromAmount || loading}
-                    className="w-full bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white"
+                    className="w-full bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white font-bold py-3 transition-all hover:scale-105 crypto-glow"
                   >
                     {loading ? (
-                      <RefreshCw className="h-4 w-4 animate-spin mr-2" />
+                      <RefreshCw className="h-5 w-5 animate-spin mr-2" />
                     ) : (
-                      <Search className="h-4 w-4 mr-2" />
+                      <Search className="h-5 w-5 mr-2" />
                     )}
-                    Get Quote
+                    🐑 Get Sheep Quote
                   </Button>
 
                   <Button
                     onClick={executeSwap}
                     disabled={!quote || loading || !publicKey}
-                    className="w-full bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-black font-semibold"
+                    className="w-full bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-black font-bold py-3 transition-all hover:scale-105 crypto-glow"
                   >
                     {!publicKey ? (
                       <>
-                        <Wallet className="h-4 w-4 mr-2" />
-                        Connect Wallet
+                        <Wallet className="h-5 w-5 mr-2" />
+                        🐑 Connect Wallet First!
                       </>
                     ) : (
                       <>
-                        <Zap className="h-4 w-4 mr-2" />
-                        {loading ? "Swapping..." : "Execute Swap"}
+                        <Zap className="h-5 w-5 mr-2" />
+                        {loading
+                          ? "🐑 Sheep Trading..."
+                          : "🚀 Execute Lamborghini Swap!"}
                       </>
                     )}
                   </Button>
