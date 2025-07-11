@@ -60,6 +60,12 @@ export default function Launchpad() {
   });
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string>("");
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [tokenCreationResult, setTokenCreationResult] = useState<{
+    tokenId: string;
+    transactionId: string;
+    tokenData: TokenMetadata;
+  } | null>(null);
 
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
