@@ -201,6 +201,9 @@ export default function Launchpad() {
       });
       setShowSuccessModal(true);
 
+      // Track token creation
+      incrementTokensCreated();
+
       toast.success(`Token ${tokenData.name} created successfully!`);
     } catch (error: any) {
       console.error("Token creation error:", error);
