@@ -195,11 +195,25 @@ export default function Launchpad() {
 
       toast.info("Creating token on Solana...");
 
+      // Calculate total cost (creation fee + initial buy)
+      const totalCost =
+        creationFee + (enableInitialBuy ? parseFloat(initialBuyAmount) : 0);
+
+      toast.info(
+        `Total cost: ${totalCost} SOL (${creationFee} SOL fee${enableInitialBuy ? ` + ${initialBuyAmount} SOL initial buy` : ""})`,
+      );
+
       // Note: This is a simplified version. In production, you'd need proper wallet adapter integration
       // const result = await pumpFunAPI.createToken(wallet, finalTokenData);
 
       // Simulate creation for demo
       await new Promise((resolve) => setTimeout(resolve, 3000));
+
+      // Simulate initial buy if enabled
+      if (enableInitialBuy) {
+        toast.info(`Executing initial buy of ${initialBuyAmount} SOL...`);
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+      }
 
       // Generate realistic-looking Solana addresses (base58 format)
       const generateSolanaAddress = () => {
