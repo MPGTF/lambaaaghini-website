@@ -10,6 +10,11 @@ import {
   Transaction,
   LAMPORTS_PER_SOL,
 } from "@solana/web3.js";
+import {
+  TOKEN_PROGRAM_ID,
+  createTransferInstruction,
+  getAssociatedTokenAddress,
+} from "@solana/spl-token";
 import { toast } from "sonner";
 import {
   ArrowRight,
