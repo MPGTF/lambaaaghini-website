@@ -376,9 +376,9 @@ export default function Launchpad() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
             <Card className="glass-card border-gold-500/20 text-center">
               <CardContent className="p-6">
-                <div className="text-2xl font-bold gradient-text">1,247</div>
+                <div className="text-2xl font-bold gradient-text">Many</div>
                 <div className="text-sm text-muted-foreground">
-                  Tokens Created
+                  Sheep Dreams
                 </div>
               </CardContent>
             </Card>
