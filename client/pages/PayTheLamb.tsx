@@ -65,57 +65,6 @@ export default function PayTheLamb() {
     commitment: "confirmed",
   });
 
-  // Load featured tokens from localStorage on mount
-  useEffect(() => {
-    const loadFeaturedTokens = () => {
-      const stored = localStorage.getItem("lamb_featured_tokens");
-      if (stored) {
-        const tokens: FeaturedToken[] = JSON.parse(stored);
-        // Filter out expired tokens
-        const now = Date.now();
-        const activeTokens = tokens.filter(
-          (token) => token.featuredUntil > now,
-        );
-
-        // Update time remaining for each token
-        const tokensWithTime = activeTokens.map((token) => ({
-          ...token,
-          timeRemaining: getTimeRemaining(token.featuredUntil),
-        }));
-
-        setFeaturedTokens(tokensWithTime);
-
-        // Save back the filtered active tokens
-        localStorage.setItem(
-          "lamb_featured_tokens",
-          JSON.stringify(activeTokens),
-        );
-      }
-    };
-
-    loadFeaturedTokens();
-
-    // Update every minute
-    const interval = setInterval(loadFeaturedTokens, 60000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const getTimeRemaining = (featuredUntil: number): string => {
-    const now = Date.now();
-    const remaining = featuredUntil - now;
-
-    if (remaining <= 0) return "Expired";
-
-    const hours = Math.floor(remaining / (1000 * 60 * 60));
-    const minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
-
-    if (hours > 0) {
-      return `${hours}h ${minutes}m`;
-    } else {
-      return `${minutes}m`;
-    }
-  };
-
   const handleInputChange = (field: string, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
