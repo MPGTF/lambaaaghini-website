@@ -396,8 +396,8 @@ export default function Launchpad() {
             </Card>
             <Card className="glass-card border-purple-500/20 text-center">
               <CardContent className="p-6">
-                <div className="text-2xl font-bold gradient-text">&lt; 30s</div>
-                <div className="text-sm text-muted-foreground">Deploy Time</div>
+                <div className="text-2xl font-bold gradient-text">Fast</div>
+                <div className="text-sm text-muted-foreground">Sheep Speed</div>
               </CardContent>
             </Card>
           </div>
