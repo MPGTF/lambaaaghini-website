@@ -629,6 +629,7 @@ export default function Game() {
               // Zombie hit by fart bomb
               newScore +=
                 zombie.type === "tank" ? 50 : zombie.type === "fast" ? 30 : 20;
+              zombiesKilledThisFrame++;
               playExplosionSound();
 
               // Add explosion effect
