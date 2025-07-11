@@ -703,7 +703,7 @@ export default function Dex() {
                 <div className="space-y-3">
                   <Button
                     onClick={getQuote}
-                    disabled={!fromAmount || loading || !axiomSignedUp}
+                    disabled={!fromAmount || loading}
                     className="w-full bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white font-bold py-3 transition-all hover:scale-105 crypto-glow"
                   >
                     {loading ? (
@@ -711,14 +711,12 @@ export default function Dex() {
                     ) : (
                       <Search className="h-5 w-5 mr-2" />
                     )}
-                    {!axiomSignedUp
-                      ? "🚨 Sign Up for Axiom First"
-                      : "🐑 Get Axiom Quote"}
+                    🐑 Get Axiom Professional Quote
                   </Button>
 
                   <Button
                     onClick={executeSwap}
-                    disabled={!quote || loading || !publicKey || !axiomSignedUp}
+                    disabled={!quote || loading || !publicKey}
                     className="w-full bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-black font-bold py-3 transition-all hover:scale-105 crypto-glow"
                   >
                     {!publicKey ? (
@@ -726,30 +724,19 @@ export default function Dex() {
                         <Wallet className="h-5 w-5 mr-2" />
                         🐑 Connect Wallet First!
                       </>
-                    ) : !axiomSignedUp ? (
-                      <>
-                        <ExternalLink className="h-5 w-5 mr-2" />
-                        �� Axiom Signup Required
-                      </>
                     ) : (
                       <>
                         <Zap className="h-5 w-5 mr-2" />
                         {loading
                           ? "🐑 Axiom Trading..."
-                          : "🚀 Execute Axiom Swap!"}
+                          : "🚀 Execute Professional Axiom Swap!"}
                       </>
                     )}
                   </Button>
 
-                  {!axiomSignedUp && (
-                    <Button
-                      onClick={handleAxiomSignup}
-                      className="w-full bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white font-bold py-3 transition-all hover:scale-105"
-                    >
-                      <ExternalLink className="h-5 w-5 mr-2" />
-                      🐑 Sign Up for Axiom (@mrpants)
-                    </Button>
-                  )}
+                  <div className="text-center text-xs text-muted-foreground p-2 bg-gradient-to-r from-purple-500/5 to-gold-500/5 border border-purple-500/20 rounded-lg">
+                    💰 Every trade automatically credits @mrpants referral! 🐑
+                  </div>
                 </div>
               </CardContent>
             </Card>
