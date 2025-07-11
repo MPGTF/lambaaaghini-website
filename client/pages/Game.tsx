@@ -1287,6 +1287,9 @@ export default function Game() {
                     <p>
                       ⚡ Speed Boost | 🔫 Triple Shot | 💥 Big Fart Power-ups
                     </p>
+                    <p className="text-xs text-purple-400">
+                      💡 Mobile Tip: Hold buttons firmly, release to stop action
+                    </p>
                   </div>
                 </div>
               </CardContent>
