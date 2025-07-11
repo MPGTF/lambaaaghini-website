@@ -177,6 +177,11 @@ export default function Game() {
   const isMovingLeftRef = useRef(false);
   const isMovingRightRef = useRef(false);
 
+  // Fullscreen and orientation states
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [isLandscape, setIsLandscape] = useState(false);
+  const gameContainerRef = useRef<HTMLDivElement>(null);
+
   // Game constants
   const GAME_WIDTH = 800;
   const GAME_HEIGHT = 600;
