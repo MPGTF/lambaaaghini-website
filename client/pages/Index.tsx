@@ -183,7 +183,7 @@ export default function Index() {
         <div className="absolute inset-0 bg-gradient-to-br from-purple-950/40 via-background to-amber-950/30" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(250,204,20,0.15),transparent_50%),radial-gradient(circle_at_70%_80%,rgba(168,85,247,0.15),transparent_50%)]" />
 
-        {/* Floating Lamborghini aesthetic elements - positioned to avoid text overlap */}
+        {/* Floating Lambaaaghini aesthetic elements - positioned to avoid text overlap */}
         <div className="absolute top-10 right-10 text-4xl opacity-5 animate-pulse pointer-events-none">
           🏎️
         </div>
@@ -266,7 +266,7 @@ export default function Index() {
                 <div className="absolute inset-0 bg-gradient-to-t from-background/30 to-transparent rounded-2xl" />
               </div>
 
-              {/* Enhanced floating elements with Lamborghini theme */}
+              {/* Enhanced floating elements with Lambaaaghini theme */}
               <div className="absolute -top-4 -right-4 bg-gold-500/20 backdrop-blur-sm border border-gold-500/30 rounded-lg px-4 py-2 animate-pulse">
                 <div className="text-gold-400 font-semibold text-sm">
                   🚀 Maybe Moon?
@@ -279,7 +279,7 @@ export default function Index() {
                 </div>
               </div>
 
-              {/* Additional Lamborghini-themed floating elements */}
+              {/* Additional Lambaaaghini-themed floating elements */}
               <div className="absolute top-1/2 -right-6 bg-gold-500/10 backdrop-blur-sm border border-gold-500/20 rounded-full p-3 animate-bounce">
                 <div className="text-gold-400 text-xl">🏎���</div>
               </div>
@@ -341,7 +341,7 @@ export default function Index() {
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Built by sheep who somehow learned to code while dreaming of
-              Lamborghinis. Features may include excessive bleating and
+              Lambaaaghinis. Features may include excessive bleating and
               questionable financial decisions.
             </p>
           </div>
