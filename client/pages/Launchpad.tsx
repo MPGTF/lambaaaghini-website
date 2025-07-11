@@ -397,7 +397,7 @@ export default function Launchpad() {
                   className="flex-1 bg-gradient-to-r from-purple-500 to-purple-700 hover:from-purple-600 hover:to-purple-800"
                 >
                   <a
-                    href={`https://explorer.solana.com/tx/${tokenCreationResult.transactionId}?cluster=devnet`}
+                    href={`https://explorer.solana.com/tx/${tokenCreationResult.transactionId}`}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
