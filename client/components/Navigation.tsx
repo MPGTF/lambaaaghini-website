@@ -160,6 +160,33 @@ export default function Navigation() {
                   </Link>
                 ))}
 
+                {isLoggedIn && user && (
+                  <div className="bg-gradient-to-r from-gold-500/20 to-purple-500/20 backdrop-blur-sm border border-gold-500/30 rounded-lg p-4 mt-4">
+                    <div className="flex items-center space-x-2 mb-3">
+                      <Trophy className="h-5 w-5 text-gold-400" />
+                      <Badge className="bg-gold-500/20 text-gold-400 border-gold-500/30">
+                        {getUserTitle()}
+                      </Badge>
+                    </div>
+                    <div className="grid grid-cols-2 gap-3 text-sm">
+                      <div className="flex items-center space-x-2">
+                        <span>🐑</span>
+                        <span className="text-muted-foreground">Zombies:</span>
+                        <span className="text-purple-400 font-semibold">
+                          {user.stats.zombiesKilled}
+                        </span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <span>🚀</span>
+                        <span className="text-muted-foreground">Tokens:</span>
+                        <span className="text-gold-400 font-semibold">
+                          {user.stats.tokensCreated}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
                 <div className="flex flex-col space-y-4 pt-8">
                   <Button
                     asChild
