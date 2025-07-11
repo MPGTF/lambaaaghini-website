@@ -320,7 +320,7 @@ export default function SolDustCleaner() {
                       </>
                     ) : (
                       <>
-                        <Vacuum className="h-4 w-4 mr-2" />
+                        <Sparkles className="h-4 w-4 mr-2" />
                         Scan for Dust
                       </>
                     )}
