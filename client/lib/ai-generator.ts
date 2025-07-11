@@ -137,7 +137,7 @@ export class AITokenGenerator {
     },
     luxury: {
       keywords: [
-        "lamborghini",
+        "lambaaaghini",
         "ferrari",
         "rolex",
         "luxury",
