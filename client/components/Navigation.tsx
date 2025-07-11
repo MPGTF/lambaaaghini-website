@@ -10,6 +10,7 @@ import { Menu, X, ExternalLink, Trophy, Zap, Settings } from "lucide-react";
 const navItems = [
   { name: "Home", path: "/" },
   { name: "Launchpad", path: "/launchpad" },
+  { name: "DEX", path: "/dex" },
   { name: "Game", path: "/game" },
   { name: "Roadmap", path: "/roadmap" },
   { name: "Whitepaper", path: "/whitepaper" },
