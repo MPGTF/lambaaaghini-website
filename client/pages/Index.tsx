@@ -269,11 +269,11 @@ export default function Index() {
       <section className="px-6 py-20 bg-gradient-to-br from-purple-900/30 via-amber-950/20 to-purple-950/30">
         <div className="mx-auto max-w-4xl text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Ready to Drive the Future?
+            Ready to Bleat Your Way to Glory?
           </h2>
           <p className="text-xl text-muted-foreground mb-12">
-            Connect your Solana wallet and join thousands of investors already
-            earning premium yields.
+            Connect your wallet and discover what happens when sheep meet
+            blockchain technology. Spoiler alert: It's beautifully chaotic.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
