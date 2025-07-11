@@ -29,7 +29,7 @@ import {
   Coins,
   Upload,
   Sparkles,
-  TrendingUp,
+    TrendingUp,
   Shield,
   ArrowRight,
   AlertCircle,
@@ -58,7 +58,7 @@ export default function Launchpad() {
     symbol: "",
     description: "",
   });
-  const [imageFile, setImageFile] = useState<File | null>(null);
+    const [imageFile, setImageFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string>("");
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [tokenCreationResult, setTokenCreationResult] = useState<{
@@ -175,7 +175,7 @@ export default function Launchpad() {
       // Note: This is a simplified version. In production, you'd need proper wallet adapter integration
       // const result = await pumpFunAPI.createToken(wallet, finalTokenData);
 
-      // Simulate creation for demo
+            // Simulate creation for demo
       await new Promise((resolve) => setTimeout(resolve, 3000));
 
       // Generate realistic-looking token and transaction IDs
@@ -185,7 +185,7 @@ export default function Launchpad() {
       setTokenCreationResult({
         tokenId,
         transactionId,
-        tokenData: { ...tokenData },
+        tokenData: { ...tokenData }
       });
       setShowSuccessModal(true);
 
@@ -196,7 +196,7 @@ export default function Launchpad() {
     } finally {
       setIsCreating(false);
     }
-  };
+    };
 
   const copyToClipboard = (text: string, type: string) => {
     navigator.clipboard.writeText(text);
@@ -213,8 +213,121 @@ export default function Launchpad() {
     setPreviewUrl("");
   };
 
-  return (
-    <div className="min-h-screen px-6 py-20">
+    return (
+    <>
+      {/* Success Modal */}
+      <Dialog open={showSuccessModal} onOpenChange={setShowSuccessModal}>
+        <DialogContent className="glass-card border-gold-500/20 max-w-2xl">
+          <DialogHeader>
+            <DialogTitle className="flex items-center space-x-2 text-2xl">
+              <Rocket className="h-8 w-8 text-gold-400" />
+              <span className="gradient-text">Token Created Successfully!</span>
+            </DialogTitle>
+            <DialogDescription className="text-muted-foreground">
+              Your token has been deployed to the Solana blockchain.
+            </DialogDescription>
+          </DialogHeader>
+
+          {tokenCreationResult && (
+            <div className="space-y-6 mt-6">
+              {/* Token Details */}
+              <div className="bg-muted/20 rounded-lg p-4 space-y-3">
+                <h3 className="font-semibold text-lg">{tokenCreationResult.tokenData.name}</h3>
+                <div className="grid grid-cols-2 gap-4 text-sm">
+                  <div>
+                    <span className="text-muted-foreground">Symbol:</span>
+                    <div className="font-mono">{tokenCreationResult.tokenData.symbol}</div>
+                  </div>
+                  <div>
+                    <span className="text-muted-foreground">Type:</span>
+                    <div>SPL Token</div>
+                  </div>
+                </div>
+                <div>
+                  <span className="text-muted-foreground">Description:</span>
+                  <div className="text-sm mt-1">{tokenCreationResult.tokenData.description}</div>
+                </div>
+              </div>
+
+              {/* Token ID */}
+              <div className="space-y-2">
+                <Label className="text-sm font-medium">Token Address</Label>
+                <div className="flex items-center space-x-2 bg-muted/20 rounded-lg p-3">
+                  <code className="flex-1 text-sm font-mono break-all">
+                    {tokenCreationResult.tokenId}
+                  </code>
+                  <Button
+                    size="sm"
+                    variant="ghost"
+                    onClick={() => copyToClipboard(tokenCreationResult.tokenId, "Token ID")}
+                    className="shrink-0"
+                  >
+                    <Copy className="h-4 w-4" />
+                  </Button>
+                </div>
+              </div>
+
+              {/* Transaction ID */}
+              <div className="space-y-2">
+                <Label className="text-sm font-medium">Transaction Hash</Label>
+                <div className="flex items-center space-x-2 bg-muted/20 rounded-lg p-3">
+                  <code className="flex-1 text-sm font-mono break-all">
+                    {tokenCreationResult.transactionId}
+                  </code>
+                  <Button
+                    size="sm"
+                    variant="ghost"
+                    onClick={() => copyToClipboard(tokenCreationResult.transactionId, "Transaction ID")}
+                    className="shrink-0"
+                  >
+                    <Copy className="h-4 w-4" />
+                  </Button>
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex flex-col sm:flex-row gap-3 pt-4">
+                <Button
+                  asChild
+                  className="flex-1 bg-gradient-to-r from-purple-500 to-purple-700 hover:from-purple-600 hover:to-purple-800"
+                >
+                  <a
+                    href={`https://explorer.solana.com/tx/${tokenCreationResult.transactionId}?cluster=devnet`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <ExternalLink className="h-4 w-4 mr-2" />
+                    View Transaction
+                  </a>
+                </Button>
+                <Button
+                  asChild
+                  variant="outline"
+                  className="flex-1 border-gold-500/50 text-gold-400 hover:bg-gold-500/10"
+                >
+                  <a
+                    href={`https://explorer.solana.com/address/${tokenCreationResult.tokenId}?cluster=devnet`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <ExternalLink className="h-4 w-4 mr-2" />
+                    View Token
+                  </a>
+                </Button>
+                <Button
+                  onClick={handleModalClose}
+                  variant="outline"
+                  className="flex-1"
+                >
+                  Create Another
+                </Button>
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
+
+      <div className="min-h-screen px-6 py-20">
       <div className="mx-auto max-w-6xl">
         {/* Header */}
         <div className="text-center mb-16">
