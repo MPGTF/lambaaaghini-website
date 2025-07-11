@@ -602,7 +602,7 @@ export default function Dex() {
                       <>
                         <Zap className="h-5 w-5 mr-2" />
                         {loading
-                          ? "🐑 Sheep Trading..."
+                          ? "��� Sheep Trading..."
                           : "🚀 Execute Lamborghini Swap!"}
                       </>
                     )}
@@ -724,43 +724,58 @@ export default function Dex() {
           </div>
         </div>
 
-        {/* Features Section */}
+        {/* Sheep Features Section */}
         <div className="mt-16">
-          <h2 className="text-3xl font-bold text-center mb-8">
-            <span className="text-gold-400">Why Trade with </span>
-            <span className="text-purple-400">LAMBAAAGHINI DEX?</span>
+          <h2 className="text-4xl font-bold text-center mb-4">
+            <span className="text-gold-400 drop-shadow-lg">
+              Why Sheep Choose{" "}
+            </span>
+            <span className="text-purple-400 drop-shadow-lg">LAMBAAAGHINI</span>
+            <span className="text-gold-400 drop-shadow-lg"> DEX? 🐑</span>
           </h2>
+          <p className="text-center text-muted-foreground mb-12 text-lg">
+            Because even sheep deserve Lamborghini-speed trading! 🏎️💨
+          </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Card className="glass-card border-blue-500/20 hover:border-blue-500/40 transition-all">
-              <CardContent className="p-6 text-center">
-                <Zap className="h-12 w-12 text-blue-400 mx-auto mb-4" />
-                <h3 className="text-xl font-bold mb-2">Best Rates</h3>
-                <p className="text-muted-foreground">
-                  Jupiter aggregates liquidity from all major Solana DEXs to
-                  find you the best possible rates
+            <Card className="glass-card border-blue-500/20 hover:border-blue-500/40 transition-all crypto-glow hover:scale-105">
+              <CardContent className="p-8 text-center">
+                <Zap className="h-16 w-16 text-blue-400 mx-auto mb-6" />
+                <h3 className="text-2xl font-bold mb-4 text-gold-400">
+                  🚀 Sheep-Speed Rates
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Our sheep have personally tested Jupiter's galactic routing
+                  technology across all major Solana DEXs. We guarantee the
+                  fluffiest rates in the universe! 🐑⚡
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="glass-card border-green-500/20 hover:border-green-500/40 transition-all">
-              <CardContent className="p-6 text-center">
-                <BarChart3 className="h-12 w-12 text-green-400 mx-auto mb-4" />
-                <h3 className="text-xl font-bold mb-2">Live Charts</h3>
-                <p className="text-muted-foreground">
-                  Real-time price charts and market data powered by DexScreener
-                  for informed trading decisions
+            <Card className="glass-card border-green-500/20 hover:border-green-500/40 transition-all crypto-glow hover:scale-105">
+              <CardContent className="p-8 text-center">
+                <BarChart3 className="h-16 w-16 text-green-400 mx-auto mb-6" />
+                <h3 className="text-2xl font-bold mb-4 text-purple-400">
+                  📊 Sheep Chart Wisdom
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Real-time price intelligence analyzed by our professional
+                  sheep traders, powered by DexScreener. Each chart comes with
+                  genuine sheep-approved market insights! 🐑📈
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="glass-card border-purple-500/20 hover:border-purple-500/40 transition-all">
-              <CardContent className="p-6 text-center">
-                <RefreshCw className="h-12 w-12 text-purple-400 mx-auto mb-4" />
-                <h3 className="text-xl font-bold mb-2">Instant Swaps</h3>
-                <p className="text-muted-foreground">
-                  Lightning-fast token swaps with minimal slippage and no
-                  registration required
+            <Card className="glass-card border-purple-500/20 hover:border-purple-500/40 transition-all crypto-glow hover:scale-105">
+              <CardContent className="p-8 text-center">
+                <RefreshCw className="h-16 w-16 text-purple-400 mx-auto mb-6" />
+                <h3 className="text-2xl font-bold mb-4 text-gold-400">
+                  ⚡ Lamborghini Swaps
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Lightning-fast token swaps with minimal slippage, no
+                  registration, and maximum sheep satisfaction. From fluffy to
+                  fast, we've got your trading covered! 🏎️🐑
                 </p>
               </CardContent>
             </Card>
