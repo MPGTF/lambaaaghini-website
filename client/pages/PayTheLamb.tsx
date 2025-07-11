@@ -155,8 +155,8 @@ export default function PayTheLamb() {
       const updated = [newFeaturedToken, ...existing];
       localStorage.setItem("lamb_featured_tokens", JSON.stringify(updated));
 
-      // Update state
-      setFeaturedTokens((prev) => [newFeaturedToken, ...prev]);
+      // Trigger a reload of featured tokens by dispatching a custom event
+      window.dispatchEvent(new CustomEvent("featuredTokensUpdated"));
 
       // Reset form
       setFormData({
