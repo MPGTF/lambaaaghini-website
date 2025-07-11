@@ -10,7 +10,7 @@ Lambaaaghini is a luxury meme token experience featuring cutting-edge agricultur
 
 ### 🏠 **Landing Page**
 
-- Luxury Lamborghini + sheep branding
+- Luxury Lambaaaghini + sheep branding
 - Professional meme aesthetics
 - Solana ecosystem integration
 
