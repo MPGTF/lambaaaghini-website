@@ -37,7 +37,7 @@ export default function Index() {
             {/* Left Column - Text Content */}
             <div className="text-center lg:text-left lg:col-span-7 lg:pr-8 relative">
               <Badge className="mb-8 bg-gold-500/10 text-gold-400 border-gold-500/20 hover:bg-gold-500/20 relative z-10">
-                🏎️ The Future of Luxury DeFi
+                🐑💨 Sheep Meet Lambos
               </Badge>
 
               <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-8 tracking-tight relative z-10">
