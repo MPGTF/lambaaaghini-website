@@ -1039,22 +1039,10 @@ export default function Game() {
                   {/* Orientation hint for mobile */}
                   <Button
                     onClick={() => {
-                      if (
-                        "screen" in window &&
-                        "orientation" in window.screen
-                      ) {
-                        try {
-                          (window.screen.orientation as any).lock("landscape");
-                        } catch (e) {
-                          toast.error(
-                            "Please rotate your device to landscape mode manually",
-                          );
-                        }
-                      } else {
-                        toast.info(
-                          "💡 Tip: Rotate your device horizontally for better gameplay!",
-                        );
-                      }
+                      toast.info(
+                        "💡 Rotate your device horizontally for better gameplay!",
+                        { duration: 4000 },
+                      );
                     }}
                     size="sm"
                     variant="outline"
