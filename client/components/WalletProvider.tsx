@@ -19,6 +19,39 @@ interface WalletProviderProps {
 }
 
 export default function WalletProvider({ children }: WalletProviderProps) {
+  // Suppress accessibility warnings from wallet adapter UI
+  useEffect(() => {
+    const originalError = console.error;
+    const originalWarn = console.warn;
+
+    console.error = (...args: any[]) => {
+      const message = args.join(" ");
+      if (
+        message.includes("DialogContent") &&
+        message.includes("DialogTitle")
+      ) {
+        return; // Suppress DialogTitle warnings from wallet adapters
+      }
+      originalError.apply(console, args);
+    };
+
+    console.warn = (...args: any[]) => {
+      const message = args.join(" ");
+      if (
+        message.includes("DialogContent") &&
+        message.includes("DialogTitle")
+      ) {
+        return; // Suppress DialogTitle warnings from wallet adapters
+      }
+      originalWarn.apply(console, args);
+    };
+
+    return () => {
+      console.error = originalError;
+      console.warn = originalWarn;
+    };
+  }, []);
+
   // Use devnet for better connectivity during testing
   const network = WalletAdapterNetwork.Devnet;
 
