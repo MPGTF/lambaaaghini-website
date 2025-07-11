@@ -185,7 +185,7 @@ export default function Index() {
                 but maybe? 🐑🚗💨)
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center mb-16">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center mb-8">
                 <Button
                   asChild
                   size="lg"
@@ -204,6 +204,17 @@ export default function Index() {
                 >
                   <Link to="/whitepaper">Read Whitepaper</Link>
                 </Button>
+              </div>
+
+              {/* Mobile Wallet Connect */}
+              <div className="block md:hidden mb-16">
+                <div className="text-center">
+                  <p className="text-sm text-muted-foreground mb-4 flex items-center justify-center gap-2">
+                    <Wallet className="h-4 w-4" />
+                    Connect your wallet to get started
+                  </p>
+                  <WalletMultiButton className="!bg-gradient-to-r !from-purple-500 !to-purple-700 hover:!from-purple-600 hover:!to-purple-800 !text-white !font-semibold !border-0 !rounded-md !px-6 !py-3" />
+                </div>
               </div>
             </div>
 
