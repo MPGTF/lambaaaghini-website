@@ -20,13 +20,13 @@ interface WalletProviderProps {
 }
 
 export default function WalletProvider({ children }: WalletProviderProps) {
-  // Use devnet for better connectivity during testing
-  const network = WalletAdapterNetwork.Devnet;
+  // Use mainnet for production
+  const network = WalletAdapterNetwork.Mainnet;
 
-  // Use a more reliable RPC endpoint
+  // Use a reliable RPC endpoint
   const endpoint = useMemo(() => {
-    if (network === WalletAdapterNetwork.Devnet) {
-      return "https://api.devnet.solana.com";
+    if (network === WalletAdapterNetwork.Mainnet) {
+      return "https://api.mainnet-beta.solana.com";
     }
     return clusterApiUrl(network);
   }, [network]);
