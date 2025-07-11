@@ -13,6 +13,7 @@ import TestHome from "./pages/TestHome";
 import Index from "./pages/Index";
 import Launchpad from "./pages/Launchpad";
 import Dex from "./pages/Dex";
+import PayTheLamb from "./pages/PayTheLamb";
 import Game from "./pages/Game";
 import Roadmap from "./pages/Roadmap";
 import Whitepaper from "./pages/Whitepaper";
