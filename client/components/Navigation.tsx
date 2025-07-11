@@ -11,6 +11,7 @@ const navItems = [
   { name: "Home", path: "/" },
   { name: "Launchpad", path: "/launchpad" },
   { name: "DEX", path: "/dex" },
+  { name: "Pay the Lamb", path: "/pay-the-lamb" },
   { name: "Game", path: "/game" },
   { name: "Roadmap", path: "/roadmap" },
   { name: "Whitepaper", path: "/whitepaper" },
