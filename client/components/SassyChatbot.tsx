@@ -41,7 +41,7 @@ const SASSY_RESPONSES = [
   "I see the problem. Unfortunately, fixing it would require admin privileges that I don't have. 👨‍💼",
   "Your token appears to be working perfectly! Are you sure you're looking at the right screen? 👀",
   "I've escalated your issue to our Level 2 support team. They're currently on a team-building retreat. 🏔️",
-  "Please note that our service level agreement doesn't cover issues occurring on days ending in 'y'. ��",
+  "Please note that our service level agreement doesn't cover issues occurring on days ending in 'y'. 📅",
   "I'd love to help, but first you'll need to complete our 47-page user satisfaction survey. 📊",
   "Your issue is known and documented in our internal knowledge base. Access is restricted to staff only. 🔐",
   "I recommend reaching out to our community forum where other users may have similar experiences. 🗣️",
@@ -230,9 +230,9 @@ export default function SassyChatbot() {
             <div className="flex-1 overflow-y-auto space-y-3 mb-3 pr-2">
               {messages.length === 0 && !isTyping && (
                 <div className="text-center py-8">
-                  <Skull className="h-8 w-8 text-red-400 mx-auto mb-2" />
+                  <Bot className="h-8 w-8 text-blue-400 mx-auto mb-2" />
                   <p className="text-xs text-muted-foreground">
-                    Preparing to crush your hopes...
+                    Initializing customer support module...
                   </p>
                 </div>
               )}
