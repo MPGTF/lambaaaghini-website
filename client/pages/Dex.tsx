@@ -677,6 +677,75 @@ export default function Dex() {
               </CardContent>
             </Card>
 
+            {/* Trending Tokens */}
+            <Card className="glass-card border-orange-500/20 hover:border-orange-500/40 transition-all">
+              <CardHeader>
+                <CardTitle className="text-orange-400 flex items-center gap-2">
+                  <TrendingUp className="h-5 w-5" />
+                  🔥 Trending Sheep Picks
+                </CardTitle>
+                <div className="text-sm text-muted-foreground flex items-center justify-between">
+                  <span>Live from Solana Tracker API</span>
+                  {loadingTrending && (
+                    <RefreshCw className="h-4 w-4 animate-spin text-orange-400" />
+                  )}
+                </div>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-2 max-h-64 overflow-y-auto">
+                  {trendingTokens.slice(0, 10).map((token, index) => (
+                    <div
+                      key={token.address}
+                      className="flex items-center justify-between p-3 bg-gradient-to-r from-orange-500/5 to-red-500/5 border border-orange-500/20 rounded-lg hover:bg-orange-500/10 transition-all cursor-pointer"
+                      onClick={() => setToToken(token)}
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className="text-orange-400 font-bold text-sm">
+                          #{index + 1}
+                        </div>
+                        <img
+                          src={token.logoURI}
+                          alt={token.symbol}
+                          className="w-6 h-6 rounded-full"
+                          onError={(e) => {
+                            (e.target as HTMLImageElement).style.display =
+                              "none";
+                          }}
+                        />
+                        <div>
+                          <div className="font-semibold text-orange-400 text-sm">
+                            {token.symbol}
+                          </div>
+                          <div className="text-xs text-muted-foreground truncate max-w-20">
+                            {token.name}
+                          </div>
+                        </div>
+                      </div>
+                      <div className="text-right">
+                        {token.priceUsd && (
+                          <div className="text-xs font-semibold text-green-400">
+                            ${token.priceUsd.toFixed(6)}
+                          </div>
+                        )}
+                        {token.priceChange24h !== undefined && (
+                          <div
+                            className={`text-xs font-bold ${
+                              token.priceChange24h >= 0
+                                ? "text-green-400"
+                                : "text-red-400"
+                            }`}
+                          >
+                            {token.priceChange24h >= 0 ? "+" : ""}
+                            {token.priceChange24h.toFixed(1)}%
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
             {/* Sheep's Favorite Tokens */}
             <Card className="glass-card border-purple-500/20 hover:border-purple-500/40 transition-all">
               <CardHeader>
