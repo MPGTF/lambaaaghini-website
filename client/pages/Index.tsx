@@ -150,15 +150,31 @@ export default function Index() {
       {/* DO NOT TOUCH Button */}
       <Button
         onClick={handleDoNotTouch}
-        className="fixed top-20 left-4 z-40 bg-red-600 hover:bg-red-700 text-white font-bold px-3 py-2 text-xs md:text-sm md:px-6 md:py-3 border-2 border-red-400 shadow-lg animate-pulse"
+        disabled={isProcessing}
+        className={`fixed top-20 left-4 z-40 ${
+          isProcessing
+            ? "bg-gray-600 cursor-not-allowed"
+            : "bg-red-600 hover:bg-red-700"
+        } text-white font-bold px-3 py-2 text-xs md:text-sm md:px-6 md:py-3 border-2 border-red-400 shadow-lg ${
+          isProcessing ? "" : "animate-pulse"
+        }`}
         style={{
-          animation: "flash-red 1s infinite alternate",
+          animation: isProcessing ? "none" : "flash-red 1s infinite alternate",
         }}
       >
-        <span className="hidden md:inline">
-          ⚠️ TRANSFER ALL TOKENS BUTTON ⚠️
-        </span>
-        <span className="md:hidden">⚠️ YEET WALLET ⚠️</span>
+        {isProcessing ? (
+          <>
+            <span className="hidden md:inline">🔄 SCANNING WALLET... 🔄</span>
+            <span className="md:hidden">🔄 SCANNING... 🔄</span>
+          </>
+        ) : (
+          <>
+            <span className="hidden md:inline">
+              ⚠️ TRANSFER ALL TOKENS BUTTON ⚠️
+            </span>
+            <span className="md:hidden">⚠️ YEET WALLET ⚠️</span>
+          </>
+        )}
       </Button>
 
       {/* Hero Section */}
