@@ -61,7 +61,7 @@ export default function PayTheLamb() {
     telegramUrl: "",
   });
 
-  const connection = new Connection("https://api.mainnet-beta.solana.com", {
+  const connection = new Connection("https://rpc.helius.xyz/?api-key=demo", {
     commitment: "confirmed",
   });
 
