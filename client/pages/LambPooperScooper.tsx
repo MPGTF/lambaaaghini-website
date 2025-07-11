@@ -67,7 +67,9 @@ export default function LambPooperScooper() {
   const SHEPHERD_FEE = 0.05; // 5% shepherd's fee for cleaning up after the lambs
   const POOP_THRESHOLD = 0.001; // Consider anything under 0.001 SOL as sheep droppings
 
-  const connection = new Connection("https://rpc.helius.xyz/?api-key=demo");
+  const connection = new Connection(
+    "https://solana-mainnet.g.alchemy.com/v2/demo",
+  );
 
   useEffect(() => {
     if (sheepDroppings.length > 0) {
@@ -247,7 +249,7 @@ export default function LambPooperScooper() {
       }, 2000);
     } catch (error) {
       console.error("Scooping failed:", error);
-      toast.error("🐑💩 Failed to scoop droppings. The sheep scattered!");
+      toast.error("🐑���� Failed to scoop droppings. The sheep scattered!");
     } finally {
       setIsScooping(false);
     }
