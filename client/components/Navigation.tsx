@@ -187,7 +187,7 @@ export default function Navigation() {
                   </div>
                 )}
 
-                <div className="flex flex-col space-y-4 pt-8">
+                <div className="flex flex-col space-y-6 pt-8">
                   <Button
                     asChild
                     variant="outline"
