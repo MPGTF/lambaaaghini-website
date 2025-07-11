@@ -835,6 +835,64 @@ export default function Game() {
     shootFart,
   ]);
 
+  // Fullscreen functionality
+  const toggleFullscreen = async () => {
+    if (!gameContainerRef.current) return;
+
+    try {
+      if (!document.fullscreenElement) {
+        await gameContainerRef.current.requestFullscreen();
+        setIsFullscreen(true);
+        // Request landscape orientation on mobile
+        if ("screen" in window && "orientation" in window.screen) {
+          try {
+            await (window.screen.orientation as any).lock("landscape");
+          } catch (e) {
+            console.log("Orientation lock not supported");
+          }
+        }
+      } else {
+        await document.exitFullscreen();
+        setIsFullscreen(false);
+        // Unlock orientation
+        if ("screen" in window && "orientation" in window.screen) {
+          try {
+            (window.screen.orientation as any).unlock();
+          } catch (e) {
+            console.log("Orientation unlock not supported");
+          }
+        }
+      }
+    } catch (error) {
+      console.error("Fullscreen error:", error);
+    }
+  };
+
+  // Detect orientation changes
+  useEffect(() => {
+    const handleOrientationChange = () => {
+      const isCurrentlyLandscape = window.innerHeight < window.innerWidth;
+      setIsLandscape(isCurrentlyLandscape);
+    };
+
+    const handleFullscreenChange = () => {
+      setIsFullscreen(!!document.fullscreenElement);
+    };
+
+    // Initial check
+    handleOrientationChange();
+
+    window.addEventListener("resize", handleOrientationChange);
+    window.addEventListener("orientationchange", handleOrientationChange);
+    document.addEventListener("fullscreenchange", handleFullscreenChange);
+
+    return () => {
+      window.removeEventListener("resize", handleOrientationChange);
+      window.removeEventListener("orientationchange", handleOrientationChange);
+      document.removeEventListener("fullscreenchange", handleFullscreenChange);
+    };
+  }, []);
+
   // Handle keyboard input (arrow keys only) with improved responsiveness
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
