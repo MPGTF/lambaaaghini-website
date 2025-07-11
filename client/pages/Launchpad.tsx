@@ -411,7 +411,7 @@ export default function Launchpad() {
                   className="flex-1 border-gold-500/50 text-gold-400 hover:bg-gold-500/10"
                 >
                   <a
-                    href={`https://explorer.solana.com/address/${tokenCreationResult.tokenId}?cluster=devnet`}
+                    href={`https://explorer.solana.com/address/${tokenCreationResult.tokenId}`}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
