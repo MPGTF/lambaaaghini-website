@@ -263,6 +263,27 @@ export default function Launchpad() {
           </Card>
         </div>
 
+        {/* Play Game Section */}
+        <div className="text-center mb-12">
+          <Card className="glass-card border-purple-500/20 max-w-md mx-auto">
+            <CardContent className="p-6">
+              <h3 className="text-xl font-bold mb-4">🎮 Ready to Play?</h3>
+              <p className="text-muted-foreground mb-6">
+                Your wallet is connected! Jump into the Lamb Defense game.
+              </p>
+              <Button
+                asChild
+                className="bg-gradient-to-r from-purple-500 to-purple-700 hover:from-purple-600 hover:to-purple-800 text-white font-semibold w-full crypto-glow"
+              >
+                <Link to="/game">
+                  🐑💨 Play Lamb Defense
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+            </CardContent>
+          </Card>
+        </div>
+
         {/* Main Interface */}
         <Tabs defaultValue="ai" className="space-y-8">
           <TabsList className="grid w-full grid-cols-2 bg-muted/20">
