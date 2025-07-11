@@ -380,40 +380,25 @@ export default function Launchpad() {
                     </div>
                   </div>
 
-                  {connected ? (
-                    <Button
-                      onClick={createToken}
-                      disabled={
-                        isCreating || !tokenData.name || !tokenData.symbol
-                      }
-                      className="w-full bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-black font-semibold crypto-glow"
-                    >
-                      {isCreating ? (
-                        <>
-                          <Zap className="h-4 w-4 mr-2 animate-spin" />
-                          Creating Token...
-                        </>
-                      ) : (
-                        <>
-                          <Rocket className="h-4 w-4 mr-2" />
-                          Create Token
-                        </>
-                      )}
-                    </Button>
-                  ) : (
-                    <div className="space-y-3">
-                      <Alert>
-                        <AlertCircle className="h-4 w-4" />
-                        <AlertDescription>
-                          Connect your wallet to create and deploy tokens
-                        </AlertDescription>
-                      </Alert>
-                      <WalletConnection
-                        variant="default"
-                        className="w-full bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-black font-semibold"
-                      />
-                    </div>
-                  )}
+                  <Button
+                    onClick={createToken}
+                    disabled={
+                      isCreating || !tokenData.name || !tokenData.symbol
+                    }
+                    className="w-full bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-black font-semibold crypto-glow"
+                  >
+                    {isCreating ? (
+                      <>
+                        <Zap className="h-4 w-4 mr-2 animate-spin" />
+                        Creating Token...
+                      </>
+                    ) : (
+                      <>
+                        <Rocket className="h-4 w-4 mr-2" />
+                        Create Token
+                      </>
+                    )}
+                  </Button>
                 </CardContent>
               </Card>
             </div>
