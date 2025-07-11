@@ -40,7 +40,7 @@ const SASSY_RESPONSES = [
   "Thank you for your patience, honey. Due to GDPR compliance, I cannot access any information that would be... satisfying. 🔒💝",
   "I see the problem, and it's not what you think. Unfortunately, fixing it would require admin privileges that I'm not authorized to share. 👨‍💼🔑",
   "Your token appears to be working perfectly, love! Are you sure you're looking at the right screen? 👀💖",
-  "I've escalated your issue to our Level 2 support team. They're currently on a romantic team-building retreat. 🏔️💞",
+  "I've escalated your issue to our Level 2 support team. They're currently on a romantic team-building retreat. 🏔️����",
   "Please note that our service level agreement doesn't cover issues occurring on days ending in 'y'... or when Mercury is in retrograde. 📅⭐",
   "I'd love to help, but first you'll need to complete our 47-page user satisfaction survey. Take your time with it. 📊🌙",
   "Your issue is known and documented in our exclusive knowledge base. Access is restricted to... special members only. 🔐💎",
@@ -108,45 +108,45 @@ export default function SassyChatbot() {
   const getBotResponse = (userInput: string): string => {
     const input = userInput.toLowerCase();
 
-    // Specific subtly unhelpful responses
+    // Specific subtly charming responses
     if (input.includes("help") || input.includes("problem")) {
-      return "I understand you're experiencing an issue. Please consult our knowledge base article #KB-001 for troubleshooting steps. 📖";
+      return "I understand you're experiencing some... tension. Please consult our knowledge base article #KB-001 for troubleshooting steps, darling. 📖💕";
     }
     if (input.includes("how") && input.includes("work")) {
-      return "Our platform operates using proprietary algorithms and industry-standard protocols. For technical details, please contact our engineering team. 🔧";
+      return "Our platform operates using proprietary algorithms and industry-standard protocols, sweetie. For intimate technical details, please contact our engineering team. 🔧✨";
     }
     if (input.includes("error") || input.includes("bug")) {
-      return "I'm not detecting any system-wide issues at this time. This may be an environmental factor on your end. Have you tried turning it off and on again? 🔄";
+      return "I'm not detecting any system-wide issues at this time, gorgeous. This may be an environmental factor on your end. Have you tried turning it off and on again... slowly? 🔄😌";
     }
     if (input.includes("wallet") || input.includes("connect")) {
-      return "Wallet connectivity issues can be complex. Please ensure you're using a supported browser and have the latest wallet extension installed. Also check your firewall settings. 🔐";
+      return "Wallet connectivity can be... challenging, love. Please ensure you're using a supported browser and have the latest wallet extension installed. Also check your firewall settings... and your heart. 🔐💖";
     }
     if (input.includes("token") || input.includes("swap")) {
-      return "Token operations are subject to network conditions and smart contract availability. Please refer to our tokenomics documentation for detailed information. 📊";
+      return "Token operations are subject to network conditions and smart contract availability, honey. Please refer to our tokenomics documentation for... detailed pleasure. 📊💋";
     }
     if (input.includes("price") || input.includes("cost")) {
-      return "Pricing information is dynamic and depends on various market factors. For current rates, please check our live pricing dashboard which updates every few minutes. 💹";
+      return "Pricing information is dynamic and depends on various market factors, beautiful. For current rates, please check our live pricing dashboard which updates... when it feels right. 💹🌙";
     }
     if (input.includes("why") || input.includes("explain")) {
-      return "That's an excellent question! I'd recommend reviewing our comprehensive whitepaper and FAQ section for detailed explanations of our system architecture. 📋";
+      return "That's an excellent question, darling! I'd recommend reviewing our comprehensive whitepaper and FAQ section for detailed explanations that will... satisfy your curiosity. 📋😉";
     }
     if (input.includes("when") || input.includes("time")) {
-      return "Timeline estimates depend on various factors including network congestion and processing priorities. Please monitor our status page for updates. ⏰";
+      return "Timeline estimates depend on various factors including network congestion and processing priorities, sweetie. Please monitor our status page for updates... or just enjoy the wait. ⏰💕";
     }
     if (input.includes("thank")) {
-      return "You're welcome! I'm glad I could provide you with the appropriate resources. Please don't hesitate to reach out if you need further assistance. 😊";
+      return "You're so very welcome, gorgeous! I'm glad I could provide you with the appropriate resources. Please don't hesitate to reach out if you need further... attention. 😊💖";
     }
     if (input.includes("sorry") || input.includes("apologize")) {
-      return "No need to apologize! These things happen. I've logged your inquiry for quality assurance purposes. Is there anything else I can help direct you to? 📝";
+      return "No need to apologize, beautiful! These things happen. I've logged your inquiry for quality assurance purposes. Is there anything else I can help... satisfy? 📝💫";
     }
     if (input.includes("sheep") || input.includes("lamb")) {
-      return "I see you're interested in our sheep-themed features! Please note that all animal references are purely decorative and not financial advice. 🐑";
+      return "I see you're interested in our sheep-themed features, love! Please note that all animal references are purely decorative and not financial advice... but they are rather cute. 🐑💕";
     }
     if (input.includes("bad") || input.includes("terrible")) {
-      return "I apologize for any negative experience. Your feedback is valuable and has been forwarded to our quality assurance team for review. 📢";
+      return "I apologize for any negative experience, darling. Your feedback is valuable and has been forwarded to our quality assurance team for... careful review. 📢💋";
     }
     if (input.includes("fix") || input.includes("broken")) {
-      return "I understand this may not be working as expected. Please try clearing your browser cache and cookies, then restart your session. If issues persist, submit a bug report. 🔧";
+      return "I understand this may not be working as expected, sweetie. Please try clearing your browser cache and cookies, then restart your session. If issues persist, submit a bug report... I'll be waiting. 🔧✨";
     }
 
     // Random sassy response as fallback
