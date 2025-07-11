@@ -229,6 +229,14 @@ export default function Index() {
                   asChild
                   size="lg"
                   variant="outline"
+                  className="border-blue-500/50 text-blue-400 hover:bg-blue-500/10 px-8 py-6 text-lg"
+                >
+                  <Link to="/dex">Trade on DEX</Link>
+                </Button>
+                <Button
+                  asChild
+                  size="lg"
+                  variant="outline"
                   className="border-purple-500/50 text-purple-400 hover:bg-purple-500/10 px-8 py-6 text-lg"
                 >
                   <Link to="/whitepaper">Read Whitepaper</Link>
