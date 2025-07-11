@@ -1250,9 +1250,7 @@ export default function Game() {
                 {/* Controls */}
                 <div
                   className={`mt-8 text-center space-y-6 game-control-area ${
-                    isLandscape && window.innerWidth < 1024
-                      ? "mobile-landscape-controls"
-                      : ""
+                    isLandscape && isMobile ? "mobile-landscape-controls" : ""
                   }`}
                 >
                   {!gameState.gameRunning && !gameState.gameOver && (
