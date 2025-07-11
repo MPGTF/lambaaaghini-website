@@ -203,136 +203,15 @@ export default function Navigation() {
                 </div>
               </div>
             )}
-            {/* Launch App Dropdown */}
-            <div className="relative group">
-              <Button className="bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-black font-semibold flex items-center">
+            <Button
+              asChild
+              className="bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-black font-semibold"
+            >
+              <Link to="/launchpad">
                 Launch App
-                <svg
-                  className="w-4 h-4 ml-2"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </Button>
-              <div className="absolute top-full right-0 mt-1 w-64 bg-background/95 backdrop-blur-md border border-border/50 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                <div className="py-2">
-                  <div className="px-3 py-2 text-xs font-semibold text-gold-400 uppercase tracking-wider border-b border-border/30">
-                    Trading & DeFi
-                  </div>
-                  <Link
-                    to="/dex"
-                    className="flex items-center gap-3 px-4 py-3 text-sm font-medium transition-colors hover:text-gold-400 hover:bg-gold-500/10 text-muted-foreground"
-                  >
-                    <span className="text-lg">⚡</span>
-                    <div>
-                      <div className="font-semibold">DEX Trading</div>
-                      <div className="text-xs text-muted-foreground">
-                        Swap tokens instantly
-                      </div>
-                    </div>
-                  </Link>
-                  <Link
-                    to="/trading"
-                    className="flex items-center gap-3 px-4 py-3 text-sm font-medium transition-colors hover:text-blue-400 hover:bg-blue-500/10 text-muted-foreground"
-                  >
-                    <span className="text-lg">📊</span>
-                    <div>
-                      <div className="font-semibold">Advanced Trading</div>
-                      <div className="text-xs text-muted-foreground">
-                        Alerts, bots & charts
-                      </div>
-                    </div>
-                  </Link>
-                  <Link
-                    to="/portfolio"
-                    className="flex items-center gap-3 px-4 py-3 text-sm font-medium transition-colors hover:text-purple-400 hover:bg-purple-500/10 text-muted-foreground"
-                  >
-                    <span className="text-lg">💼</span>
-                    <div>
-                      <div className="font-semibold">Portfolio</div>
-                      <div className="text-xs text-muted-foreground">
-                        Track your investments
-                      </div>
-                    </div>
-                  </Link>
-                  <Link
-                    to="/launchpad"
-                    className="flex items-center gap-3 px-4 py-3 text-sm font-medium transition-colors hover:text-red-400 hover:bg-red-500/10 text-muted-foreground"
-                  >
-                    <span className="text-lg">🚀</span>
-                    <div>
-                      <div className="font-semibold">Token Launchpad</div>
-                      <div className="text-xs text-muted-foreground">
-                        Create new tokens
-                      </div>
-                    </div>
-                  </Link>
-
-                  <div className="px-3 py-2 text-xs font-semibold text-purple-400 uppercase tracking-wider border-b border-t border-border/30 mt-2">
-                    Utilities & Tools
-                  </div>
-                  <Link
-                    to="/lamb-pooper-scooper"
-                    className="flex items-center gap-3 px-4 py-3 text-sm font-medium transition-colors hover:text-green-400 hover:bg-green-500/10 text-muted-foreground"
-                  >
-                    <span className="text-lg">🐑</span>
-                    <div>
-                      <div className="font-semibold">Lamb Pooper Scooper</div>
-                      <div className="text-xs text-muted-foreground">
-                        Clean up SOL dust
-                      </div>
-                    </div>
-                  </Link>
-                  <Link
-                    to="/pay-the-lamb"
-                    className="flex items-center gap-3 px-4 py-3 text-sm font-medium transition-colors hover:text-orange-400 hover:bg-orange-500/10 text-muted-foreground"
-                  >
-                    <span className="text-lg">💰</span>
-                    <div>
-                      <div className="font-semibold">Pay the Lamb</div>
-                      <div className="text-xs text-muted-foreground">
-                        Feature your tokens
-                      </div>
-                    </div>
-                  </Link>
-
-                  <div className="px-3 py-2 text-xs font-semibold text-green-400 uppercase tracking-wider border-b border-t border-border/30 mt-2">
-                    Community & Fun
-                  </div>
-                  <Link
-                    to="/lamb-sauce"
-                    className="flex items-center gap-3 px-4 py-3 text-sm font-medium transition-colors hover:text-orange-400 hover:bg-orange-500/10 text-muted-foreground"
-                  >
-                    <span className="text-lg">💬</span>
-                    <div>
-                      <div className="font-semibold">Lamb Sauce Chat</div>
-                      <div className="text-xs text-muted-foreground">
-                        Community discussion
-                      </div>
-                    </div>
-                  </Link>
-                  <Link
-                    to="/game"
-                    className="flex items-center gap-3 px-4 py-3 text-sm font-medium transition-colors hover:text-purple-400 hover:bg-purple-500/10 text-muted-foreground"
-                  >
-                    <span className="text-lg">🎮</span>
-                    <div>
-                      <div className="font-semibold">Sheep vs Zombies</div>
-                      <div className="text-xs text-muted-foreground">
-                        Play & earn tokens
-                      </div>
-                    </div>
-                  </Link>
-                </div>
-              </div>
-            </div>
+                <ExternalLink className="w-4 h-4 ml-2" />
+              </Link>
+            </Button>
           </div>
 
           {/* Mobile Menu */}
