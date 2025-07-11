@@ -108,6 +108,20 @@ export default function Navigation() {
               </a>
             </Button>
             <WalletMultiButton className="!bg-gradient-to-r !from-purple-500 !to-purple-700 hover:!from-purple-600 hover:!to-purple-800 !text-white !font-semibold !border-0 !rounded-md !px-4 !py-2" />
+            {isLoggedIn && user && (
+              <div className="flex items-center space-x-2 bg-gradient-to-r from-gold-500/20 to-purple-500/20 backdrop-blur-sm border border-gold-500/30 rounded-lg px-3 py-2">
+                <Trophy className="h-4 w-4 text-gold-400" />
+                <div className="flex flex-col">
+                  <Badge className="text-xs bg-gold-500/20 text-gold-400 border-gold-500/30 mb-1">
+                    {getUserTitle()}
+                  </Badge>
+                  <div className="flex items-center space-x-2 text-xs text-muted-foreground">
+                    <span>🐑 {user.stats.zombiesKilled}</span>
+                    <span>🚀 {user.stats.tokensCreated}</span>
+                  </div>
+                </div>
+              </div>
+            )}
             <Button
               asChild
               className="bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-black font-semibold"
