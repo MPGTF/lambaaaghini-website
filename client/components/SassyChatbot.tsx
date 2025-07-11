@@ -41,7 +41,7 @@ const SASSY_RESPONSES = [
   "I see the problem. Unfortunately, fixing it would require admin privileges that I don't have. 👨‍💼",
   "Your token appears to be working perfectly! Are you sure you're looking at the right screen? 👀",
   "I've escalated your issue to our Level 2 support team. They're currently on a team-building retreat. 🏔️",
-  "Please note that our service level agreement doesn't cover issues occurring on days ending in 'y'. 📅",
+  "Please note that our service level agreement doesn't cover issues occurring on days ending in 'y'. ��",
   "I'd love to help, but first you'll need to complete our 47-page user satisfaction survey. 📊",
   "Your issue is known and documented in our internal knowledge base. Access is restricted to staff only. 🔐",
   "I recommend reaching out to our community forum where other users may have similar experiences. 🗣️",
@@ -221,7 +221,7 @@ export default function SassyChatbot() {
               </Button>
             </div>
             <div className="text-xs text-muted-foreground">
-              🚨 Warning: Zero helpful responses guaranteed
+              ℹ️ Automated responses • Limited functionality
             </div>
           </CardHeader>
 
