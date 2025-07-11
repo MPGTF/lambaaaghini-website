@@ -200,7 +200,25 @@ export default function Trading() {
   };
 
   return (
-    <div className="min-h-screen px-6 py-20">
+    <div className="min-h-screen px-6 py-20 relative">
+      {/* Floating mini lamb car logos */}
+      <div className="absolute top-40 right-10 opacity-20 animate-pulse pointer-events-none">
+        <img
+          src="https://cdn.builder.io/api/v1/image/assets%2F253ce014bfed48a3b74611f6cf44c794%2F3e5641ce2ffe4d8a9ddd24c343aa4978?format=webp&width=80"
+          alt="Lambaaaghini"
+          className="w-12 h-8 object-cover rounded-lg"
+        />
+      </div>
+      <div
+        className="absolute bottom-32 left-6 opacity-15 animate-bounce pointer-events-none"
+        style={{ animationDelay: "1s" }}
+      >
+        <img
+          src="https://cdn.builder.io/api/v1/image/assets%2F253ce014bfed48a3b74611f6cf44c794%2F3e5641ce2ffe4d8a9ddd24c343aa4978?format=webp&width=80"
+          alt="Lambaaaghini"
+          className="w-10 h-6 object-cover rounded-lg"
+        />
+      </div>
       <div className="mx-auto max-w-7xl">
         <div className="text-center mb-8">
           <Badge className="mb-6 bg-blue-500/10 text-blue-400 border-blue-500/20 hover:bg-blue-500/20">
