@@ -497,9 +497,14 @@ export default function Dex() {
                   </div>
                 </div>
 
-                {/* Slippage Settings */}
+                {/* Sheep Slippage Settings */}
                 <div className="space-y-2">
-                  <Label htmlFor="slippage">Slippage Tolerance (%)</Label>
+                  <Label
+                    htmlFor="slippage"
+                    className="text-gold-400 font-semibold"
+                  >
+                    🐑 Slippage Tolerance (How much sheep wiggle room?)
+                  </Label>
                   <div className="flex gap-2">
                     <Input
                       id="slippage"
@@ -507,7 +512,7 @@ export default function Dex() {
                       step="0.1"
                       value={slippage}
                       onChange={(e) => setSlippage(e.target.value)}
-                      className="flex-1"
+                      className="flex-1 border-gold-500/50 focus:border-gold-500"
                     />
                     <div className="flex gap-1">
                       {["0.1", "0.5", "1.0"].map((value) => (
@@ -516,7 +521,11 @@ export default function Dex() {
                           variant={slippage === value ? "default" : "outline"}
                           size="sm"
                           onClick={() => setSlippage(value)}
-                          className="text-xs"
+                          className={`text-xs transition-all ${
+                            slippage === value
+                              ? "bg-gradient-to-r from-gold-400 to-gold-600 text-black font-bold"
+                              : "border-gold-500/50 text-gold-400 hover:bg-gold-500/20"
+                          }`}
                         >
                           {value}%
                         </Button>
