@@ -221,49 +221,63 @@ export default function Navigation() {
                   </div>
                 )}
 
-                <div className="flex flex-col space-y-6 pt-8">
-                  <Button
-                    asChild
-                    variant="outline"
-                    className="border-gold-500/50 text-gold-400 hover:bg-gold-500/10 justify-start"
-                  >
-                    <a
-                      href="https://x.com/lambaaaghini?s=21"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      <XIcon className="w-4 h-4 mr-2" />
-                      Follow us on X
-                    </a>
-                  </Button>
-                  <Button
-                    asChild
-                    variant="outline"
-                    className="border-purple-500/50 text-purple-400 hover:bg-purple-500/10 justify-start"
-                  >
-                    <a
-                      href="https://www.fartbook.us/profile/2jvWaa0H0UYVzJfEBqHcKiHEbFr2"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      <FartbookIcon className="w-4 h-4 mr-2" />
-                      Follow us on Fartbook
-                    </a>
-                  </Button>
-                  <div className="pt-4">
-                    <WalletMultiButton className="!bg-gradient-to-r !from-purple-500 !to-purple-700 hover:!from-purple-600 hover:!to-purple-800 !text-white !font-semibold !border-0 !rounded-md !px-4 !py-2 !justify-start !w-full" />
+                <div className="pt-8 border-t border-border/30">
+                  <div className="mb-6">
+                    <p className="text-sm text-muted-foreground mb-4">
+                      Connect Your Wallet
+                    </p>
+                    <WalletMultiButton className="!bg-gradient-to-r !from-purple-500 !to-purple-700 hover:!from-purple-600 hover:!to-purple-800 !text-white !font-semibold !border-0 !rounded-md !px-4 !py-2 !justify-start !w-full !min-h-[50px]" />
                   </div>
-                  <Button
-                    asChild
-                    className="bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-black font-semibold justify-start"
-                  >
-                    <Link to="/launchpad" onClick={() => setIsOpen(false)}>
-                      Launch App
-                      <ExternalLink className="w-4 h-4 ml-2" />
-                    </Link>
-                  </Button>
+
+                  <div className="flex flex-col space-y-4 mb-6">
+                    <Button
+                      asChild
+                      className="bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-black font-semibold justify-start min-h-[50px]"
+                    >
+                      <Link to="/launchpad" onClick={() => setIsOpen(false)}>
+                        Launch App
+                        <ExternalLink className="w-4 h-4 ml-2" />
+                      </Link>
+                    </Button>
+                  </div>
+
+                  <div className="pt-4 border-t border-border/30">
+                    <p className="text-sm text-muted-foreground mb-4">
+                      Follow Us
+                    </p>
+                    <div className="flex flex-col space-y-3">
+                      <Button
+                        asChild
+                        variant="outline"
+                        className="border-gold-500/50 text-gold-400 hover:bg-gold-500/10 justify-start min-h-[50px]"
+                      >
+                        <a
+                          href="https://x.com/lambaaaghini?s=21"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={() => setIsOpen(false)}
+                        >
+                          <XIcon className="w-4 h-4 mr-2" />
+                          Follow us on X
+                        </a>
+                      </Button>
+                      <Button
+                        asChild
+                        variant="outline"
+                        className="border-purple-500/50 text-purple-400 hover:bg-purple-500/10 justify-start min-h-[50px]"
+                      >
+                        <a
+                          href="https://www.fartbook.us/profile/2jvWaa0H0UYVzJfEBqHcKiHEbFr2"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={() => setIsOpen(false)}
+                        >
+                          <FartbookIcon className="w-4 h-4 mr-2" />
+                          Follow us on Fartbook
+                        </a>
+                      </Button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </SheetContent>
