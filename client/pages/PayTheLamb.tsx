@@ -26,6 +26,7 @@ import {
   Zap,
   Trophy,
 } from "lucide-react";
+import FeaturedTokens from "@/components/FeaturedTokens";
 
 interface FeaturedToken {
   id: string;
