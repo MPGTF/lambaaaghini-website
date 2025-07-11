@@ -384,10 +384,8 @@ export default function Launchpad() {
             </Card>
             <Card className="glass-card border-purple-500/20 text-center">
               <CardContent className="p-6">
-                <div className="text-2xl font-bold gradient-text">$2.4M</div>
-                <div className="text-sm text-muted-foreground">
-                  Volume Traded
-                </div>
+                <div className="text-2xl font-bold gradient-text">Wow</div>
+                <div className="text-sm text-muted-foreground">Such Volume</div>
               </CardContent>
             </Card>
             <Card className="glass-card border-gold-500/20 text-center">
