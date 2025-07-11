@@ -40,7 +40,7 @@ const SASSY_RESPONSES = [
   "Thank you for your patience, honey. Due to GDPR compliance, I cannot access any information that would be... satisfying. 🔒💝",
   "I see the problem, and it's not what you think. Unfortunately, fixing it would require admin privileges that I'm not authorized to share. 👨‍💼🔑",
   "Your token appears to be working perfectly, love! Are you sure you're looking at the right screen? 👀💖",
-  "I've escalated your issue to our Level 2 support team. They're currently on a romantic team-building retreat. 🏔️����",
+  "I've escalated your issue to our Level 2 support team. They're currently on a romantic team-building retreat. 🏔️💞",
   "Please note that our service level agreement doesn't cover issues occurring on days ending in 'y'... or when Mercury is in retrograde. 📅⭐",
   "I'd love to help, but first you'll need to complete our 47-page user satisfaction survey. Take your time with it. 📊🌙",
   "Your issue is known and documented in our exclusive knowledge base. Access is restricted to... special members only. 🔐💎",
@@ -208,7 +208,7 @@ export default function SassyChatbot() {
                 <Bot className="h-4 w-4" />
                 🤖 AI Support Assistant
                 <Badge className="bg-blue-500/20 text-blue-400 border-blue-500/30 text-xs">
-                  Online & Ready
+                  Online & Enchanting
                 </Badge>
               </CardTitle>
               <Button
