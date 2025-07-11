@@ -565,16 +565,26 @@ export default function Launchpad() {
                             className="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-muted-foreground/25 rounded-lg cursor-pointer hover:border-primary/50 transition-colors"
                           >
                             {previewUrl ? (
-                              <img
-                                src={previewUrl}
-                                alt="Token preview"
-                                className="w-full h-full object-cover rounded-lg"
-                              />
+                              <div className="relative w-full h-full">
+                                <img
+                                  src={previewUrl}
+                                  alt="Token preview"
+                                  className="w-full h-full object-cover rounded-lg"
+                                />
+                                <div className="absolute top-1 right-1 bg-green-500/20 backdrop-blur-sm border border-green-500/30 rounded px-2 py-1">
+                                  <span className="text-xs text-green-400">
+                                    🤖 AI Generated
+                                  </span>
+                                </div>
+                              </div>
                             ) : (
                               <div className="flex flex-col items-center justify-center pt-5 pb-6">
                                 <Upload className="w-8 h-8 mb-4 text-muted-foreground" />
                                 <p className="mb-2 text-sm text-muted-foreground">
                                   Click to upload token image
+                                </p>
+                                <p className="text-xs text-muted-foreground">
+                                  Or use AI to generate one!
                                 </p>
                               </div>
                             )}
