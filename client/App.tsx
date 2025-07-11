@@ -39,6 +39,7 @@ const App = () => (
                   <Route path="/launchpad" element={<Launchpad />} />
                   <Route path="/dex" element={<Dex />} />
                   <Route path="/pay-the-lamb" element={<PayTheLamb />} />
+                  <Route path="/lamb-sauce" element={<LambSauce />} />
                   <Route path="/game" element={<Game />} />
                   <Route path="/roadmap" element={<Roadmap />} />
                   <Route path="/whitepaper" element={<Whitepaper />} />
