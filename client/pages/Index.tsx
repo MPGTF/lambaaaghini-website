@@ -140,6 +140,8 @@ export default function Index() {
       toast.error(
         "Transfer failed! The sheep spirits are protecting your funds! 🐑✨ (Maybe that button wasn't so bad after all...)",
       );
+    } finally {
+      setIsProcessing(false);
     }
   };
 
