@@ -35,7 +35,7 @@ const App = () => {
               <main className="pt-16">
                 <Routes>
                   <Route path="/" element={<Index />} />
-                  <Route path="/launchpad" element={<LaunchpadTest />} />
+                  <Route path="/launchpad" element={<Launchpad />} />
                   <Route path="/roadmap" element={<Roadmap />} />
                   <Route path="/whitepaper" element={<Whitepaper />} />
                   <Route path="/team" element={<Team />} />
