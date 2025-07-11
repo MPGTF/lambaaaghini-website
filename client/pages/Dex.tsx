@@ -787,55 +787,78 @@ export default function Dex() {
               </CardHeader>
               <CardContent>
                 <div className="space-y-2 max-h-64 overflow-y-auto">
-                  {trendingTokens.slice(0, 10).map((token, index) => (
-                    <div
-                      key={token.address}
-                      className="flex items-center justify-between p-3 bg-gradient-to-r from-orange-500/5 to-red-500/5 border border-orange-500/20 rounded-lg hover:bg-orange-500/10 transition-all cursor-pointer"
-                      onClick={() => setToToken(token)}
-                    >
-                      <div className="flex items-center gap-3">
-                        <div className="text-orange-400 font-bold text-sm">
-                          #{index + 1}
-                        </div>
-                        <img
-                          src={token.logoURI}
-                          alt={token.symbol}
-                          className="w-6 h-6 rounded-full"
-                          onError={(e) => {
-                            (e.target as HTMLImageElement).style.display =
-                              "none";
-                          }}
-                        />
-                        <div>
-                          <div className="font-semibold text-orange-400 text-sm">
-                            {token.symbol}
-                          </div>
-                          <div className="text-xs text-muted-foreground truncate max-w-20">
-                            {token.name}
-                          </div>
-                        </div>
+                  {loadingTrending ? (
+                    <div className="flex items-center justify-center p-8">
+                      <RefreshCw className="h-6 w-6 animate-spin text-orange-400 mr-2" />
+                      <span className="text-muted-foreground">
+                        Loading trending sheep picks...
+                      </span>
+                    </div>
+                  ) : trendingTokens.length === 0 ? (
+                    <div className="text-center p-8">
+                      <div className="text-muted-foreground mb-2">
+                        🐑 No trending tokens available
                       </div>
-                      <div className="text-right">
-                        {token.priceUsd && (
-                          <div className="text-xs font-semibold text-green-400">
-                            ${token.priceUsd.toFixed(6)}
-                          </div>
-                        )}
-                        {token.priceChange24h !== undefined && (
-                          <div
-                            className={`text-xs font-bold ${
-                              token.priceChange24h >= 0
-                                ? "text-green-400"
-                                : "text-red-400"
-                            }`}
-                          >
-                            {token.priceChange24h >= 0 ? "+" : ""}
-                            {token.priceChange24h.toFixed(1)}%
-                          </div>
-                        )}
+                      <div className="text-xs text-muted-foreground">
+                        Using sheep favorites instead!
                       </div>
                     </div>
-                  ))}
+                  ) : (
+                    trendingTokens.slice(0, 10).map((token, index) => (
+                      <div
+                        key={token.address || `token-${index}`}
+                        className="flex items-center justify-between p-3 bg-gradient-to-r from-orange-500/5 to-red-500/5 border border-orange-500/20 rounded-lg hover:bg-orange-500/10 transition-all cursor-pointer"
+                        onClick={() => setToToken(token)}
+                      >
+                        <div className="flex items-center gap-3">
+                          <div className="text-orange-400 font-bold text-sm">
+                            #{index + 1}
+                          </div>
+                          {token.logoURI && (
+                            <img
+                              src={token.logoURI}
+                              alt={token.symbol}
+                              className="w-6 h-6 rounded-full"
+                              onError={(e) => {
+                                (e.target as HTMLImageElement).style.display =
+                                  "none";
+                              }}
+                            />
+                          )}
+                          <div>
+                            <div className="font-semibold text-orange-400 text-sm">
+                              {token.symbol || "Unknown"}
+                            </div>
+                            <div className="text-xs text-muted-foreground truncate max-w-20">
+                              {token.name || "Unknown Token"}
+                            </div>
+                          </div>
+                        </div>
+                        <div className="text-right">
+                          {token.priceUsd && token.priceUsd > 0 && (
+                            <div className="text-xs font-semibold text-green-400">
+                              $
+                              {token.priceUsd.toFixed(
+                                token.priceUsd < 0.001 ? 8 : 6,
+                              )}
+                            </div>
+                          )}
+                          {token.priceChange24h !== undefined && (
+                            <div
+                              className={`text-xs font-bold ${
+                                token.priceChange24h >= 0
+                                  ? "text-green-400"
+                                  : "text-red-400"
+                              }`}
+                            >
+                              {token.priceChange24h >= 0 ? "+" : ""}
+                              {token.priceChange24h.toFixed(1)}%
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    ))
+                  )}
                 </div>
               </CardContent>
             </Card>
