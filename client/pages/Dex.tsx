@@ -611,27 +611,30 @@ export default function Dex() {
               </CardContent>
             </Card>
 
-            {/* Popular Tokens */}
-            <Card className="glass-card border-purple-500/20">
+            {/* Sheep's Favorite Tokens */}
+            <Card className="glass-card border-purple-500/20 hover:border-purple-500/40 transition-all">
               <CardHeader>
-                <CardTitle className="text-purple-400">
-                  Popular Tokens
+                <CardTitle className="text-purple-400 flex items-center gap-2">
+                  🐑❤️ Sheep's Favorite Tokens
                 </CardTitle>
+                <div className="text-sm text-muted-foreground">
+                  Handpicked by our finest sheep traders
+                </div>
               </CardHeader>
               <CardContent>
-                <div className="grid grid-cols-2 gap-2">
+                <div className="grid grid-cols-2 gap-3">
                   {POPULAR_TOKENS.map((token) => (
                     <Button
                       key={token.address}
                       variant="outline"
                       size="sm"
                       onClick={() => setToToken(token)}
-                      className="justify-start border-muted hover:bg-muted"
+                      className="justify-start border-purple-500/50 hover:bg-purple-500/20 hover:border-purple-500 transition-all hover:scale-105 font-semibold"
                     >
                       <img
                         src={token.logoURI}
                         alt={token.symbol}
-                        className="w-4 h-4 mr-2"
+                        className="w-5 h-5 mr-2"
                         onError={(e) => {
                           (e.target as HTMLImageElement).style.display = "none";
                         }}
