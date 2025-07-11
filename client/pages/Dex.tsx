@@ -112,9 +112,12 @@ export default function Dex() {
   const chartRef = useRef<HTMLDivElement>(null);
 
   // Ensure mainnet connection for real trading
-  const connection = new Connection("https://rpc.helius.xyz/?api-key=demo", {
-    commitment: "confirmed",
-  });
+  const connection = new Connection(
+    "https://solana-mainnet.g.alchemy.com/v2/demo",
+    {
+      commitment: "confirmed",
+    },
+  );
 
   // Load token list
   useEffect(() => {
