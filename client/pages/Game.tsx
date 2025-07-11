@@ -987,7 +987,7 @@ export default function Game() {
   return (
     <div
       ref={gameContainerRef}
-      className={`min-h-screen transition-all duration-300 ${
+      className={`min-h-screen transition-all duration-300 relative ${
         isFullscreen ? "bg-black p-2 fullscreen-mode" : "px-6 py-20"
       } ${
         isFullscreen && isLandscape
