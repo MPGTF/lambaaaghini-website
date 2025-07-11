@@ -56,51 +56,116 @@ async function getStockImage(
 function extractKeywords(options: TokenImageOptions): string {
   const description = options.description.toLowerCase();
   const name = options.name.toLowerCase();
+  const combinedText = `${description} ${name}`;
 
-  // Extract relevant keywords for image search
+  // Extract silly/funny keywords for image search
   const keywords = [];
 
-  // Crypto/finance related
-  if (
-    description.includes("coin") ||
-    description.includes("token") ||
-    description.includes("crypto")
-  ) {
-    keywords.push("cryptocurrency", "blockchain", "digital");
+  // Funny animal combinations
+  if (combinedText.includes("dog") || combinedText.includes("puppy")) {
+    keywords.push("funny dog", "dog meme", "silly puppy", "dog costume");
+  }
+  if (combinedText.includes("cat") || combinedText.includes("kitty")) {
+    keywords.push("funny cat", "cat meme", "grumpy cat", "silly kitten");
+  }
+  if (combinedText.includes("sheep") || combinedText.includes("lamb")) {
+    keywords.push("funny sheep", "fluffy sheep", "sheep meme", "silly lamb");
+  }
+  if (combinedText.includes("frog") || combinedText.includes("pepe")) {
+    keywords.push("funny frog", "meme frog", "silly frog");
   }
 
-  // Animal related
-  if (description.includes("dog") || description.includes("puppy"))
-    keywords.push("dog");
-  if (description.includes("cat") || description.includes("kitty"))
-    keywords.push("cat");
-  if (description.includes("sheep") || description.includes("lamb"))
-    keywords.push("sheep");
-
-  // Space/moon related
+  // Silly space/moon themes
   if (
-    description.includes("moon") ||
-    description.includes("space") ||
-    description.includes("rocket")
+    combinedText.includes("moon") ||
+    combinedText.includes("space") ||
+    combinedText.includes("rocket")
   ) {
-    keywords.push("space", "moon", "rocket");
+    keywords.push("funny astronaut", "silly rocket", "space meme", "moon face");
   }
 
-  // Car/lambo related
+  // Ridiculous car/lambo themes
   if (
-    description.includes("lambo") ||
-    description.includes("car") ||
-    description.includes("speed")
+    combinedText.includes("lambo") ||
+    combinedText.includes("car") ||
+    combinedText.includes("speed")
   ) {
-    keywords.push("sports car", "luxury car");
+    keywords.push("funny car", "toy car", "silly vehicle", "meme car");
   }
 
-  // Default to abstract/geometric if no specific keywords
+  // Food memes
+  if (
+    combinedText.includes("pizza") ||
+    combinedText.includes("burger") ||
+    combinedText.includes("food")
+  ) {
+    keywords.push("funny food", "meme food", "silly snacks");
+  }
+
+  // Internet culture/meme keywords
+  if (combinedText.includes("doge") || combinedText.includes("shib")) {
+    keywords.push("doge meme", "funny shiba", "meme dog");
+  }
+  if (combinedText.includes("banana") || combinedText.includes("fruit")) {
+    keywords.push("funny banana", "fruit meme", "silly fruit");
+  }
+  if (combinedText.includes("potato") || combinedText.includes("vegetable")) {
+    keywords.push("funny potato", "silly vegetable", "meme potato");
+  }
+
+  // Silly crypto-related
+  if (
+    combinedText.includes("coin") ||
+    combinedText.includes("token") ||
+    combinedText.includes("crypto")
+  ) {
+    keywords.push(
+      "funny money",
+      "silly coins",
+      "meme cryptocurrency",
+      "cartoon money",
+    );
+  }
+
+  // Generic silly themes
+  if (combinedText.includes("ninja") || combinedText.includes("warrior")) {
+    keywords.push("funny ninja", "silly warrior", "cartoon fighter");
+  }
+  if (combinedText.includes("robot") || combinedText.includes("ai")) {
+    keywords.push("funny robot", "silly AI", "cartoon robot", "meme robot");
+  }
+  if (combinedText.includes("wizard") || combinedText.includes("magic")) {
+    keywords.push("funny wizard", "silly magic", "cartoon wizard");
+  }
+
+  // Default to funny/silly content
   if (keywords.length === 0) {
-    keywords.push("abstract", "geometric", "colorful", "pattern");
+    const sillyDefaults = [
+      "funny cartoon",
+      "silly meme",
+      "cute cartoon",
+      "funny face",
+      "silly character",
+      "meme template",
+      "cartoon animal",
+      "funny emoji",
+      "silly expression",
+      "cute funny",
+      "cartoon comedy",
+      "funny drawing",
+    ];
+    const randomSilly =
+      sillyDefaults[Math.floor(Math.random() * sillyDefaults.length)];
+    keywords.push(randomSilly, "cartoon", "funny");
   }
 
-  return keywords.slice(0, 3).join(" ");
+  // Always add meme/funny modifier to make it sillier
+  const memeModifiers = ["funny", "silly", "meme", "cartoon", "cute"];
+  const randomModifier =
+    memeModifiers[Math.floor(Math.random() * memeModifiers.length)];
+  keywords.unshift(randomModifier);
+
+  return keywords.slice(0, 4).join(" ");
 }
 
 async function processStockImage(
