@@ -1063,18 +1063,23 @@ export default function Game() {
                   </Button>
 
                   {/* Fullscreen button */}
-                  <Button
-                    onClick={toggleFullscreen}
-                    size="sm"
-                    variant="outline"
-                    className="border-purple-500/50 text-purple-400 hover:bg-purple-500/10"
-                  >
-                    {isFullscreen ? (
-                      <Minimize className="h-4 w-4" />
-                    ) : (
-                      <Maximize className="h-4 w-4" />
-                    )}
-                  </Button>
+                  {fullscreenSupported && (
+                    <Button
+                      onClick={toggleFullscreen}
+                      size="sm"
+                      variant="outline"
+                      className="border-purple-500/50 text-purple-400 hover:bg-purple-500/10"
+                      title={
+                        isFullscreen ? "Exit Fullscreen" : "Enter Fullscreen"
+                      }
+                    >
+                      {isFullscreen ? (
+                        <Minimize className="h-4 w-4" />
+                      ) : (
+                        <Maximize className="h-4 w-4" />
+                      )}
+                    </Button>
+                  )}
                 </div>
               </CardHeader>
               <CardContent>
