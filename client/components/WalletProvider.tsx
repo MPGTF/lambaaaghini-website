@@ -69,7 +69,8 @@ export default function WalletProvider({ children }: WalletProviderProps) {
       <SolanaWalletProvider
         wallets={wallets}
         onError={onError}
-        autoConnect={true}
+        autoConnect={walletConfig.autoConnect}
+        localStorageKey={walletConfig.localStorageKey}
       >
         <WalletModalProvider>{children}</WalletModalProvider>
       </SolanaWalletProvider>
