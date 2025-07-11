@@ -47,9 +47,9 @@ export default function Index() {
               </h1>
 
               <p className="text-xl md:text-2xl text-muted-foreground mb-12 leading-relaxed relative z-10 drop-shadow-md">
-                Experience the pinnacle of luxury in the Solana ecosystem.
-                High-performance DeFi protocols engineered for speed, style, and
-                unprecedented returns.
+                Where fluffy sheep dream of driving supercars and fart their way
+                to financial freedom. This is definitely financial advice. (JK,
+                but maybe? 🐑🚗💨)
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center mb-16">
