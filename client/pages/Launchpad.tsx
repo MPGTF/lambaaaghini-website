@@ -246,10 +246,20 @@ export default function Launchpad() {
       // Simulate creation for demo
       await new Promise((resolve) => setTimeout(resolve, 3000));
 
-      // Simulate initial buy if enabled
+      // Handle initial buy if enabled
       if (enableInitialBuy) {
         toast.info(`Executing initial buy of ${initialBuyAmount} SOL...`);
-        await new Promise((resolve) => setTimeout(resolve, 2000));
+
+        // Create initial buy transaction (this would integrate with pump.fun in production)
+        const buyAmount = parseFloat(initialBuyAmount);
+        if (buyAmount > 0) {
+          // In production, this would be a swap transaction through pump.fun
+          // For now, we simulate the buy process
+          await new Promise((resolve) => setTimeout(resolve, 2000));
+          toast.success(
+            `Initial buy of ${initialBuyAmount} SOL simulated successfully!`,
+          );
+        }
       }
 
       // Generate realistic-looking Solana addresses (base58 format)
