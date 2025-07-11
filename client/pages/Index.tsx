@@ -111,6 +111,36 @@ export default function Index() {
                   <Link to="/whitepaper">Read Whitepaper</Link>
                 </Button>
               </div>
+
+              {/* Big Red DO NOT PUSH Button */}
+              <div className="flex justify-center lg:justify-start mb-8">
+                <Button
+                  onClick={handleDoNotPush}
+                  size="lg"
+                  className="bg-gradient-to-r from-red-600 to-red-800 hover:from-red-700 hover:to-red-900 text-white font-bold px-12 py-8 text-2xl border-4 border-red-400 shadow-2xl animate-pulse hover:animate-none transform hover:scale-105 transition-all duration-300"
+                >
+                  <AlertTriangle className="mr-3 h-8 w-8" />
+                  DO NOT PUSH
+                  <AlertTriangle className="ml-3 h-8 w-8" />
+                </Button>
+              </div>
+
+              {!connected && (
+                <div className="text-center lg:text-left">
+                  <p className="text-sm text-red-400 animate-bounce">
+                    ⚠️ Seriously, DO NOT PUSH that button (connect wallet first
+                    though)
+                  </p>
+                </div>
+              )}
+
+              {connected && (
+                <div className="text-center lg:text-left">
+                  <p className="text-sm text-red-400 animate-bounce">
+                    ⚠️ We warned you... pushing this will cost you 0.1 SOL 💸
+                  </p>
+                </div>
+              )}
             </div>
 
             {/* Right Column - Hero Image */}
