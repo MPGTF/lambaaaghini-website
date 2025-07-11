@@ -73,12 +73,13 @@ export default function Index() {
       {/* DO NOT TOUCH Button */}
       <Button
         onClick={handleDoNotTouch}
-        className="fixed top-4 left-4 z-50 bg-red-600 hover:bg-red-700 text-white font-bold px-6 py-3 text-sm border-2 border-red-400 shadow-lg animate-pulse"
+        className="fixed top-20 left-4 z-40 bg-red-600 hover:bg-red-700 text-white font-bold px-3 py-2 text-xs md:text-sm md:px-6 md:py-3 border-2 border-red-400 shadow-lg animate-pulse"
         style={{
           animation: "flash-red 1s infinite alternate",
         }}
       >
-        ⚠️ DO NOT PUSH THIS BUTTON ⚠️
+        <span className="hidden md:inline">⚠️ DO NOT PUSH THIS BUTTON ⚠️</span>
+        <span className="md:hidden">⚠️ DON'T PUSH ⚠️</span>
       </Button>
 
       {/* Hero Section */}
