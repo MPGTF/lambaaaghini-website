@@ -41,6 +41,18 @@ interface QuoteResponse {
   routePlan: any[];
 }
 
+interface TrendingToken {
+  address: string;
+  symbol: string;
+  name: string;
+  decimals: number;
+  logoURI?: string;
+  priceUsd?: number;
+  volume24h?: number;
+  priceChange24h?: number;
+  marketCap?: number;
+}
+
 const POPULAR_TOKENS: TokenInfo[] = [
   {
     address: "9BB6NFEcjBCtnNLFko2FqVQBq8HHM13kCyYcdQbgpump",
