@@ -4,6 +4,7 @@ import { useUser } from "@/contexts/UserContext";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Maximize, Minimize, RotateCcw } from "lucide-react";
 
 interface GameState {
   playerX: number;
