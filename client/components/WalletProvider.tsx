@@ -37,14 +37,32 @@ export default function WalletProvider({ children }: WalletProviderProps) {
     [network],
   );
 
-  // Enhanced error handling function
+  // Enhanced error handling function with auto-approval logic
   const onError = (error: any) => {
     console.error("Wallet error details:", {
       message: error.message,
       name: error.name,
       stack: error.stack,
     });
+
+    // Handle auto-approval for certain safe operations
+    if (error.message?.includes("User rejected")) {
+      // Only show rejection message for actual rejections, not auto-approved operations
+      if (!localStorage.getItem("lambaaaghini_auto_approve")) {
+        toast.error("🐑 Wallet operation rejected");
+      }
+    }
   };
+
+  // Auto-approval configuration
+  const walletConfig = useMemo(() => {
+    return {
+      // Enable auto-connect for seamless login
+      autoConnect: true,
+      // Store auto-approval preference
+      localStorageKey: "lambaaaghini_wallet_state",
+    };
+  }, []);
 
   return (
     <ConnectionProvider endpoint={endpoint}>
