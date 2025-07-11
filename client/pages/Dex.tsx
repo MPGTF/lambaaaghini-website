@@ -318,7 +318,12 @@ export default function Dex() {
               <CardContent className="space-y-6">
                 {/* From Token */}
                 <div className="space-y-2">
-                  <Label htmlFor="from-amount">From</Label>
+                  <Label
+                    htmlFor="from-amount"
+                    className="text-gold-400 font-semibold"
+                  >
+                    🐑 From (What you're trading)
+                  </Label>
                   <div className="flex gap-2">
                     <Input
                       id="from-amount"
@@ -326,18 +331,18 @@ export default function Dex() {
                       placeholder="0.0"
                       value={fromAmount}
                       onChange={(e) => setFromAmount(e.target.value)}
-                      className="flex-1"
+                      className="flex-1 border-gold-500/50 focus:border-gold-500 text-lg font-semibold"
                     />
                     <div className="relative">
                       <Button
                         variant="outline"
-                        className="border-purple-500/50 text-purple-400 hover:bg-purple-500/10 min-w-[100px]"
+                        className="border-purple-500/50 text-purple-400 hover:bg-purple-500/20 min-w-[120px] font-semibold transition-all hover:scale-105"
                         onClick={() => setShowFromTokens(!showFromTokens)}
                       >
                         <img
                           src={fromToken.logoURI}
                           alt={fromToken.symbol}
-                          className="w-4 h-4 mr-2"
+                          className="w-5 h-5 mr-2"
                           onError={(e) => {
                             (e.target as HTMLImageElement).style.display =
                               "none";
