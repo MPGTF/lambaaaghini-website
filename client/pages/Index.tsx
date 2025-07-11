@@ -207,9 +207,9 @@ export default function Index() {
                   💰 Money Printer Go Brrr
                 </h3>
                 <p className="text-muted-foreground">
-                  We've scientifically engineered yields so high, they might
-                  actually be illegal in several countries. APY so big it needs
-                  its own ZIP code.
+                  We asked our pet sheep to do the math, and they bleated "big
+                  numbers good!" Results may vary. Side effects include
+                  spontaneous lambo purchases and sheep noises.
                 </p>
               </CardContent>
             </Card>
