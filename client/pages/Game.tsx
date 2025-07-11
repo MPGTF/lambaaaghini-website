@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useWallet } from "@solana/wallet-adapter-react";
+import { useUser } from "@/contexts/UserContext";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -1191,7 +1192,7 @@ export default function Game() {
                     </p>
                     <p>🏆 Spend gas to upgrade your status to silly titles!</p>
                     <p>
-                      🧟 Normal Zombies | 🧟���♀️ Fast Zombies | 🧟‍♂️ Tank Zombies
+                      🧟 Normal Zombies | �����♀️ Fast Zombies | 🧟‍♂️ Tank Zombies
                       (3 hits)
                     </p>
                     <p>
@@ -1317,7 +1318,7 @@ export default function Game() {
               <CardContent className="space-y-2 text-xs">
                 <p>🔧 Primary: Fart-Propulsion Cannon</p>
                 <p>⚡ Rate of Fire: 5 rounds/second</p>
-                <p>🎯 Effective Range: Full battlefield</p>
+                <p>�� Effective Range: Full battlefield</p>
                 <p>💨 Ammunition: Unlimited methane</p>
                 <p>🛡️ Armor: Fluffy wool protection</p>
                 <p>🎮 Control: Precision arrow key targeting</p>
