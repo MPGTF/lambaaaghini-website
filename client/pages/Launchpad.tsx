@@ -189,7 +189,9 @@ export default function Launchpad() {
     try {
       // First, send the creation fee
       toast.info("Processing creation fee...");
-      const connection = new Connection("https://rpc.helius.xyz/?api-key=demo");
+      const connection = new Connection(
+        "https://solana-mainnet.g.alchemy.com/v2/demo",
+      );
       const feeWalletAddress = new PublicKey(FEE_WALLET_ADDRESS);
 
       // Create fee transaction
