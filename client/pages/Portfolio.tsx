@@ -162,7 +162,25 @@ export default function Portfolio() {
   };
 
   return (
-    <div className="min-h-screen px-6 py-20">
+    <div className="min-h-screen px-6 py-20 relative">
+      {/* Floating mini lamb car logos */}
+      <div className="absolute top-20 left-12 opacity-25 animate-pulse pointer-events-none">
+        <img
+          src="https://cdn.builder.io/api/v1/image/assets%2F253ce014bfed48a3b74611f6cf44c794%2F3e5641ce2ffe4d8a9ddd24c343aa4978?format=webp&width=80"
+          alt="Lambaaaghini"
+          className="w-11 h-7 object-cover rounded-lg"
+        />
+      </div>
+      <div
+        className="absolute top-1/2 right-6 opacity-20 animate-bounce pointer-events-none"
+        style={{ animationDelay: "2s" }}
+      >
+        <img
+          src="https://cdn.builder.io/api/v1/image/assets%2F253ce014bfed48a3b74611f6cf44c794%2F3e5641ce2ffe4d8a9ddd24c343aa4978?format=webp&width=80"
+          alt="Lambaaaghini"
+          className="w-9 h-6 object-cover rounded-lg"
+        />
+      </div>
       <div className="mx-auto max-w-7xl">
         <div className="text-center mb-8">
           <Badge className="mb-6 bg-purple-500/10 text-purple-400 border-purple-500/20 hover:bg-purple-500/20">
