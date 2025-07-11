@@ -1440,7 +1440,11 @@ export default function Game() {
           </div>
 
           {/* Stats & Info */}
-          <div className="space-y-6">
+          <div
+            className={`space-y-6 ${
+              isFullscreen && isLandscape ? "xl:block hidden xl:col-span-1" : ""
+            }`}
+          >
             <Card className="glass-card border-purple-500/20">
               <CardHeader>
                 <CardTitle className="text-purple-400">
