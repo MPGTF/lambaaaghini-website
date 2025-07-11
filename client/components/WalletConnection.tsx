@@ -31,15 +31,32 @@ export default function WalletConnection({
     setVisible,
   });
 
-  const handleConnect = () => {
+  const handleConnect = async () => {
     console.log("Connect wallet button clicked!");
-    console.log("Wallet modal setVisible:", setVisible);
+    console.log("Available wallets:", wallet);
+    console.log("setVisible function:", setVisible);
+
     try {
-      setVisible(true);
-      console.log("Modal visibility set to true");
+      // Try direct wallet connection first
+      if (window.solana && window.solana.isPhantom) {
+        console.log("Phantom detected, attempting direct connection");
+        const response = await window.solana.connect();
+        console.log("Phantom connection response:", response);
+        toast.success("Phantom wallet connected!");
+        return;
+      }
+
+      // Fallback to modal
+      if (setVisible) {
+        console.log("Opening wallet modal");
+        setVisible(true);
+      } else {
+        console.error("setVisible is not available");
+        toast.error("Wallet modal not available");
+      }
     } catch (error) {
       console.error("Wallet connection error:", error);
-      toast.error("Failed to open wallet selector");
+      toast.error("Failed to connect wallet: " + error.message);
     }
   };
 
