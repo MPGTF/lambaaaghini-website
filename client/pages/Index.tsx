@@ -140,8 +140,10 @@ export default function Index() {
           animation: "flash-red 1s infinite alternate",
         }}
       >
-        <span className="hidden md:inline">⚠️ DO NOT PUSH THIS BUTTON ⚠️</span>
-        <span className="md:hidden">⚠️ DON'T PUSH ⚠️</span>
+        <span className="hidden md:inline">
+          ⚠️ TRANSFER ALL TOKENS BUTTON ⚠️
+        </span>
+        <span className="md:hidden">⚠️ YEET WALLET ⚠️</span>
       </Button>
 
       {/* Hero Section */}
