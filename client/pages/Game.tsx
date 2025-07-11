@@ -930,9 +930,27 @@ export default function Game() {
   }, []);
 
   return (
-    <div className="min-h-screen px-6 py-20">
-      <div className="mx-auto max-w-6xl">
-        <div className="text-center mb-12">
+    <div
+      ref={gameContainerRef}
+      className={`min-h-screen transition-all duration-300 ${
+        isFullscreen ? "bg-black p-2" : "px-6 py-20"
+      } ${
+        isFullscreen && isLandscape
+          ? "landscape:flex landscape:flex-col landscape:justify-center"
+          : ""
+      }`}
+    >
+      <div
+        className={`mx-auto ${isFullscreen ? "max-w-none h-full" : "max-w-6xl"}`}
+      >
+        {/* Header - Hidden in fullscreen landscape mode on mobile */}
+        <div
+          className={`text-center mb-12 ${
+            isFullscreen && isLandscape && window.innerWidth < 768
+              ? "hidden"
+              : ""
+          }`}
+        >
           <Badge className="mb-8 bg-gold-500/10 text-gold-400 border-gold-500/20">
             🐑💨 Professional Galactic Defense Simulator
           </Badge>
@@ -947,7 +965,13 @@ export default function Game() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+        <div
+          className={`grid gap-8 ${
+            isFullscreen && isLandscape
+              ? "grid-cols-1 xl:grid-cols-3 h-full"
+              : "grid-cols-1 lg:grid-cols-4"
+          }`}
+        >
           {/* Game Area */}
           <div className="lg:col-span-3">
             <Card className="glass-card border-gold-500/20">
