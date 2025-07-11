@@ -247,11 +247,19 @@ export default function Leaderboards() {
               RANKINGS
             </span>
           </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-6">
             Climb the ranks, unlock achievements, and prove you're the ultimate
             alpha sheep! Compete with traders worldwide and show off your
             legendary trading skills! 🐑🏆
           </p>
+          {/* Medium lamb car image as competitive prize */}
+          <div className="flex justify-center">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets%2F253ce014bfed48a3b74611f6cf44c794%2F3e5641ce2ffe4d8a9ddd24c343aa4978?format=webp&width=170"
+              alt="Champion's Prize - Lambaaaghini"
+              className="w-26 h-16 object-cover rounded-lg opacity-75 hover:opacity-95 transition-opacity"
+            />
+          </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
