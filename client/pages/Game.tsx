@@ -840,34 +840,48 @@ export default function Game() {
 
   // Fullscreen functionality
   const toggleFullscreen = async () => {
-    if (!gameContainerRef.current) return;
+    if (!gameContainerRef.current) {
+      toast.error("Game container not ready");
+      return;
+    }
 
     try {
+      const element = gameContainerRef.current;
+
       if (!document.fullscreenElement) {
-        await gameContainerRef.current.requestFullscreen();
-        setIsFullscreen(true);
-        // Request landscape orientation on mobile
-        if ("screen" in window && "orientation" in window.screen) {
-          try {
-            await (window.screen.orientation as any).lock("landscape");
-          } catch (e) {
-            console.log("Orientation lock not supported");
-          }
+        // Try different fullscreen methods for browser compatibility
+        if (element.requestFullscreen) {
+          await element.requestFullscreen();
+        } else if ((element as any).webkitRequestFullscreen) {
+          await (element as any).webkitRequestFullscreen();
+        } else if ((element as any).msRequestFullscreen) {
+          await (element as any).msRequestFullscreen();
+        } else if ((element as any).mozRequestFullScreen) {
+          await (element as any).mozRequestFullScreen();
+        } else {
+          toast.error("Fullscreen not supported on this browser");
+          return;
         }
+
+        toast.success(
+          "🎮 Fullscreen enabled! Rotate device horizontally for best experience",
+        );
       } else {
-        await document.exitFullscreen();
-        setIsFullscreen(false);
-        // Unlock orientation
-        if ("screen" in window && "orientation" in window.screen) {
-          try {
-            (window.screen.orientation as any).unlock();
-          } catch (e) {
-            console.log("Orientation unlock not supported");
-          }
+        if (document.exitFullscreen) {
+          await document.exitFullscreen();
+        } else if ((document as any).webkitExitFullscreen) {
+          await (document as any).webkitExitFullscreen();
+        } else if ((document as any).msExitFullscreen) {
+          await (document as any).msExitFullscreen();
+        } else if ((document as any).mozCancelFullScreen) {
+          await (document as any).mozCancelFullScreen();
         }
+
+        toast.info("Exited fullscreen mode");
       }
     } catch (error) {
       console.error("Fullscreen error:", error);
+      toast.error("Fullscreen failed. Try F11 or browser fullscreen option.");
     }
   };
 
