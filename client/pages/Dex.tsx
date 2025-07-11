@@ -222,17 +222,23 @@ export default function Dex() {
     <div className="min-h-screen px-6 py-20">
       <div className="mx-auto max-w-7xl">
         <div className="text-center mb-12">
-          <Badge className="mb-8 bg-gold-500/10 text-gold-400 border-gold-500/20">
-            🐑⚡ Professional Sheep Trading Terminal
+          <Badge className="mb-8 bg-gold-500/10 text-gold-400 border-gold-500/20 hover:bg-gold-500/20">
+            🐑💨 Where Sheep Meet Superior Trading Technology
           </Badge>
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            <span className="text-gold-400 font-bold">LAMBAAAGHINI</span>{" "}
-            <span className="text-purple-400 font-bold">DEX</span>
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
+            <span className="text-gold-400 drop-shadow-lg font-bold">
+              LAMBAAAGHINI
+            </span>{" "}
+            <span className="text-purple-400 drop-shadow-lg font-bold">
+              SHEEP
+            </span>{" "}
+            <span className="text-gold-400 drop-shadow-lg font-bold">DEX</span>
           </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Powered by Jupiter's advanced routing technology and DexScreener
-            charts. Trade any Solana token with the best rates and lowest
-            slippage, guided by sheep wisdom.
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            Where fluffy sheep discover the art of professional trading! Powered
+            by Jupiter's galaxy-class routing and DexScreener's crystal ball
+            charts. Trade any Solana token with the wisdom of a thousand sheep
+            and the speed of a Lamborghini! 🏎️💨
           </p>
         </div>
 
