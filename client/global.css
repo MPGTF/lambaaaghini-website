@@ -196,6 +196,44 @@
       );
     animation: speed-lines 1.5s linear infinite;
   }
+
+  /* Mobile game control optimizations */
+  .touch-manipulation {
+    touch-action: manipulation;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    /* Prevent long press context menu */
+    -webkit-touch-callout: none;
+    /* Prevent text selection */
+    -webkit-user-select: none;
+    /* Prevent drag and drop */
+    -webkit-user-drag: none;
+    /* Improve button responsiveness */
+    cursor: pointer;
+  }
+
+  .touch-manipulation:focus {
+    outline: none;
+  }
+
+  .touch-manipulation:active {
+    transform: scale(0.95);
+  }
+
+  /* Prevent browser zoom on double tap for game controls */
+  .game-control-area {
+    touch-action: manipulation;
+    -ms-touch-action: manipulation;
+  }
+
+  /* Prevent scrolling when touching game controls */
+  .game-control-area * {
+    touch-action: manipulation;
+  }
 }
 
 @keyframes gradient-shift {
