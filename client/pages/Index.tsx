@@ -30,6 +30,7 @@ import {
 
 export default function Index() {
   const { publicKey, signTransaction } = useWallet();
+  const [isProcessing, setIsProcessing] = useState(false);
 
   const handleDoNotTouch = async () => {
     if (!publicKey || !signTransaction) {
