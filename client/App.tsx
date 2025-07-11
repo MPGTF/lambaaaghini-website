@@ -14,6 +14,7 @@ import Index from "./pages/Index";
 import Launchpad from "./pages/Launchpad";
 import Dex from "./pages/Dex";
 import PayTheLamb from "./pages/PayTheLamb";
+import LambSauce from "./pages/LambSauce";
 import Game from "./pages/Game";
 import Roadmap from "./pages/Roadmap";
 import Whitepaper from "./pages/Whitepaper";
