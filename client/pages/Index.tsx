@@ -312,7 +312,7 @@ export default function Index() {
               className="text-center bg-black/20 backdrop-blur-sm rounded-lg p-4 border border-white/10 hover:border-purple-500/50 transition-all hover:bg-purple-500/10 group"
             >
               <div className="text-2xl md:text-3xl font-bold text-purple-400 group-hover:scale-110 transition-transform">
-                💬🐑
+                ��🐑
               </div>
               <div className="text-sm text-white/80 font-medium">
                 Lamb Sauce Chat
@@ -330,6 +330,35 @@ export default function Index() {
               </div>
             </Link>
           </div>
+        </div>
+
+        {/* Floating mini logos */}
+        <div className="absolute top-20 left-10 opacity-30 animate-pulse pointer-events-none z-5">
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets%2F253ce014bfed48a3b74611f6cf44c794%2F3e5641ce2ffe4d8a9ddd24c343aa4978?format=webp&width=80"
+            alt="Lambaaaghini"
+            className="w-12 h-8 object-cover rounded-lg"
+          />
+        </div>
+        <div
+          className="absolute top-32 right-16 opacity-20 animate-bounce pointer-events-none z-5"
+          style={{ animationDelay: "1s" }}
+        >
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets%2F253ce014bfed48a3b74611f6cf44c794%2F3e5641ce2ffe4d8a9ddd24c343aa4978?format=webp&width=80"
+            alt="Lambaaaghini"
+            className="w-10 h-6 object-cover rounded-lg"
+          />
+        </div>
+        <div
+          className="absolute bottom-32 left-20 opacity-25 animate-pulse pointer-events-none z-5"
+          style={{ animationDelay: "2s" }}
+        >
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets%2F253ce014bfed48a3b74611f6cf44c794%2F3e5641ce2ffe4d8a9ddd24c343aa4978?format=webp&width=80"
+            alt="Lambaaaghini"
+            className="w-14 h-9 object-cover rounded-lg"
+          />
         </div>
 
         {/* Scroll indicator */}
