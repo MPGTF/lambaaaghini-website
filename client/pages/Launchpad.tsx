@@ -609,7 +609,7 @@ export default function Launchpad() {
           <div className="mt-20">
             <h2 className="text-3xl font-bold text-center mb-12">
               Why Choose <span className="gradient-text">Lambaaaghini</span>{" "}
-              Launchpad?
+              (Besides the Sheep)?
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <Card className="glass-card border-purple-500/20 hover:border-purple-500/40 transition-all duration-300">
