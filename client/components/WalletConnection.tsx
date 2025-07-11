@@ -26,7 +26,9 @@ export default function WalletConnection({
 
   const handleConnect = () => {
     try {
+      console.log("Attempting to open wallet modal...", { setVisible });
       setVisible(true);
+      toast.info("Opening wallet selector...");
     } catch (error) {
       console.warn("Wallet connection error:", error);
       toast.error("Failed to open wallet selector");
