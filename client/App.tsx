@@ -48,6 +48,7 @@ const App = () => (
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </main>
+              <SassyChatbot />
             </div>
           </BrowserRouter>
         </UserProvider>
