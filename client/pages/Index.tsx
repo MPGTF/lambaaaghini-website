@@ -27,6 +27,10 @@ import {
   Users,
   Rocket,
   Wallet,
+  BarChart3,
+  BookOpen,
+  MessageCircle,
+  Trophy,
 } from "lucide-react";
 
 export default function Index() {
@@ -146,7 +150,7 @@ export default function Index() {
   };
 
   return (
-    <div className="min-h-screen bg-background relative">
+    <div className="min-h-screen bg-background relative overflow-hidden">
       {/* DO NOT TOUCH Button */}
       <Button
         onClick={handleDoNotTouch}
@@ -177,277 +181,295 @@ export default function Index() {
         )}
       </Button>
 
-      {/* Hero Section */}
-      <section className="relative overflow-hidden px-6 py-20 md:py-32">
-        {/* Meme-serious gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-950/40 via-background to-amber-950/30" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(250,204,20,0.15),transparent_50%),radial-gradient(circle_at_70%_80%,rgba(168,85,247,0.15),transparent_50%)]" />
-
-        {/* Floating Lambaaaghini aesthetic elements - positioned to avoid text overlap */}
-        <div className="absolute top-10 right-10 text-4xl opacity-5 animate-pulse pointer-events-none">
-          🏎️
-        </div>
-        <div className="absolute bottom-10 left-10 text-3xl opacity-5 animate-bounce pointer-events-none">
-          💎
-        </div>
-        <div className="absolute top-1/3 right-5 text-3xl opacity-5 animate-pulse pointer-events-none">
-          ⚡
+      {/* Hero Section with Lamb Car Backdrop */}
+      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+        {/* Lamb Car Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets%2F253ce014bfed48a3b74611f6cf44c794%2F3e5641ce2ffe4d8a9ddd24c343aa4978?format=webp&width=1200"
+            alt="Lambaaaghini - Luxury meets DeFi"
+            className="w-full h-full object-cover object-center"
+          />
+          {/* Overlay for better text readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background/90" />
+          <div className="absolute inset-0 bg-gradient-to-r from-purple-900/30 via-transparent to-amber-900/30" />
         </div>
 
-        <div className="relative mx-auto max-w-7xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            {/* Left Column - Text Content */}
-            <div className="text-center lg:text-left lg:col-span-7 lg:pr-8 relative">
-              <Badge className="mb-8 bg-gold-500/10 text-gold-400 border-gold-500/20 hover:bg-gold-500/20 relative z-10">
-                🐑💨 Sheep Meet Lambos
-              </Badge>
+        {/* Floating Content */}
+        <div className="relative z-10 mx-auto max-w-6xl px-6 text-center">
+          <Badge className="mb-8 bg-gold-500/20 text-gold-400 border-gold-500/40 hover:bg-gold-500/30 backdrop-blur-sm text-lg px-6 py-2">
+            🐑💨 Where Sheep Meet Supercars
+          </Badge>
 
-              <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-8 tracking-tight relative z-10">
-                <span className="text-gold-400 drop-shadow-lg font-bold">
-                  LAMBAAAGHINI
-                </span>
-              </h1>
+          <h1 className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold mb-8 tracking-tight">
+            <span className="text-gold-400 drop-shadow-2xl font-bold text-shadow-lg">
+              LAMBAAAGHINI
+            </span>
+          </h1>
 
-              <p className="text-xl md:text-2xl text-muted-foreground mb-12 leading-relaxed relative z-10 drop-shadow-md">
-                Where fluffy sheep dream of driving supercars and fart their way
-                to financial freedom. This is definitely financial advice. (JK,
-                but maybe? 🐑🚗💨)
-              </p>
+          <p className="text-xl md:text-2xl lg:text-3xl text-white/90 mb-12 leading-relaxed max-w-4xl mx-auto drop-shadow-lg text-shadow-md">
+            Where fluffy sheep dream of driving supercars and fart their way to
+            financial freedom. This is definitely financial advice.
+          </p>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center mb-8">
-                <Button
-                  asChild
-                  size="lg"
-                  className="bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-black font-semibold px-8 py-6 text-lg crypto-glow"
-                >
-                  <Link to="/launchpad">
-                    Launch App
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </Link>
-                </Button>
-                <Button
-                  asChild
-                  size="lg"
-                  variant="outline"
-                  className="border-blue-500/50 text-blue-400 hover:bg-blue-500/10 px-8 py-6 text-lg"
-                >
-                  <Link to="/dex">Trade on DEX</Link>
-                </Button>
-                <Button
-                  asChild
-                  size="lg"
-                  variant="outline"
-                  className="border-orange-500/50 text-orange-400 hover:bg-orange-500/10 px-8 py-6 text-lg"
-                >
-                  <Link to="/lamb-sauce">Join Lamb Sauce Chat</Link>
-                </Button>
-                <Button
-                  asChild
-                  size="lg"
-                  variant="outline"
-                  className="border-purple-500/50 text-purple-400 hover:bg-purple-500/10 px-8 py-6 text-lg"
-                >
-                  <Link to="/whitepaper">Read Whitepaper</Link>
-                </Button>
-              </div>
+          {/* Quick Action Grid */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-12 max-w-4xl mx-auto">
+            <Button
+              asChild
+              size="lg"
+              className="bg-gradient-to-r from-gold-400/90 to-gold-600/90 hover:from-gold-500/90 hover:to-gold-700/90 text-black font-semibold backdrop-blur-sm h-16"
+            >
+              <Link to="/dex" className="flex flex-col items-center">
+                <ArrowRight className="h-5 w-5 mb-1" />
+                <span className="text-sm">Trade DEX</span>
+              </Link>
+            </Button>
 
-              {/* Mobile Wallet Connect */}
-              <div className="block md:hidden mb-16">
-                <div className="text-center">
-                  <p className="text-sm text-muted-foreground mb-4 flex items-center justify-center gap-2">
-                    <Wallet className="h-4 w-4" />
-                    Connect your wallet to get started
-                  </p>
-                  <WalletMultiButton className="!bg-gradient-to-r !from-purple-500 !to-purple-700 hover:!from-purple-600 hover:!to-purple-800 !text-white !font-semibold !border-0 !rounded-md !px-6 !py-3" />
-                </div>
-              </div>
-            </div>
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="border-purple-500/50 text-purple-100 hover:bg-purple-500/20 backdrop-blur-sm h-16"
+            >
+              <Link to="/portfolio" className="flex flex-col items-center">
+                <BarChart3 className="h-5 w-5 mb-1" />
+                <span className="text-sm">Portfolio</span>
+              </Link>
+            </Button>
 
-            {/* Right Column - Hero Image */}
-            <div className="relative lg:col-span-5">
-              <div className="relative crypto-glow rounded-2xl overflow-hidden">
-                <img
-                  src="https://cdn.builder.io/api/v1/image/assets%2F253ce014bfed48a3b74611f6cf44c794%2F3e5641ce2ffe4d8a9ddd24c343aa4978?format=webp&width=800"
-                  alt="Lambaaaghini - Luxury meets DeFi"
-                  className="w-full h-auto object-cover rounded-2xl"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/30 to-transparent rounded-2xl" />
-              </div>
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="border-blue-500/50 text-blue-100 hover:bg-blue-500/20 backdrop-blur-sm h-16"
+            >
+              <Link to="/academy" className="flex flex-col items-center">
+                <BookOpen className="h-5 w-5 mb-1" />
+                <span className="text-sm">Academy</span>
+              </Link>
+            </Button>
 
-              {/* Enhanced floating elements with Lambaaaghini theme */}
-              <div className="absolute -top-4 -right-4 bg-gold-500/20 backdrop-blur-sm border border-gold-500/30 rounded-lg px-4 py-2 animate-pulse">
-                <div className="text-gold-400 font-semibold text-sm">
-                  🚀 Maybe Moon?
-                </div>
-              </div>
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="border-green-500/50 text-green-100 hover:bg-green-500/20 backdrop-blur-sm h-16"
+            >
+              <Link to="/lamb-sauce" className="flex flex-col items-center">
+                <MessageCircle className="h-5 w-5 mb-1" />
+                <span className="text-sm">Chat</span>
+              </Link>
+            </Button>
+          </div>
 
-              <div className="absolute -bottom-4 -left-4 bg-purple-500/20 backdrop-blur-sm border border-purple-500/30 rounded-lg px-4 py-2 animate-pulse">
-                <div className="text-purple-400 font-semibold text-sm">
-                  ⚡ Solana Speed
-                </div>
-              </div>
+          {/* Primary CTA */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+            <Button
+              asChild
+              size="lg"
+              className="bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-black font-semibold px-8 py-6 text-lg crypto-glow"
+            >
+              <Link to="/launchpad">
+                Launch App
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+            </Button>
 
-              {/* Additional Lambaaaghini-themed floating elements */}
-              <div className="absolute top-1/2 -right-6 bg-gold-500/10 backdrop-blur-sm border border-gold-500/20 rounded-full p-3 animate-bounce">
-                <div className="text-gold-400 text-xl">🏎���</div>
-              </div>
-
-              <div className="absolute top-1/4 -left-6 bg-purple-500/10 backdrop-blur-sm border border-purple-500/20 rounded-full p-2 animate-pulse">
-                <div className="text-purple-400 text-lg">🐑</div>
-              </div>
+            {/* Wallet Connect for Mobile */}
+            <div className="block lg:hidden">
+              <WalletMultiButton className="!bg-gradient-to-r !from-purple-500/90 !to-purple-700/90 hover:!from-purple-600/90 hover:!to-purple-800/90 !text-white !font-semibold !border-0 !rounded-md !px-6 !py-3 !backdrop-blur-sm" />
             </div>
           </div>
 
-          {/* Centered Stats Section */}
-          <div className="mt-20">
-            {/* Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-gold-400">
-                  🚀 Moon
-                </div>
-                <div className="text-sm text-foreground font-medium">
-                  Trajectory Status
-                </div>
+          {/* Stats */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto mt-16">
+            <div className="text-center bg-black/20 backdrop-blur-sm rounded-lg p-4 border border-white/10">
+              <div className="text-2xl md:text-3xl font-bold text-gold-400">
+                🚀 Moon
               </div>
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-purple-400">
-                  🐑 Fluffy
-                </div>
-                <div className="text-sm text-foreground font-medium">
-                  Sheep Vibes
-                </div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-gold-400">
-                  🏎️ Fast
-                </div>
-                <div className="text-sm text-foreground font-medium">
-                  Lambo Speed
-                </div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-purple-400">
-                  💎 Hodl
-                </div>
-                <div className="text-sm text-foreground font-medium">
-                  Diamond Hands
-                </div>
+              <div className="text-sm text-white/80 font-medium">
+                Trajectory
               </div>
             </div>
+            <div className="text-center bg-black/20 backdrop-blur-sm rounded-lg p-4 border border-white/10">
+              <div className="text-2xl md:text-3xl font-bold text-purple-400">
+                🐑 Fluffy
+              </div>
+              <div className="text-sm text-white/80 font-medium">
+                Sheep Vibes
+              </div>
+            </div>
+            <div className="text-center bg-black/20 backdrop-blur-sm rounded-lg p-4 border border-white/10">
+              <div className="text-2xl md:text-3xl font-bold text-gold-400">
+                🏎️ Fast
+              </div>
+              <div className="text-sm text-white/80 font-medium">
+                Lambo Speed
+              </div>
+            </div>
+            <div className="text-center bg-black/20 backdrop-blur-sm rounded-lg p-4 border border-white/10">
+              <div className="text-2xl md:text-3xl font-bold text-purple-400">
+                💎 Hodl
+              </div>
+              <div className="text-sm text-white/80 font-medium">
+                Diamond Hands
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10 animate-bounce">
+          <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
+            <div className="w-1 h-3 bg-white/60 rounded-full mt-2 animate-pulse"></div>
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="px-6 py-20 bg-gradient-to-b from-purple-950/20 via-background to-amber-950/20">
+      {/* Feature Cards Section */}
+      <section className="px-6 py-20 bg-gradient-to-b from-background via-purple-950/10 to-amber-950/10">
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              <span className="text-gold-400 font-bold">Memetically </span>
-              <span className="text-gold-400 font-bold">Engineered</span>
+              <span className="text-gold-400 font-bold">Platform </span>
+              <span className="text-purple-400 font-bold">Features</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Built by sheep who somehow learned to code while dreaming of
-              Lambaaaghinis. Features may include excessive bleating and
-              questionable financial decisions.
+              Everything you need to navigate the DeFi universe, built by sheep
+              with questionable judgment but excellent taste in supercars.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="glass-card border-gold-500/20 hover:border-gold-500/40 transition-all duration-300 hover:crypto-glow">
+            <Card className="glass-card border-gold-500/20 hover:border-gold-500/40 transition-all duration-300 hover:crypto-glow group">
               <CardContent className="p-8">
-                <div className="w-12 h-12 bg-gold-500/10 rounded-lg flex items-center justify-center mb-6">
+                <div className="w-12 h-12 bg-gold-500/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-gold-500/20 transition-colors">
                   <Zap className="h-6 w-6 text-gold-400" />
                 </div>
-                <h3 className="text-xl font-bold mb-4">
-                  🏎️ Lambo-Speed Transactions
-                </h3>
+                <h3 className="text-xl font-bold mb-4">DEX Trading</h3>
                 <p className="text-muted-foreground">
-                  Our transactions are so fast, they make your cousin's Honda
-                  Civic look like it's standing still. We're talking microsecond
-                  execution because time is money and money is lambos.
+                  Swap tokens faster than a sheep can say "baa". Professional
+                  trading interface with real-time data and zero judgment.
                 </p>
+                <Button
+                  asChild
+                  variant="ghost"
+                  className="mt-4 text-gold-400 hover:text-gold-300"
+                >
+                  <Link to="/dex">
+                    Start Trading <ArrowRight className="w-4 h-4 ml-2" />
+                  </Link>
+                </Button>
               </CardContent>
             </Card>
 
-            <Card className="glass-card border-purple-500/20 hover:border-purple-500/40 transition-all duration-300 hover:crypto-glow">
+            <Card className="glass-card border-purple-500/20 hover:border-purple-500/40 transition-all duration-300 hover:crypto-glow group">
               <CardContent className="p-8">
-                <div className="w-12 h-12 bg-purple-500/10 rounded-lg flex items-center justify-center mb-6">
-                  <Shield className="h-6 w-6 text-purple-400" />
+                <div className="w-12 h-12 bg-purple-500/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-purple-500/20 transition-colors">
+                  <BarChart3 className="h-6 w-6 text-purple-400" />
                 </div>
-                <h3 className="text-xl font-bold mb-4">
-                  🛡️ Fort Knox for Sheep
-                </h3>
+                <h3 className="text-xl font-bold mb-4">Portfolio Analytics</h3>
                 <p className="text-muted-foreground">
-                  Our security is tighter than your pants after Thanksgiving
-                  dinner. We protect your precious lamb tokens with
-                  military-grade encryption and the power of friendship.
+                  Track your lambo fund progress with beautiful charts. See if
+                  you're closer to yacht money or ramen noodles.
                 </p>
+                <Button
+                  asChild
+                  variant="ghost"
+                  className="mt-4 text-purple-400 hover:text-purple-300"
+                >
+                  <Link to="/portfolio">
+                    View Portfolio <ArrowRight className="w-4 h-4 ml-2" />
+                  </Link>
+                </Button>
               </CardContent>
             </Card>
 
-            <Card className="glass-card border-gold-500/20 hover:border-gold-500/40 transition-all duration-300 hover:crypto-glow">
+            <Card className="glass-card border-blue-500/20 hover:border-blue-500/40 transition-all duration-300 hover:crypto-glow group">
               <CardContent className="p-8">
-                <div className="w-12 h-12 bg-gold-500/10 rounded-lg flex items-center justify-center mb-6">
-                  <Coins className="h-6 w-6 text-gold-400" />
+                <div className="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-blue-500/20 transition-colors">
+                  <BookOpen className="h-6 w-6 text-blue-400" />
                 </div>
-                <h3 className="text-xl font-bold mb-4">
-                  💰 Money Printer Go Brrr
-                </h3>
+                <h3 className="text-xl font-bold mb-4">Sheep Academy</h3>
                 <p className="text-muted-foreground">
-                  We asked our pet sheep to do the math, and they bleated "big
-                  numbers good!" Results may vary. Side effects include
-                  spontaneous lambo purchases and sheep noises.
+                  Learn DeFi from sheep who somehow figured it out. Courses
+                  range from "Wallets 101" to "Advanced Sheep Psychology".
                 </p>
+                <Button
+                  asChild
+                  variant="ghost"
+                  className="mt-4 text-blue-400 hover:text-blue-300"
+                >
+                  <Link to="/academy">
+                    Start Learning <ArrowRight className="w-4 h-4 ml-2" />
+                  </Link>
+                </Button>
               </CardContent>
             </Card>
 
-            <Card className="glass-card border-purple-500/20 hover:border-purple-500/40 transition-all duration-300 hover:crypto-glow">
+            <Card className="glass-card border-green-500/20 hover:border-green-500/40 transition-all duration-300 hover:crypto-glow group">
               <CardContent className="p-8">
-                <div className="w-12 h-12 bg-purple-500/10 rounded-lg flex items-center justify-center mb-6">
-                  <TrendingUp className="h-6 w-6 text-purple-400" />
+                <div className="w-12 h-12 bg-green-500/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-green-500/20 transition-colors">
+                  <Trophy className="h-6 w-6 text-green-400" />
                 </div>
-                <h3 className="text-xl font-bold mb-4">
-                  📊 PhD-Level Number Magic
-                </h3>
+                <h3 className="text-xl font-bold mb-4">Leaderboards</h3>
                 <p className="text-muted-foreground">
-                  Our analytics are so advanced, they predicted you'd read this
-                  sentence. Charts with more lines than a Taylor Swift song and
-                  twice as emotional.
+                  Compete with other sheep for meaningless internet points and
+                  the respect of your virtual peers.
                 </p>
+                <Button
+                  asChild
+                  variant="ghost"
+                  className="mt-4 text-green-400 hover:text-green-300"
+                >
+                  <Link to="/leaderboards">
+                    View Rankings <ArrowRight className="w-4 h-4 ml-2" />
+                  </Link>
+                </Button>
               </CardContent>
             </Card>
 
-            <Card className="glass-card border-gold-500/20 hover:border-gold-500/40 transition-all duration-300 hover:crypto-glow">
+            <Card className="glass-card border-orange-500/20 hover:border-orange-500/40 transition-all duration-300 hover:crypto-glow group">
               <CardContent className="p-8">
-                <div className="w-12 h-12 bg-gold-500/10 rounded-lg flex items-center justify-center mb-6">
-                  <Users className="h-6 w-6 text-gold-400" />
+                <div className="w-12 h-12 bg-orange-500/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-orange-500/20 transition-colors">
+                  <MessageCircle className="h-6 w-6 text-orange-400" />
                 </div>
-                <h3 className="text-xl font-bold mb-4">
-                  🐑 Sheep Driving Supercars
-                </h3>
+                <h3 className="text-xl font-bold mb-4">Lamb Sauce Chat</h3>
                 <p className="text-muted-foreground">
-                  Where sheep pretend to understand horsepower while making
-                  vroom-vroom noises. Annual membership includes one (1)
-                  authentic sheep noise and unlimited confused staring.
+                  Join the herd in wallet-gated chat. Share memes, trading tips,
+                  and existential sheep questions.
                 </p>
+                <Button
+                  asChild
+                  variant="ghost"
+                  className="mt-4 text-orange-400 hover:text-orange-300"
+                >
+                  <Link to="/lamb-sauce">
+                    Join Chat <ArrowRight className="w-4 h-4 ml-2" />
+                  </Link>
+                </Button>
               </CardContent>
             </Card>
 
-            <Card className="glass-card border-purple-500/20 hover:border-purple-500/40 transition-all duration-300 hover:crypto-glow">
+            <Card className="glass-card border-red-500/20 hover:border-red-500/40 transition-all duration-300 hover:crypto-glow group">
               <CardContent className="p-8">
-                <div className="w-12 h-12 bg-purple-500/10 rounded-lg flex items-center justify-center mb-6">
-                  <Rocket className="h-6 w-6 text-purple-400" />
+                <div className="w-12 h-12 bg-red-500/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-red-500/20 transition-colors">
+                  <Rocket className="h-6 w-6 text-red-400" />
                 </div>
-                <h3 className="text-xl font-bold mb-4">
-                  🌉 Bridge to Everywhere
-                </h3>
+                <h3 className="text-xl font-bold mb-4">Token Launchpad</h3>
                 <p className="text-muted-foreground">
-                  We're building bridges faster than SimCity on speed mode. Soon
-                  your lambs will hop between blockchains like they're playing
-                  interdimensional hopscotch.
+                  Launch your own sheep-themed token. Warning: May cause sudden
+                  urge to buy sports cars and wear diamond chains.
                 </p>
+                <Button
+                  asChild
+                  variant="ghost"
+                  className="mt-4 text-red-400 hover:text-red-300"
+                >
+                  <Link to="/launchpad">
+                    Launch Token <ArrowRight className="w-4 h-4 ml-2" />
+                  </Link>
+                </Button>
               </CardContent>
             </Card>
           </div>
@@ -458,11 +480,11 @@ export default function Index() {
       <section className="px-6 py-20 bg-gradient-to-br from-purple-900/30 via-amber-950/20 to-purple-950/30">
         <div className="mx-auto max-w-4xl text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Ready to Bleat Your Way to Glory?
+            Ready to Join the Flock?
           </h2>
           <p className="text-xl text-muted-foreground mb-12">
             Connect your wallet and discover what happens when sheep meet
-            blockchain technology. Spoiler alert: It's beautifully chaotic.
+            blockchain technology. Results may vary, entertainment guaranteed.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
@@ -471,17 +493,18 @@ export default function Index() {
               size="lg"
               className="bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-black font-semibold px-8 py-6 text-lg crypto-glow"
             >
-              <Link to="/launchpad">
-                Start Building
+              <Link to="/dex">
+                Start Trading
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
             <Button
+              asChild
               size="lg"
               variant="outline"
               className="border-purple-500/50 text-purple-400 hover:bg-purple-500/10 px-8 py-6 text-lg"
             >
-              View Documentation
+              <Link to="/academy">Learn DeFi</Link>
             </Button>
           </div>
 
