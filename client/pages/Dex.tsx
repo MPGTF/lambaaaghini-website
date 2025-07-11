@@ -685,36 +685,38 @@ export default function Dex() {
               </CardContent>
             </Card>
 
-            {/* Trading Stats */}
+            {/* Sheep Trading Intelligence Dashboard */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-              <Card className="glass-card border-blue-500/20">
-                <CardContent className="p-4 text-center">
-                  <DollarSign className="h-8 w-8 text-blue-400 mx-auto mb-2" />
-                  <div className="text-2xl font-bold text-blue-400">$2.1M</div>
-                  <div className="text-sm text-muted-foreground">
-                    24h Volume
+              <Card className="glass-card border-blue-500/20 hover:border-blue-500/40 transition-all crypto-glow">
+                <CardContent className="p-6 text-center">
+                  <DollarSign className="h-10 w-10 text-blue-400 mx-auto mb-3" />
+                  <div className="text-3xl font-bold text-blue-400">
+                    🚀 Many
+                  </div>
+                  <div className="text-sm text-muted-foreground font-semibold">
+                    Sheep Volume (Very Wow)
                   </div>
                 </CardContent>
               </Card>
 
-              <Card className="glass-card border-green-500/20">
-                <CardContent className="p-4 text-center">
-                  <TrendingUp className="h-8 w-8 text-green-400 mx-auto mb-2" />
-                  <div className="text-2xl font-bold text-green-400">
-                    +12.5%
+              <Card className="glass-card border-green-500/20 hover:border-green-500/40 transition-all crypto-glow">
+                <CardContent className="p-6 text-center">
+                  <TrendingUp className="h-10 w-10 text-green-400 mx-auto mb-3" />
+                  <div className="text-3xl font-bold text-green-400">
+                    🐑 Up!
                   </div>
-                  <div className="text-sm text-muted-foreground">
-                    24h Change
+                  <div className="text-sm text-muted-foreground font-semibold">
+                    Sheep Happiness Level
                   </div>
                 </CardContent>
               </Card>
 
-              <Card className="glass-card border-purple-500/20">
-                <CardContent className="p-4 text-center">
-                  <Zap className="h-8 w-8 text-purple-400 mx-auto mb-2" />
-                  <div className="text-2xl font-bold text-purple-400">156</div>
-                  <div className="text-sm text-muted-foreground">
-                    Routes Available
+              <Card className="glass-card border-purple-500/20 hover:border-purple-500/40 transition-all crypto-glow">
+                <CardContent className="p-6 text-center">
+                  <Zap className="h-10 w-10 text-purple-400 mx-auto mb-3" />
+                  <div className="text-3xl font-bold text-purple-400">∞</div>
+                  <div className="text-sm text-muted-foreground font-semibold">
+                    Sheep Routes Available
                   </div>
                 </CardContent>
               </Card>
