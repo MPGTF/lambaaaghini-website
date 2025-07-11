@@ -347,8 +347,8 @@ export default function Index() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
             <WalletConnection
-              variant="default"
-              className="bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-black font-semibold px-8 py-6 text-lg crypto-glow"
+              variant="outline"
+              className="bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-black font-semibold border-gold-500 px-8 py-6 text-lg crypto-glow"
             />
             <Button
               size="lg"
