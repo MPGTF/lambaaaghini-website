@@ -864,6 +864,14 @@ export default function Dex() {
               </CardContent>
             </Card>
 
+            {/* Featured Tokens */}
+            <FeaturedTokens
+              onTokenSelect={setToToken}
+              showTitle={true}
+              maxTokens={5}
+              className="mb-6"
+            />
+
             {/* Sheep's Favorite Tokens */}
             <Card className="glass-card border-purple-500/20 hover:border-purple-500/40 transition-all">
               <CardHeader>
