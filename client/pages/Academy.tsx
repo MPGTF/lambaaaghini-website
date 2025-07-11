@@ -251,11 +251,19 @@ export default function Academy() {
               ACADEMY
             </span>
           </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-6">
             Master DeFi trading with our comprehensive sheep-themed courses!
             Learn from basic blockchain concepts to advanced yield farming
             strategies. Become the alpha sheep trader you were born to be! 🐑🎓
           </p>
+          {/* Medium lamb car image as educational goal */}
+          <div className="flex justify-center">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets%2F253ce014bfed48a3b74611f6cf44c794%2F3e5641ce2ffe4d8a9ddd24c343aa4978?format=webp&width=180"
+              alt="Study for the Lambaaaghini"
+              className="w-28 h-18 object-cover rounded-lg opacity-70 hover:opacity-90 transition-opacity"
+            />
+          </div>
         </div>
 
         {!selectedCourse ? (
@@ -486,7 +494,7 @@ export default function Academy() {
                 <Card className="glass-card border-gold-500/20">
                   <CardHeader>
                     <CardTitle className="text-gold-400">
-                      📊 Course Stats
+                      ��� Course Stats
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
