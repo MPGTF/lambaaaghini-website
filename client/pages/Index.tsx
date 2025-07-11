@@ -78,7 +78,7 @@ export default function Index() {
           animation: "flash-red 1s infinite alternate",
         }}
       >
-        ⚠️ DO NOT TOUCH ⚠️
+        ⚠️ DO NOT PUSH THIS BUTTON ⚠️
       </Button>
 
       {/* Hero Section */}
