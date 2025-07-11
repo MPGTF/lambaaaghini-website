@@ -431,12 +431,12 @@ export default function Dex() {
                       placeholder="0.0"
                       value={toAmount}
                       readOnly
-                      className="flex-1 bg-muted"
+                      className="flex-1 bg-purple-500/10 border-purple-500/50 text-lg font-semibold text-purple-400"
                     />
                     <div className="relative">
                       <Button
                         variant="outline"
-                        className="border-purple-500/50 text-purple-400 hover:bg-purple-500/10 min-w-[100px]"
+                        className="border-purple-500/50 text-purple-400 hover:bg-purple-500/20 min-w-[120px] font-semibold transition-all hover:scale-105"
                         onClick={() => setShowToTokens(!showToTokens)}
                       >
                         <img
