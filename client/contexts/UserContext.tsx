@@ -25,6 +25,11 @@ interface UserContextType {
   updateGameStats: (score: number) => void;
   getUserTitle: () => string;
   getTitleProgress: () => { current: string; next: string; progress: number };
+  autoApproval: {
+    isEnabled: boolean;
+    toggleAutoApproval: () => void;
+    shouldAutoApprove: (operationType: string, amount?: number) => boolean;
+  };
 }
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
