@@ -295,6 +295,11 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
     updateGameStats,
     getUserTitle,
     getTitleProgress,
+    autoApproval: {
+      isEnabled: autoApprovalHook.isEnabled,
+      toggleAutoApproval: autoApprovalHook.toggleAutoApproval,
+      shouldAutoApprove: autoApprovalHook.shouldAutoApprove,
+    },
   };
 
   return (
