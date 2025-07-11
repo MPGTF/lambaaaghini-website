@@ -183,6 +183,7 @@ export default function Game() {
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isLandscape, setIsLandscape] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [fullscreenSupported, setFullscreenSupported] = useState(false);
   const gameContainerRef = useRef<HTMLDivElement>(null);
 
   // Game constants
