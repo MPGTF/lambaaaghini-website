@@ -175,7 +175,7 @@ export default function Launchpad() {
   };
 
   const createToken = async () => {
-    if (!connected || !publicKey) {
+    if (!connected || !publicKey || !signTransaction) {
       toast.error("Please connect your wallet first");
       return;
     }
@@ -187,6 +187,33 @@ export default function Launchpad() {
 
     setIsCreating(true);
     try {
+      // First, send the creation fee
+      toast.info("Processing creation fee...");
+      const connection = new Connection("https://api.mainnet-beta.solana.com");
+      const feeWalletAddress = new PublicKey(FEE_WALLET_ADDRESS);
+
+      // Create fee transaction
+      const feeTransaction = new Transaction().add(
+        SystemProgram.transfer({
+          fromPubkey: publicKey,
+          toPubkey: feeWalletAddress,
+          lamports: creationFee * LAMPORTS_PER_SOL, // 0.02 SOL
+        }),
+      );
+
+      // Get recent blockhash
+      const { blockhash } = await connection.getLatestBlockhash();
+      feeTransaction.recentBlockhash = blockhash;
+      feeTransaction.feePayer = publicKey;
+
+      // Sign and send fee transaction
+      const signedFeeTransaction = await signTransaction(feeTransaction);
+      const feeSignature = await connection.sendRawTransaction(
+        signedFeeTransaction.serialize(),
+      );
+
+      toast.success(`Fee payment sent: ${feeSignature.slice(0, 8)}...`);
+      console.log("Fee transaction signature:", feeSignature);
       const pumpFunAPI = createPumpFunAPI();
 
       // Upload image if provided
