@@ -61,9 +61,12 @@ export default function PayTheLamb() {
     telegramUrl: "",
   });
 
-  const connection = new Connection("https://rpc.helius.xyz/?api-key=demo", {
-    commitment: "confirmed",
-  });
+  const connection = new Connection(
+    "https://solana-mainnet.g.alchemy.com/v2/demo",
+    {
+      commitment: "confirmed",
+    },
+  );
 
   const handleInputChange = (field: string, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
