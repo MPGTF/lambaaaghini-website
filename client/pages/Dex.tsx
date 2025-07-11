@@ -112,7 +112,7 @@ export default function Dex() {
   const chartRef = useRef<HTMLDivElement>(null);
 
   // Ensure mainnet connection for real trading
-  const connection = new Connection("https://api.mainnet-beta.solana.com", {
+  const connection = new Connection("https://rpc.helius.xyz/?api-key=demo", {
     commitment: "confirmed",
   });
 
