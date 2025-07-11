@@ -374,6 +374,22 @@ export default function Launchpad() {
                 </div>
               </div>
 
+              {/* Initial Buy Information */}
+              {enableInitialBuy && (
+                <div className="bg-green-500/10 border border-green-500/30 rounded-lg p-4">
+                  <div className="flex items-center space-x-2 mb-2">
+                    <div className="text-green-400 text-lg">🚀</div>
+                    <h4 className="font-semibold text-green-400">
+                      Initial Buy Completed
+                    </h4>
+                  </div>
+                  <p className="text-sm text-muted-foreground">
+                    Successfully purchased {initialBuyAmount} SOL worth of{" "}
+                    {tokenCreationResult.tokenData.symbol} tokens on Pump.Fun!
+                  </p>
+                </div>
+              )}
+
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-3 pt-4">
                 <Button
