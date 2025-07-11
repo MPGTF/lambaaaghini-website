@@ -995,6 +995,29 @@ export default function Game() {
           : ""
       }`}
     >
+      {/* Floating mini lamb car logos */}
+      {!isFullscreen && (
+        <>
+          <div className="absolute top-20 left-8 opacity-30 animate-pulse pointer-events-none z-40">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets%2F253ce014bfed48a3b74611f6cf44c794%2F3e5641ce2ffe4d8a9ddd24c343aa4978?format=webp&width=80"
+              alt="Lambaaaghini"
+              className="w-10 h-6 object-cover rounded-lg"
+            />
+          </div>
+          <div
+            className="absolute bottom-20 right-8 opacity-25 animate-bounce pointer-events-none z-40"
+            style={{ animationDelay: "1.5s" }}
+          >
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets%2F253ce014bfed48a3b74611f6cf44c794%2F3e5641ce2ffe4d8a9ddd24c343aa4978?format=webp&width=80"
+              alt="Lambaaaghini"
+              className="w-12 h-8 object-cover rounded-lg"
+            />
+          </div>
+        </>
+      )}
+
       {/* Landscape mode hint for mobile - only show when not in landscape */}
       {!isLandscape && !isFullscreen && isMobile && (
         <div className="fixed top-20 right-4 z-50 bg-blue-500/20 backdrop-blur-sm border border-blue-500/30 rounded-lg p-3 md:hidden">
