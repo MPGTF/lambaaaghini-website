@@ -9,6 +9,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import WalletProvider from "./components/WalletProvider";
 import { UserProvider } from "./contexts/UserContext";
 import Navigation from "./components/Navigation";
+import SassyChatbot from "./components/SassyChatbot";
 import TestHome from "./pages/TestHome";
 import Index from "./pages/Index";
 import Launchpad from "./pages/Launchpad";
