@@ -647,28 +647,39 @@ export default function Dex() {
             </Card>
           </div>
 
-          {/* Chart Area */}
+          {/* Sheep Chart Intelligence Center */}
           <div className="lg:col-span-2">
-            <Card className="glass-card border-green-500/20">
+            <Card className="glass-card border-green-500/20 hover:border-green-500/40 transition-all crypto-glow">
               <CardHeader>
                 <CardTitle className="text-green-400 flex items-center gap-2">
                   <BarChart3 className="h-5 w-5" />
-                  {toToken.symbol} Chart
-                  <Badge variant="outline" className="ml-auto">
+                  🐑📊 {toToken.symbol} Sheep Chart Intelligence
+                  <Badge
+                    variant="outline"
+                    className="ml-auto border-green-500/50 text-green-400"
+                  >
                     <ExternalLink className="h-3 w-3 mr-1" />
-                    DexScreener
+                    DexScreener Powered
                   </Badge>
                 </CardTitle>
+                <div className="text-sm text-muted-foreground">
+                  Real-time market data analyzed by professional sheep
+                </div>
               </CardHeader>
               <CardContent>
                 <div
                   ref={chartRef}
-                  className="w-full h-[500px] bg-muted rounded-lg flex items-center justify-center"
+                  className="w-full h-[500px] bg-gradient-to-br from-green-500/5 to-blue-500/5 border border-green-500/20 rounded-lg flex items-center justify-center"
                 >
                   <div className="text-center text-muted-foreground">
-                    <BarChart3 className="h-12 w-12 mx-auto mb-4 opacity-50" />
-                    <p>Loading {toToken.symbol} chart...</p>
+                    <BarChart3 className="h-16 w-16 mx-auto mb-4 opacity-50 text-green-400" />
+                    <p className="text-lg font-semibold">
+                      🐑 Loading {toToken.symbol} sheep intelligence...
+                    </p>
                     <p className="text-sm">Powered by DexScreener</p>
+                    <p className="text-xs text-green-400 mt-2">
+                      ✅ Mainnet • Live Data • Professional Analysis
+                    </p>
                   </div>
                 </div>
               </CardContent>
