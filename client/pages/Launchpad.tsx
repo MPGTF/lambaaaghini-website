@@ -19,6 +19,10 @@ import {
 } from "@/components/ui/dialog";
 import { aiGenerator, validatePrompt } from "@/lib/ai-generator";
 import {
+  generateTokenImage,
+  cleanupImageUrl,
+} from "@/lib/token-image-generator";
+import {
   createPumpFunAPI,
   validateTokenData,
   type PumpFunTokenData,
