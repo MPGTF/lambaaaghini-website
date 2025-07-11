@@ -716,11 +716,11 @@ export default function Dex() {
                   </div>
                 )}
 
-                {/* Sheep Action Buttons */}
+                {/* Axiom Action Buttons */}
                 <div className="space-y-3">
                   <Button
                     onClick={getQuote}
-                    disabled={!fromAmount || loading}
+                    disabled={!fromAmount || loading || !axiomSignedUp}
                     className="w-full bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white font-bold py-3 transition-all hover:scale-105 crypto-glow"
                   >
                     {loading ? (
@@ -728,12 +728,14 @@ export default function Dex() {
                     ) : (
                       <Search className="h-5 w-5 mr-2" />
                     )}
-                    🐑 Get Sheep Quote
+                    {!axiomSignedUp
+                      ? "🚨 Sign Up for Axiom First"
+                      : "🐑 Get Axiom Quote"}
                   </Button>
 
                   <Button
                     onClick={executeSwap}
-                    disabled={!quote || loading || !publicKey}
+                    disabled={!quote || loading || !publicKey || !axiomSignedUp}
                     className="w-full bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-black font-bold py-3 transition-all hover:scale-105 crypto-glow"
                   >
                     {!publicKey ? (
@@ -741,15 +743,30 @@ export default function Dex() {
                         <Wallet className="h-5 w-5 mr-2" />
                         🐑 Connect Wallet First!
                       </>
+                    ) : !axiomSignedUp ? (
+                      <>
+                        <ExternalLink className="h-5 w-5 mr-2" />
+                        🚨 Axiom Signup Required
+                      </>
                     ) : (
                       <>
                         <Zap className="h-5 w-5 mr-2" />
                         {loading
-                          ? "🐑 Sheep Trading..."
-                          : "🚀 Execute Lamborghini Swap!"}
+                          ? "🐑 Axiom Trading..."
+                          : "🚀 Execute Axiom Swap!"}
                       </>
                     )}
                   </Button>
+
+                  {!axiomSignedUp && (
+                    <Button
+                      onClick={handleAxiomSignup}
+                      className="w-full bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white font-bold py-3 transition-all hover:scale-105"
+                    >
+                      <ExternalLink className="h-5 w-5 mr-2" />
+                      🐑 Sign Up for Axiom (@mrpants)
+                    </Button>
+                  )}
                 </div>
               </CardContent>
             </Card>
