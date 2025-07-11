@@ -27,6 +27,7 @@ const secondaryNavItems = [
 const communityNavItems = [
   { name: "Lamb Sauce", path: "/lamb-sauce" },
   { name: "Pay the Lamb", path: "/pay-the-lamb" },
+  { name: "SOL Dust Cleaner", path: "/sol-dust-cleaner" },
   { name: "Game", path: "/game" },
 ];
 
