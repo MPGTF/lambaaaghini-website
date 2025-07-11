@@ -24,6 +24,12 @@ export default function WalletConnection({
   const { wallet, publicKey, connected, disconnect } = useWallet();
   const { setVisible } = useWalletModal();
 
+  console.log("WalletConnection render:", {
+    connected,
+    publicKey: publicKey?.toBase58(),
+    setVisible,
+  });
+
   const handleConnect = () => {
     try {
       console.log("Attempting to open wallet modal...", { setVisible });
