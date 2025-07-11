@@ -101,6 +101,8 @@ export default function Dex() {
   const [showFromTokens, setShowFromTokens] = useState(false);
   const [showToTokens, setShowToTokens] = useState(false);
   const [slippage, setSlippage] = useState("0.5");
+  const [trendingTokens, setTrendingTokens] = useState<TrendingToken[]>([]);
+  const [loadingTrending, setLoadingTrending] = useState(false);
   const chartRef = useRef<HTMLDivElement>(null);
 
   // Ensure mainnet connection for real trading
