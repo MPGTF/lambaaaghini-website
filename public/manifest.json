@@ -1,0 +1,74 @@
+{
+  "name": "LAMBAAAGHINI - Sheep Trading Platform",
+  "short_name": "LAMBAAAGHINI",
+  "description": "The ultimate sheep-themed DeFi trading platform with professional tools and community features",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#8B5CF6",
+  "orientation": "portrait-primary",
+  "categories": ["finance", "utilities", "social"],
+  "lang": "en-US",
+  "icons": [
+    {
+      "src": "/sheep-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/sheep-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Portfolio",
+      "short_name": "Portfolio",
+      "description": "View your sheep portfolio",
+      "url": "/portfolio",
+      "icons": [{ "src": "/sheep-icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Trading",
+      "short_name": "Trading",
+      "description": "Access advanced trading tools",
+      "url": "/trading",
+      "icons": [{ "src": "/sheep-icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "DEX",
+      "short_name": "DEX",
+      "description": "Trade on the sheep DEX",
+      "url": "/dex",
+      "icons": [{ "src": "/sheep-icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Lamb Sauce Chat",
+      "short_name": "Chat",
+      "description": "Join the sheep community chat",
+      "url": "/lamb-sauce",
+      "icons": [{ "src": "/sheep-icon-192.png", "sizes": "192x192" }]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/sheep-screenshot-desktop.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "LAMBAAAGHINI Desktop Trading Interface"
+    },
+    {
+      "src": "/sheep-screenshot-mobile.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "LAMBAAAGHINI Mobile Trading App"
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}
