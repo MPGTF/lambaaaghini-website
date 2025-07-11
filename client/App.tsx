@@ -66,45 +66,46 @@ const App = () => {
   }
 
   return (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <WalletProvider>
-        <UserProvider>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
-            <div className="min-h-screen bg-background">
-              <Navigation />
-              <main className="pt-16">
-                <Routes>
-                  <Route path="/" element={<Index />} />
-                  <Route path="/portfolio" element={<Portfolio />} />
-                  <Route path="/trading" element={<Trading />} />
-                  <Route path="/launchpad" element={<Launchpad />} />
-                  <Route path="/dex" element={<Dex />} />
-                  <Route path="/leaderboards" element={<Leaderboards />} />
-                  <Route path="/academy" element={<Academy />} />
-                  <Route path="/news" element={<News />} />
-                  <Route path="/pay-the-lamb" element={<PayTheLamb />} />
-                  <Route path="/lamb-sauce" element={<LambSauce />} />
-                  <Route
-                    path="/lamb-pooper-scooper"
-                    element={<LambPooperScooper />}
-                  />
-                  <Route path="/game" element={<Game />} />
-                  <Route path="/roadmap" element={<Roadmap />} />
-                  <Route path="/whitepaper" element={<Whitepaper />} />
-                  <Route path="/team" element={<Team />} />
-                  <Route path="*" element={<NotFound />} />
-                </Routes>
-              </main>
-              <SassyChatbot />
-            </div>
-          </BrowserRouter>
-        </UserProvider>
-      </WalletProvider>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <WalletProvider>
+          <UserProvider>
+            <Toaster />
+            <Sonner />
+            <BrowserRouter>
+              <div className="min-h-screen bg-background">
+                <Navigation />
+                <main className="pt-16">
+                  <Routes>
+                    <Route path="/" element={<Index />} />
+                    <Route path="/portfolio" element={<Portfolio />} />
+                    <Route path="/trading" element={<Trading />} />
+                    <Route path="/launchpad" element={<Launchpad />} />
+                    <Route path="/dex" element={<Dex />} />
+                    <Route path="/leaderboards" element={<Leaderboards />} />
+                    <Route path="/academy" element={<Academy />} />
+                    <Route path="/news" element={<News />} />
+                    <Route path="/pay-the-lamb" element={<PayTheLamb />} />
+                    <Route path="/lamb-sauce" element={<LambSauce />} />
+                    <Route
+                      path="/lamb-pooper-scooper"
+                      element={<LambPooperScooper />}
+                    />
+                    <Route path="/game" element={<Game />} />
+                    <Route path="/roadmap" element={<Roadmap />} />
+                    <Route path="/whitepaper" element={<Whitepaper />} />
+                    <Route path="/team" element={<Team />} />
+                    <Route path="*" element={<NotFound />} />
+                  </Routes>
+                </main>
+                <SassyChatbot />
+              </div>
+            </BrowserRouter>
+          </UserProvider>
+        </WalletProvider>
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
+};
 
 createRoot(document.getElementById("root")!).render(<App />);
