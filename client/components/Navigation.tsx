@@ -9,14 +9,15 @@ import { Menu, X, ExternalLink, Trophy, Zap, Settings } from "lucide-react";
 
 const navItems = [
   { name: "Home", path: "/" },
-  { name: "Launchpad", path: "/launchpad" },
+  { name: "Portfolio", path: "/portfolio" },
+  { name: "Trading", path: "/trading" },
   { name: "DEX", path: "/dex" },
+  { name: "Leaderboards", path: "/leaderboards" },
+  { name: "Academy", path: "/academy" },
+  { name: "News", path: "/news" },
   { name: "Pay the Lamb", path: "/pay-the-lamb" },
   { name: "Lamb Sauce", path: "/lamb-sauce" },
   { name: "Game", path: "/game" },
-  { name: "Roadmap", path: "/roadmap" },
-  { name: "Whitepaper", path: "/whitepaper" },
-  { name: "Team", path: "/team" },
 ];
 
 // Custom X (formerly Twitter) Icon Component
