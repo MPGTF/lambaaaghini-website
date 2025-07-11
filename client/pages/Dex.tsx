@@ -394,7 +394,25 @@ export default function Dex() {
   }, [toToken]);
 
   return (
-    <div className="min-h-screen px-6 py-20">
+    <div className="min-h-screen px-6 py-20 relative">
+      {/* Floating mini lamb car logos */}
+      <div className="absolute top-32 right-8 opacity-20 animate-pulse pointer-events-none">
+        <img
+          src="https://cdn.builder.io/api/v1/image/assets%2F253ce014bfed48a3b74611f6cf44c794%2F3e5641ce2ffe4d8a9ddd24c343aa4978?format=webp&width=80"
+          alt="Lambaaaghini"
+          className="w-12 h-8 object-cover rounded-lg"
+        />
+      </div>
+      <div
+        className="absolute bottom-40 left-8 opacity-15 animate-bounce pointer-events-none"
+        style={{ animationDelay: "1.5s" }}
+      >
+        <img
+          src="https://cdn.builder.io/api/v1/image/assets%2F253ce014bfed48a3b74611f6cf44c794%2F3e5641ce2ffe4d8a9ddd24c343aa4978?format=webp&width=80"
+          alt="Lambaaaghini"
+          className="w-10 h-6 object-cover rounded-lg"
+        />
+      </div>
       <div className="mx-auto max-w-7xl">
         <div className="text-center mb-12">
           <Badge className="mb-8 bg-gold-500/10 text-gold-400 border-gold-500/20 hover:bg-gold-500/20">
