@@ -101,8 +101,22 @@ export default function Launchpad() {
         description: suggestion.description,
       };
 
+      // Generate a meme-style image for the token
+      toast.info("Generating sheep-approved artwork...");
+      const imageUrl = await generateTokenImage({
+        name: generatedData.name,
+        symbol: generatedData.symbol,
+        description: generatedData.description,
+      });
+
+      // Clean up previous image if exists
+      if (previewUrl) {
+        cleanupImageUrl(previewUrl);
+      }
+
       setTokenData(generatedData);
-      toast.success("AI-generated token metadata ready!");
+      setPreviewUrl(imageUrl);
+      toast.success("AI-generated token with epic artwork ready! 🐑🎨");
     } catch (error) {
       toast.error("Failed to generate token metadata");
     } finally {
