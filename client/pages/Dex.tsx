@@ -43,6 +43,22 @@ interface QuoteResponse {
 
 const POPULAR_TOKENS: TokenInfo[] = [
   {
+    address: "9BB6NFEcjBCtnNLFko2FqVQBq8HHM13kCyYcdQbgpump",
+    symbol: "FARTCOIN",
+    name: "Fartcoin",
+    decimals: 6,
+    logoURI:
+      "https://dd.dexscreener.com/ds-data/tokens/solana/9BB6NFEcjBCtnNLFko2FqVQBq8HHM13kCyYcdQbgpump.png",
+  },
+  {
+    address: "BKipkearSqAUdNKa1WDstvcMjoPsSKBuNyvKDQDDu9WE",
+    symbol: "URANUS",
+    name: "Uranus",
+    decimals: 6,
+    logoURI:
+      "https://dd.dexscreener.com/ds-data/tokens/solana/BKipkearSqAUdNKa1WDstvcMjoPsSKBuNyvKDQDDu9WE.png",
+  },
+  {
     address: "So11111111111111111111111111111111111111112",
     symbol: "SOL",
     name: "Wrapped SOL",
@@ -51,28 +67,12 @@ const POPULAR_TOKENS: TokenInfo[] = [
       "https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/So11111111111111111111111111111111111111112/logo.png",
   },
   {
-    address: "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
-    symbol: "USDC",
-    name: "USD Coin",
-    decimals: 6,
-    logoURI:
-      "https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v/logo.png",
-  },
-  {
-    address: "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
-    symbol: "USDT",
-    name: "Tether USD",
-    decimals: 6,
-    logoURI:
-      "https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB/logo.png",
-  },
-  {
-    address: "mSoLzYCxHdYgdzU16g5QSh3i5K3z3KZK7ytfqcJm7So",
-    symbol: "mSOL",
-    name: "Marinade Staked SOL",
+    address: "5P6n5omLbLbP4kaPGL8etqQAHEx2UCkaUyvjLDnwV4EY",
+    symbol: "OKE",
+    name: "OKE Token",
     decimals: 9,
     logoURI:
-      "https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/mSoLzYCxHdYgdzU16g5QSh3i5K3z3KZK7ytfqcJm7So/logo.png",
+      "https://dd.dexscreener.com/ds-data/tokens/solana/5P6n5omLbLbP4kaPGL8etqQAHEx2UCkaUyvjLDnwV4EY.png",
   },
 ];
 
