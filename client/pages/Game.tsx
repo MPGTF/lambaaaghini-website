@@ -1224,6 +1224,16 @@ export default function Game() {
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
+                  {connected && (
+                    <div className="text-center bg-gradient-to-r from-gold-500/20 to-purple-500/20 rounded-lg p-3 border border-gold-500/30">
+                      <Badge className="mb-2 bg-gold-500/20 text-gold-400 border-gold-500/30">
+                        {getUserTitle()}
+                      </Badge>
+                      <div className="text-xs text-muted-foreground">
+                        Current Rank
+                      </div>
+                    </div>
+                  )}
                   <div className="text-center">
                     <div className="text-3xl font-bold text-gold-400">
                       {gameState.score}
