@@ -2,8 +2,10 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Badge } from "@/components/ui/badge";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
-import { Menu, X, ExternalLink } from "lucide-react";
+import { useUser } from "@/contexts/UserContext";
+import { Menu, X, ExternalLink, Trophy, Zap } from "lucide-react";
 
 const navItems = [
   { name: "Home", path: "/" },
