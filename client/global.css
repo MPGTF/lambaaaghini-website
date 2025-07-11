@@ -244,6 +244,17 @@
   }
 }
 
+@keyframes flash-red {
+  0% {
+    background-color: rgb(220, 38, 38);
+    box-shadow: 0 0 20px rgba(220, 38, 38, 0.8);
+  }
+  100% {
+    background-color: rgb(153, 27, 27);
+    box-shadow: 0 0 40px rgba(220, 38, 38, 1);
+  }
+}
+
 /* Custom Solana Wallet Adapter Styling */
 .wallet-adapter-modal-overlay {
   background-color: rgba(0, 0, 0, 0.8) !important;
