@@ -139,21 +139,51 @@ export default function Dex() {
         );
         const data = await response.json();
 
-        // Map the API response to our TrendingToken interface
-        const mappedTokens: TrendingToken[] = data
-          .slice(0, 20)
-          .map((token: any) => ({
-            address: token.address || token.mint,
-            symbol: token.symbol || token.name?.split(" ")[0] || "UNKNOWN",
-            name: token.name || token.symbol || "Unknown Token",
-            decimals: token.decimals || 9,
-            logoURI: token.image || token.logoURI,
-            priceUsd: token.price || token.priceUsd,
-            volume24h: token.volume24h || token.volumeUsd24h,
-            priceChange24h: token.priceChange24h || token.change24h,
-            marketCap: token.marketCap || token.mc,
-          }));
+        console.log("Trending API response:", data); // Debug log
 
+        // Check if data is an array, if not, try to extract array from response
+        let tokensArray = Array.isArray(data) ? data : [];
+
+        // If data is an object with a tokens property or similar
+        if (!Array.isArray(data) && data && typeof data === "object") {
+          tokensArray = data.tokens || data.data || data.results || [];
+        }
+
+        if (!Array.isArray(tokensArray)) {
+          throw new Error("API response is not in expected format");
+        }
+
+        // Map the API response to our TrendingToken interface
+        const mappedTokens: TrendingToken[] = tokensArray
+          .slice(0, 20)
+          .map((item: any, index: number) => {
+            // Handle the nested structure from Solana Tracker
+            const token = item.token || item;
+            const pools = item.pools || [];
+            const events = item.events || {};
+            const firstPool = pools[0] || {};
+
+            return {
+              address: token.mint || token.address || `unknown_${index}`,
+              symbol: token.symbol || token.name?.split(" ")[0] || "UNKNOWN",
+              name: token.name || token.symbol || "Unknown Token",
+              decimals: token.decimals || 6,
+              logoURI: token.uri || token.image || token.logoURI,
+              priceUsd: firstPool.price?.usd || 0,
+              volume24h: firstPool.liquidity?.usd || 0,
+              priceChange24h:
+                events["24h"]?.priceChangePercentage ||
+                events["1h"]?.priceChangePercentage ||
+                0,
+              marketCap: firstPool.marketCap?.usd || 0,
+            };
+          })
+          .filter(
+            (token) =>
+              token.address !== `unknown_${token.address.split("_")[1]}`,
+          ); // Filter out tokens without valid addresses
+
+        console.log("Mapped trending tokens:", mappedTokens); // Debug log
         setTrendingTokens(mappedTokens);
       } catch (error) {
         console.error("Failed to load trending tokens:", error);
