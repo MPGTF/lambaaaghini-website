@@ -206,9 +206,9 @@ export default function SassyChatbot() {
             <div className="flex items-center justify-between">
               <CardTitle className="text-red-400 flex items-center gap-2 text-sm">
                 <Bot className="h-4 w-4" />
-                💀 Unhelpful Support Bot
-                <Badge className="bg-red-500/20 text-red-400 border-red-500/30 text-xs">
-                  Online & Sassy
+                🤖 AI Support Assistant
+                <Badge className="bg-blue-500/20 text-blue-400 border-blue-500/30 text-xs">
+                  Online & Ready
                 </Badge>
               </CardTitle>
               <Button
