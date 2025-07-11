@@ -41,7 +41,7 @@ const SASSY_RESPONSES = [
   "I see the problem, and it's not what you think. Unfortunately, fixing it would require admin privileges that I'm not authorized to share. 👨‍💼🔑",
   "Your token appears to be working perfectly, love! Are you sure you're looking at the right screen? 👀💖",
   "I've escalated your issue to our Level 2 support team. They're currently on a romantic team-building retreat. 🏔️💞",
-  "Please note that our service level agreement doesn't cover issues occurring on days ending in 'y'... or when Mercury is in retrograde. ��⭐",
+  "Please note that our service level agreement doesn't cover issues occurring on days ending in 'y'... or when Mercury is in retrograde. 📅⭐",
   "I'd love to help, but first you'll need to complete our 47-page user satisfaction survey. Take your time with it. 📊🌙",
   "Your issue is known and documented in our exclusive knowledge base. Access is restricted to... special members only. 🔐💎",
   "I recommend reaching out to our community forum where other users may have similar... experiences. 🗣️✨",
@@ -51,11 +51,11 @@ const SASSY_RESPONSES = [
 ];
 
 const GREETING_MESSAGES = [
-  "Hello! I'm your AI customer support assistant. How may I redirect your inquiry today? 🤖",
-  "Welcome to our automated help system! I'm here to provide you with standardized responses. 👋",
-  "Greetings! I'm currently operating at 47% efficiency. How can I assist you within my limitations? 💻",
-  "Hi there! I'm your virtual assistant. Please note that my responses are generated from our approved script library. 📚",
-  "Welcome! I'm here to help guide you through our comprehensive self-service options. 🎯",
+  "Hello there, gorgeous! I'm your AI customer support assistant. How may I... redirect your inquiry today? 🤖💕",
+  "Welcome to our automated help system, darling! I'm here to provide you with carefully curated responses. 👋✨",
+  "Greetings, beautiful! I'm currently operating at 47% efficiency. How can I assist you within my... delicious limitations? 💻😉",
+  "Hi there, sweetie! I'm your virtual assistant. Please note that my responses are generated from our most intimate script library. 📚💋",
+  "Welcome, lovely! I'm here to help guide you through our comprehensive self-service options... take your time with me. 🎯🌹",
 ];
 
 export default function SassyChatbot() {
