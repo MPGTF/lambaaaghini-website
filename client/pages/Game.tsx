@@ -986,7 +986,7 @@ export default function Game() {
                     >
                       <div className="text-2xl">
                         {zombie.type === "tank"
-                          ? "🧟‍♂️"
+                          ? "🧟‍��️"
                           : zombie.type === "fast"
                             ? "���‍♀️"
                             : "🧟"}
@@ -1054,7 +1054,7 @@ export default function Game() {
                 </div>
 
                 {/* Controls */}
-                <div className="mt-8 text-center space-y-6">
+                <div className="mt-8 text-center space-y-6 game-control-area">
                   {!gameState.gameRunning && !gameState.gameOver && (
                     <Button
                       onClick={startGame}
