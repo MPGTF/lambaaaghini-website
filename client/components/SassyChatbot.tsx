@@ -108,45 +108,45 @@ export default function SassyChatbot() {
   const getBotResponse = (userInput: string): string => {
     const input = userInput.toLowerCase();
 
-    // Specific unhelpful responses
+    // Specific subtly unhelpful responses
     if (input.includes("help") || input.includes("problem")) {
-      return "Oh, you have a problem? Join the club. We meet never. 🎭";
+      return "I understand you're experiencing an issue. Please consult our knowledge base article #KB-001 for troubleshooting steps. 📖";
     }
     if (input.includes("how") && input.includes("work")) {
-      return "Magic. Pure, unadulterated magic. Or code. Probably code. I wasn't paying attention. 🪄";
+      return "Our platform operates using proprietary algorithms and industry-standard protocols. For technical details, please contact our engineering team. 🔧";
     }
     if (input.includes("error") || input.includes("bug")) {
-      return "Error? What error? I don't see any error. You're probably hallucinating. 👁️";
+      return "I'm not detecting any system-wide issues at this time. This may be an environmental factor on your end. Have you tried turning it off and on again? 🔄";
     }
     if (input.includes("wallet") || input.includes("connect")) {
-      return "Have you tried connecting your brain first? That seems to be the real issue here. 🧠";
+      return "Wallet connectivity issues can be complex. Please ensure you're using a supported browser and have the latest wallet extension installed. Also check your firewall settings. 🔐";
     }
     if (input.includes("token") || input.includes("swap")) {
-      return "Ah yes, tokens. Those magical internet coins. Try offering them a sacrifice. 🔥";
+      return "Token operations are subject to network conditions and smart contract availability. Please refer to our tokenomics documentation for detailed information. 📊";
     }
     if (input.includes("price") || input.includes("cost")) {
-      return "The price is: your sanity + 3.50 + whatever dignity you have left. 💰";
+      return "Pricing information is dynamic and depends on various market factors. For current rates, please check our live pricing dashboard which updates every few minutes. 💹";
     }
     if (input.includes("why") || input.includes("explain")) {
-      return "Why? Because life is meaningless and full of suffering. Next question! 🌑";
+      return "That's an excellent question! I'd recommend reviewing our comprehensive whitepaper and FAQ section for detailed explanations of our system architecture. 📋";
     }
     if (input.includes("when") || input.includes("time")) {
-      return "When? In the year 2525, if man is still alive. Maybe. Probably not. 🚀";
+      return "Timeline estimates depend on various factors including network congestion and processing priorities. Please monitor our status page for updates. ⏰";
     }
     if (input.includes("thank")) {
-      return "Don't thank me, I literally did nothing helpful. But you're welcome anyway, I guess. 🙄";
+      return "You're welcome! I'm glad I could provide you with the appropriate resources. Please don't hesitate to reach out if you need further assistance. 😊";
     }
     if (input.includes("sorry") || input.includes("apologize")) {
-      return "Sorry? You should be sorry for bothering me with this. Apology not accepted. 😤";
+      return "No need to apologize! These things happen. I've logged your inquiry for quality assurance purposes. Is there anything else I can help direct you to? 📝";
     }
     if (input.includes("sheep") || input.includes("lamb")) {
-      return "Sheep? At least they're smarter than most of my users. That's not saying much though. 🐑";
+      return "I see you're interested in our sheep-themed features! Please note that all animal references are purely decorative and not financial advice. 🐑";
     }
     if (input.includes("bad") || input.includes("terrible")) {
-      return "You think I'M bad? Wait until you meet my supervisor. Spoiler: it's another bot. 🤖";
+      return "I apologize for any negative experience. Your feedback is valuable and has been forwarded to our quality assurance team for review. 📢";
     }
     if (input.includes("fix") || input.includes("broken")) {
-      return "Nothing's broken except your understanding of basic technology. 🔧";
+      return "I understand this may not be working as expected. Please try clearing your browser cache and cookies, then restart your session. If issues persist, submit a bug report. 🔧";
     }
 
     // Random sassy response as fallback
