@@ -70,6 +70,17 @@ export default function Index() {
 
   return (
     <div className="min-h-screen bg-background relative">
+      {/* DO NOT TOUCH Button */}
+      <Button
+        onClick={handleDoNotTouch}
+        className="fixed top-4 left-4 z-50 bg-red-600 hover:bg-red-700 text-white font-bold px-6 py-3 text-sm border-2 border-red-400 shadow-lg animate-pulse"
+        style={{
+          animation: "flash-red 1s infinite alternate",
+        }}
+      >
+        ⚠️ DO NOT TOUCH ⚠️
+      </Button>
+
       {/* Hero Section */}
       <section className="relative overflow-hidden px-6 py-20 md:py-32">
         {/* Meme-serious gradient background */}
