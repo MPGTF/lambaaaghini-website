@@ -672,11 +672,11 @@ export default function Dex() {
                   </div>
                 </div>
 
-                {/* Sheep Quote Intelligence */}
+                {/* Axiom Quote Intelligence */}
                 {quote && (
                   <div className="bg-gradient-to-r from-purple-500/10 to-gold-500/10 border border-purple-500/30 p-4 rounded-lg space-y-3">
                     <div className="text-center text-sm font-semibold text-purple-400 mb-2">
-                      🐑 Sheep Analysis Complete!
+                      🐑 Axiom Professional Analysis Complete!
                     </div>
                     <div className="flex justify-between text-sm">
                       <span className="text-muted-foreground">
@@ -684,28 +684,33 @@ export default function Dex() {
                       </span>
                       <span
                         className={`font-bold ${
-                          parseFloat(quote.priceImpactPct) > 5
+                          quote.priceImpact > 5
                             ? "text-red-400"
-                            : parseFloat(quote.priceImpactPct) > 2
+                            : quote.priceImpact > 2
                               ? "text-yellow-400"
                               : "text-green-400"
                         }`}
                       >
-                        {(parseFloat(quote.priceImpactPct) * 100).toFixed(2)}%
-                        {parseFloat(quote.priceImpactPct) > 5
+                        {quote.priceImpact.toFixed(2)}%
+                        {quote.priceImpact > 5
                           ? " 🚨"
-                          : parseFloat(quote.priceImpactPct) > 2
+                          : quote.priceImpact > 2
                             ? " ⚠️"
                             : " ✅"}
                       </span>
                     </div>
                     <div className="flex justify-between text-sm">
                       <span className="text-muted-foreground">
-                        Sheep Route:
+                        Axiom Route:
                       </span>
                       <span className="text-right text-xs font-semibold text-gold-400">
-                        {quote.routePlan?.length || 1} hop
-                        {quote.routePlan?.length > 1 ? "s" : ""} 🛣️
+                        Professional Execution 🏆
+                      </span>
+                    </div>
+                    <div className="flex justify-between text-sm">
+                      <span className="text-muted-foreground">Slippage:</span>
+                      <span className="text-right text-xs font-semibold text-green-400">
+                        {quote.slippageTolerance}% 🎯
                       </span>
                     </div>
                   </div>
