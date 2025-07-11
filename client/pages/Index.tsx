@@ -23,7 +23,7 @@ export default function Index() {
 
         {/* Floating Lamborghini aesthetic elements - positioned to avoid text overlap */}
         <div className="absolute top-10 right-10 text-4xl opacity-5 animate-pulse pointer-events-none">
-          🏎️
+          ��️
         </div>
         <div className="absolute bottom-10 left-10 text-3xl opacity-5 animate-bounce pointer-events-none">
           💎
@@ -123,10 +123,10 @@ export default function Index() {
               </div>
               <div className="text-center">
                 <div className="text-3xl md:text-4xl font-bold text-purple-400">
-                  🐑 25K+
+                  🐑 Fluffy
                 </div>
                 <div className="text-sm text-foreground font-medium">
-                  Lambs in the Herd
+                  Sheep Vibes
                 </div>
               </div>
               <div className="text-center">
