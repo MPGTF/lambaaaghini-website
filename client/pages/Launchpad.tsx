@@ -626,10 +626,11 @@ export default function Launchpad() {
               <Card className="glass-card border-gold-500/20 hover:border-gold-500/40 transition-all duration-300">
                 <CardContent className="p-6 text-center">
                   <Zap className="h-12 w-12 text-gold-400 mx-auto mb-4" />
-                  <h3 className="text-xl font-bold mb-2">Lightning Fast</h3>
+                  <h3 className="text-xl font-bold mb-2">Sheep Lightning</h3>
                   <p className="text-muted-foreground">
-                    Deploy tokens to Solana in under 30 seconds with pump.fun
-                    integration
+                    Faster than a sheep running from a sheepdog, slower than
+                    your grandma's WiFi. Time may vary depending on blockchain
+                    mood and sheep motivation.
                   </p>
                 </CardContent>
               </Card>
