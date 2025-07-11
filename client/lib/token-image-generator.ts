@@ -330,24 +330,83 @@ function addPixelatedElements(
   colors: any,
   options: TokenImageOptions,
 ) {
-  const blockSize = 8;
-
-  // Add some pixelated shapes based on token theme
+  const blockSize = 6;
   const description = options.description.toLowerCase();
+  const name = options.name.toLowerCase();
+  const combinedText = `${description} ${name}`;
 
-  // Draw pixelated rocket if space-themed
-  if (description.includes("moon") || description.includes("rocket")) {
-    drawPixelatedRocket(ctx, 150, 50, blockSize, colors.secondary);
+  // Add multiple silly pixelated elements
+  const elements = [];
+
+  // Silly space elements
+  if (
+    combinedText.includes("moon") ||
+    combinedText.includes("rocket") ||
+    combinedText.includes("space")
+  ) {
+    elements.push(() =>
+      drawSillyRocket(ctx, 140, 40, blockSize, colors.secondary),
+    );
+    elements.push(() =>
+      drawPixelatedMoon(ctx, 30, 30, blockSize, colors.tertiary),
+    );
+    elements.push(() =>
+      drawAstronaut(ctx, 160, 120, blockSize, colors.primary),
+    );
   }
 
-  // Draw pixelated car if car-themed
-  if (description.includes("lambo") || description.includes("car")) {
-    drawPixelatedCar(ctx, 50, 150, blockSize, colors.primary);
+  // Silly animal elements
+  if (combinedText.includes("sheep") || combinedText.includes("lamb")) {
+    elements.push(() =>
+      drawFunnySheep(ctx, 140, 140, blockSize, colors.tertiary),
+    );
+    elements.push(() => drawSheepFace(ctx, 40, 140, blockSize, colors.primary));
+  }
+  if (combinedText.includes("dog") || combinedText.includes("doge")) {
+    elements.push(() =>
+      drawSillyDog(ctx, 30, 120, blockSize, colors.secondary),
+    );
+    elements.push(() => drawDogeFace(ctx, 150, 150, blockSize, colors.primary));
+  }
+  if (combinedText.includes("cat")) {
+    elements.push(() => drawSillyCat(ctx, 160, 40, blockSize, colors.tertiary));
+    elements.push(() => drawCatFace(ctx, 40, 40, blockSize, colors.secondary));
   }
 
-  // Draw pixelated sheep if sheep-themed
-  if (description.includes("sheep") || description.includes("lamb")) {
-    drawPixelatedSheep(ctx, 150, 150, blockSize, colors.tertiary);
+  // Silly vehicle elements
+  if (combinedText.includes("lambo") || combinedText.includes("car")) {
+    elements.push(() => drawToyCar(ctx, 40, 160, blockSize, colors.primary));
+    elements.push(() =>
+      drawCarEmoji(ctx, 150, 30, blockSize, colors.secondary),
+    );
+  }
+
+  // Food meme elements
+  if (combinedText.includes("pizza") || combinedText.includes("food")) {
+    elements.push(() =>
+      drawPixelPizza(ctx, 30, 50, blockSize, colors.tertiary),
+    );
+  }
+  if (combinedText.includes("banana")) {
+    elements.push(() =>
+      drawPixelBanana(ctx, 160, 80, blockSize, colors.primary),
+    );
+  }
+
+  // Generic silly elements
+  elements.push(() => drawSmileyFace(ctx, 20, 20, blockSize, colors.primary));
+  elements.push(() => drawHeart(ctx, 170, 170, blockSize, colors.secondary));
+  elements.push(() => drawStar(ctx, 170, 20, blockSize, colors.tertiary));
+
+  // Draw 3-5 random silly elements
+  const numElements = Math.min(
+    elements.length,
+    Math.floor(Math.random() * 3) + 3,
+  );
+  const shuffled = elements.sort(() => 0.5 - Math.random());
+
+  for (let i = 0; i < numElements; i++) {
+    shuffled[i]();
   }
 }
 
