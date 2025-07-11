@@ -336,23 +336,48 @@ export default function Dex() {
       <div className="mx-auto max-w-7xl">
         <div className="text-center mb-12">
           <Badge className="mb-8 bg-gold-500/10 text-gold-400 border-gold-500/20 hover:bg-gold-500/20">
-            🐑💨 Where Sheep Meet Superior Trading Technology
+            🐑💨 Powered by Axiom's Professional Trading Technology
           </Badge>
           <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
             <span className="text-gold-400 drop-shadow-lg font-bold">
               LAMBAAAGHINI
             </span>{" "}
             <span className="text-purple-400 drop-shadow-lg font-bold">
-              SHEEP
+              AXIOM
             </span>{" "}
             <span className="text-gold-400 drop-shadow-lg font-bold">DEX</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Where fluffy sheep discover the art of professional trading! Powered
-            by Jupiter's galaxy-class routing and DexScreener's crystal ball
-            charts. Trade any Solana token with the wisdom of a thousand sheep
-            and the speed of a Lamborghini! 🏎️💨
+            Where fluffy sheep discover professional trading with Axiom's
+            advanced technology! Featuring premium routing, professional tools,
+            and DexScreener charts. Trade any Solana token with
+            institutional-grade execution and sheep-level wisdom! 🏎️💨
           </p>
+          {!axiomSignedUp && (
+            <div className="mt-6 p-4 bg-gradient-to-r from-orange-500/10 to-red-500/10 border border-orange-500/30 rounded-lg max-w-2xl mx-auto">
+              <p className="text-orange-400 font-semibold mb-3">
+                🚨 Axiom Account Required for Trading
+              </p>
+              <p className="text-sm text-muted-foreground mb-4">
+                Sign up with mrpants referral code to unlock professional sheep
+                trading!
+              </p>
+              <Button
+                onClick={handleAxiomSignup}
+                className="bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white font-bold"
+              >
+                🐑 Sign Up for Axiom (@mrpants)
+              </Button>
+            </div>
+          )}
+          {axiomSignedUp && (
+            <div className="mt-6 p-4 bg-gradient-to-r from-green-500/10 to-blue-500/10 border border-green-500/30 rounded-lg max-w-2xl mx-auto">
+              <p className="text-green-400 font-semibold">
+                ✅ Axiom Account Connected! Ready for professional sheep
+                trading! 🐑🚀
+              </p>
+            </div>
+          )}
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
