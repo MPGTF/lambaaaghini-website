@@ -135,22 +135,39 @@ export default function Dex() {
     const loadTrendingTokens = async () => {
       setLoadingTrending(true);
       try {
-        const response = await fetch(
-          "https://data.solanatracker.io/tokens/trending?timeframe=1h",
-          {
-            method: "GET",
-            headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json",
+        // Try primary API first
+        let response;
+        let data;
+
+        try {
+          response = await fetch(
+            "https://data.solanatracker.io/tokens/trending?timeframe=1h",
+            {
+              method: "GET",
+              headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+              },
+              signal: AbortSignal.timeout(10000), // 10 second timeout
             },
-          },
-        );
+          );
 
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
+          if (!response.ok) {
+            throw new Error(`Primary API error: ${response.status}`);
+          }
+
+          // Clone response before reading to avoid "body stream already read" error
+          const responseClone = response.clone();
+          data = await responseClone.json();
+        } catch (primaryError) {
+          console.warn(
+            "Primary trending API failed, using fallback data:",
+            primaryError,
+          );
+
+          // Fallback to static trending data instead of making another API call
+          data = POPULAR_TOKENS.slice(0, 10); // Use first 10 popular tokens as trending
         }
-
-        const data = await response.json();
 
         console.log("Trending API response:", data); // Debug log
 
