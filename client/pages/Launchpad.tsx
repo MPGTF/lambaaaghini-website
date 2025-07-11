@@ -180,43 +180,6 @@ export default function Launchpad() {
     }
   };
 
-  if (!connected) {
-    return (
-      <div className="min-h-screen px-6 py-20">
-        <div className="mx-auto max-w-4xl text-center">
-          <div className="mb-12">
-            <Badge className="mb-8 bg-gold-500/10 text-gold-400 border-gold-500/20">
-              🚀 AI-Powered Token Launchpad
-            </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Connect Your <span className="gradient-text">Wallet</span>
-            </h1>
-            <p className="text-xl text-muted-foreground mb-12">
-              Connect your Solana wallet to start creating tokens with AI
-              assistance
-            </p>
-          </div>
-
-          <Card className="glass-card border-purple-500/20 max-w-md mx-auto">
-            <CardContent className="p-8 text-center">
-              <Shield className="h-16 w-16 text-purple-400 mx-auto mb-6" />
-              <h3 className="text-xl font-bold mb-4">
-                Secure Connection Required
-              </h3>
-              <p className="text-muted-foreground mb-6">
-                Your wallet is needed to create and deploy tokens on Solana
-              </p>
-              <WalletConnection
-                variant="default"
-                className="bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-black font-semibold w-full"
-              />
-            </CardContent>
-          </Card>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className="min-h-screen px-6 py-20">
       <div className="mx-auto max-w-6xl">
