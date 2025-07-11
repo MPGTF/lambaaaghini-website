@@ -104,7 +104,10 @@ export default function Navigation() {
                 <FartbookIcon className="w-5 h-5" />
               </a>
             </Button>
-            <WalletConnection variant="outline" />
+            <WalletConnection
+              variant="default"
+              className="bg-gradient-to-r from-purple-500 to-purple-700 hover:from-purple-600 hover:to-purple-800 text-white font-semibold"
+            />
             <Button
               asChild
               className="bg-gradient-to-r from-gold-400 to-gold-600 hover:from-gold-500 hover:to-gold-700 text-black font-semibold"
