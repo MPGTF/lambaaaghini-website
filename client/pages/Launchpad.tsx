@@ -498,7 +498,7 @@ export default function Launchpad() {
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Let our AI sheep help you create tokens while they daydream about
-              Lamborghinis. Warning: May include excessive bleating and
+              Lambaaaghinis. Warning: May include excessive bleating and
               questionable token names.
             </p>
           </div>
