@@ -19,11 +19,16 @@ interface WalletProviderProps {
 }
 
 export default function WalletProvider({ children }: WalletProviderProps) {
-  // The network can be set to 'devnet', 'testnet', or 'mainnet-beta'.
-  const network = WalletAdapterNetwork.Mainnet;
+  // Use devnet for better connectivity during testing
+  const network = WalletAdapterNetwork.Devnet;
 
-  // You can also provide a custom RPC endpoint.
-  const endpoint = useMemo(() => clusterApiUrl(network), [network]);
+  // Use a more reliable RPC endpoint
+  const endpoint = useMemo(() => {
+    if (network === WalletAdapterNetwork.Devnet) {
+      return "https://api.devnet.solana.com";
+    }
+    return clusterApiUrl(network);
+  }, [network]);
 
   // Only use the most common wallets to avoid compatibility issues
   const wallets = useMemo(
@@ -31,10 +36,13 @@ export default function WalletProvider({ children }: WalletProviderProps) {
     [network],
   );
 
-  // Error handling function
+  // Enhanced error handling function
   const onError = (error: any) => {
-    console.warn("Wallet connection error:", error);
-    // Don't throw the error, just log it
+    console.error("Wallet error details:", {
+      message: error.message,
+      name: error.name,
+      stack: error.stack,
+    });
   };
 
   return (
