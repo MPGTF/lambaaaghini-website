@@ -293,7 +293,7 @@ export default function SassyChatbot() {
             {/* Input Area */}
             <div className="flex gap-2">
               <Input
-                placeholder="How can I assist you today?"
+                placeholder="How can I... assist you today? 💫"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyPress={handleKeyPress}
