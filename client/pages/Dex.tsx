@@ -352,18 +352,21 @@ export default function Dex() {
                       </Button>
 
                       {showFromTokens && (
-                        <div className="absolute top-12 left-0 right-0 z-50 bg-background border border-border rounded-lg shadow-lg max-h-60 overflow-y-auto">
-                          <div className="p-2">
-                            <Input
-                              placeholder="Search tokens..."
-                              value={searchQuery}
-                              onChange={(e) => setSearchQuery(e.target.value)}
-                              className="mb-2"
-                            />
+                        <div className="absolute top-12 left-0 right-0 z-50 bg-background border-2 border-purple-500/50 rounded-lg shadow-xl max-h-60 overflow-y-auto">
+                          <div className="p-3">
+                            <div className="relative mb-3">
+                              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                              <Input
+                                placeholder="🐑 Search sheep-approved tokens..."
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                                className="pl-10 border-purple-500/50"
+                              />
+                            </div>
                             {filteredTokens.slice(0, 10).map((token) => (
                               <button
                                 key={token.address}
-                                className="w-full text-left px-3 py-2 hover:bg-muted rounded flex items-center gap-2"
+                                className="w-full text-left px-3 py-2 hover:bg-purple-500/20 rounded-lg flex items-center gap-3 transition-all hover:scale-105"
                                 onClick={() => {
                                   setFromToken(token);
                                   setShowFromTokens(false);
@@ -373,20 +376,23 @@ export default function Dex() {
                                 <img
                                   src={token.logoURI}
                                   alt={token.symbol}
-                                  className="w-4 h-4"
+                                  className="w-6 h-6"
                                   onError={(e) => {
                                     (
                                       e.target as HTMLImageElement
                                     ).style.display = "none";
                                   }}
                                 />
-                                <div>
-                                  <div className="font-semibold">
+                                <div className="flex-1">
+                                  <div className="font-semibold text-gold-400">
                                     {token.symbol}
                                   </div>
                                   <div className="text-xs text-muted-foreground">
                                     {token.name}
                                   </div>
+                                </div>
+                                <div className="text-xs text-purple-400">
+                                  Select 🐑
                                 </div>
                               </button>
                             ))}
