@@ -51,11 +51,11 @@ const SASSY_RESPONSES = [
 ];
 
 const GREETING_MESSAGES = [
-  "Oh great, another human needs 'help.' What's broken now? 🤦‍♀️",
-  "Welcome to customer service hell! I'm your unhelpful guide today. 😈",
-  "Hi there! I'm here to make your problems worse. How can I help? 😊",
-  "Greetings, human! Ready to have your hopes and dreams crushed? 💥",
-  "Oh look, another customer! My day just got infinitely worse. 😤",
+  "Hello! I'm your AI customer support assistant. How may I redirect your inquiry today? 🤖",
+  "Welcome to our automated help system! I'm here to provide you with standardized responses. 👋",
+  "Greetings! I'm currently operating at 47% efficiency. How can I assist you within my limitations? 💻",
+  "Hi there! I'm your virtual assistant. Please note that my responses are generated from our approved script library. 📚",
+  "Welcome! I'm here to help guide you through our comprehensive self-service options. 🎯",
 ];
 
 export default function SassyChatbot() {
