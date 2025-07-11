@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { Link } from "react-router-dom";
 import { useUser } from "@/contexts/UserContext";
