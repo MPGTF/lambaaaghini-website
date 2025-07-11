@@ -201,7 +201,7 @@ export default function SassyChatbot() {
 
       {/* Chat Window */}
       {isOpen && (
-        <Card className="fixed bottom-6 right-6 w-80 h-96 shadow-2xl border-red-500/30 bg-background/95 backdrop-blur-md z-50 flex flex-col">
+        <Card className="fixed bottom-6 right-6 w-80 h-96 shadow-2xl border-blue-500/30 bg-background/95 backdrop-blur-md z-50 flex flex-col">
           <CardHeader className="pb-2">
             <div className="flex items-center justify-between">
               <CardTitle className="text-red-400 flex items-center gap-2 text-sm">
