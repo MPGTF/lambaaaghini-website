@@ -311,9 +311,9 @@ export default function SassyChatbot() {
             </div>
 
             <div className="text-xs text-muted-foreground mt-2 text-center flex items-center justify-center gap-1">
+              <Zap className="h-3 w-3" />
+              Powered by AI & good intentions
               <Coffee className="h-3 w-3" />
-              Powered by sarcasm & caffeine
-              <Eye className="h-3 w-3" />
             </div>
           </CardContent>
         </Card>
