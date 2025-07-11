@@ -19,6 +19,7 @@ import {
   ExternalLink,
   Zap,
 } from "lucide-react";
+import FeaturedTokens from "@/components/FeaturedTokens";
 
 interface TokenInfo {
   address: string;
