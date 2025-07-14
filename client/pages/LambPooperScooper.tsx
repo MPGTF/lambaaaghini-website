@@ -187,66 +187,120 @@ export default function LambPooperScooper() {
     setIsScooping(true);
 
     try {
-      const transaction = new Transaction();
-      const instructions: TransactionInstruction[] = [];
+      // First transaction: Close empty token accounts to reclaim rent
+      const closeTransaction = new Transaction();
+      let closeInstructions: TransactionInstruction[] = [];
 
       const selectedPoop = sheepDroppings.filter((dropping) =>
         selectedDroppings.includes(dropping.address),
       );
 
-      // Close empty pastures to reclaim their rent (scoop the poop!)
+      let actualRentReclaimed = 0;
+      let closedAccounts = 0;
+
+      // Close empty token accounts to reclaim their rent
       for (const dropping of selectedPoop) {
         if (dropping.type === "token") {
-          const closeInstruction = createCloseAccountInstruction(
-            new PublicKey(dropping.address),
-            publicKey, // destination for rent (back to the shepherd)
-            publicKey, // authority
-          );
-          instructions.push(closeInstruction);
+          try {
+            // Verify the account exists and has 0 token balance
+            const accountInfo = await connection.getAccountInfo(
+              new PublicKey(dropping.address),
+            );
+
+            if (accountInfo) {
+              const tokenAccountData = await connection.getParsedAccountInfo(
+                new PublicKey(dropping.address),
+              );
+
+              const parsedData = tokenAccountData.value?.data;
+              if (parsedData && "parsed" in parsedData) {
+                const tokenBalance =
+                  parsedData.parsed.info.tokenAmount.uiAmount;
+
+                // Only close accounts with 0 balance
+                if (tokenBalance === 0) {
+                  const closeInstruction = createCloseAccountInstruction(
+                    new PublicKey(dropping.address),
+                    publicKey, // destination for rent
+                    publicKey, // authority
+                  );
+                  closeInstructions.push(closeInstruction);
+                  actualRentReclaimed +=
+                    accountInfo.lamports / LAMPORTS_PER_SOL;
+                  closedAccounts++;
+                }
+              }
+            }
+          } catch (error) {
+            console.log(`Skipping account ${dropping.address}:`, error);
+          }
         }
       }
 
-      // Pay the shepherd's fee for the cleanup service
-      if (estimatedTreat > 0) {
-        const treatInLamports = Math.floor(estimatedTreat * LAMPORTS_PER_SOL);
-        const treatInstruction = SystemProgram.transfer({
-          fromPubkey: publicKey,
-          toPubkey: new PublicKey(SHEPHERD_WALLET),
-          lamports: treatInLamports,
-        });
-        instructions.push(treatInstruction);
-      }
-
-      if (instructions.length === 0) {
-        toast.error("🐑 No valid droppings to scoop!");
+      if (closeInstructions.length === 0) {
+        toast.error("🐑 No valid empty token accounts found to close!");
+        setIsScooping(false);
         return;
       }
 
-      transaction.add(...instructions);
+      closeTransaction.add(...closeInstructions);
 
-      // Get recent blockhash
-      const { blockhash } = await connection.getLatestBlockhash();
-      transaction.recentBlockhash = blockhash;
-      transaction.feePayer = publicKey;
+      // Get recent blockhash for close transaction
+      const { blockhash: closeBlockhash } =
+        await connection.getLatestBlockhash();
+      closeTransaction.recentBlockhash = closeBlockhash;
+      closeTransaction.feePayer = publicKey;
 
-      // Sign and send transaction
-      const signedTransaction = await signTransaction(transaction);
-      const signature = await connection.sendRawTransaction(
-        signedTransaction.serialize(),
+      // Sign and send close transaction
+      toast.loading("🐑 Closing empty token accounts...");
+      const signedCloseTransaction = await signTransaction(closeTransaction);
+      const closeSignature = await connection.sendRawTransaction(
+        signedCloseTransaction.serialize(),
       );
 
-      await connection.confirmTransaction(signature);
+      // Wait for close transaction to confirm
+      await connection.confirmTransaction(closeSignature, "confirmed");
 
-      const reclaimedAmount = totalPoopValue - estimatedTreat;
+      // Calculate actual fee based on rent reclaimed
+      const actualFee = actualRentReclaimed * SHEPHERD_FEE;
+      const userReceives = actualRentReclaimed - actualFee;
+
+      // Second transaction: Pay shepherd's fee if there's significant rent reclaimed
+      if (actualFee > 0.001) {
+        // Only charge fee if meaningful amount
+        const feeTransaction = new Transaction();
+        const feeInLamports = Math.floor(actualFee * LAMPORTS_PER_SOL);
+
+        const feeInstruction = SystemProgram.transfer({
+          fromPubkey: publicKey,
+          toPubkey: new PublicKey(SHEPHERD_WALLET),
+          lamports: feeInLamports,
+        });
+
+        feeTransaction.add(feeInstruction);
+
+        const { blockhash: feeBlockhash } =
+          await connection.getLatestBlockhash();
+        feeTransaction.recentBlockhash = feeBlockhash;
+        feeTransaction.feePayer = publicKey;
+
+        toast.loading("🐑 Paying shepherd's fee...");
+        const signedFeeTransaction = await signTransaction(feeTransaction);
+        const feeSignature = await connection.sendRawTransaction(
+          signedFeeTransaction.serialize(),
+        );
+
+        await connection.confirmTransaction(feeSignature, "confirmed");
+      }
 
       toast.success(
-        `🐑🧹✨ Pasture cleaned! Scooped up ${reclaimedAmount.toFixed(6)} SOL worth of sheep droppings! (${instructions.length - 1} empty pastures cleaned)`,
+        `🐑🧹✨ Pasture cleaned! Reclaimed ${actualRentReclaimed.toFixed(6)} SOL from ${closedAccounts} empty accounts. You received ${userReceives.toFixed(6)} SOL after shepherd's fee!`,
       );
 
       // Refresh the sniffing after cleanup
       setTimeout(() => {
         sniffForDroppings();
-      }, 2000);
+      }, 3000);
     } catch (error) {
       console.error("Scooping failed:", error);
       toast.error("🐑💩 Failed to scoop droppings. The sheep scattered!");
