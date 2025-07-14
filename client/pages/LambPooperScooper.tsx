@@ -128,19 +128,49 @@ export default function LambPooperScooper() {
 
         // Find empty pastures (0 balance but still holding rent like sheep poop)
         if (balance === 0) {
-          // These accounts hold rent (~0.00203928 SOL) that can be scooped up
-          const accountInfo = await connection.getAccountInfo(
-            tokenAccount.pubkey,
-          );
-          if (accountInfo) {
-            const rentInSOL = accountInfo.lamports / LAMPORTS_PER_SOL;
-            droppingsFound.push({
-              address: tokenAccount.pubkey.toBase58(),
-              balance: rentInSOL,
-              type: "token",
-              mint: accountData.mint,
-              symbol: `Abandoned Pasture (${accountData.mint.slice(0, 8)}...)`,
-            });
+          try {
+            // Get the actual account info to check rent amount
+            const accountInfo = await connection.getAccountInfo(
+              tokenAccount.pubkey,
+            );
+
+            if (accountInfo && accountInfo.lamports > 0) {
+              // Standard token account rent is ~0.00203928 SOL
+              const rentInSOL = accountInfo.lamports / LAMPORTS_PER_SOL;
+
+              // Only include accounts with meaningful rent (filter out dust)
+              if (rentInSOL >= 0.002) {
+                // Get token mint info for better display
+                let tokenSymbol = "Unknown Token";
+                try {
+                  const mintInfo = await connection.getParsedAccountInfo(
+                    new PublicKey(accountData.mint),
+                  );
+                  if (mintInfo.value?.data && "parsed" in mintInfo.value.data) {
+                    const mintData = mintInfo.value.data.parsed.info;
+                    if (mintData.symbol) {
+                      tokenSymbol = mintData.symbol;
+                    }
+                  }
+                } catch (e) {
+                  // Use fallback naming
+                  tokenSymbol = `Token (${accountData.mint.slice(0, 8)}...)`;
+                }
+
+                droppingsFound.push({
+                  address: tokenAccount.pubkey.toBase58(),
+                  balance: rentInSOL,
+                  type: "token",
+                  mint: accountData.mint,
+                  symbol: `Empty ${tokenSymbol} Account`,
+                });
+              }
+            }
+          } catch (error) {
+            console.log(
+              `Error checking account ${tokenAccount.pubkey.toBase58()}:`,
+              error,
+            );
           }
         }
 
