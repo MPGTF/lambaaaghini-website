@@ -1,5 +1,3 @@
-import nodemailer from "nodemailer";
-
 interface MarketingProposal {
   // Contact Information
   name: string;
@@ -39,17 +37,25 @@ interface MarketingProposal {
 }
 
 export class EmailService {
-  private transporter: nodemailer.Transporter;
+  private transporter: any;
 
   constructor() {
-    // Configure email transporter
-    this.transporter = nodemailer.createTransporter({
-      service: "gmail",
-      auth: {
-        user: process.env.EMAIL_USER || "your-email@gmail.com",
-        pass: process.env.EMAIL_PASSWORD || "your-app-password",
-      },
-    });
+    // Only initialize when actually used to avoid build issues
+    this.transporter = null;
+  }
+
+  private async getTransporter() {
+    if (!this.transporter) {
+      const nodemailer = await import("nodemailer");
+      this.transporter = nodemailer.default.createTransporter({
+        service: "gmail",
+        auth: {
+          user: process.env.EMAIL_USER || "your-email@gmail.com",
+          pass: process.env.EMAIL_PASSWORD || "your-app-password",
+        },
+      });
+    }
+    return this.transporter;
   }
 
   async sendMarketingProposal(proposal: MarketingProposal): Promise<boolean> {
