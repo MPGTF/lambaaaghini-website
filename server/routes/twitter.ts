@@ -28,6 +28,7 @@ router.post("/post-tweet", async (req, res) => {
     }
 
     // Post to Twitter
+    const twitterClient = createTwitterClient();
     const tweet = await twitterClient.v2.tweet(tweetText);
 
     // Log the proposal for record keeping
