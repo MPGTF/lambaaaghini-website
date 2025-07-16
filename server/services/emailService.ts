@@ -47,7 +47,7 @@ export class EmailService {
   private async getTransporter() {
     if (!this.transporter) {
       const nodemailer = await import("nodemailer");
-      this.transporter = nodemailer.default.createTransporter({
+      this.transporter = nodemailer.createTransporter({
         service: "gmail",
         auth: {
           user: process.env.EMAIL_USER || "lambaaaghini@gmail.com",
