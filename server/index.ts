@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import { handleDemo } from "./routes/demo";
 import { twitterRouter } from "./routes/twitter";
+import { tweetLaunchRouter } from "./routes/tweetLaunch";
 
 export function createServer() {
   const app = express();
@@ -20,6 +21,9 @@ export function createServer() {
 
   // Twitter API routes
   app.use("/api/twitter", twitterRouter);
+
+  // Tweet-to-launch routes
+  app.use("/api/tweet-launch", tweetLaunchRouter);
 
   return app;
 }
