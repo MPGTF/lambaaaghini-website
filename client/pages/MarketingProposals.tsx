@@ -261,11 +261,45 @@ Contact: ${proposalData.email}
 
 #LAMBAAAGHINI #MarketingProposal #DeFi #SheepMeetSupercars`;
 
-    // In a real implementation, you would use Twitter API
-    // For now, we'll simulate the post and show what would be posted
-    console.log("Would post to Twitter:", tweetText);
+    try {
+      // Call your secure backend API endpoint
+      const response = await fetch("/api/post-tweet", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          tweetText,
+          proposalData: {
+            company: proposalData.company,
+            email: proposalData.email,
+            proposalTitle: proposalData.proposalTitle,
+            proposalType: proposalData.proposalType,
+          },
+        }),
+      });
 
-    return tweetText;
+      const result = await response.json();
+
+      if (result.success) {
+        console.log("Tweet posted successfully:", result.tweetUrl);
+        return {
+          success: true,
+          tweetUrl: result.tweetUrl,
+          tweetId: result.tweetId,
+        };
+      } else {
+        throw new Error(result.error);
+      }
+    } catch (error) {
+      console.error("Failed to post to Twitter:", error);
+      // Fallback - just return the text that would have been posted
+      return {
+        success: false,
+        tweetText,
+        error: error.message,
+      };
+    }
   };
 
   const handleSubmit = async () => {
@@ -875,7 +909,7 @@ Contact: ${proposalData.email}
                         </>
                       ) : (
                         <>
-                          �� Your proposal will be posted on our X account
+                          📱 Your proposal will be posted on our X account
                           <br />
                           🔍 Community can see and provide feedback
                         </>
