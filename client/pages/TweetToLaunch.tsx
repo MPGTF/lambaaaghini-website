@@ -429,7 +429,7 @@ export default function TweetToLaunch() {
                   <div className="font-semibold text-purple-800 mb-1">
                     Phone Launch Hotline
                   </div>
-                  <div className="text-purple-700">1-800-LAMBAAAA</div>
+                  <div className="text-purple-700">Coming Soon</div>
                   <div className="text-xs text-purple-600 mt-1">
                     Available 24/7 for token deployments
                   </div>
@@ -439,11 +439,7 @@ export default function TweetToLaunch() {
                     Postal Address
                   </div>
                   <div className="text-purple-700 text-xs leading-relaxed">
-                    LAMBAAAGHINI Token Launch Division
-                    <br />
-                    123 Sheep Street
-                    <br />
-                    Supercar City, SC 12345
+                    Coming Soon
                   </div>
                 </div>
               </div>
