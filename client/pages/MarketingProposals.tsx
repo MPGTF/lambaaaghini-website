@@ -463,26 +463,6 @@ Contact: ${proposalData.email}
           </div>
         </div>
 
-        {/* Wallet Connection */}
-        {!publicKey && (
-          <Card className="glass-card border-blue-500/20 mb-8">
-            <CardContent className="p-8 text-center">
-              <Wallet className="h-12 w-12 text-blue-400 mx-auto mb-4" />
-              <h3 className="text-2xl font-bold mb-4">
-                Wallet Connection (Optional)
-              </h3>
-              <p className="text-muted-foreground mb-6">
-                Connect your wallet to pay 0.1 SOL for private review, or submit
-                without payment for public posting on X!
-              </p>
-              <WalletMultiButton className="!bg-gradient-to-r !from-purple-500 !to-purple-700 hover:!from-purple-600 hover:!to-purple-800 !text-white !font-semibold !border-0 !rounded-md !px-6 !py-3" />
-              <p className="text-xs text-muted-foreground mt-3">
-                You can still submit your proposal without connecting a wallet
-              </p>
-            </CardContent>
-          </Card>
-        )}
-
         {/* Marketing Proposal Form */}
         <Card className="glass-card border-border/50">
           <CardHeader>
@@ -815,38 +795,6 @@ Contact: ${proposalData.email}
               </div>
             </div>
 
-            {/* Terms and Conditions */}
-            <div className="space-y-4">
-              <div className="flex items-center space-x-2">
-                <Checkbox
-                  id="terms"
-                  checked={formData.agreedToTerms}
-                  onCheckedChange={(checked) =>
-                    handleInputChange("agreedToTerms", checked)
-                  }
-                />
-                <Label htmlFor="terms" className="text-sm">
-                  I agree that my proposal information may be reviewed by the
-                  LAMBAAAGHINI team and I understand that submission does not
-                  guarantee acceptance *
-                </Label>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Checkbox
-                  id="payment"
-                  checked={formData.agreedToPayment}
-                  onCheckedChange={(checked) =>
-                    handleInputChange("agreedToPayment", checked)
-                  }
-                />
-                <Label htmlFor="payment" className="text-sm">
-                  I understand that without paying 0.1 SOL, my proposal will be
-                  posted publicly on LAMBAAAGHINI's X account for community
-                  review *
-                </Label>
-              </div>
-            </div>
-
             {/* Fee Information */}
             <Card className="glass-card border-orange-500/20 mb-6">
               <CardContent className="p-6">
@@ -875,11 +823,7 @@ Contact: ${proposalData.email}
             <div className="pt-4">
               <Button
                 onClick={handleSubmit}
-                disabled={
-                  isSubmitting ||
-                  !formData.agreedToTerms ||
-                  !formData.agreedToPayment
-                }
+                disabled={isSubmitting}
                 className="w-full bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 text-white font-semibold py-6 text-lg"
               >
                 {isSubmitting ? (
