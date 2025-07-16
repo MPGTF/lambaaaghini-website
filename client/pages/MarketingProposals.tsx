@@ -195,16 +195,6 @@ export default function MarketingProposals() {
       return false;
     }
 
-    if (!formData.agreedToTerms) {
-      toast.error("Please agree to the terms and conditions");
-      return false;
-    }
-
-    if (!formData.agreedToPayment) {
-      toast.error("Please acknowledge the 0.1 SOL proposal fee");
-      return false;
-    }
-
     return true;
   };
 
