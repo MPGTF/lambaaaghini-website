@@ -430,10 +430,15 @@ Contact: ${proposalData.email}
                 <div className="flex items-center gap-4">
                   <DollarSign className="h-8 w-8 text-orange-400" />
                   <div>
-                    <h3 className="text-lg font-bold">Proposal Fee: 0.1 SOL</h3>
+                    <h3 className="text-lg font-bold">
+                      Optional Privacy Fee: 0.1 SOL
+                    </h3>
                     <p className="text-muted-foreground">
-                      Required to submit your marketing proposal. This helps us
-                      filter serious inquiries and maintain proposal quality.
+                      <strong>Pay 0.1 SOL:</strong> Your proposal stays private
+                      and gets confidential review.
+                      <br />
+                      <strong>No payment:</strong> Your proposal gets posted
+                      publicly on our X account for community feedback!
                     </p>
                   </div>
                   {paymentCompleted && (
