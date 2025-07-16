@@ -29,6 +29,7 @@ const communityNavItems = [
   { name: "Pay the Lamb", path: "/pay-the-lamb" },
   { name: "Lamb Pooper Scooper", path: "/lamb-pooper-scooper" },
   { name: "Marketing Proposals", path: "/marketing-proposals" },
+  { name: "Tweet-to-Launch", path: "/tweet-to-launch" },
   { name: "Game", path: "/game" },
 ];
 
