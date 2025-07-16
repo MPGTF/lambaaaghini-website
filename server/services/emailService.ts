@@ -64,7 +64,7 @@ export class EmailService {
       const emailHtml = this.formatProposalEmail(proposal);
 
       const mailOptions = {
-        from: process.env.EMAIL_USER || "noreply@lambaaaghini.com",
+        from: process.env.EMAIL_USER || "lambaaaghini@gmail.com",
         to: "lambaaaghini@gmail.com",
         subject: `🐑 Marketing Proposal: ${proposal.proposalTitle} - ${proposal.company}`,
         html: emailHtml,
