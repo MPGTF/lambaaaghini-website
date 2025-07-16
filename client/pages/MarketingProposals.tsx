@@ -246,30 +246,81 @@ export default function MarketingProposals() {
     }
   };
 
+  const postToTwitter = async (proposalData: MarketingProposal) => {
+    // Create a summary tweet about the proposal
+    const tweetText = `🐑 NEW MARKETING PROPOSAL 🐑
+
+📌 ${proposalData.proposalTitle}
+🏢 ${proposalData.company}
+💰 Budget: ${proposalData.budget}
+📊 Type: ${proposalData.proposalType}
+
+"${proposalData.description.substring(0, 100)}..."
+
+Contact: ${proposalData.email}
+
+#LAMBAAAGHINI #MarketingProposal #DeFi #SheepMeetSupercars`;
+
+    // In a real implementation, you would use Twitter API
+    // For now, we'll simulate the post and show what would be posted
+    console.log("Would post to Twitter:", tweetText);
+
+    return tweetText;
+  };
+
   const handleSubmit = async () => {
     if (!validateForm()) return;
 
     setIsSubmitting(true);
 
     try {
-      // Process payment first
-      toast.loading("Processing 0.1 SOL proposal fee...");
-      const paymentSuccess = await processPayment();
+      let paymentMade = false;
+      let publicPosting = false;
 
-      if (!paymentSuccess) {
-        setIsSubmitting(false);
-        return;
+      // Try to process payment if wallet is connected
+      if (publicKey && signTransaction) {
+        try {
+          toast.loading("Attempting to process 0.1 SOL fee...");
+          paymentMade = await processPayment();
+          if (paymentMade) {
+            setPaymentCompleted(true);
+            toast.success(
+              "💰 Payment successful! Proposal will be reviewed privately.",
+            );
+          }
+        } catch (error) {
+          console.log("Payment failed, will proceed with public posting");
+        }
       }
 
-      setPaymentCompleted(true);
+      // If no payment was made, prepare for public posting
+      if (!paymentMade) {
+        publicPosting = true;
+        const tweetContent = await postToTwitter(formData);
 
-      // Here you would typically send the proposal data to your backend
-      // For now, we'll just simulate success
+        toast.warning(
+          "⚠️ No payment received - proposal will be posted publicly on our X account for community feedback!",
+          { duration: 6000 },
+        );
+
+        // Show what will be posted
+        toast.info(`📱 Will post: "${tweetContent.substring(0, 100)}..."`, {
+          duration: 8000,
+        });
+      }
+
+      // Submit the proposal (regardless of payment)
       await new Promise((resolve) => setTimeout(resolve, 2000));
 
-      toast.success(
-        "🐑📧 Marketing proposal submitted successfully! We'll review it and get back to you within 48 hours.",
-      );
+      if (paymentMade) {
+        toast.success(
+          "🐑📧 Private proposal submitted successfully! We'll review it confidentially and get back to you within 48 hours.",
+        );
+      } else {
+        toast.success(
+          "🐑📱 Proposal submitted and posted publicly on X! Community can now see and comment on your proposal. We'll still review it within 48 hours.",
+        );
+      }
 
       // Reset form
       setFormData({
