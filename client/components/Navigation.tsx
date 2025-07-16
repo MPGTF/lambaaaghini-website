@@ -28,6 +28,7 @@ const communityNavItems = [
   { name: "Lamb Sauce", path: "/lamb-sauce" },
   { name: "Pay the Lamb", path: "/pay-the-lamb" },
   { name: "Lamb Pooper Scooper", path: "/lamb-pooper-scooper" },
+  { name: "Marketing Proposals", path: "/marketing-proposals" },
   { name: "Game", path: "/game" },
 ];
 
@@ -190,7 +191,7 @@ export default function Navigation() {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-2 text-xs text-muted-foreground">
                       <span>🐑 {user.stats.zombiesKilled}</span>
-                      <span>🚀 {user.stats.tokensCreated}</span>
+                      <span>�� {user.stats.tokensCreated}</span>
                     </div>
                     <button
                       onClick={autoApproval.toggleAutoApproval}
