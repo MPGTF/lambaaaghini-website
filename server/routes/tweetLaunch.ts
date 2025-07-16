@@ -25,11 +25,27 @@ function initializeServices() {
   };
 
   // Solana setup
-  const rpcUrl = "https://solana-mainnet.g.alchemy.com/v2/demo";
+  const rpcUrl =
+    process.env.SOLANA_RPC_URL ||
+    "https://solana-mainnet.g.alchemy.com/v2/demo";
 
-  // You'll need to provide a wallet private key for token creation
-  // For demo purposes, we'll generate a random keypair (replace with your actual wallet)
-  const walletKeypair = Keypair.generate();
+  // Get wallet from environment variable or generate demo one
+  let walletKeypair: Keypair;
+  if (process.env.SOLANA_PRIVATE_KEY) {
+    try {
+      const privateKeyBytes = Buffer.from(
+        process.env.SOLANA_PRIVATE_KEY,
+        "base58",
+      );
+      walletKeypair = Keypair.fromSecretKey(privateKeyBytes);
+    } catch (error) {
+      console.warn("Invalid SOLANA_PRIVATE_KEY, using demo wallet");
+      walletKeypair = Keypair.generate();
+    }
+  } else {
+    console.warn("No SOLANA_PRIVATE_KEY provided, using demo wallet");
+    walletKeypair = Keypair.generate();
+  }
 
   // Initialize services
   const tokenLauncher = new TokenLaunchService(rpcUrl, walletKeypair.secretKey);
