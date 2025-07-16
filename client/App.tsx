@@ -92,6 +92,10 @@ const App = () => {
                       path="/lamb-pooper-scooper"
                       element={<LambPooperScooper />}
                     />
+                    <Route
+                      path="/marketing-proposals"
+                      element={<MarketingProposals />}
+                    />
                     <Route path="/game" element={<Game />} />
                     <Route path="/roadmap" element={<Roadmap />} />
                     <Route path="/whitepaper" element={<Whitepaper />} />
