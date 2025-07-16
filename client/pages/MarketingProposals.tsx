@@ -356,52 +356,6 @@ export default function MarketingProposals() {
           </div>
         </div>
 
-        {/* Quick Links to Whitepaper and Team */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-          <Card className="glass-card border-blue-500/20 hover:border-blue-500/40 transition-all">
-            <CardContent className="p-6 text-center">
-              <FileText className="h-12 w-12 text-blue-400 mx-auto mb-4" />
-              <h3 className="text-xl font-bold mb-2">Read Our Whitepaper</h3>
-              <p className="text-muted-foreground mb-4">
-                Understand our vision, tokenomics, and roadmap before submitting
-                your proposal.
-              </p>
-              <Button
-                asChild
-                variant="outline"
-                className="border-blue-500/50 text-blue-400 hover:bg-blue-500/10"
-              >
-                <a href="/whitepaper" target="_blank" rel="noopener noreferrer">
-                  <FileText className="h-4 w-4 mr-2" />
-                  View Whitepaper
-                  <ExternalLink className="h-4 w-4 ml-2" />
-                </a>
-              </Button>
-            </CardContent>
-          </Card>
-
-          <Card className="glass-card border-purple-500/20 hover:border-purple-500/40 transition-all">
-            <CardContent className="p-6 text-center">
-              <Users className="h-12 w-12 text-purple-400 mx-auto mb-4" />
-              <h3 className="text-xl font-bold mb-2">Meet Our Team</h3>
-              <p className="text-muted-foreground mb-4">
-                Get to know the sheep behind LAMBAAAGHINI and our core values.
-              </p>
-              <Button
-                asChild
-                variant="outline"
-                className="border-purple-500/50 text-purple-400 hover:bg-purple-500/10"
-              >
-                <a href="/team" target="_blank" rel="noopener noreferrer">
-                  <Users className="h-4 w-4 mr-2" />
-                  View Team
-                  <ExternalLink className="h-4 w-4 ml-2" />
-                </a>
-              </Button>
-            </CardContent>
-          </Card>
-        </div>
-
         {/* Wallet Connection */}
         {!publicKey && (
           <Card className="glass-card border-orange-500/20 mb-8">
