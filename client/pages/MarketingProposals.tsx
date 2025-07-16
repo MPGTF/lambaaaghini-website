@@ -344,7 +344,29 @@ Contact: ${proposalData.email}
       }
 
       // Submit the proposal (regardless of payment)
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
+      // Send email notification
+      try {
+        const emailResponse = await fetch("/api/email/send-proposal", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            proposalData: formData,
+            paymentMade,
+          }),
+        });
+
+        if (emailResponse.ok) {
+          console.log("Email sent successfully");
+        } else {
+          console.warn("Email sending failed, but continuing with submission");
+        }
+      } catch (error) {
+        console.warn("Email service error:", error);
+      }
 
       if (paymentMade) {
         toast.success(
