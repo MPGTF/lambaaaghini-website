@@ -24,6 +24,7 @@ import News from "./pages/News";
 import PayTheLamb from "./pages/PayTheLamb";
 import LambSauce from "./pages/LambSauce";
 import LambPooperScooper from "./pages/LambPooperScooper";
+import MarketingProposals from "./pages/MarketingProposals";
 import Game from "./pages/Game";
 import Roadmap from "./pages/Roadmap";
 import Whitepaper from "./pages/Whitepaper";
