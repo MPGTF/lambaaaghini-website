@@ -2,37 +2,37 @@
 
 ## Overview
 
-Marketing proposal submissions are now automatically emailed to `lambaaaghini@gmail.com` with all form data beautifully formatted in HTML.
+Marketing proposal submissions are automatically emailed to `lambaaaghini@gmail.com` with all form data beautifully formatted in HTML.
 
-## Setup Requirements
+## Simple Setup (Using Your Existing Gmail Account)
 
-### 1. Gmail Configuration
+Since you already have `lambaaaghini@gmail.com`, you just need to:
 
-You need to set up Gmail App Passwords to send emails securely:
+### 1. Generate an App Password
 
-1. **Enable 2-Factor Authentication** on your Gmail account
-2. **Generate an App Password**:
-   - Go to Google Account Settings
-   - Security → 2-Step Verification
-   - App passwords
-   - Generate a new app password for "Mail"
-   - Copy the 16-character password
+1. **Go to your Gmail account** (`lambaaaghini@gmail.com`)
+2. **Click your profile picture** → Manage your Google Account
+3. **Go to Security** → 2-Step Verification (enable if not already enabled)
+4. **Scroll down to App passwords** → Generate new app password
+5. **Select "Mail"** as the app type
+6. **Copy the 16-character password** (looks like: `abcd efgh ijkl mnop`)
 
-### 2. Environment Variables
+### 2. Set Environment Variables
 
 Add these to your `.env` file:
 
 ```bash
-# Email Configuration for Marketing Proposals
-EMAIL_USER=your-gmail@gmail.com
-EMAIL_PASSWORD=your-16-character-app-password
+# Email Configuration - Use your existing Gmail account
+EMAIL_USER=lambaaaghini@gmail.com
+EMAIL_PASSWORD=your-16-character-app-password-here
 ```
+
+**That's it!** The system will use your Gmail account to send emails to itself.
 
 **Important:**
 
-- Use the Gmail account that should send the emails
 - Use the 16-character App Password, NOT your regular Gmail password
-- Keep these credentials secure and never commit them to version control
+- Keep this password secure and never share it
 
 ### 3. Test Connection
 
