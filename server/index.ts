@@ -3,6 +3,7 @@ import cors from "cors";
 import { handleDemo } from "./routes/demo";
 import { twitterRouter } from "./routes/twitter";
 import { tweetLaunchRouter } from "./routes/tweetLaunch";
+import { emailRouter } from "./routes/email";
 
 export function createServer() {
   const app = express();
@@ -24,6 +25,9 @@ export function createServer() {
 
   // Tweet-to-launch routes
   app.use("/api/tweet-launch", tweetLaunchRouter);
+
+  // Email routes
+  app.use("/api/email", emailRouter);
 
   return app;
 }
