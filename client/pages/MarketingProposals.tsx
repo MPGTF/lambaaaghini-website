@@ -461,30 +461,6 @@ Contact: ${proposalData.email}
           </Card>
         )}
 
-        {/* Fee Information */}
-        <Card className="glass-card border-orange-500/20 mb-8">
-          <CardContent className="p-6">
-            <div className="flex items-center gap-4">
-              <DollarSign className="h-8 w-8 text-orange-400" />
-              <div>
-                <h3 className="text-lg font-bold">
-                  Optional Privacy Fee: 0.1 SOL
-                </h3>
-                <p className="text-muted-foreground">
-                  <strong>Pay 0.1 SOL:</strong> Your proposal stays private and
-                  gets confidential review.
-                  <br />
-                  <strong>No payment:</strong> Your proposal gets posted
-                  publicly on our X account for community feedback!
-                </p>
-              </div>
-              {paymentCompleted && (
-                <CheckCircle className="h-8 w-8 text-green-400 ml-auto" />
-              )}
-            </div>
-          </CardContent>
-        </Card>
-
         {/* Marketing Proposal Form */}
         <Card className="glass-card border-border/50">
           <CardHeader>
@@ -849,6 +825,30 @@ Contact: ${proposalData.email}
               </div>
             </div>
 
+            {/* Fee Information */}
+            <Card className="glass-card border-orange-500/20 mb-6">
+              <CardContent className="p-6">
+                <div className="flex items-center gap-4">
+                  <DollarSign className="h-8 w-8 text-orange-400" />
+                  <div>
+                    <h3 className="text-lg font-bold">
+                      Optional Privacy Fee: 0.1 SOL
+                    </h3>
+                    <p className="text-muted-foreground">
+                      <strong>Pay 0.1 SOL:</strong> Your proposal stays private
+                      and gets confidential review.
+                      <br />
+                      <strong>No payment:</strong> Your proposal gets posted
+                      publicly on our X account for community feedback!
+                    </p>
+                  </div>
+                  {paymentCompleted && (
+                    <CheckCircle className="h-8 w-8 text-green-400 ml-auto" />
+                  )}
+                </div>
+              </CardContent>
+            </Card>
+
             {/* Submit Button */}
             <div className="pt-4">
               <Button
@@ -868,8 +868,7 @@ Contact: ${proposalData.email}
                 ) : (
                   <>
                     <Send className="h-5 w-5 mr-2" />
-                    Submit Proposal{" "}
-                    {publicKey ? "(Try 0.1 SOL or Public)" : "(Public Post)"}
+                    Submit Proposal
                   </>
                 )}
               </Button>
