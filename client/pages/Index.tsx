@@ -31,6 +31,7 @@ import {
   BookOpen,
   MessageCircle,
   Trophy,
+  FileText,
 } from "lucide-react";
 
 export default function Index() {
@@ -200,7 +201,7 @@ export default function Index() {
         {/* Floating Content */}
         <div className="relative z-10 mx-auto max-w-6xl px-6 text-center">
           <Badge className="mb-8 bg-gold-500/20 text-gold-400 border-gold-500/40 hover:bg-gold-500/30 backdrop-blur-sm text-lg px-6 py-2">
-            ���💨 Where Sheep Meet Supercars
+            🐑💨 Where Sheep Meet Supercars
           </Badge>
 
           <h1 className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold mb-8 tracking-tight">
