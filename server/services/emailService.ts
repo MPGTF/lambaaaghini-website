@@ -166,7 +166,8 @@ export class EmailService {
 
   async testConnection(): Promise<boolean> {
     try {
-      await this.transporter.verify();
+      const transporter = await this.getTransporter();
+      await transporter.verify();
       console.log("Email service connection verified");
       return true;
     } catch (error) {
