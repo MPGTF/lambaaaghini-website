@@ -854,10 +854,34 @@ Contact: ${proposalData.email}
                     ) : (
                       <>
                         <Send className="h-5 w-5 mr-2" />
-                        Submit Proposal (0.1 SOL)
+                        Submit Proposal{" "}
+                        {publicKey
+                          ? "(Try 0.1 SOL or Public)"
+                          : "(Public Post)"}
                       </>
                     )}
                   </Button>
+
+                  {/* Information about what happens */}
+                  <div className="mt-4 p-4 bg-blue-500/10 border border-blue-500/20 rounded-lg">
+                    <div className="text-sm text-blue-400">
+                      <strong>What happens next:</strong>
+                      <br />
+                      {publicKey ? (
+                        <>
+                          💰 We'll try to charge 0.1 SOL for private review
+                          <br />
+                          📱 If payment fails, proposal goes public on X
+                        </>
+                      ) : (
+                        <>
+                          �� Your proposal will be posted on our X account
+                          <br />
+                          🔍 Community can see and provide feedback
+                        </>
+                      )}
+                    </div>
+                  </div>
                 </div>
               </CardContent>
             </Card>
