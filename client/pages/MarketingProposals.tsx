@@ -828,8 +828,9 @@ Contact: ${proposalData.email}
                       }
                     />
                     <Label htmlFor="payment" className="text-sm">
-                      I understand and agree to pay the 0.1 SOL proposal
-                      submission fee, which is non-refundable *
+                      I understand that without paying 0.1 SOL, my proposal will
+                      be posted publicly on LAMBAAAGHINI's X account for
+                      community review *
                     </Label>
                   </div>
                 </div>
