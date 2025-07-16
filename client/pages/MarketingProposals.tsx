@@ -409,15 +409,20 @@ Contact: ${proposalData.email}
 
         {/* Wallet Connection */}
         {!publicKey && (
-          <Card className="glass-card border-orange-500/20 mb-8">
+          <Card className="glass-card border-blue-500/20 mb-8">
             <CardContent className="p-8 text-center">
-              <Wallet className="h-12 w-12 text-orange-400 mx-auto mb-4" />
-              <h3 className="text-2xl font-bold mb-4">Connect Your Wallet</h3>
+              <Wallet className="h-12 w-12 text-blue-400 mx-auto mb-4" />
+              <h3 className="text-2xl font-bold mb-4">
+                Wallet Connection (Optional)
+              </h3>
               <p className="text-muted-foreground mb-6">
-                Connect your wallet to pay the 0.1 SOL proposal fee and submit
-                your marketing proposal
+                Connect your wallet to pay 0.1 SOL for private review, or submit
+                without payment for public posting on X!
               </p>
               <WalletMultiButton className="!bg-gradient-to-r !from-purple-500 !to-purple-700 hover:!from-purple-600 hover:!to-purple-800 !text-white !font-semibold !border-0 !rounded-md !px-6 !py-3" />
+              <p className="text-xs text-muted-foreground mt-3">
+                You can still submit your proposal without connecting a wallet
+              </p>
             </CardContent>
           </Card>
         )}
