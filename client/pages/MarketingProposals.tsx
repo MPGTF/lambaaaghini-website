@@ -263,7 +263,7 @@ Contact: ${proposalData.email}
 
     try {
       // Call your secure backend API endpoint
-      const response = await fetch("/api/post-tweet", {
+      const response = await fetch("/api/twitter/post-tweet", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
