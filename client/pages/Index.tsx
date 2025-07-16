@@ -200,7 +200,7 @@ export default function Index() {
         {/* Floating Content */}
         <div className="relative z-10 mx-auto max-w-6xl px-6 text-center">
           <Badge className="mb-8 bg-gold-500/20 text-gold-400 border-gold-500/40 hover:bg-gold-500/30 backdrop-blur-sm text-lg px-6 py-2">
-            🐑💨 Where Sheep Meet Supercars
+            ���💨 Where Sheep Meet Supercars
           </Badge>
 
           <h1 className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold mb-8 tracking-tight">
@@ -559,8 +559,32 @@ export default function Index() {
             </Button>
           </div>
 
-          <div className="text-sm text-muted-foreground">
+          <div className="text-sm text-muted-foreground mb-8">
             Supports Phantom, Solflare, and Ledger wallets
+          </div>
+
+          {/* Whitepaper and Team Links */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center border-t border-border/30 pt-8">
+            <Button
+              asChild
+              variant="ghost"
+              className="text-gold-400 hover:text-gold-300 hover:bg-gold-500/10"
+            >
+              <Link to="/whitepaper" className="flex items-center gap-2">
+                <FileText className="h-4 w-4" />
+                Read Whitepaper
+              </Link>
+            </Button>
+            <Button
+              asChild
+              variant="ghost"
+              className="text-purple-400 hover:text-purple-300 hover:bg-purple-500/10"
+            >
+              <Link to="/team" className="flex items-center gap-2">
+                <Users className="h-4 w-4" />
+                Meet the Team
+              </Link>
+            </Button>
           </div>
         </div>
       </section>
