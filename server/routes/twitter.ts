@@ -3,18 +3,19 @@ import { TwitterApi } from "twitter-api-v2";
 
 const router = express.Router();
 
-// Initialize Twitter client with your credentials
-// NEVER put these in frontend code!
-const twitterClient = new TwitterApi({
-  appKey: process.env.TWITTER_API_KEY || "",
-  appSecret: process.env.TWITTER_API_SECRET || "",
-  accessToken:
-    process.env.TWITTER_ACCESS_TOKEN ||
-    "1943383803029807104-vTc7X1Z5taiBmpQmfDqUlTmw9QFtlZ",
-  accessSecret:
-    process.env.TWITTER_ACCESS_SECRET ||
-    "tP3qiWrCOg7bngetiVqoCwHgr1nHmN0wcrvbhtHFxo8wF",
-});
+// Function to create Twitter client when needed
+function createTwitterClient() {
+  return new TwitterApi({
+    appKey: process.env.TWITTER_API_KEY || "",
+    appSecret: process.env.TWITTER_API_SECRET || "",
+    accessToken:
+      process.env.TWITTER_ACCESS_TOKEN ||
+      "1943383803029807104-vTc7X1Z5taiBmpQmfDqUlTmw9QFtlZ",
+    accessSecret:
+      process.env.TWITTER_ACCESS_SECRET ||
+      "tP3qiWrCOg7bngetiVqoCwHgr1nHmN0wcrvbhtHFxo8wF",
+  });
+}
 
 // POST endpoint to create a tweet
 router.post("/post-tweet", async (req, res) => {
