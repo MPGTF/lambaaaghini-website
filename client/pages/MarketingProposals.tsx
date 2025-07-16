@@ -461,7 +461,7 @@ Contact: ${proposalData.email}
           </Card>
         )}
 
-                {/* Fee Information */}
+        {/* Fee Information */}
         <Card className="glass-card border-orange-500/20 mb-8">
           <CardContent className="p-6">
             <div className="flex items-center gap-4">
@@ -471,8 +471,8 @@ Contact: ${proposalData.email}
                   Optional Privacy Fee: 0.1 SOL
                 </h3>
                 <p className="text-muted-foreground">
-                  <strong>Pay 0.1 SOL:</strong> Your proposal stays private
-                  and gets confidential review.
+                  <strong>Pay 0.1 SOL:</strong> Your proposal stays private and
+                  gets confidential review.
                   <br />
                   <strong>No payment:</strong> Your proposal gets posted
                   publicly on our X account for community feedback!
@@ -486,439 +486,417 @@ Contact: ${proposalData.email}
         </Card>
 
         {/* Marketing Proposal Form */}
-            <Card className="glass-card border-border/50">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Send className="h-5 w-5 text-green-400" />
-                  Marketing Proposal Submission
-                </CardTitle>
-                <CardDescription>
-                  Fill out this comprehensive form to submit your marketing
-                  proposal. All fields marked with * are required.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-8">
-                {/* Contact Information */}
+        <Card className="glass-card border-border/50">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Send className="h-5 w-5 text-green-400" />
+              Marketing Proposal Submission
+            </CardTitle>
+            <CardDescription>
+              Fill out this comprehensive form to submit your marketing
+              proposal. All fields marked with * are required.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-8">
+            {/* Contact Information */}
+            <div>
+              <h3 className="text-lg font-semibold mb-4 text-gold-400">
+                Contact Information
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <h3 className="text-lg font-semibold mb-4 text-gold-400">
-                    Contact Information
-                  </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <Label htmlFor="name">Full Name *</Label>
-                      <Input
-                        id="name"
-                        value={formData.name}
-                        onChange={(e) =>
-                          handleInputChange("name", e.target.value)
-                        }
-                        placeholder="John Doe"
-                      />
-                    </div>
-                    <div>
-                      <Label htmlFor="email">Email Address *</Label>
-                      <Input
-                        id="email"
-                        type="email"
-                        value={formData.email}
-                        onChange={(e) =>
-                          handleInputChange("email", e.target.value)
-                        }
-                        placeholder="john@example.com"
-                      />
-                    </div>
-                    <div>
-                      <Label htmlFor="company">Company/Agency *</Label>
-                      <Input
-                        id="company"
-                        value={formData.company}
-                        onChange={(e) =>
-                          handleInputChange("company", e.target.value)
-                        }
-                        placeholder="Marketing Agency Inc."
-                      />
-                    </div>
-                    <div>
-                      <Label htmlFor="role">Your Role</Label>
-                      <Input
-                        id="role"
-                        value={formData.role}
-                        onChange={(e) =>
-                          handleInputChange("role", e.target.value)
-                        }
-                        placeholder="Marketing Director"
-                      />
-                    </div>
-                    <div>
-                      <Label htmlFor="telegram">Telegram Handle</Label>
-                      <Input
-                        id="telegram"
-                        value={formData.telegram}
-                        onChange={(e) =>
-                          handleInputChange("telegram", e.target.value)
-                        }
-                        placeholder="@yourtelegram"
-                      />
-                    </div>
-                    <div>
-                      <Label htmlFor="twitter">Twitter/X Handle</Label>
-                      <Input
-                        id="twitter"
-                        value={formData.twitter}
-                        onChange={(e) =>
-                          handleInputChange("twitter", e.target.value)
-                        }
-                        placeholder="@yourtwitter"
-                      />
-                    </div>
-                  </div>
+                  <Label htmlFor="name">Full Name *</Label>
+                  <Input
+                    id="name"
+                    value={formData.name}
+                    onChange={(e) => handleInputChange("name", e.target.value)}
+                    placeholder="John Doe"
+                  />
                 </div>
-
-                {/* Proposal Details */}
                 <div>
-                  <h3 className="text-lg font-semibold mb-4 text-purple-400">
-                    Proposal Details
-                  </h3>
-                  <div className="space-y-4">
-                    <div>
-                      <Label htmlFor="proposalTitle">Proposal Title *</Label>
-                      <Input
-                        id="proposalTitle"
-                        value={formData.proposalTitle}
-                        onChange={(e) =>
-                          handleInputChange("proposalTitle", e.target.value)
-                        }
-                        placeholder="LAMBAAAGHINI Social Media Growth Campaign"
-                      />
-                    </div>
-                    <div>
-                      <Label htmlFor="proposalType">Proposal Type *</Label>
-                      <Select
-                        onValueChange={(value) =>
-                          handleInputChange("proposalType", value)
-                        }
-                      >
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select proposal type" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {proposalTypes.map((type) => (
-                            <SelectItem key={type} value={type}>
-                              {type}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    </div>
-                    <div>
-                      <Label htmlFor="description">
-                        Detailed Description *
-                      </Label>
-                      <Textarea
-                        id="description"
-                        value={formData.description}
-                        onChange={(e) =>
-                          handleInputChange("description", e.target.value)
-                        }
-                        placeholder="Describe your marketing proposal in detail. What are you proposing to do for LAMBAAAGHINI?"
-                        rows={4}
-                      />
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div>
-                        <Label htmlFor="targetAudience">
-                          Target Audience *
-                        </Label>
-                        <Input
-                          id="targetAudience"
-                          value={formData.targetAudience}
-                          onChange={(e) =>
-                            handleInputChange("targetAudience", e.target.value)
-                          }
-                          placeholder="DeFi enthusiasts, meme coin traders"
-                        />
-                      </div>
-                      <div>
-                        <Label htmlFor="duration">Campaign Duration</Label>
-                        <Input
-                          id="duration"
-                          value={formData.duration}
-                          onChange={(e) =>
-                            handleInputChange("duration", e.target.value)
-                          }
-                          placeholder="3 months"
-                        />
-                      </div>
-                    </div>
-                    <div>
-                      <Label htmlFor="budget">Proposed Budget *</Label>
-                      <Input
-                        id="budget"
-                        value={formData.budget}
-                        onChange={(e) =>
-                          handleInputChange("budget", e.target.value)
-                        }
-                        placeholder="$10,000 - $50,000"
-                      />
-                    </div>
-                    <div>
-                      <Label htmlFor="expectedResults">
-                        Expected Results/KPIs *
-                      </Label>
-                      <Textarea
-                        id="expectedResults"
-                        value={formData.expectedResults}
-                        onChange={(e) =>
-                          handleInputChange("expectedResults", e.target.value)
-                        }
-                        placeholder="Expected followers growth, engagement rates, conversions, etc."
-                        rows={3}
-                      />
-                    </div>
-                  </div>
+                  <Label htmlFor="email">Email Address *</Label>
+                  <Input
+                    id="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={(e) => handleInputChange("email", e.target.value)}
+                    placeholder="john@example.com"
+                  />
                 </div>
-
-                {/* Marketing Channels */}
                 <div>
-                  <h3 className="text-lg font-semibold mb-4 text-blue-400">
-                    Marketing Channels
-                  </h3>
-                  <div className="space-y-4">
-                    <div>
-                      <Label>
-                        Marketing Channels (Select all that apply) *
-                      </Label>
-                      <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mt-2">
-                        {marketingChannels.map((channel) => (
-                          <div
-                            key={channel}
-                            className="flex items-center space-x-2"
-                          >
-                            <Checkbox
-                              id={channel}
-                              checked={formData.channels.includes(channel)}
-                              onCheckedChange={() =>
-                                handleChannelToggle(channel)
-                              }
-                            />
-                            <Label htmlFor={channel} className="text-sm">
-                              {channel}
-                            </Label>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                    <div>
-                      <Label htmlFor="primaryChannel">Primary Channel *</Label>
-                      <Select
-                        onValueChange={(value) =>
-                          handleInputChange("primaryChannel", value)
-                        }
-                      >
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select primary marketing channel" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {marketingChannels.map((channel) => (
-                            <SelectItem key={channel} value={channel}>
-                              {channel}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Timeline & Deliverables */}
-                <div>
-                  <h3 className="text-lg font-semibold mb-4 text-green-400">
-                    Timeline & Deliverables
-                  </h3>
-                  <div className="space-y-4">
-                    <div>
-                      <Label htmlFor="startDate">Proposed Start Date</Label>
-                      <Input
-                        id="startDate"
-                        type="date"
-                        value={formData.startDate}
-                        onChange={(e) =>
-                          handleInputChange("startDate", e.target.value)
-                        }
-                      />
-                    </div>
-                    <div>
-                      <Label htmlFor="timeline">Project Timeline *</Label>
-                      <Textarea
-                        id="timeline"
-                        value={formData.timeline}
-                        onChange={(e) =>
-                          handleInputChange("timeline", e.target.value)
-                        }
-                        placeholder="Week 1-2: Strategy development, Week 3-4: Content creation..."
-                        rows={3}
-                      />
-                    </div>
-                    <div>
-                      <Label htmlFor="deliverables">Key Deliverables *</Label>
-                      <Textarea
-                        id="deliverables"
-                        value={formData.deliverables}
-                        onChange={(e) =>
-                          handleInputChange("deliverables", e.target.value)
-                        }
-                        placeholder="Social media posts, video content, influencer partnerships..."
-                        rows={3}
-                      />
-                    </div>
-                    <div>
-                      <Label htmlFor="metrics">Success Metrics</Label>
-                      <Textarea
-                        id="metrics"
-                        value={formData.metrics}
-                        onChange={(e) =>
-                          handleInputChange("metrics", e.target.value)
-                        }
-                        placeholder="How will you measure success? Engagement rates, follower growth, etc."
-                        rows={2}
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Additional Information */}
-                <div>
-                  <h3 className="text-lg font-semibold mb-4 text-orange-400">
-                    Additional Information
-                  </h3>
-                  <div className="space-y-4">
-                    <div>
-                      <Label htmlFor="previousWork">
-                        Previous Work/Portfolio
-                      </Label>
-                      <Textarea
-                        id="previousWork"
-                        value={formData.previousWork}
-                        onChange={(e) =>
-                          handleInputChange("previousWork", e.target.value)
-                        }
-                        placeholder="Links to previous campaigns, case studies, or relevant work"
-                        rows={3}
-                      />
-                    </div>
-                    <div>
-                      <Label htmlFor="whyLambaaaghini">Why LAMBAAAGHINI?</Label>
-                      <Textarea
-                        id="whyLambaaaghini"
-                        value={formData.whyLambaaaghini}
-                        onChange={(e) =>
-                          handleInputChange("whyLambaaaghini", e.target.value)
-                        }
-                        placeholder="Why do you want to work with LAMBAAAGHINI? What excites you about our project?"
-                        rows={3}
-                      />
-                    </div>
-                    <div>
-                      <Label htmlFor="additionalInfo">
-                        Additional Information
-                      </Label>
-                      <Textarea
-                        id="additionalInfo"
-                        value={formData.additionalInfo}
-                        onChange={(e) =>
-                          handleInputChange("additionalInfo", e.target.value)
-                        }
-                        placeholder="Any other information you'd like to share"
-                        rows={2}
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Terms and Conditions */}
-                <div className="space-y-4">
-                  <div className="flex items-center space-x-2">
-                    <Checkbox
-                      id="terms"
-                      checked={formData.agreedToTerms}
-                      onCheckedChange={(checked) =>
-                        handleInputChange("agreedToTerms", checked)
-                      }
-                    />
-                    <Label htmlFor="terms" className="text-sm">
-                      I agree that my proposal information may be reviewed by
-                      the LAMBAAAGHINI team and I understand that submission
-                      does not guarantee acceptance *
-                    </Label>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <Checkbox
-                      id="payment"
-                      checked={formData.agreedToPayment}
-                      onCheckedChange={(checked) =>
-                        handleInputChange("agreedToPayment", checked)
-                      }
-                    />
-                    <Label htmlFor="payment" className="text-sm">
-                      I understand that without paying 0.1 SOL, my proposal will
-                      be posted publicly on LAMBAAAGHINI's X account for
-                      community review *
-                    </Label>
-                  </div>
-                </div>
-
-                {/* Submit Button */}
-                <div className="pt-4">
-                  <Button
-                    onClick={handleSubmit}
-                    disabled={
-                      isSubmitting ||
-                      !formData.agreedToTerms ||
-                      !formData.agreedToPayment
+                  <Label htmlFor="company">Company/Agency *</Label>
+                  <Input
+                    id="company"
+                    value={formData.company}
+                    onChange={(e) =>
+                      handleInputChange("company", e.target.value)
                     }
-                    className="w-full bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 text-white font-semibold py-6 text-lg"
-                  >
-                    {isSubmitting ? (
-                      <>
-                        <Target className="h-5 w-5 mr-2 animate-spin" />
-                        Processing Proposal...
-                      </>
-                    ) : (
-                      <>
-                        <Send className="h-5 w-5 mr-2" />
-                        Submit Proposal{" "}
-                        {publicKey
-                          ? "(Try 0.1 SOL or Public)"
-                          : "(Public Post)"}
-                      </>
-                    )}
-                  </Button>
+                    placeholder="Marketing Agency Inc."
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="role">Your Role</Label>
+                  <Input
+                    id="role"
+                    value={formData.role}
+                    onChange={(e) => handleInputChange("role", e.target.value)}
+                    placeholder="Marketing Director"
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="telegram">Telegram Handle</Label>
+                  <Input
+                    id="telegram"
+                    value={formData.telegram}
+                    onChange={(e) =>
+                      handleInputChange("telegram", e.target.value)
+                    }
+                    placeholder="@yourtelegram"
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="twitter">Twitter/X Handle</Label>
+                  <Input
+                    id="twitter"
+                    value={formData.twitter}
+                    onChange={(e) =>
+                      handleInputChange("twitter", e.target.value)
+                    }
+                    placeholder="@yourtwitter"
+                  />
+                </div>
+              </div>
+            </div>
 
-                  {/* Information about what happens */}
-                  <div className="mt-4 p-4 bg-blue-500/10 border border-blue-500/20 rounded-lg">
-                    <div className="text-sm text-blue-400">
-                      <strong>What happens next:</strong>
-                      <br />
-                      {publicKey ? (
-                        <>
-                          💰 We'll try to charge 0.1 SOL for private review
-                          <br />
-                          📱 If payment fails, proposal goes public on X
-                        </>
-                      ) : (
-                        <>
-                          📱 Your proposal will be posted on our X account
-                          <br />
-                          🔍 Community can see and provide feedback
-                        </>
-                      )}
-                    </div>
+            {/* Proposal Details */}
+            <div>
+              <h3 className="text-lg font-semibold mb-4 text-purple-400">
+                Proposal Details
+              </h3>
+              <div className="space-y-4">
+                <div>
+                  <Label htmlFor="proposalTitle">Proposal Title *</Label>
+                  <Input
+                    id="proposalTitle"
+                    value={formData.proposalTitle}
+                    onChange={(e) =>
+                      handleInputChange("proposalTitle", e.target.value)
+                    }
+                    placeholder="LAMBAAAGHINI Social Media Growth Campaign"
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="proposalType">Proposal Type *</Label>
+                  <Select
+                    onValueChange={(value) =>
+                      handleInputChange("proposalType", value)
+                    }
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select proposal type" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {proposalTypes.map((type) => (
+                        <SelectItem key={type} value={type}>
+                          {type}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div>
+                  <Label htmlFor="description">Detailed Description *</Label>
+                  <Textarea
+                    id="description"
+                    value={formData.description}
+                    onChange={(e) =>
+                      handleInputChange("description", e.target.value)
+                    }
+                    placeholder="Describe your marketing proposal in detail. What are you proposing to do for LAMBAAAGHINI?"
+                    rows={4}
+                  />
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <Label htmlFor="targetAudience">Target Audience *</Label>
+                    <Input
+                      id="targetAudience"
+                      value={formData.targetAudience}
+                      onChange={(e) =>
+                        handleInputChange("targetAudience", e.target.value)
+                      }
+                      placeholder="DeFi enthusiasts, meme coin traders"
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="duration">Campaign Duration</Label>
+                    <Input
+                      id="duration"
+                      value={formData.duration}
+                      onChange={(e) =>
+                        handleInputChange("duration", e.target.value)
+                      }
+                      placeholder="3 months"
+                    />
                   </div>
                 </div>
-              </CardContent>
-            </Card>
-          </>
-        )}
+                <div>
+                  <Label htmlFor="budget">Proposed Budget *</Label>
+                  <Input
+                    id="budget"
+                    value={formData.budget}
+                    onChange={(e) =>
+                      handleInputChange("budget", e.target.value)
+                    }
+                    placeholder="$10,000 - $50,000"
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="expectedResults">
+                    Expected Results/KPIs *
+                  </Label>
+                  <Textarea
+                    id="expectedResults"
+                    value={formData.expectedResults}
+                    onChange={(e) =>
+                      handleInputChange("expectedResults", e.target.value)
+                    }
+                    placeholder="Expected followers growth, engagement rates, conversions, etc."
+                    rows={3}
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Marketing Channels */}
+            <div>
+              <h3 className="text-lg font-semibold mb-4 text-blue-400">
+                Marketing Channels
+              </h3>
+              <div className="space-y-4">
+                <div>
+                  <Label>Marketing Channels (Select all that apply) *</Label>
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mt-2">
+                    {marketingChannels.map((channel) => (
+                      <div
+                        key={channel}
+                        className="flex items-center space-x-2"
+                      >
+                        <Checkbox
+                          id={channel}
+                          checked={formData.channels.includes(channel)}
+                          onCheckedChange={() => handleChannelToggle(channel)}
+                        />
+                        <Label htmlFor={channel} className="text-sm">
+                          {channel}
+                        </Label>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <Label htmlFor="primaryChannel">Primary Channel *</Label>
+                  <Select
+                    onValueChange={(value) =>
+                      handleInputChange("primaryChannel", value)
+                    }
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select primary marketing channel" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {marketingChannels.map((channel) => (
+                        <SelectItem key={channel} value={channel}>
+                          {channel}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+            </div>
+
+            {/* Timeline & Deliverables */}
+            <div>
+              <h3 className="text-lg font-semibold mb-4 text-green-400">
+                Timeline & Deliverables
+              </h3>
+              <div className="space-y-4">
+                <div>
+                  <Label htmlFor="startDate">Proposed Start Date</Label>
+                  <Input
+                    id="startDate"
+                    type="date"
+                    value={formData.startDate}
+                    onChange={(e) =>
+                      handleInputChange("startDate", e.target.value)
+                    }
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="timeline">Project Timeline *</Label>
+                  <Textarea
+                    id="timeline"
+                    value={formData.timeline}
+                    onChange={(e) =>
+                      handleInputChange("timeline", e.target.value)
+                    }
+                    placeholder="Week 1-2: Strategy development, Week 3-4: Content creation..."
+                    rows={3}
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="deliverables">Key Deliverables *</Label>
+                  <Textarea
+                    id="deliverables"
+                    value={formData.deliverables}
+                    onChange={(e) =>
+                      handleInputChange("deliverables", e.target.value)
+                    }
+                    placeholder="Social media posts, video content, influencer partnerships..."
+                    rows={3}
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="metrics">Success Metrics</Label>
+                  <Textarea
+                    id="metrics"
+                    value={formData.metrics}
+                    onChange={(e) =>
+                      handleInputChange("metrics", e.target.value)
+                    }
+                    placeholder="How will you measure success? Engagement rates, follower growth, etc."
+                    rows={2}
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Additional Information */}
+            <div>
+              <h3 className="text-lg font-semibold mb-4 text-orange-400">
+                Additional Information
+              </h3>
+              <div className="space-y-4">
+                <div>
+                  <Label htmlFor="previousWork">Previous Work/Portfolio</Label>
+                  <Textarea
+                    id="previousWork"
+                    value={formData.previousWork}
+                    onChange={(e) =>
+                      handleInputChange("previousWork", e.target.value)
+                    }
+                    placeholder="Links to previous campaigns, case studies, or relevant work"
+                    rows={3}
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="whyLambaaaghini">Why LAMBAAAGHINI?</Label>
+                  <Textarea
+                    id="whyLambaaaghini"
+                    value={formData.whyLambaaaghini}
+                    onChange={(e) =>
+                      handleInputChange("whyLambaaaghini", e.target.value)
+                    }
+                    placeholder="Why do you want to work with LAMBAAAGHINI? What excites you about our project?"
+                    rows={3}
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="additionalInfo">Additional Information</Label>
+                  <Textarea
+                    id="additionalInfo"
+                    value={formData.additionalInfo}
+                    onChange={(e) =>
+                      handleInputChange("additionalInfo", e.target.value)
+                    }
+                    placeholder="Any other information you'd like to share"
+                    rows={2}
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Terms and Conditions */}
+            <div className="space-y-4">
+              <div className="flex items-center space-x-2">
+                <Checkbox
+                  id="terms"
+                  checked={formData.agreedToTerms}
+                  onCheckedChange={(checked) =>
+                    handleInputChange("agreedToTerms", checked)
+                  }
+                />
+                <Label htmlFor="terms" className="text-sm">
+                  I agree that my proposal information may be reviewed by the
+                  LAMBAAAGHINI team and I understand that submission does not
+                  guarantee acceptance *
+                </Label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <Checkbox
+                  id="payment"
+                  checked={formData.agreedToPayment}
+                  onCheckedChange={(checked) =>
+                    handleInputChange("agreedToPayment", checked)
+                  }
+                />
+                <Label htmlFor="payment" className="text-sm">
+                  I understand that without paying 0.1 SOL, my proposal will be
+                  posted publicly on LAMBAAAGHINI's X account for community
+                  review *
+                </Label>
+              </div>
+            </div>
+
+            {/* Submit Button */}
+            <div className="pt-4">
+              <Button
+                onClick={handleSubmit}
+                disabled={
+                  isSubmitting ||
+                  !formData.agreedToTerms ||
+                  !formData.agreedToPayment
+                }
+                className="w-full bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 text-white font-semibold py-6 text-lg"
+              >
+                {isSubmitting ? (
+                  <>
+                    <Target className="h-5 w-5 mr-2 animate-spin" />
+                    Processing Proposal...
+                  </>
+                ) : (
+                  <>
+                    <Send className="h-5 w-5 mr-2" />
+                    Submit Proposal{" "}
+                    {publicKey ? "(Try 0.1 SOL or Public)" : "(Public Post)"}
+                  </>
+                )}
+              </Button>
+
+              {/* Information about what happens */}
+              <div className="mt-4 p-4 bg-blue-500/10 border border-blue-500/20 rounded-lg">
+                <div className="text-sm text-blue-400">
+                  <strong>What happens next:</strong>
+                  <br />
+                  {publicKey ? (
+                    <>
+                      💰 We'll try to charge 0.1 SOL for private review
+                      <br />
+                      📱 If payment fails, proposal goes public on X
+                    </>
+                  ) : (
+                    <>
+                      📱 Your proposal will be posted on our X account
+                      <br />
+                      🔍 Community can see and provide feedback
+                    </>
+                  )}
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );
