@@ -60,6 +60,7 @@ export class EmailService {
 
   async sendMarketingProposal(proposal: MarketingProposal): Promise<boolean> {
     try {
+      const transporter = await this.getTransporter();
       const emailHtml = this.formatProposalEmail(proposal);
 
       const mailOptions = {
@@ -70,7 +71,7 @@ export class EmailService {
         replyTo: proposal.email,
       };
 
-      const info = await this.transporter.sendMail(mailOptions);
+      const info = await transporter.sendMail(mailOptions);
       console.log("Marketing proposal email sent:", info.messageId);
       return true;
     } catch (error) {
